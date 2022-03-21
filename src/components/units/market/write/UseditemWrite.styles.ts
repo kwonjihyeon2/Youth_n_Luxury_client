@@ -75,25 +75,41 @@ export const WrapperCategory = styled.div`
   margin: 100px 100px;
   align-items: center;
   background-color: purple;
-  padding-bottom: 30px;
   border-bottom: 2px solid gray;
 `;
 
-export const CategoryList = styled.div``;
-export const CategoryListTop = styled.div``;
-export const CategoryListBottom = styled.div``;
-export const CategoryListShoes = styled.div``;
-export const CategoryListBag = styled.div``;
-export const CategoryListAcc = styled.div``;
+export const CategoryList = styled.ul`
+  padding-top: 5px;
+  background-color: red;
+  display: flex;
+  :hover {
+    cursor: default;
+  }
+`;
 
-export const CategoryMain = styled.div``;
-export const CategoryMainTop = styled.div``;
-export const CategoryMainBottom = styled.div``;
-export const CategoryMainShoes = styled.div``;
-export const CategoryMainBag = styled.div``;
-export const CategoryMainAcc = styled.div``;
-
-export const CategorySub = styled.div``;
+export const CategoryMain = styled.div`
+  margin-right: 30px;
+  padding-right: 20px;
+  border-right: 3px solid black;
+`;
+export const MainElement = styled.div`
+  :hover {
+    cursor: pointer;
+  }
+  padding-bottom: 15px;
+`;
+export const CategorySub = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-right: 20px;
+  border-right: 3px solid black;
+`;
+export const SubElement = styled.div`
+  padding-bottom: 15px;
+  :hover {
+    cursor: pointer;
+  }
+`;
 
 export const WrapperBrand = styled.div`
   display: flex;
@@ -106,11 +122,14 @@ export const WrapperBrand = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const BrandPosition = styled.div``;
-export const BrandName = styled.div``;
-export const BrandCheckBox = styled.input`
+export const BrandPosition = styled.div`
   display: flex;
+  font-size: 18px;
 `;
+export const BrandName = styled.div``;
+
+export const BrandCheckBox = styled.input``;
+
 export const WrapperPrice = styled.div`
   display: flex;
   margin: 100px 100px;
@@ -126,8 +145,35 @@ export const PriceInput = styled.input`
   margin-right: 10px;
 `;
 
-export const WrapperExplains = styled.div``;
+export const WrapperExplains = styled.div`
+  display: flex;
+  margin: 100px 100px;
+  align-items: center;
+  background-color: blue;
+  padding-bottom: 30px;
+  border-bottom: 2px solid gray;
+`;
 
-export const ExplainsInput = styled.textarea``;
+export const ExplainsInput = styled.textarea`
+  resize: none;
+  width: 800px;
+  height: 300px;
+  font-size: 20px;
+  padding: 15px 0px 15px 10px;
+  margin-right: 10px;
+`;
 
-export const ExplainsCounts = styled.div``;
+export const ExplainsCounts = styled.div`
+  font-size: 20px;
+`;
+
+export const WrapperButton = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const SubmitBtn = styled.button`
+  width: 170px;
+  height: 70px;
+  font-size: 20px;
+  border: none;
+`;

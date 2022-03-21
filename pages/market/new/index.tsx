@@ -1,5 +1,5 @@
-import CreateUseditem from "../../../src/components/units/market/write/createUseditem.container";
+import UseditemWrite from "../../../src/components/units/market/write/UseditemWrite.container";
 
 export default function UseditemNewPage() {
-  return <CreateUseditem isEdit={false} />;
+  return <UseditemWrite isEdit={false} />;
 }
