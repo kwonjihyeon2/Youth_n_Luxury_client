@@ -1,19 +1,19 @@
-import { useState } from "react";
-import * as S from "./UseditemWrite.styles";
+import { useState } from 'react'
+import * as S from './UseditemWrite.styles'
 
 export default function UseditemWriteUI(props) {
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentTab, setCurrentTab] = useState(0)
 
   const selectCategoryHandler = (index: number) => {
-    setCurrentTab(index);
-  };
+    setCurrentTab(index)
+  }
   const categoryArr = [
-    { main: "상의", sub: ["후드티", "티셔츠", "맨투맨", "와이셔츠"] },
-    { main: "하의", sub: ["청바지", "면바지", "슬랙스", "기모바지"] },
-    { main: "신발", sub: ["하이힐", "구두", "워커", "운동화"] },
-    { main: "가방", sub: ["크로스백", "백팩", "수트케이스", "에코백"] },
-    { main: "악세사리", sub: ["반지", "목걸이", "팔찌", "귀걸이"] },
-  ];
+    { main: '상의', sub: ['후드티', '티셔츠', '맨투맨', '와이셔츠'] },
+    { main: '하의', sub: ['청바지', '면바지', '슬랙스', '기모바지'] },
+    { main: '신발', sub: ['하이힐', '구두', '워커', '운동화'] },
+    { main: '가방', sub: ['크로스백', '백팩', '수트케이스', '에코백'] },
+    { main: '악세사리', sub: ['반지', '목걸이', '팔찌', '귀걸이'] },
+  ]
 
   return (
     <S.Position>
@@ -21,10 +21,12 @@ export default function UseditemWriteUI(props) {
         <S.WrapperImages>
           <S.WrapperInput>
             <S.TitleName>상품이미지</S.TitleName>
-            <S.UploadImage>이미지 등록</S.UploadImage>
+            <S.UploadImage src="/images/uploadImg.png" />
           </S.WrapperInput>
           <S.WrapperContents>
-            <S.ContentsImageBold>상품 이미지는 640x640에 최적화 되어 있습니다.</S.ContentsImageBold>
+            <S.ContentsImageBold>
+              상품 이미지는 640x640에 최적화 되어 있습니다.
+            </S.ContentsImageBold>
             <S.ContentsImage>
               - 이미지는 상품등록 시 정사각형으로 잘려서 등록됩니다.
             </S.ContentsImage>
@@ -44,10 +46,13 @@ export default function UseditemWriteUI(props) {
             <S.CategoryMain>
               {categoryArr.map((el, index) => {
                 return (
-                  <S.MainElement key={index} onClick={() => selectCategoryHandler(index)}>
+                  <S.MainElement
+                    key={index}
+                    onClick={() => selectCategoryHandler(index)}
+                  >
                     {el.main}
                   </S.MainElement>
-                );
+                )
               })}
             </S.CategoryMain>
             <S.CategorySub>
@@ -88,7 +93,7 @@ export default function UseditemWriteUI(props) {
         <S.WrapperPrice>
           <S.TitleName>가격</S.TitleName>
           <S.PriceInput placeholder="숫자만 입력해주세요."></S.PriceInput>
-          <div style={{ fontSize: "20px" }}>원</div>
+          <div style={{ fontSize: '20px' }}>원</div>
         </S.WrapperPrice>
         <S.WrapperExplains>
           <S.TitleName>설명</S.TitleName>
@@ -103,5 +108,5 @@ export default function UseditemWriteUI(props) {
         </S.WrapperButton>
       </S.Wrapper>
     </S.Position>
-  );
+  )
 }
