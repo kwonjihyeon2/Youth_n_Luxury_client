@@ -41,3 +41,38 @@ export const BottomNavEl = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export const NavRightBox = styled.div`
+  width: 226px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const IconBox = styled.div`
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+`;
+export const IconContainer = styled.div`
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const IconImg = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+export const SellBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #333333;
+  color: white;
+  width: 98px;
+  height: 40px;
+`;
