@@ -206,11 +206,11 @@ export const WrapperSellerInfo = styled.div`
 export const HeartBox = styled.div`
     display : ${(props:propsIsHeart)=> props.isHeart ? "block" : "none"};
     position : fixed;
-    top : 35%;
-    left : 40%;
+    top : 40%;
+    left : 50%;
     transform : translate(-50%,-50%);
-    width : 100px;
-    height : 100px;
+    width : 220px;
+    height : 220px;
 `
 export const HeartOnbox = styled.div`
     background-color : rgba(0,0,0,0.5);

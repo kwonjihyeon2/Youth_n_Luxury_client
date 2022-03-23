@@ -24,7 +24,9 @@ export default function UseditemWriteUI(props) {
             <S.UploadImage>이미지 등록</S.UploadImage>
           </S.WrapperInput>
           <S.WrapperContents>
-            <S.ContentsImageBold>상품 이미지는 640x640에 최적화 되어 있습니다.</S.ContentsImageBold>
+            <S.ContentsImageBold>
+              상품 이미지는 640x640에 최적화 되어 있습니다.
+            </S.ContentsImageBold>
             <S.ContentsImage>
               - 이미지는 상품등록 시 정사각형으로 잘려서 등록됩니다.
             </S.ContentsImage>
@@ -44,7 +46,10 @@ export default function UseditemWriteUI(props) {
             <S.CategoryMain>
               {categoryArr.map((el, index) => {
                 return (
-                  <S.MainElement key={index} onClick={() => selectCategoryHandler(index)}>
+                  <S.MainElement
+                    key={index}
+                    onClick={() => selectCategoryHandler(index)}
+                  >
                     {el.main}
                   </S.MainElement>
                 );

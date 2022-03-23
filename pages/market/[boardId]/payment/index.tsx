@@ -1,4 +1,4 @@
-import UseditemPaymentpage from "../../../../src/components/units/market/payment/useditemPayment.container";
+import UseditemPaymentpage from "../../../../src/components/units/market/payment/UseditemPayment.container";
 
 
 export default function PaymentPage(){
