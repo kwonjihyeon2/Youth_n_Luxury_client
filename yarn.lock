@@ -1996,9 +1996,9 @@ rc-input-number@~7.3.0:
     rc-util "^5.9.8"
 
 rc-input@~0.0.1-alpha.5:
-  version "0.0.1-alpha.6"
-  resolved "https://registry.yarnpkg.com/rc-input/-/rc-input-0.0.1-alpha.6.tgz#b9bcfb41251ca07aa183c03a3574fbc14fa2e426"
-  integrity sha512-kgpmbxa9vp6kPLW7IP5/Lf6wuaMq+pUq+dPz98vIM58h4wkEKgBQlkMIg9OCEVQIiR8rEPEoe4dO2fc9R0aypQ==
+  version "0.0.1-alpha.5"
+  resolved "https://registry.yarnpkg.com/rc-input/-/rc-input-0.0.1-alpha.5.tgz#cc043c44570c651f4d10d9809b3d634ed12537e6"
+  integrity sha512-RHvNweOVWFbbx2l/y6hgnSAdOg5fXc1D1VGhX2RNkGGyGr6cemnvyiYMxwZJjcXs0al3YK9jMObm20+DgH/mpw==
   dependencies:
     "@babel/runtime" "^7.11.1"
     classnames "^2.2.1"
