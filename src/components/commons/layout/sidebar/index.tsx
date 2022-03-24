@@ -2,6 +2,12 @@ import styled from '@emotion/styled'
 import { useState } from 'react'
 import { RightOutlined } from '@ant-design/icons'
 
+const Position = styled.div`
+  height: 100vh;
+  position: sticky;
+  top: 0px;
+`
+
 const Wrapper = styled.div`
   width: 300px;
   height: 100%;
@@ -11,6 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #f2f2f2;
 `
 
 const WrapperTop = styled.div`
@@ -208,72 +215,74 @@ export default function LayoutSidebar() {
   }
   return (
     <>
-      <Wrapper isTrue={isTrue}>
-        <WrapperTop>
-          <LoginText>로그인하세요.</LoginText>
-          {/* <WelcomeText>??님</WelcomeText> */}
-          <LoginBtn>로그인</LoginBtn>
-          <SigninBtn>회원가입</SigninBtn>
-        </WrapperTop>
-        <WrapperMid>
-          <WrapperIcon1>
-            <Icon1Img></Icon1Img>
-            <IconText>주문조회</IconText>
-          </WrapperIcon1>
-          <WrapperIcon2>
-            <Icon2Img></Icon2Img>
-            <IconText>회원정보</IconText>
-          </WrapperIcon2>
-          <WrapperIcon3>
-            <Icon3Img></Icon3Img>
-            <IconText>1:1문의</IconText>
-          </WrapperIcon3>
-          <WrapperIcon4>
-            <Icon4Img></Icon4Img>
-            <IconText>CS게시판</IconText>
-          </WrapperIcon4>
-        </WrapperMid>
-        <WrapperBot>
-          <WrapperNavi>
-            <RightOutlined />
-            <BrnadText>구찌</BrnadText>
-          </WrapperNavi>
-          <WrapperNavi>
-            <RightOutlined />
-            <BrnadText>버버리</BrnadText>
-          </WrapperNavi>
-          <WrapperNavi>
-            <RightOutlined />
-            <BrnadText>에르메스</BrnadText>
-          </WrapperNavi>
-          <WrapperNavi>
-            <RightOutlined />
-            <BrnadText>샤넬</BrnadText>
-          </WrapperNavi>
-          <WrapperNavi>
-            <RightOutlined />
-            <BrnadText>루이비통</BrnadText>
-          </WrapperNavi>
-          <WrapperNavi>
-            <RightOutlined />
-            <BrnadText>프라다</BrnadText>
-          </WrapperNavi>
-        </WrapperBot>
-        <WrapperHelp>
-          <PhoneText>CS CENTER</PhoneText>
-          <PhoneText>02-000-0000</PhoneText>
-          <OpenTime>WEEKDAY: 10:10 ~ 20:00</OpenTime>
-          <OpenTime>WEEKEND: 12:00 ~ 19:00</OpenTime>
-          <HelpBtn>고객센터</HelpBtn>
-        </WrapperHelp>
-      </Wrapper>
+      <Position>
+        <Wrapper isTrue={isTrue}>
+          <WrapperTop>
+            <LoginText>로그인하세요.</LoginText>
+            {/* <WelcomeText>??님</WelcomeText> */}
+            <LoginBtn>로그인</LoginBtn>
+            <SigninBtn>회원가입</SigninBtn>
+          </WrapperTop>
+          <WrapperMid>
+            <WrapperIcon1>
+              <Icon1Img></Icon1Img>
+              <IconText>주문조회</IconText>
+            </WrapperIcon1>
+            <WrapperIcon2>
+              <Icon2Img></Icon2Img>
+              <IconText>회원정보</IconText>
+            </WrapperIcon2>
+            <WrapperIcon3>
+              <Icon3Img></Icon3Img>
+              <IconText>1:1문의</IconText>
+            </WrapperIcon3>
+            <WrapperIcon4>
+              <Icon4Img></Icon4Img>
+              <IconText>CS게시판</IconText>
+            </WrapperIcon4>
+          </WrapperMid>
+          <WrapperBot>
+            <WrapperNavi>
+              <RightOutlined />
+              <BrnadText>구찌</BrnadText>
+            </WrapperNavi>
+            <WrapperNavi>
+              <RightOutlined />
+              <BrnadText>버버리</BrnadText>
+            </WrapperNavi>
+            <WrapperNavi>
+              <RightOutlined />
+              <BrnadText>에르메스</BrnadText>
+            </WrapperNavi>
+            <WrapperNavi>
+              <RightOutlined />
+              <BrnadText>샤넬</BrnadText>
+            </WrapperNavi>
+            <WrapperNavi>
+              <RightOutlined />
+              <BrnadText>루이비통</BrnadText>
+            </WrapperNavi>
+            <WrapperNavi>
+              <RightOutlined />
+              <BrnadText>프라다</BrnadText>
+            </WrapperNavi>
+          </WrapperBot>
+          <WrapperHelp>
+            <PhoneText>CS CENTER</PhoneText>
+            <PhoneText>02-000-0000</PhoneText>
+            <OpenTime>WEEKDAY: 10:10 ~ 20:00</OpenTime>
+            <OpenTime>WEEKEND: 12:00 ~ 19:00</OpenTime>
+            <HelpBtn>고객센터</HelpBtn>
+          </WrapperHelp>
+        </Wrapper>
 
-      <MenuBtn isTrue={isTrue} onClick={onClickOpen}>
-        <BtnLine1></BtnLine1>
-        <BtnLine2></BtnLine2>
-        <BtnLine3></BtnLine3>
-        <BtnLine4></BtnLine4>
-      </MenuBtn>
+        <MenuBtn isTrue={isTrue} onClick={onClickOpen}>
+          <BtnLine1></BtnLine1>
+          <BtnLine2></BtnLine2>
+          <BtnLine3></BtnLine3>
+          <BtnLine4></BtnLine4>
+        </MenuBtn>
+      </Position>
     </>
   )
 }
