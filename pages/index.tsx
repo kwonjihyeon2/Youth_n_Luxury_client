@@ -1,6 +1,6 @@
-import Navigation from '../src/components/commons/layout/navigation/Navigation.container';
-import Main from '../src/components/market/main/Main.container';
+import Main from '../src/components/market/main/Main.container'
+import SideBar from '../src/components/units/market/myPage/sideBar/SideBar.container'
 
 export default function Home() {
-  return <Navigation />;
+  return <Main />
 }
