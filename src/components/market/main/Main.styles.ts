@@ -1,89 +1,91 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 export const Wrapper = styled.div`
   width: 1200px;
   flex-direction: column;
   align-items: center;
   display: flex;
-`;
-export const Carousel = styled.img`
+`
+export const CarouselBox = styled.div`
+  width: 100%;
+  height: 440px;
+  margin-bottom: 100px;
+`
+export const Carousel = styled.div`
   width: 1200px;
   height: 530px;
-  margin-bottom: 10px;
-`;
-export const PerfectTxtBox = styled.div`
-  width: 100%;
-  height: 164px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+  background-image: url(/images/MainCarouselImg1.png);
 
-export const PerfectMainTxt = styled.div`
-  font-size: 22px;
-`;
+  font-size: 40px;
+  font-weight: 400;
+  color: #fffbfbbf;
+  position: relative;
+`
+export const CarouselTxt = styled.div`
+  font-size: 40px;
+  font-weight: 400;
+  color: #fffbfbbf;
+  left: 35%;
+  position: absolute;
+  top: 40%;
+`
 
-export const PerfectSubTxt = styled.div`
-  font-size: 14px;
-`;
-export const BrandImg = styled.div`
-  width: 1120px;
-  height: 355px;
-  background: grey;
-`;
-export const UpdateProductBox = styled.div`
-  width: 100%;
-  height: 176px;
+export const NewArrivalsTxtBox = styled.div`
   display: flex;
-  justify-content: center;
+  width: 1078px;
+  height: 56px;
+  margin-top: 80px;
   align-items: center;
-`;
-export const UpdateProductTxt = styled.div`
+  margin-bottom: 32px;
+  margin-left: 8px;
+`
+export const NewArrivalsTitleTxt = styled.div`
+  font-weight: 400;
+
   font-size: 34px;
-`;
-export const ProductWrapper = styled.div`
-  width: 1120px;
-  height: 1045px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-`;
+`
+
+export const NewArrivalsSubTxt = styled.div`
+  font-weight: 400;
+  color: #999999;
+  font-size: 15px;
+  margin-left: 15px;
+`
 
 export const ProductBox = styled.div`
-  width: 285px;
-  height: 323px;
-  margin-bottom: 10px;
-`;
-export const ProductImg = styled.div`
-  width: 265px;
-  height: 265px;
-  background: grey;
-`;
-
-export const ProductTxtBox = styled.div`
-  width: 219px;
-  height: 42px;
+  width: 1020px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`
+export const Product = styled.div`
+  width: 320px;
   display: flex;
   flex-direction: column;
-`;
+  margin-bottom: 48px;
+  align-items: center;
+`
+export const ProductImg = styled.div`
+  width: 320px;
+  height: 374px;
+  background-color: gray;
+  margin-bottom: 12px;
+`
 
-export const ProductTitleTxt = styled.div`
-  font-size: 15px;
-`;
-
-export const ProductPriceTxt = styled.div`
-  font-size: 17px;
-`;
-export const SheLovesImg = styled.div`
-  width: 100%;
-  background-color: grey;
-  height: 280px;
-`;
-export const BagUpdateImg = styled.div`
-  width: 1200px;
-  height: 176px;
-  background-color: grey;
-  margin-bottom: 30px;
-`;
+export const ProductTxt = styled.div`
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: 8px;
+`
+export const LoadMoreBtn = styled.button`
+  width: 196px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #393939;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: white;
+  margin-top: 40px;
+  margin-bottom: 334px;
+`

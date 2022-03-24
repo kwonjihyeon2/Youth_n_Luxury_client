@@ -1,53 +1,69 @@
-import * as S from './Main.styles';
+// import Carousel from './Carousel'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
 
+import * as S from './Main.styles'
 export default function MainUI() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+  }
   return (
     <>
       <S.Wrapper>
-        <S.Carousel></S.Carousel>
-        <S.PerfectTxtBox>
-          <S.PerfectMainTxt>
-            SOSO의 모든 상품은 완벽한 정품입니다.
-          </S.PerfectMainTxt>
-          <S.PerfectSubTxt>
-            2022년 설립되어 지금까지 많은 판매실적을 보유하고 있습니다.
-          </S.PerfectSubTxt>
-        </S.PerfectTxtBox>
-        <S.BrandImg />
-        <S.UpdateProductBox>
-          <S.UpdateProductTxt>UPDATE PRODUCT</S.UpdateProductTxt>
-        </S.UpdateProductBox>
-        <S.ProductWrapper>
-          {new Array(12).fill(0).map(() => (
-            <S.ProductBox>
-              <S.ProductImg></S.ProductImg>
+        <S.CarouselBox>
+          <Slider {...settings}>
+            <S.Carousel>
+              <S.CarouselTxt>전 상품 100% 정품 보장</S.CarouselTxt>
+            </S.Carousel>
+            <S.Carousel>
+              <S.CarouselTxt>전 상품 100% 정품 보장</S.CarouselTxt>
+            </S.Carousel>
+          </Slider>
+        </S.CarouselBox>
+        <S.NewArrivalsTxtBox>
+          <S.NewArrivalsTitleTxt>New Arrivals</S.NewArrivalsTitleTxt>
+          <S.NewArrivalsSubTxt>
+            새로 입고된 아이템들을 만나보세요!
+          </S.NewArrivalsSubTxt>
+        </S.NewArrivalsTxtBox>
 
-              <S.ProductTxtBox>
-                <S.ProductTitleTxt>
-                  에르메스 켈리 세리에 28CM 앱솜...
-                </S.ProductTitleTxt>
-                <S.ProductPriceTxt>24,500,000원</S.ProductPriceTxt>
-              </S.ProductTxtBox>
-            </S.ProductBox>
+        <S.ProductBox>
+          {new Array(9).fill(0).map(() => (
+            <S.Product>
+              <S.ProductImg />
+              <S.ProductTxt>
+                샤넬 유광 그레인드 카프스킨, 골드메탈 ..
+              </S.ProductTxt>
+              <S.ProductTxt>24,500,000원</S.ProductTxt>
+            </S.Product>
           ))}
-        </S.ProductWrapper>
-        <S.BagUpdateImg />
-        <S.ProductWrapper>
-          {new Array(12).fill(0).map(() => (
-            <S.ProductBox>
-              <S.ProductImg></S.ProductImg>
+        </S.ProductBox>
+        <S.NewArrivalsTxtBox>
+          <S.NewArrivalsTitleTxt>BEST PRODUCT</S.NewArrivalsTitleTxt>
+          <S.NewArrivalsSubTxt>
+            지금 핫한 상품들을 만나보세요!
+          </S.NewArrivalsSubTxt>
+        </S.NewArrivalsTxtBox>
+        <S.ProductBox>
+          {new Array(9).fill(0).map(() => (
+            <S.Product>
+              <S.ProductImg />
+              <S.ProductTxt>
+                샤넬 유광 그레인드 카프스킨, 골드메탈 ..
+              </S.ProductTxt>
+              <S.ProductTxt>24,500,000원</S.ProductTxt>
+            </S.Product>
+          ))}
+        </S.ProductBox>
 
-              <S.ProductTxtBox>
-                <S.ProductTitleTxt>
-                  에르메스 켈리 세리에 28CM 앱솜...
-                </S.ProductTitleTxt>
-                <S.ProductPriceTxt>24,500,000원</S.ProductPriceTxt>
-              </S.ProductTxtBox>
-            </S.ProductBox>
-          ))}
-        </S.ProductWrapper>
-        <S.SheLovesImg />
+        <S.LoadMoreBtn>더보기</S.LoadMoreBtn>
       </S.Wrapper>
     </>
-  );
+  )
 }
