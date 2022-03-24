@@ -4,8 +4,9 @@ import { RightOutlined } from '@ant-design/icons'
 
 const Position = styled.div`
   height: 100vh;
-  position: sticky;
+  position: fixed;
   top: 0px;
+  z-index: 30000;
 `
 
 const Wrapper = styled.div`
