@@ -1,174 +1,219 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-    width : 100%;
-    display : flex;
-    justify-content : center;
-    font-size : 14px;
-    ul{
-        padding:0;
-        margin : 0;
-    }
-    li{
-        list-style : none;
-    }
-    p{
-        margin : 0;
-    }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    list-style: none;
+  }
+  p {
+    margin: 0;
+  }
 `
 
 export const WrapperBox = styled.div`
-    max-width : 1200px;
-    padding : 60px;
-    width : 100%;
-`
-export const WrapperTitle = styled.h1`
-    margin:0;
-    margin-top : 70px;
-    font-size : 2rem;
-    text-align : center;
+  max-width: 1200px;
+  padding: 60px;
+  width: 100%;
 `
 export const WrapperContentBox = styled.div`
-    padding : 40px 0;
-    border-bottom : 1px solid #777;
-    display:flex;
-    flex-direction:column;
-    >div{
-        display:flex;
-        border-top: 1px solid #c4c4c4;
-        padding : 20px 10px;
-    }
+  display: flex;
+  justify-content: space-between;
+  /* text-align: left; */
+  width: 100%;
 `
 
-export const WrapperDeliveryBox = styled.div`
-    padding : 20px 0;
-    display:flex;
-    flex-direction:column;
-    >div{
-        display:flex;
-        /* padding : 20px 0; */
-    }
+export const CommonTitle = styled.p`
+  padding: 25px 0;
+  font-size: 1.5rem;
 `
 
-export const ButtonText = styled.div`
-    display:flex;
-    justify-content: space-between;
-    font-weight : 700;
-    align-items:center;
+export const WrapperLeft = styled.div`
+  width: 100%;
+  border: 1px solid #999;
+  > div {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+  }
+`
+export const PriceInfo = styled.div`
+  margin-left: 10px;
 `
 
-export const TextBox = styled.div`
-    background-color : #FFF8F4;
-    padding : 10px;
+export const ClickButton = styled.button`
+  border: 1px solid #b3b9c7;
+  background-color: #fff;
+  font-size: 12px;
+  color: #999;
+  margin: 0 5px;
+  cursor: pointer;
 `
 
-export const PayList = styled.div`
-    background-color : #F6F6F6;
-    justify-content : space-between;
-    align-items:center;
+export const LeftText = styled.div`
+  background-color: #f4f4f4;
+  justify-content: space-between;
+  align-items: center;
 `
 
-export const PaymentItem = styled.div`
-    justify-content : space-between;
-    text-align : center;
-    align-items : center;
+export const LeftcontentBox = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
 `
 
-export const PaymentItemArgs = styled.div`
-    width : 10%;
+export const PostSelect = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #fff;
+  border-bottom: 1px solid #000;
+  margin-bottom: 15px;
+  text-align: center;
+  div {
+    width: 200px;
+    padding: 10px;
+    /* border-bottom: 1px solid #000; */
+  }
+`
+interface IPropStyle {
+  isOpenAdd: boolean
+}
+
+interface IPropModal {
+  isModalAdd: boolean
+}
+
+export const ChangeSelect = styled.div`
+  width: 200px;
+  padding: 10px;
+  background-color: ${(props: IPropStyle) =>
+    props.isOpenAdd ? '#fff' : '#ddd'};
+  color: ${(props) => (props.isOpenAdd ? '#000' : '#767676')};
+  border: ${(props) => (props.isOpenAdd ? '1px solid #000' : '1px solid #ddd')};
+`
+export const ModalAddress = styled.div`
+  display: ${(props: IPropModal) => (props.isModalAdd ? 'block' : 'none')};
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
 `
 
-export const JustItemText = styled.div`
-    width:50%;
-    text-align : left;
-    font-weight : 700;
+export const ModalBox = styled.div`
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `
 
-export const PriceSpan = styled.span`
-    font-weight : 700;
-    font-size : 18px;
-`
-
-export const ItemBox = styled.div`
-    width : 10%;
-    height : 150px;
-    background-color : #F6F6F6;
-`
-
-export const DeliveryTitle = styled.div`
-    display : flex;
-    justify-content : space-between;
-    font-weight : 700;
-    font-size : 16px;
-    margin : 10px 0;
-`
-
-export const DeliveryInfo = styled.div` 
-    border-top : 1px solid #c4c4c4;
-    display : flex;
-    flex-direction : column;
-    justify-content:center;
-    >div{
-        display:flex;
-        border-bottom :  1px solid #c4c4c4;
-    }
-`
-
-export const DeliveryList = styled.div`
-    width : 150px;
-    text-align :center;
-    padding : 20px;
-    background-color :  #F6F6F6;
-    font-weight : 700;
-    color :  #c4c4c4;
-    display:flex;
-    justify-content : center;
-    align-items : center;
-`
-export const PostText = styled.div`
-    padding : 20px;
-    display : flex;
-    flex-direction : column;
-    div{
-        margin-bottom : 5px;
-    }
-`
 export const DeliveryText = styled.div`
-    padding : 20px;
-    display : flex;
-    align-items:center;
+  display: flex;
+  align-items: center;
 `
 export const DeliveryTextSmallInput = styled.input`
-     padding : 8px 10px;
-    width : 70px;
-    border : 1px solid #c4c4c4;
-    border-radius : 5px;
+  padding: 5px;
+  width: 50px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  margin: 3px 0;
 `
 
 export const DeliveryTextInput = styled.input`
-    padding : 8px 10px;
-    border : 1px solid #c4c4c4;
-    border-radius : 5px;
+  padding: 5px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  width: 165px;
 `
-export const DeliveryTextselect = styled.select`
-     padding : 8px 10px;
-    border : 1px solid #c4c4c4;
-    border-radius : 5px;
+export const DeliveryLongInput = styled.input`
+  padding: 5px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  width: 100%;
 `
 
 export const CommonsButton = styled.button`
-    padding : 8px 10px;
-    border : 1px solid #c4c4c4;
-    border-radius : 5px;
-    background-color : #fff;
-    font-weight : 700;
-    margin-left : 5px;
+  padding: 5px 10px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: 700;
+  margin-left: 5px;
+  cursor: pointer;
+`
+export const DeliveryTextselect = styled.select`
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  margin-bottom: 5px;
 `
 
-export const DeleteButton = styled.button`
-    padding : 8px 10px;
-    border : 1px solid #c4c4c4;
-    border-radius : 5px;
-    font-weight : 700;
-    margin-left : 5px;
+export const PaymentItem = styled.div`
+  padding: 10px;
+  border: 1px solid #454954;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  li {
+    padding: 5px 0;
+  }
+`
+
+export const RightUl = styled.ul`
+  text-align: right;
+`
+
+export const Leftli = styled.li`
+  font-size: 17px;
+  font-weight: 300;
+`
+
+export const Rightli = styled.li`
+  font-size: 30px;
+  font-weight: 500;
+`
+
+export const LeftPrice = styled.li`
+  font-size: 20px;
+  font-weight: 500;
+`
+
+export const PayRoutebox = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: center;
+`
+
+export const CommonsPayment = styled.div`
+  background-color: #eee;
+  border-radius: 8px;
+  margin: 0 10px 10px 10px;
+  padding: 20px;
+`
+export const PaymentResult = styled.button`
+  width: 100%;
+  background-color: #333;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-top: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  cursor: pointer;
 `

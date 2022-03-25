@@ -143,19 +143,20 @@ export default function UseditemDetailPageUI(props) {
               원
             </S.PriceResult>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <S.ButtonFlexBox>
               <S.ButtonBlackStyle>바로구매</S.ButtonBlackStyle>
               <S.ButtonStyle>
                 문의하기
-                <span>
-                  <PhoneOutlined />
-                </span>
-              </S.ButtonStyle>
-              <S.ButtonStyle onClick={props.onClickHeart}>
-                찜하기
                 <S.PhoneIconSpan></S.PhoneIconSpan>
               </S.ButtonStyle>
-            </div>
+              <S.ButtonRightStyle
+                isHeart={props.isHeart}
+                onClick={props.onClickHeart}
+              >
+                찜하기
+                <S.HeartIconSpan isHeart={props.isHeart}></S.HeartIconSpan>
+              </S.ButtonRightStyle>
+            </S.ButtonFlexBox>
             <S.ProfileBox>
               <S.SellerBox onClick={props.onClickOpen}>
                 <S.SellerProfile>

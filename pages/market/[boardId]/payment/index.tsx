@@ -1,7 +1,5 @@
-import UseditemPaymentpage from "../../../../src/components/units/market/payment/UseditemPayment.container";
+import UseditemPaymentpage from '../../../../src/components/units/market/payment/useditemPayment.container'
 
-
-export default function PaymentPage(){
-
-    return <UseditemPaymentpage />
+export default function PaymentPage() {
+  return <UseditemPaymentpage />
 }
