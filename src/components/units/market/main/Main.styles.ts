@@ -1,20 +1,35 @@
 import styled from '@emotion/styled'
+export const Position = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+`
 export const Wrapper = styled.div`
   width: 1200px;
   flex-direction: column;
   align-items: center;
   display: flex;
+  /* overflow: hidden; */
 `
 export const CarouselBox = styled.div`
   width: 100%;
-  height: 440px;
+  /* height: 440px; */
   margin-bottom: 100px;
+  .slick-dots {
+    bottom: 25px;
+    li button:before {
+      color: #efefef73;
+    }
+  }
 `
-export const Carousel = styled.div`
-  width: 1200px;
-  height: 530px;
-  background-image: url(/images/MainCarouselImg1.png);
 
+export const Carousel = styled.div`
+  width: 100%;
+  height: 700px;
+  background-image: url(/images/MainCarouselImg1.png);
+  background-size: cover;
   font-size: 40px;
   font-weight: 400;
   color: #fffbfbbf;
@@ -24,9 +39,10 @@ export const CarouselTxt = styled.div`
   font-size: 40px;
   font-weight: 400;
   color: #fffbfbbf;
-  left: 35%;
   position: absolute;
-  top: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `
 
 export const NewArrivalsTxtBox = styled.div`
