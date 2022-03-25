@@ -5,6 +5,7 @@ import Slider from 'react-slick'
 import { FiHeart } from 'react-icons/fi'
 import { BsSuitHeartFill } from 'react-icons/bs'
 import { HeartOutlined, PhoneOutlined } from '@ant-design/icons'
+import { keyframes } from '@emotion/react'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -101,19 +102,6 @@ export const PriceResult = styled.div`
   justify-content: flex-end;
 `
 
-export const ButtonStyle = styled.button`
-  width: 150px;
-  margin: 0 5px;
-  padding: 15px 0;
-  font-size: 16px;
-  background-color: white;
-  border: 1px solid #c4c4c4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`
-
 export const PageContainer = styled.div`
   width: 580px;
 `
@@ -140,24 +128,69 @@ export const PagingSmallSlick = styled.div`
   background-color: #f4f4f4;
 `
 
+export const ButtonFlexBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  button {
+    width: 150px;
+    margin: 0 5px;
+    padding: 15px 0;
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid #c4c4c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+`
+
 export const ButtonBlackStyle = styled.button`
-  width: 150px;
-  font-size: 16px;
-  padding: 15px 0;
-  background-color: black;
-  color: white;
-  border: 1px solid #000;
-  cursor: pointer;
+  background-color: black !important;
+  color: #fff;
 `
 
 export const PhoneIconSpan = styled.span`
   width: 16px;
   height: 16px;
+  background: url('/detail/Group.png') center;
+  background-size: contain;
+  margin-left: 5px;
+`
 
-  background: url('/detail/Like.png') center;
+interface propsIsHeart {
+  isHeart: boolean
+}
+
+export const HeartIconSpan = styled.span`
+  width: 19px;
+  height: 16px;
+  background: ${(props: propsIsHeart) =>
+      props.isHeart ? "url('/detail/redHeart.png')" : "url('/detail/Like.png')"}
+    center;
   background-size: cover;
+  margin-left: 5px;
+`
+
+export const ButtonStyle = styled.button`
   &:hover {
-    background: url('/detail/BlackLike.png');
+    span {
+      background: url('/detail/blackphone.png') center;
+      background-size: cover;
+    }
+  }
+`
+
+export const ButtonRightStyle = styled.button`
+  &:hover {
+    span {
+      /* background: url('/detail/BlackLike.png') center; */
+      background: ${(props: propsIsHeart) =>
+        props.isHeart
+          ? "url('/detail/redHeart.png')"
+          : "url('/detail/BlackLike.png')"};
+      background-size: cover;
+    }
   }
 `
 
@@ -273,9 +306,6 @@ interface propsIsOpen {
   isOpen: boolean
 }
 
-interface propsIsHeart {
-  isHeart: boolean
-}
 export const WrapperSellerInfo = styled.div`
   display: ${(props: propsIsOpen) => (props.isOpen ? 'block' : 'none')};
   position: fixed;
@@ -283,16 +313,30 @@ export const WrapperSellerInfo = styled.div`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
 `
+const boxOpen = keyframes`
+  from{
+    display : block;
+    opacity : 100%;
+  }
+  to{
+    display : none;
+    opacity : 0;
+  }
+`
 
 export const HeartBox = styled.div`
   display: ${(props: propsIsHeart) => (props.isHeart ? 'block' : 'none')};
+  opacity: 0;
   position: fixed;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;
   height: 220px;
+  animation: ${boxOpen};
+  animation-duration: 3s;
 `
+
 export const HeartOnbox = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   padding: 30px 0px;

@@ -31,10 +31,8 @@ export default function UseditemDetailPage() {
 
   const onClickHeart = () => {
     setIsHeart((prev) => !prev)
-    setTimeout(() => {
-      setIsHeart((prev) => !prev)
-    }, 1000)
   }
+  console.log(isHeart)
 
   useEffect(() => {
     const script = document.createElement('script')
@@ -49,7 +47,6 @@ export default function UseditemDetailPage() {
   }, [])
 
   const createKakaoButton = () => {
-    // kakao sdk script이 정상적으로 불러와졌으면 window.Kakao로 접근이 가능합니다
     if (window.Kakao) {
       const kakao = window.Kakao
 
