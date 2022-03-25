@@ -16,7 +16,7 @@ export default function Layout(props: ILayoutProps) {
   return (
     <>
       <LayoutBody>
-        {/* {!isHiddenSidebar && <LayoutSidebar />} */}
+        {!isHiddenSidebar && <LayoutSidebar />}
         {props.children}
       </LayoutBody>
     </>
