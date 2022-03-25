@@ -1,5 +1,5 @@
-import Login from '../../src/components/market/login/Login.container';
+import Login from '../../src/components/units/market/account/login/Login.container'
 
 export default function LoginPage() {
-  return <Login />;
+  return <Login />
 }
