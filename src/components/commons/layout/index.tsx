@@ -2,6 +2,7 @@ import LayoutSidebar from './sidebar'
 import styled from '@emotion/styled'
 import { ReactChild } from 'react'
 import { useRouter } from 'next/router'
+import LayoutFooter from './footer'
 
 interface ILayoutProps {
   children: ReactChild
@@ -19,6 +20,7 @@ export default function Layout(props: ILayoutProps) {
         {!isHiddenSidebar && <LayoutSidebar />}
         {props.children}
       </LayoutBody>
+      <LayoutFooter />
     </>
   )
 }
