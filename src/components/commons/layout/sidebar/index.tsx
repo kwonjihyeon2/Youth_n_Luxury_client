@@ -61,6 +61,8 @@ const WrapperMid = styled.div`
   margin-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid black;
+  justify-content: center;
+  align-items: center;
 `
 
 const WrapperIcon1 = styled.div`
@@ -239,7 +241,7 @@ export default function LayoutSidebar() {
             </WrapperIcon3>
             <WrapperIcon4>
               <Icon4Img></Icon4Img>
-              <IconText>CS게시판</IconText>
+              <IconText>알림센터</IconText>
             </WrapperIcon4>
           </WrapperMid>
           <WrapperBot>
