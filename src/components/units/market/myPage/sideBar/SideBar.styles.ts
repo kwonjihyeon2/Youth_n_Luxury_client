@@ -7,8 +7,8 @@ export const Wrapper = styled.div`
 `
 export const MyPagePath = styled.div`
   height: 32px;
-  margin-left: 76px;
-  margin-top: 10px;
+  padding-left: 16px;
+  padding-top: 10px;
   display: flex;
 `
 export const PathImg = styled.img`
@@ -27,17 +27,33 @@ export const MyShoppingHeaderTxt = styled.div`
   font-weight: 700;
   font-size: 20px;
   margin-bottom: 10px;
+  margin-top: 67px;
+  padding-left: 19px;
 `
 
 export const TitleTxt = styled.div`
+  width: 245px;
+  height: 45px;
+  display: flex;
+  align-items: center;
   font-size: 19px;
   font-weight: 400;
-  margin-bottom: 26px;
-  margin-top: 28px;
+  margin-top: 44px;
+  padding-left: 19px;
+  border-bottom: 1px solid #6666664d;
 `
 export const SubTxt = styled.div`
   color: #767676;
   font-size: 14px;
   font-weight: 300;
-  margin-bottom: 8px;
+  padding-left: 19px;
+  width: 245px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  background-color: ${(props: IProps) =>
+    props.isSelected ? '#F8F8F8' : 'white'};
 `
+interface IProps {
+  isSelected: boolean
+}

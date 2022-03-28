@@ -45,6 +45,7 @@ export default function MainUI() {
               </S.Product>
             ))}
           </S.ProductBox>
+          {/* <S.BannerChanelImg src="/images/MainPgChanelBannerImg.png" /> */}
           <S.NewArrivalsTxtBox>
             <S.NewArrivalsTitleTxt>BEST PRODUCT</S.NewArrivalsTitleTxt>
             <S.NewArrivalsSubTxt>

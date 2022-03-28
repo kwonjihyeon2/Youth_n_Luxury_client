@@ -5,7 +5,7 @@ export default function WelcomeBoxUI() {
     <>
       <S.Wrapper>
         <S.UserBox>
-          <S.UserIcon />
+          <img src="/images/myPageProfile.png" />{' '}
           <S.UserTxtBox>
             <S.UserHeadTxt>쑤잉님 반갑습니다</S.UserHeadTxt>
             <S.UserSubTxt>회원정보수정</S.UserSubTxt>
@@ -13,7 +13,10 @@ export default function WelcomeBoxUI() {
         </S.UserBox>
         <S.TempInfoBox>
           <S.InfoBox>
-            <S.InfoKeyTxt>좋아요</S.InfoKeyTxt>
+            <S.InfoKeyTxt>
+              좋아요 <img src="/images/Like18.png" />
+            </S.InfoKeyTxt>
+
             <S.InfoValueBox>
               <S.InfoValueNumTxt>1</S.InfoValueNumTxt>
               <S.InfoValueTxt>개</S.InfoValueTxt>

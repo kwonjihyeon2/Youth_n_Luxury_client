@@ -24,6 +24,9 @@ export const CarouselBox = styled.div`
     }
   }
 `
+// export const BannerChanelImg = styled.img`
+//   width: 100vw;
+// `
 
 export const Carousel = styled.div`
   width: 100%;
