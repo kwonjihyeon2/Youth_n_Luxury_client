@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
   width: 794px;
+  margin-top: 32px;
   height: 128px;
   display: flex;
   align-items: center;
@@ -17,11 +18,6 @@ export const UserBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
-export const UserIcon = styled.div`
-  width: 90px;
-  height: 90px;
-  background-color: black;
 `
 
 export const UserTxtBox = styled.div`

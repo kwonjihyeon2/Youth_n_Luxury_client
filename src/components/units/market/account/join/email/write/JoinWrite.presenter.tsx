@@ -1,4 +1,4 @@
-import * as S from './JoinWrite.styles';
+import * as S from './JoinWrite.styles'
 
 export default function JoinWriteUI(props) {
   return (
@@ -105,5 +105,5 @@ export default function JoinWriteUI(props) {
       </S.InputBox>
       <S.SubmitBtn>입력완료</S.SubmitBtn>
     </S.Wrapper>
-  );
+  )
 }
