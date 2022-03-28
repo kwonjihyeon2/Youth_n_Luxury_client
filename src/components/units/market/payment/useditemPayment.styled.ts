@@ -17,9 +17,16 @@ export const Wrapper = styled.div`
   }
 `
 
+export const WrapperTitle = styled.div`
+  text-align: center;
+  padding-top: 64px;
+  font-size: 2rem;
+  font-weight: 500;
+`
+
 export const WrapperBox = styled.div`
   max-width: 1200px;
-  padding: 60px;
+  padding: 0 60px;
   width: 100%;
 `
 export const WrapperContentBox = styled.div`
@@ -79,7 +86,6 @@ export const PostSelect = styled.div`
   div {
     width: 200px;
     padding: 10px;
-    /* border-bottom: 1px solid #000; */
   }
 `
 interface IPropStyle {
@@ -97,6 +103,8 @@ export const ChangeSelect = styled.div`
     props.isOpenAdd ? '#fff' : '#ddd'};
   color: ${(props) => (props.isOpenAdd ? '#000' : '#767676')};
   border: ${(props) => (props.isOpenAdd ? '1px solid #000' : '1px solid #ddd')};
+  border-bottom: ${(props) => (props.isOpenAdd ? '1px solid #fff' : 'none')};
+  margin-bottom: -1px;
 `
 export const ModalAddress = styled.div`
   display: ${(props: IPropModal) => (props.isModalAdd ? 'block' : 'none')};
@@ -108,17 +116,6 @@ export const ModalAddress = styled.div`
   top: 0;
   left: 0;
 `
-
-export const ModalBox = styled.div`
-  width: 500px;
-  height: 500px;
-  background-color: #fff;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`
-
 export const DeliveryText = styled.div`
   display: flex;
   align-items: center;
@@ -199,12 +196,28 @@ export const PayRoutebox = styled.div`
   text-align: center;
 `
 
+export const PaymentIcon = styled.div`
+  width: 50px;
+  height: 50px;
+  background: url('/detail/payment.png');
+  &:hover {
+    background: url('/detail/hoverpayment.png');
+  }
+`
+
 export const CommonsPayment = styled.div`
   background-color: #eee;
   border-radius: 8px;
   margin: 0 10px 10px 10px;
   padding: 20px;
+  &:hover {
+    background-color: #000;
+    div {
+      background: url('/detail/hoverpayment.png');
+    }
+  }
 `
+
 export const PaymentResult = styled.button`
   width: 100%;
   background-color: #333;
@@ -216,4 +229,35 @@ export const PaymentResult = styled.button`
   font-size: 26px;
   font-weight: 300;
   cursor: pointer;
+`
+
+export const ModalBox = styled.div`
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
+export const ModalCenter = styled.div`
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`
+export const submitAddress = styled.div`
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #000;
+  text-align: left;
+`
+export const MoreAddress = styled.div`
+  text-align: center;
+  padding: 10px;
+  margin: 40px 10px;
+  border: 1px solid #000;
 `

@@ -1,33 +1,43 @@
-import * as S from "./fetchSeller.styled";
-import { Rating } from "@mui/material";
-import { useState } from "react";
+import * as S from './fetchSeller.styled'
+import { Rating } from '@mui/material'
 
 export default function SellerInfo(props) {
   const onClickClose = () => {
-    props.setIsOpen((prev) => !prev);
-  };
+    props.setIsOpen((prev) => !prev)
+  }
 
   return (
     <S.Wrapper>
       <S.WrapperContents>
-        <S.TestBox></S.TestBox>
-        <S.ContentBox>
-          <h1>Seller Info</h1>
-          <S.WrapperContents style={{ margin: "20px 0" }}>
-            <S.ProfileBox></S.ProfileBox>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <S.ProfileBox></S.ProfileBox>
+          <S.ContentBox>
+            <S.ProfileName>유저네임</S.ProfileName>
             <div>
-              <div>유저네임</div>
-              <Rating name="half-rating" defaultValue={5} readOnly />
+              판매상품 <S.BoldSpan> 2개 </S.BoldSpan> 거래후기
+              <S.BoldSpan> 4개 </S.BoldSpan>
             </div>
-          </S.WrapperContents>
+            <S.Content>
+              <S.BoldSpan style={{ marginRight: '10px' }}>
+                판매자평가
+              </S.BoldSpan>
+              <Rating name="read-only" defaultValue={5} readOnly />
+            </S.Content>
+          </S.ContentBox>
+        </div>
+        <div>
           <div>
-            <div>리뷰</div>
-
-            <div>판매상품</div>
+            <S.BoldSpan style={{ fontSize: '1.25rem' }}>유저네임</S.BoldSpan>
+            님이 판매중인 상품
           </div>
-          <button onClick={onClickClose}>X</button>
-        </S.ContentBox>
+          <S.SpaceImg>
+            <img style={{ width: '90px' }} src="/detail/bag.png" />
+            <img style={{ width: '90px' }} src="/detail/bag.png" />
+            <img style={{ width: '90px' }} src="/detail/bag.png" />
+          </S.SpaceImg>
+        </div>
+        <S.CancelBtn onClick={onClickClose}>X</S.CancelBtn>
       </S.WrapperContents>
     </S.Wrapper>
-  );
+  )
 }
