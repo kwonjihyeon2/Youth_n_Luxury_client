@@ -125,21 +125,21 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             <S.PayRoutebox>
               <div>
                 <S.CommonsPayment>
-                  <img src="/detail/payment.png" />
+                  <S.PaymentIcon></S.PaymentIcon>
                 </S.CommonsPayment>
-                <div>신용카드</div>
+                <p>신용카드</p>
               </div>
               <div>
                 <S.CommonsPayment>
                   <img src="/detail/escrow.png" />
                 </S.CommonsPayment>
-                <div>가상계좌</div>
+                <p>가상계좌</p>
               </div>
               <div>
                 <S.CommonsPayment>
                   <img src="/detail/bank.png" />
                 </S.CommonsPayment>
-                <div>무통장입금</div>
+                <p>무통장입금</p>
               </div>
             </S.PayRoutebox>
             <div style={{ marginTop: '25px' }}>
@@ -152,8 +152,24 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
         </S.WrapperContentBox>
         <S.ModalAddress isModalAdd={props.isModalAdd}>
           <S.ModalBox>
-            모달테스트
-            <button onClick={props.onClickModal}>등록</button>
+            <S.WrapperContentBox style={{ padding: '10px' }}>
+              <div>주문 / 결제</div>
+              <button onClick={props.onClickModal}> X </button>
+            </S.WrapperContentBox>
+            <S.ModalCenter>
+              <S.ChangeSelect
+                onClick={props.onClickAdd}
+                isOpenAdd={!props.isOpenAdd}
+              >
+                배송지 수정
+              </S.ChangeSelect>
+              <S.submitAddress>배송지</S.submitAddress>
+            </S.ModalCenter>
+            <S.WrapperContentBox style={{ padding: '0 10px' }}>
+              <button>수정</button>
+              <button>선택</button>
+            </S.WrapperContentBox>
+            <S.MoreAddress>+ 배송지 추가</S.MoreAddress>
           </S.ModalBox>
         </S.ModalAddress>
       </S.WrapperBox>

@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import { FiHeart } from 'react-icons/fi'
 import { BsSuitHeartFill } from 'react-icons/bs'
-import { HeartOutlined, PhoneOutlined } from '@ant-design/icons'
+import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { keyframes } from '@emotion/react'
 
 export const Wrapper = styled.div`
@@ -107,10 +107,27 @@ export const PageContainer = styled.div`
 `
 
 export const PagingSlickBox = styled(Slider)`
-  padding: 0 10px;
-  .slick-next,
+  padding: 0 20px;
+  .anticon {
+    width: 20px;
+    height: 100%;
+    padding: 5px;
+    top: 50%;
+    background: #fff;
+    border: 1px solid rgba(196, 196, 196, 0.4);
+    &:hover {
+      color: #000;
+    }
+  }
+  .anticon svg {
+    width: 100%;
+    height: 100%;
+  }
   .slick-prev {
-    color: black;
+    left: 0;
+  }
+  .slick-next {
+    right: 0;
   }
 `
 
@@ -126,6 +143,16 @@ export const PagingSmallSlick = styled.div`
   height: 95px;
   margin: 0px 10px;
   background-color: #f4f4f4;
+`
+
+export const NextButton = styled(RightOutlined)`
+  width: 100%;
+  height: 100%;
+`
+
+export const PreviousButton = styled(LeftOutlined)`
+  width: 100%;
+  height: 100%;
 `
 
 export const ButtonFlexBox = styled.div`
@@ -186,9 +213,10 @@ export const ButtonRightStyle = styled.button`
     span {
       /* background: url('/detail/BlackLike.png') center; */
       background: ${(props: propsIsHeart) =>
-        props.isHeart
-          ? "url('/detail/redHeart.png')"
-          : "url('/detail/BlackLike.png')"};
+          props.isHeart
+            ? "url('/detail/redHeart.png')"
+            : "url('/detail/BlackLike.png')"}
+        center;
       background-size: cover;
     }
   }
@@ -240,20 +268,30 @@ export const ContentsImg = styled.img`
 `
 
 export const SliderContainer = styled(Slider)`
-  padding: 20px 50px;
+  padding: 0px 20px;
   .slick-slide {
     padding: 0 10px;
   }
-  .slick-prev,
-  .slick-next {
-    top: 45%;
-    z-index: 999;
+  .anticon {
+    width: 20px;
+    height: 80%;
+    top: 40%;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid rgba(196, 196, 196, 0.4);
+    &:hover {
+      color: #000;
+    }
+  }
+  .anticon svg {
+    width: 100%;
+    height: 100%;
   }
   .slick-prev {
-    left: 0px;
+    left: 0;
   }
   .slick-next {
-    right: 4%;
+    right: 0;
   }
   .slick-prev:before,
   .slick-next:before {
@@ -262,9 +300,13 @@ export const SliderContainer = styled(Slider)`
   }
 `
 
+export const SlickStyle = styled.div`
+  margin-bottom: 85px;
+`
+
 export const SliderBox = styled.div`
   height: 200px;
-  width: 200px;
+  width: 100%;
   background-color: #bdbdbd;
 `
 export const RelativeTitle = styled.div`
@@ -273,6 +315,7 @@ export const RelativeTitle = styled.div`
   font-weight: 300;
   background-color: #f8f8f8;
   border-bottom: 1px solid #c4c4c4;
+  margin-bottom: 50px;
 `
 
 export const SellerBox = styled.div`
@@ -372,4 +415,33 @@ export const SellerRate = styled.div`
     font-size: 14px;
     margin-right: 0;
   }
+`
+
+export const ButtonBox = styled.div`
+  text-align: center;
+  button {
+    cursor: pointer;
+  }
+`
+export const ListButton = styled.button`
+  width: 200px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #000;
+`
+export const CancelBtn = styled.button`
+  width: 100px;
+  padding: 10px 0;
+  margin: 25px 0;
+  border: 1px solid #000;
+  background-color: #fff;
+`
+export const EditBtn = styled.button`
+  width: 100px;
+  padding: 10px 0;
+  margin: 25px 0;
+  margin-right: 10px;
+  border: 1px solid #000;
+  background-color: #000;
+  color: white;
 `

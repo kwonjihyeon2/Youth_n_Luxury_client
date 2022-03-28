@@ -2,13 +2,10 @@ import * as S from './useditemDetail.styled'
 import { FiShare2, FiHeart, FiShoppingCart } from 'react-icons/fi'
 import { BsFillEyeFill } from 'react-icons/bs'
 import SellerInfo from '../../profile/fetchSeller/fetchSeller.container'
-import { Rate } from 'antd'
-import 'antd/dist/antd.css'
+import { Rating } from '@mui/material'
 import { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import Slider from 'react-slick'
-import { useCallback } from 'react'
-import { HeartOutlined, PhoneOutlined } from '@ant-design/icons'
 
 export default function UseditemDetailPageUI(props) {
   const slider1 = useRef(null)
@@ -28,6 +25,8 @@ export default function UseditemDetailPageUI(props) {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    nextArrow: <S.NextButton />,
+    prevArrow: <S.PreviousButton />,
   }
 
   const mainSettings = {
@@ -43,6 +42,8 @@ export default function UseditemDetailPageUI(props) {
     slidesToShow: 4,
     swipeToSlide: true,
     focusOnSelect: true,
+    nextArrow: <S.NextButton />,
+    prevArrow: <S.PreviousButton />,
   }
 
   return (
@@ -170,7 +171,12 @@ export default function UseditemDetailPageUI(props) {
                 </div>
                 <S.SellerRate>
                   판매자 정보
-                  <Rate disabled defaultValue={2} />
+                  <Rating
+                    name="read-only"
+                    size="small"
+                    defaultValue={5}
+                    readOnly
+                  />
                 </S.SellerRate>
               </S.SellerBox>
             </S.ProfileBox>
@@ -192,7 +198,7 @@ export default function UseditemDetailPageUI(props) {
           <S.ContentsImg src="/detail/sunglass04.jpeg" />
           <br />
         </S.ContentsBox>
-        <div style={{ marginBottom: '85px' }}>
+        <S.SlickStyle>
           <S.RelativeTitle>[데이터값] 유저님의 다른상품</S.RelativeTitle>
           <S.SliderContainer {...settings}>
             <div>
@@ -226,8 +232,8 @@ export default function UseditemDetailPageUI(props) {
               <div>2000만원이다</div>
             </div>
           </S.SliderContainer>
-        </div>
-        <div>
+        </S.SlickStyle>
+        <S.SlickStyle>
           <S.RelativeTitle>[데이터값] 유저님의 다른상품</S.RelativeTitle>
           <S.SliderContainer {...settings}>
             <div>
@@ -261,7 +267,15 @@ export default function UseditemDetailPageUI(props) {
               <div>2000만원이다</div>
             </div>
           </S.SliderContainer>
-        </div>
+        </S.SlickStyle>
+
+        <S.ButtonBox>
+          <S.ListButton>등록하기</S.ListButton>
+          <div style={{ textAlign: 'right' }}>
+            <S.EditBtn>수정</S.EditBtn>
+            <S.CancelBtn>취소</S.CancelBtn>
+          </div>
+        </S.ButtonBox>
       </S.WrapperBody>
       <S.WrapperSellerInfo isOpen={props.isOpen}>
         <SellerInfo isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
