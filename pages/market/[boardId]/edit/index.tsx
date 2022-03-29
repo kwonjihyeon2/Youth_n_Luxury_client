@@ -4,19 +4,22 @@ import UseditemWrite from '../../../../src/components/units/market/write/Usedite
 import { gql } from '@apollo/client'
 
 const FETCH_PRODUCT = gql`
-  query fetchProduct($productId: String!, $userId: String!) {
-    fetchProduct(productId: $productId, userId: $userId) {
+  query fetchProduct($productId: String!) {
+    fetchProduct(productId: $productId) {
       id
       name
       description
       price
       urls
       brand {
+        id
         name
       }
       subCategory {
+        id
         name
         mainCategory {
+          id
           name
         }
       }

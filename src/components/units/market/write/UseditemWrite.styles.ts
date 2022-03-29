@@ -9,7 +9,15 @@ export const Wrapper = styled.div`
   min-height: 2200px;
   height: auto;
 `
-
+export const WrapperAccount = styled.div`
+  display: flex;
+  width: 100%;
+  height: 200px;
+  margin-right: 20px;
+  flex-direction: row;
+  margin-bottom: 50px;
+  margin-top: 50px;
+`
 export const WrapperImages = styled.div`
   display: flex;
   width: 100%;
@@ -25,9 +33,26 @@ export const WrapperImgTitle = styled.div`
   height: 100%;
   border: 1px solid black;
   border-radius: 20px;
-
   background-color: #fafafc;
 `
+export const WrapperAccountInput = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+  margin-left: 50px;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #fafafc;
+  flex-wrap: wrap;
+`
+
+export const AccountBtn = styled.button`
+  width: 150px;
+  height: 70px;
+`
+
 export const WrapperInput = styled.div`
   display: flex;
   width: 90%;
@@ -48,6 +73,7 @@ export const UploadImage = styled.img`
   margin-left: 50px;
   width: 130px;
   height: 150px;
+  cursor: pointer;
 `
 
 export const WrapperContents = styled.div`
@@ -94,7 +120,6 @@ export const WrapperTitleInput = styled.div`
 export const WrapperCategory = styled.div`
   height: 200px;
   display: flex;
-  background-color: #fafafc;
   margin-top: 50px;
 `
 
@@ -113,6 +138,7 @@ export const CategoryMain = styled.select`
   margin: 50px 50px 0px 50px;
   font-size: 20px;
   padding-left: 10px;
+  cursor: pointer;
 `
 export const CategorySub = styled.select`
   width: 300px;
@@ -120,6 +146,7 @@ export const CategorySub = styled.select`
   margin-top: 50px;
   font-size: 20px;
   padding-left: 10px;
+  cursor: pointer;
 `
 
 export const WrapperBrand = styled.div`
@@ -151,6 +178,7 @@ export const BrandPosition = styled.div`
 `
 export const BrandRadio = styled.input`
   margin-top: 40px;
+  cursor: pointer;
 `
 
 export const WrapperPrice = styled.div`
