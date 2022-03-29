@@ -32,7 +32,6 @@ export const WrapperBox = styled.div`
 export const WrapperContentBox = styled.div`
   display: flex;
   justify-content: space-between;
-  /* text-align: left; */
   width: 100%;
 `
 
@@ -106,8 +105,19 @@ export const ChangeSelect = styled.div`
   border-bottom: ${(props) => (props.isOpenAdd ? '1px solid #fff' : 'none')};
   margin-bottom: -1px;
 `
+
+export const AddressSelect = styled.div`
+  width: 200px;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
+`
+
 export const ModalAddress = styled.div`
-  display: ${(props: IPropModal) => (props.isModalAdd ? 'block' : 'none')};
+  display: ${(props: IPropStyle) => (props.isOpenAdd ? 'block' : 'none')};
   z-index: 999;
   width: 100%;
   height: 100vh;
@@ -122,7 +132,8 @@ export const DeliveryText = styled.div`
 `
 export const DeliveryTextSmallInput = styled.input`
   padding: 5px;
-  width: 50px;
+  text-align: center;
+  width: 60px;
   border: 1px solid #c4c4c4;
   border-radius: 5px;
   margin: 3px 0;
@@ -261,3 +272,4 @@ export const MoreAddress = styled.div`
   margin: 40px 10px;
   border: 1px solid #000;
 `
+// export const

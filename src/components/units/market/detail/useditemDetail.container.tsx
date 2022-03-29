@@ -1,19 +1,37 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import UseditemDetailPageUI from './useditemDetail.presenter'
+import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
+import { useMutation, useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
+import { DELETE_PRODUCT, FETCH_PRODUCT } from './useditemDetail.query'
 
 declare const window: typeof globalThis & {
   Kakao: any
 }
 
 export default function UseditemDetailPage() {
+  const { moveToPage } = useMoveToPage()
+  const router = useRouter()
   //   const el = useRef();
   const [isOpen, setIsOpen] = useState(false)
+  const [isShare, setIsShare] = useState(false)
   const [isHeart, setIsHeart] = useState(false)
 
   const onClickOpen = () => {
     setIsOpen((prev) => !prev)
   }
+  const onClickShare = () => {
+    setIsShare((prev) => !prev)
+  }
+
+  const { data } = useQuery(FETCH_PRODUCT, {
+    variables: {
+      productId: String(router.query.boardId),
+      userId: 'bbf01217-6618-488e-95d5-c0cd1be4aa79',
+    },
+  })
+  // console.log(data?.fetchProduct)
 
   //   const CloseModal = ({ target }) => {
   //     console.log(!el.current.contains(target));
@@ -32,7 +50,20 @@ export default function UseditemDetailPage() {
   const onClickHeart = () => {
     setIsHeart((prev) => !prev)
   }
-  console.log(isHeart)
+
+  const [deleteProduct] = useMutation(DELETE_PRODUCT)
+  const onClickDelete = async () => {
+    try {
+      const result = await deleteProduct({
+        variables: { productId: String(data?.fetchProduct.productId) },
+      })
+
+      console.log(result)
+      router.push('/market/list')
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
 
   useEffect(() => {
     const script = document.createElement('script')
@@ -96,11 +127,16 @@ export default function UseditemDetailPage() {
 
   return (
     <UseditemDetailPageUI
+      data={data}
       isHeart={isHeart}
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       onClickHeart={onClickHeart}
       onClickOpen={onClickOpen}
+      moveToPage={moveToPage}
+      onClickDelete={onClickDelete}
+      onClickShare={onClickShare}
+      isShare={isShare}
     />
   )
 }
