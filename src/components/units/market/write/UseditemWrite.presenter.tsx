@@ -39,7 +39,11 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>2.제목</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperTitleInput>
-            <S.TitleInput type="text" placeholder="상품 제목을 입력해주세요." />
+            <S.TitleInput
+              type="text"
+              placeholder="상품 제목을 입력해주세요."
+              onChange={props.onChangeName}
+            />
           </S.WrapperTitleInput>
         </S.WrapperTitle>
         <S.WrapperCategory>
@@ -47,16 +51,16 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>3.카테고리</S.TitleName>
           </S.WrapperImgTitle>
           <S.CategoryList>
-            <S.CategoryMain onChange={props.onChangeSelectMain}>
+            <S.CategoryMain onChange={props.onChangeMainCategory}>
               <option value="">선택하세요</option>
               <option value="Top">상의</option>
               <option value="Bottom">하의</option>
               <option value="Shoes">신발</option>
               <option value="Bag">가방</option>
-              <option value="Acc ">악세사리</option>
+              <option value="Acc">악세사리</option>
             </S.CategoryMain>
             {props.selectMain === 'Top' ? (
-              <S.CategorySub onChange={props.onChangeSelectSub}>
+              <S.CategorySub onChange={props.onChangeSubCategoryId}>
                 <option value="">선택하세요</option>
                 <option value="Hoodie">후드티</option>
                 <option value="T-shirt">티셔츠</option>
@@ -67,7 +71,7 @@ export default function UseditemWriteUI(props) {
               ''
             )}
             {props.selectMain === 'Bottom' ? (
-              <S.CategorySub onChange={props.onChangeSelectSub}>
+              <S.CategorySub onChange={props.onChangeSubCategoryId}>
                 <option value="">-선택하세요-</option>
                 <option value="BlueJeans">청바지</option>
                 <option value="CottonPants">면바지</option>
@@ -78,7 +82,7 @@ export default function UseditemWriteUI(props) {
               ''
             )}
             {props.selectMain === 'Shoes' ? (
-              <S.CategorySub onChange={props.onChangeSelectSub}>
+              <S.CategorySub onChange={props.onChangeSubCategoryId}>
                 <option value="">-선택하세요-</option>
                 <option value="HighHeels">하이힐</option>
                 <option value="Shoes">구두</option>
@@ -89,7 +93,7 @@ export default function UseditemWriteUI(props) {
               ''
             )}
             {props.selectMain === 'Bag' ? (
-              <S.CategorySub onChange={props.onChangeSelectSub}>
+              <S.CategorySub onChange={props.onChangeSubCategoryId}>
                 <option value="">-선택하세요-</option>
                 <option value="CrossBag">크로스백</option>
                 <option value="Backpack">백팩</option>
@@ -100,7 +104,7 @@ export default function UseditemWriteUI(props) {
               ''
             )}
             {props.selectMain === 'Acc' ? (
-              <S.CategorySub onChange={props.onChangeSelectSub}>
+              <S.CategorySub onChange={props.onChangeSubCategoryId}>
                 <option value="">-선택하세요-</option>
                 <option value="Ring">반지</option>
                 <option value="Necklace">목걸이</option>
@@ -124,7 +128,7 @@ export default function UseditemWriteUI(props) {
                 name="brand"
                 type="radio"
                 value="Prada"
-                onClick={props.onClickBrand}
+                onClick={props.onChangeBrandId}
               />
               <div>버버리</div>
               <S.BrandRadio
@@ -132,7 +136,7 @@ export default function UseditemWriteUI(props) {
                 name="brand"
                 type="radio"
                 value="Burberry"
-                onClick={props.onClickBrand}
+                onClick={props.onChangeBrandId}
               />
               <div>루이비통</div>
               <S.BrandRadio
@@ -140,7 +144,7 @@ export default function UseditemWriteUI(props) {
                 name="brand"
                 type="radio"
                 value="LouisVuitton"
-                onClick={props.onClickBrand}
+                onClick={props.onChangeBrandId}
               />
               <div>샤넬</div>
               <S.BrandRadio
@@ -148,7 +152,7 @@ export default function UseditemWriteUI(props) {
                 name="brand"
                 type="radio"
                 value="Chanel"
-                onClick={props.onClickBrand}
+                onClick={props.onChangeBrandId}
               />
               <div>구찌</div>
               <S.BrandRadio
@@ -156,7 +160,7 @@ export default function UseditemWriteUI(props) {
                 name="brand"
                 type="radio"
                 value="Gucci"
-                onClick={props.onClickBrand}
+                onClick={props.onChangeBrandId}
               />
               <div>에르메스</div>
               <S.BrandRadio
@@ -164,7 +168,7 @@ export default function UseditemWriteUI(props) {
                 name="brand"
                 type="radio"
                 value="Hermes"
-                onClick={props.onClickBrand}
+                onClick={props.onChangeBrandId}
               />
             </S.BrandPosition>
           </S.WrapperBrandList>
@@ -177,6 +181,7 @@ export default function UseditemWriteUI(props) {
             <S.PriceInput
               type="text"
               placeholder="숫자만 입력해주세요."
+              onChange={props.onChangePrice}
             ></S.PriceInput>
             <div style={{ fontSize: '20px' }}>원</div>
           </S.WrapperPriceInput>
@@ -187,15 +192,15 @@ export default function UseditemWriteUI(props) {
           </S.WrapperImgTitle>
           <S.WrapperTextarea>
             <S.ExplainsInput
-              type="text"
-              maxLength="500"
-              placeholder="상품 설명을 입력해주세요.(10글자 이상)"
+              maxLength={500}
+              placeholder="상품 설명을 입력해주세요."
+              onChange={props.onChangeDescription}
             />
-            <S.ExplainsCounts>{props.Count}0/500</S.ExplainsCounts>
+            <S.ExplainsCounts>{props.description.length}/500</S.ExplainsCounts>
           </S.WrapperTextarea>
         </S.WrapperExplains>
         <S.WrapperButton>
-          <S.SubmitBtn>등록하기</S.SubmitBtn>
+          <S.SubmitBtn onClick={props.onClickSubmit}>등록하기</S.SubmitBtn>
         </S.WrapperButton>
       </S.Wrapper>
     </S.Position>
