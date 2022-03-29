@@ -10,15 +10,15 @@ import WelcomeBox from './welcomeBox/WelcomeBox.container'
 export default function MyPageUI(props) {
   return (
     <S.Position>
-      <SideBar />
+      <SideBar onClickSwitchPage={props.onClickSwitchPage} />
       <S.RightContainer>
         <WelcomeBox />
-        <Transaction />
-        <MyList />
-        <MyAsk />
-        <Review />
-        <EditUser />
-        <DeleteUser />
+        {props.pageNum === 0 && <Transaction />}
+        {(props.pageNum === 1 || props.pageNum === 2) && <MyList />}
+        {props.pageNum === 3 && <MyAsk />}
+        {(props.pageNum === 4 || props.pageNum === 5) && <Review />}
+        {props.pageNum === 6 && <EditUser />}
+        {props.pageNum === 7 && <DeleteUser />}
       </S.RightContainer>
     </S.Position>
   )
