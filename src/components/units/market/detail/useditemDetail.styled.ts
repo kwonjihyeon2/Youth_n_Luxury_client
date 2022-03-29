@@ -26,15 +26,15 @@ export const WrapperTitle = styled.div`
   justify-content: space-between;
 `
 export const TitleStyle = styled.p`
-  font-size: 26px;
-  padding-top: 55px;
+  font-size: 1.75rem;
+  padding: 40px 0 15px 0;
   text-align: center;
 `
 
 export const Titleprice = styled.div`
-  padding-bottom: 5px;
+  padding: 20px 0 10px 0;
   border-bottom: 1px solid #c4c4c4;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -125,9 +125,11 @@ export const PagingSlickBox = styled(Slider)`
   }
   .slick-prev {
     left: 0;
+    color: #000;
   }
   .slick-next {
     right: 0;
+    color: #000;
   }
 `
 
@@ -254,6 +256,34 @@ export const IconBox = styled.div`
   align-items: center;
   margin-left: 10px;
   font-size: 24px;
+  position: relative;
+`
+export const RedCount = styled.span`
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #ce0909;
+  color: #fff;
+  line-height: 10px;
+  font-size: 8px;
+  font-weight: 600;
+  text-align: center;
+  position: absolute;
+  top: 2px;
+  right: -2px;
+`
+
+interface propsIsShare {
+  isShare: boolean
+}
+
+export const KakaoButton = styled.div`
+  /* display: flex; */
+  display: ${(props: propsIsShare) => (props.isShare ? 'flex' : 'none')};
+  position: absolute;
+  top: 130%;
+  right: -100px;
+  width: 100px;
 `
 
 export const WrapperLiStyle = styled.li`
@@ -289,14 +319,20 @@ export const SliderContainer = styled(Slider)`
   }
   .slick-prev {
     left: 0;
+    color: #000;
   }
   .slick-next {
     right: 0;
+    color: #000;
   }
   .slick-prev:before,
   .slick-next:before {
-    color: black;
+    /* color: black; */
     font-size: 50px;
+  }
+  p {
+    margin: 0;
+    padding: 5px 0;
   }
 `
 

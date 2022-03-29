@@ -96,7 +96,7 @@ export default function UseditemDetailPageUI(props) {
           <div>
             <S.Titleprice>
               <S.PriceStyleColor>
-                6,900,000
+                {props.data?.fetchProduct.price}
                 <span style={{ fontSize: '24px' }}>원</span>
                 <S.VerifyBox>
                   <img src="/detail/verified_user.png" />
@@ -106,19 +106,29 @@ export default function UseditemDetailPageUI(props) {
               </S.PriceStyleColor>
               <S.FlexPocket>
                 <S.IconBox>
+                  <S.RedCount>{props.data?.fetchProduct.like}</S.RedCount>
                   <BsFillEyeFill />
                 </S.IconBox>
                 <S.IconBox>
+                  <S.RedCount>{props.data?.fetchProduct.like}</S.RedCount>
                   <FiHeart />
                 </S.IconBox>
-                <S.IconBox>
+                <S.IconBox style={{ cursor: 'pointer' }}>
                   <FiShoppingCart />
                 </S.IconBox>
-                <S.IconBox className="kakao-share-button">
-                  {/* <FiShare2 style={{fontSize:28, marginRight:"5px"}}/>공유 */}
-                  <S.ShareButton id="kakao-link-btn">
+                <S.IconBox style={{ cursor: 'pointer' }}>
+                  <div onClick={props.onClickShare}>
                     <FiShare2 />
-                  </S.ShareButton>
+                    <S.KakaoButton isShare={props.isShare}>
+                      <div id="kakao-link-btn">
+                        <S.ShareButton className="kakao-share-button">
+                          <FiShare2 />
+                        </S.ShareButton>
+                      </div>
+                      <button>url복사</button>
+                    </S.KakaoButton>
+                    {/* <FiShare2 style={{fontSize:28, marginRight:"5px"}}/>공유 */}
+                  </div>
                 </S.IconBox>
               </S.FlexPocket>
             </S.Titleprice>
@@ -139,7 +149,7 @@ export default function UseditemDetailPageUI(props) {
             <S.PriceResult>
               총 상품금액
               <S.PriceStyleColor>
-                &nbsp; [데이터값] 2,450,000 &nbsp;
+                &nbsp; {props.data?.fetchProduct.price} &nbsp;
               </S.PriceStyleColor>{' '}
               원
             </S.PriceResult>
@@ -203,32 +213,32 @@ export default function UseditemDetailPageUI(props) {
           <S.SliderContainer {...settings}>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>1000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
           </S.SliderContainer>
@@ -238,42 +248,50 @@ export default function UseditemDetailPageUI(props) {
           <S.SliderContainer {...settings}>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>1000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
             <div>
               <S.SliderBox></S.SliderBox>
-              <div>에르메스 사고싶다</div>
+              <p>에르메스 사고싶다</p>
               <div>2000만원이다</div>
             </div>
           </S.SliderContainer>
         </S.SlickStyle>
 
         <S.ButtonBox>
-          <S.ListButton>등록하기</S.ListButton>
+          <S.ListButton onClick={props.moveToPage('/market/list')}>
+            목록으로
+          </S.ListButton>
           <div style={{ textAlign: 'right' }}>
-            <S.EditBtn>수정</S.EditBtn>
-            <S.CancelBtn>취소</S.CancelBtn>
+            <S.EditBtn
+              onClick={props.moveToPage(
+                `/market/${props.data?.fetchProduct.id}/edit`
+              )}
+            >
+              수정
+            </S.EditBtn>
+            <S.CancelBtn onClick={props.onClickDelete}>삭제</S.CancelBtn>
           </div>
         </S.ButtonBox>
       </S.WrapperBody>

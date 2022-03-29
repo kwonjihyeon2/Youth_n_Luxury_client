@@ -1,10 +1,17 @@
+import DaumPostcode from 'react-daum-postcode'
+import { Modal } from 'antd'
+import 'antd/dist/antd.css'
+
 import * as S from './useditemPayment.styled'
 
 interface IpropsType {
   isOpenAdd: boolean
   onClickAdd: () => void
   isModalAdd: boolean
-  onClickModal: () => void
+  onClickDaumModal: () => void
+  handleComplete: (data: any) => void
+  zipCode: any
+  address: any
 }
 
 export default function UseditemPaymentpageUI(props: IpropsType) {
@@ -50,7 +57,7 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
               <div>
                 <S.PostSelect>
                   <S.ChangeSelect
-                    onClick={props.onClickModal}
+                    onClick={props.onClickAdd}
                     isOpenAdd={props.isOpenAdd}
                   >
                     배송지선택
@@ -66,10 +73,16 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                 <S.DeliveryTextInput type="text" defaultValue="유저" />
                 <S.CommonsButton>주문자 정보와 동일</S.CommonsButton>
               </div>
-              <S.DeliveryTextSmallInput type="tel" readOnly />
-              <S.CommonsButton>검색</S.CommonsButton>
-              <S.DeliveryLongInput type="text" defaultValue="기본주소" />
-              <S.DeliveryLongInput type="text" defaultValue="나머지 주소" />
+              <S.DeliveryTextSmallInput
+                type="tel"
+                value={props.zipCode}
+                readOnly
+              />
+              <S.CommonsButton onClick={props.onClickDaumModal}>
+                우편번호 검색
+              </S.CommonsButton>
+              <S.DeliveryLongInput type="text" value={props.address} readOnly />
+              <S.DeliveryLongInput type="text" placeholder="나머지 주소" />
               <S.DeliveryText>
                 <S.DeliveryTextSmallInput
                   type="tel"
@@ -86,8 +99,8 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                   배송주소록에 저장
                 </div>
                 <div style={{ paddingBottom: '5px' }}>
-                  <input type="checkbox" name="gender" /> 배송주소록에
-                  기본배송지로 저장
+                  <input type="checkbox" name="gender" />
+                  배송주소록에 기본배송지로 저장
                 </div>
               </div>
               <S.DeliveryText>
@@ -104,6 +117,16 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
               </S.DeliveryText>
             </div>
           </div>
+          {props.isModalAdd && (
+            <Modal
+              centered
+              visible={true}
+              onCancel={props.onClickDaumModal}
+              onOk={props.onClickDaumModal}
+            >
+              <DaumPostcode onComplete={props.handleComplete} />
+            </Modal>
+          )}
 
           <div style={{ width: '450px', marginLeft: '20px' }}>
             <S.CommonTitle>결제정보</S.CommonTitle>
@@ -150,20 +173,17 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             <S.PaymentResult>결제하기</S.PaymentResult>
           </div>
         </S.WrapperContentBox>
-        <S.ModalAddress isModalAdd={props.isModalAdd}>
+        <S.ModalAddress isOpenAdd={props.isOpenAdd}>
           <S.ModalBox>
             <S.WrapperContentBox style={{ padding: '10px' }}>
               <div>주문 / 결제</div>
-              <button onClick={props.onClickModal}> X </button>
+              <button onClick={props.onClickAdd}> X </button>
             </S.WrapperContentBox>
             <S.ModalCenter>
-              <S.ChangeSelect
-                onClick={props.onClickAdd}
-                isOpenAdd={!props.isOpenAdd}
-              >
-                배송지 수정
-              </S.ChangeSelect>
-              <S.submitAddress>배송지</S.submitAddress>
+              <S.AddressSelect>배송지 수정</S.AddressSelect>
+              <S.submitAddress>
+                배송지<button>기본배송지</button>
+              </S.submitAddress>
             </S.ModalCenter>
             <S.WrapperContentBox style={{ padding: '0 10px' }}>
               <button>수정</button>
