@@ -1,5 +1,8 @@
 import styled from '@emotion/styled'
 
+// text-overflow: ellipsis;
+// flex-wrap: wrap;
+
 export const Position = styled.div`
   display: flex;
   justify-content: center;
@@ -70,7 +73,7 @@ export const MidBox1 = styled.div`
   flex-direction: column;
   width: 80%;
   height: auto;
-  margin-top: 70px;
+  margin-top: 20px;
 `
 
 export const Box1SearchWrapper = styled.div`
@@ -173,8 +176,6 @@ export const TempWrapper = styled.div`
 export const UserWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */
 `
 
 export const UserList = styled.div`
@@ -182,7 +183,7 @@ export const UserList = styled.div`
   flex-direction: column;
   align-items: center;
   width: 200px;
-  height: 200px;
+  height: 250px;
   background-color: green;
   margin-top: 50px;
   margin-left: 50px;
@@ -196,18 +197,25 @@ export const UserImgWrapper = styled.div`
 export const UserDeleteBtn = styled.button`
   width: 25px;
   height: 25px;
-  margin-left: 5px;
+  margin-top: 7px;
+  margin-left: 10px;
   border: none;
-  background: none;
+  background: purple;
+  border-radius: 30px;
   cursor: pointer;
 `
 export const UserTempImg = styled.div`
+  margin-top: 5px;
   width: 150px;
   height: 150px;
   background-color: red;
 `
-export const UserName = styled.div``
-export const UserEmail = styled.div``
+export const UserName = styled.div`
+  margin-top: 20px;
+`
+export const UserEmail = styled.div`
+  margin-top: 10px;
+`
 
 export const MidBox3 = styled.div`
   display: flex;
@@ -218,12 +226,24 @@ export const MidBox3 = styled.div`
   margin-top: 70px;
   padding-top: 70px;
 `
+export const StatusWrapper = styled.div`
+  display: flex;
+  font-size: 20px;
+  margin-bottom: 10px;
+`
+
+export const BoxImg = styled.img`
+  margin-right: 10px;
+  width: 30px;
+`
+
 export const Box3MenuWrapper = styled.div`
   display: flex;
   align-items: center;
   font-size: 18px;
   height: 50px;
   background-color: #8a92a6;
+
   div {
     margin-left: 10px;
     margin-right: 80px;

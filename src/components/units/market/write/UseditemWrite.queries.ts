@@ -49,14 +49,18 @@ export const UPDATE_PRODUCT = gql`
       name
       description
       price
+      view
       like
       urls
       brand {
+        id
         name
       }
       subCategory {
+        id
         name
         mainCategory {
+          id
           name
         }
       }

@@ -5,7 +5,7 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const client = new ApolloClient({
-    uri: 'http://34.64.219.32:3000/graphql',
+    uri: 'http://mybackend.project5-sos.shop:3000/graphql',
     cache: new InMemoryCache(),
   })
 

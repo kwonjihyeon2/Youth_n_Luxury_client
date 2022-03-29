@@ -183,8 +183,15 @@ export default function AdminMainUI() {
                 </S.UserList>
               </S.UserWrapper>
             </S.TempWrapper>
+            <S.PaginationWrapper>
+              <Pagination count={10} color="secondary" />
+            </S.PaginationWrapper>
           </S.MidBox2>
           <S.MidBox3>
+            <S.StatusWrapper>
+              <S.BoxImg src="/images/admin/Delivery.png" />
+              <div>상품 상태 변경하기</div>
+            </S.StatusWrapper>
             <S.Box3MenuWrapper>
               <div>주문일자</div>
               <div>이미지</div>
@@ -201,10 +208,10 @@ export default function AdminMainUI() {
               <div>쑤잉</div>
               <S.SelectStatus>
                 <option value="">--선택하세요--</option>
-                <option value="">상품수령중</option>
-                <option value="">검수중</option>
-                <option value="">배송중</option>
-                <option value="">배송완료</option>
+                <option value="Receiving">상품수령중</option>
+                <option value="Inspecting">검수중</option>
+                <option value="Shipping">배송중</option>
+                <option value="Shipped">배송완료</option>
               </S.SelectStatus>
             </S.Box3UseditemWrapper>
             <S.Box3MenuWrapper>
@@ -303,7 +310,7 @@ export default function AdminMainUI() {
             <S.UseditemSearchWrapper>
               <S.Search src="/images/admin/Search.png" />
               상품 조회하기
-              <S.UseditemSearch type="text" placeholder="Search" />
+              <S.UseditemSearch type="text" placeholder="제목기준" />
             </S.UseditemSearchWrapper>
             <S.Box4MenuWrapper>
               <div>제목</div>
