@@ -51,6 +51,7 @@ export const SubTxt = styled.div`
   height: 28px;
   display: flex;
   align-items: center;
+  cursor: pointer;
   background-color: ${(props: IProps) =>
     props.isSelected ? '#F8F8F8' : 'white'};
 `
