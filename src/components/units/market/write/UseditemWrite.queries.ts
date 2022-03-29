@@ -1,75 +1,78 @@
+import { gql } from '@apollo/client'
 
-Query
+export const CREATE_PRODUCT = gql`
+  mutation createProduct($createProductInput: CreateProductInput!) {
+    createProduct(createProductInput: $createProductInput) {
+      id
+      name
+      description
+      price
+      view
+      like
+      urls
+      brand {
+        name
+      }
+      user {
+        id
+        nickname
+        name
+        email
+        profilePic
+        phoneNum
+        ratingAvg
+        accountOwner
+        accountNumber
+        bank
+        income
+      }
+      subCategory {
+        name
+        mainCategory {
+          name
+        }
+      }
+    }
+  }
+`
 
-fetchUseditem(useditemId:ID!): Useditem!
-
-type Useditem {
-    id:ID!
-    userName: String! (회원가입한 닉네임)
-    title: String!
-    contents: String! (상품판매내용)
-    images: [String!]
-    mainCategory: String!
-    subCategory: String!
-    brand: String!
-    price: Int!
-    createdAt: DateTime!
-} 
-
-Mutation
-
-createUseditem(createUseditemInput: CreateUseditemInput!): Useditem!
-
-type Useditem {
-    id: ID!
-    title: String!
-    contents: String!
-    images: [String!]
-    mainCategory: String!
-    subCategory: String!
-    brand: String!
-    price: Int!
-    createdAt: DateTime!
-    user: User
-}
-
-type User {
-    id: ID!
-    userName: String!
-    userImage: String (프로필이미지)
-}
-
-type CreateUseditemInput {
-    title: String!
-    contents: String!
-    images: [String!]
-    mainCategory: String!
-    subCategory: String!
-    brand: String!
-    price: Int!
-}
-
-updateUseditem(updateUseditemInput: UpdateUseditemInput! useditemId: ID!): Useditem!
-
-type Useditem {
-    id:ID!
-    title: String!
-    contents: String!
-    images: [String!]
-    mainCategory: String!
-    subCategory: String!
-    brand: String!
-    price: Int!
-}
-
-type UpdateUseditemInput {
-    title: String
-    contents: String
-    images: [String!]
-    mainCategory: String
-    subCategory: String
-    brand: String
-    price: Int!
-}
-
-deleteUseditem(useditemId: ID!): ID!
+export const UPDATE_PRODUCT = gql`
+  mutation updateProduct(
+    $productId: String!
+    $updateProductInput: UpdateProductInput!
+  ) {
+    updateProduct(
+      productId: $productId
+      updateProductInput: $updateProductInput
+    ) {
+      id
+      name
+      description
+      price
+      like
+      urls
+      brand {
+        name
+      }
+      subCategory {
+        name
+        mainCategory {
+          name
+        }
+      }
+      user {
+        id
+        nickname
+        name
+        email
+        profilePic
+        phoneNum
+        ratingAvg
+        accountOwner
+        accountNumber
+        bank
+        income
+      }
+    }
+  }
+`
