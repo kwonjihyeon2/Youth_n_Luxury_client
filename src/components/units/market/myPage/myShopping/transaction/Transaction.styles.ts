@@ -27,11 +27,12 @@ export const SelectDetailBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  background-color: black;
+  color: ${(props) => (props.isBuy ? 'white' : '#747474')};
+  background-color: ${(props) => (props.isBuy ? 'black' : '#F1F1F1')};
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 300;
   border: none;
+  cursor: pointer;
 `
 
 export const PeriodSettingBox = styled.div`
@@ -42,11 +43,15 @@ export const PeriodSettingBox = styled.div`
   margin-bottom: 12px;
 `
 export const PeriodBtnBox = styled.div`
+
+
   display: flex;
   justify-content: space-between;
   margin-right: 5px;
 `
 export const PeriodBtn = styled.button`
+
+
   display: flex;
   justify-content: center;
   align-items: center;

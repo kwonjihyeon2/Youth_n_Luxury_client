@@ -1,16 +1,17 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  width: 1200px;
+  width: 726px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 51px;
 `
 
 export const JoinHeaderTxt = styled.div`
-  font-size: 30px;
-  font-weight: 600;
-  margin-bottom: 76px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 51px;
 `
 
 export const Row = styled.div`
@@ -120,4 +121,5 @@ export const NickNameTxt = styled.div`
   color: #00000066;
   font-weight: 400;
   font-size: 12px;
+  margin-left: 11px;
 `

@@ -16,17 +16,17 @@ export default function MainUI() {
   return (
     <>
       <S.Position>
-        <S.CarouselBox>
-          <Slider {...settings}>
-            <S.Carousel>
-              <S.CarouselTxt>전 상품 100% 정품 보장</S.CarouselTxt>
-            </S.Carousel>
-            <S.Carousel>
-              <S.CarouselTxt>전 상품 100% 정품 보장</S.CarouselTxt>
-            </S.Carousel>
-          </Slider>
-        </S.CarouselBox>
         <S.Wrapper>
+          <S.CarouselBox>
+            <Slider {...settings}>
+              <S.Carousel>
+                <S.CarouselTxt>전 상품 100% 정품 보장</S.CarouselTxt>
+              </S.Carousel>
+              <S.Carousel>
+                <S.CarouselTxt>전 상품 100% 정품 보장</S.CarouselTxt>
+              </S.Carousel>
+            </Slider>
+          </S.CarouselBox>
           <S.NewArrivalsTxtBox>
             <S.NewArrivalsTitleTxt>New Arrivals</S.NewArrivalsTitleTxt>
             <S.NewArrivalsSubTxt>

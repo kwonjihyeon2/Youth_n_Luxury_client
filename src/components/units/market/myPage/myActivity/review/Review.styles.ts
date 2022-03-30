@@ -1,9 +1,16 @@
 import styled from '@emotion/styled'
+import { Rate } from 'antd'
 
 export const ReviewTable = styled.div`
   width: 793px;
   display: flex;
   flex-direction: column;
+`
+export const ReviewTitleTxt = styled.div`
+  font-size: 28px;
+  font-weight: 400;
+  margin-top: 29px;
+  margin-bottom: 24px;
 `
 export const Row = styled.div`
   display: flex;
@@ -21,6 +28,15 @@ export const ReviewContent = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 14px;
+`
+export const StarRate = styled(Rate)`
+  .ant-rate-star-half .ant-rate-star-first,
+  .ant-rate-star-full .ant-rate-star-second {
+    color: #000;
+  }
+
+  font-size: 16px;
+  margin-bottom: 4px;
 `
 export const ReviewHeader = styled.div`
   display: flex;
@@ -54,4 +70,7 @@ export const EditBtn = styled.button`
   align-items: center;
   justify-content: center;
   margin-left: 37px;
+  background-color: #afb2b7;
+  border: none;
+  color: white;
 `

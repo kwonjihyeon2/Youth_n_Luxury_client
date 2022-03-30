@@ -30,7 +30,7 @@ export const CarouselBox = styled.div`
 
 export const Carousel = styled.div`
   width: 100%;
-  height: 700px;
+  height: 530px;
   background-image: url(/images/MainCarouselImg1.png);
   background-size: cover;
   font-size: 40px;
