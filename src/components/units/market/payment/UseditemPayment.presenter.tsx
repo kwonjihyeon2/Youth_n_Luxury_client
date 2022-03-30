@@ -12,6 +12,9 @@ interface IpropsType {
   handleComplete: (data: any) => void
   zipCode: any
   address: any
+  onChangeNum: (event: any) => void
+  onClickOrder: () => void
+  data: any
 }
 
 export default function UseditemPaymentpageUI(props: IpropsType) {
@@ -31,24 +34,38 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
               <S.LeftcontentBox>
                 <img src="/detail/bag.png" />
                 <S.PriceInfo>
-                  <p>[데이터값]상품 정보</p>
+                  <p>{props.data?.fetchProduct.name}</p>
                   <p style={{ marginTop: '5px' }}>
-                    <S.ClickButton>수량</S.ClickButton> 1개 (670,000원)
+                    <S.ClickButton>수량</S.ClickButton> 1개 (
+                    {props.data?.fetchProduct.price}원)
                   </p>
                 </S.PriceInfo>
               </S.LeftcontentBox>
             </S.WrapperLeft>
             <S.CommonTitle>주문자</S.CommonTitle>
-            <S.DeliveryTextInput type="text" name="phone2" />
+            <S.DeliveryTextInput type="text" name="user" />
             <S.DeliveryText>
               <S.DeliveryTextSmallInput
+                id="input"
                 type="tel"
-                name="phone2"
-                defaultValue="휴대폰"
+                name="phone1"
+                placeholder="휴대폰"
+                onChange={props.onChangeNum}
               />
               -
-              <S.DeliveryTextSmallInput type="tel" name="phone2" />-
-              <S.DeliveryTextSmallInput type="tel" name="phone3" />
+              <S.DeliveryTextSmallInput
+                id="secInput"
+                type="tel"
+                name="phone2"
+                onChange={props.onChangeNum}
+              />
+              -
+              <S.DeliveryTextSmallInput
+                id="thirdInput"
+                type="tel"
+                name="phone3"
+                onChange={props.onChangeNum}
+              />
             </S.DeliveryText>
             <S.DeliveryTextInput type="email" defaultValue="이메일" />
             <S.CommonTitle>배송지</S.CommonTitle>
@@ -76,21 +93,28 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
               <S.DeliveryTextSmallInput
                 type="tel"
                 value={props.zipCode}
+                placeholder="07250"
                 readOnly
               />
               <S.CommonsButton onClick={props.onClickDaumModal}>
                 우편번호 검색
               </S.CommonsButton>
-              <S.DeliveryLongInput type="text" value={props.address} readOnly />
+              <S.DeliveryLongInput
+                type="text"
+                value={props.address}
+                placeholder="기본 주소"
+                readOnly
+              />
               <S.DeliveryLongInput type="text" placeholder="나머지 주소" />
               <S.DeliveryText>
                 <S.DeliveryTextSmallInput
                   type="tel"
-                  name="phone2"
-                  defaultValue="휴대폰"
+                  name="phone1"
+                  placeholder="휴대폰"
                 />
                 -
-                <S.DeliveryTextSmallInput type="tel" name="phone2" />-
+                <S.DeliveryTextSmallInput type="tel" name="phone2" />
+                -
                 <S.DeliveryTextSmallInput type="tel" name="phone3" />
               </S.DeliveryText>
               <div>
@@ -139,9 +163,9 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                 <S.LeftPrice>최종결제금액</S.LeftPrice>
               </ul>
               <S.RightUl>
-                <S.Leftli>670,000원</S.Leftli>
+                <S.Leftli>{props.data?.fetchProduct.price}원</S.Leftli>
                 <S.Leftli>(+)0원</S.Leftli>
-                <S.Rightli>670,000원</S.Rightli>
+                <S.Rightli>{props.data?.fetchProduct.price}원</S.Rightli>
               </S.RightUl>
             </S.PaymentItem>
             <S.CommonTitle>결제수단</S.CommonTitle>
@@ -170,7 +194,9 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             </div>
             <S.CommonTitle>약관동의</S.CommonTitle>
             <div>약관동의~</div>
-            <S.PaymentResult>결제하기</S.PaymentResult>
+            <S.PaymentResult onClick={props.onClickOrder}>
+              결제하기
+            </S.PaymentResult>
           </div>
         </S.WrapperContentBox>
         <S.ModalAddress isOpenAdd={props.isOpenAdd}>

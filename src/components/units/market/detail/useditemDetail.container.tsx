@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import UseditemDetailPageUI from './useditemDetail.presenter'
 import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
@@ -10,7 +10,7 @@ declare const window: typeof globalThis & {
   Kakao: any
 }
 
-export default function UseditemDetailPage() {
+export default function UseditemDetailPage(props) {
   const { moveToPage } = useMoveToPage()
   const router = useRouter()
   //   const el = useRef();
@@ -26,12 +26,9 @@ export default function UseditemDetailPage() {
   }
 
   const { data } = useQuery(FETCH_PRODUCT, {
-    variables: {
-      productId: String(router.query.boardId),
-      userId: 'bbf01217-6618-488e-95d5-c0cd1be4aa79',
-    },
+    variables: { productId: String(router.query.boardId) },
   })
-  // console.log(data?.fetchProduct)
+  console.log(String(router.query.boardId), data?.fetchProduct)
 
   //   const CloseModal = ({ target }) => {
   //     console.log(!el.current.contains(target));
@@ -55,7 +52,7 @@ export default function UseditemDetailPage() {
   const onClickDelete = async () => {
     try {
       const result = await deleteProduct({
-        variables: { productId: String(data?.fetchProduct.productId) },
+        variables: { productId: String(router.query.boardId) },
       })
 
       console.log(result)
@@ -125,8 +122,15 @@ export default function UseditemDetailPage() {
     }
   }
 
+  // const copyUrl = `http://localhost:3000/market/${data?.fetchProduct.id}`
+  // const onClickCopy = (e) => {
+  //   e.preventDefault()
+  //   e.clipboardData.setData('Text', copyUrl)
+  // }
+
   return (
     <UseditemDetailPageUI
+      // onClickCopy={onClickCopy}
       data={data}
       isHeart={isHeart}
       isOpen={isOpen}

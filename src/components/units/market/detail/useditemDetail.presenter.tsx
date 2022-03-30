@@ -49,7 +49,7 @@ export default function UseditemDetailPageUI(props) {
   return (
     <S.Wrapper>
       <S.WrapperBody>
-        <S.TitleStyle>디올 에센셜 선글라스 10A0 Dior Essential</S.TitleStyle>
+        <S.TitleStyle>{props.data?.fetchProduct.name}</S.TitleStyle>
         <S.WrapperTitle>
           <S.PageContainer>
             <Slider asNavFor={nav2} {...mainSettings} ref={slider1}>
@@ -126,8 +126,13 @@ export default function UseditemDetailPageUI(props) {
                         </S.ShareButton>
                       </div>
                       <button>url복사</button>
+                      {/* <input
+                        style={{ display: 'none' }}
+                        type="text"
+                        value={`http://localhost:3000/market/${props.data?.fetchProduct.id}`}
+                        ref={props.ShareRef}
+                      /> */}
                     </S.KakaoButton>
-                    {/* <FiShare2 style={{fontSize:28, marginRight:"5px"}}/>공유 */}
                   </div>
                 </S.IconBox>
               </S.FlexPocket>
@@ -155,7 +160,13 @@ export default function UseditemDetailPageUI(props) {
             </S.PriceResult>
 
             <S.ButtonFlexBox>
-              <S.ButtonBlackStyle>바로구매</S.ButtonBlackStyle>
+              <S.ButtonBlackStyle
+                onClick={props.moveToPage(
+                  `/market/${props.data?.fetchProduct.id}/payment`
+                )}
+              >
+                바로구매
+              </S.ButtonBlackStyle>
               <S.ButtonStyle>
                 문의하기
                 <S.PhoneIconSpan></S.PhoneIconSpan>
@@ -196,16 +207,9 @@ export default function UseditemDetailPageUI(props) {
         <S.ContentsBox>
           <S.ContentsImg src="/detail/sunglass.jpeg" />
           <br />
-          디올 에센셜 선글라스입니다. <br />
-          공식 온라인 구매 상품으로
-          <br />
-          보증서 포함된 완벽한 새상품 + 정품입니다.
-          <br />
-          남녀 모두 사용하시기 좋은 심플한 디자인입니다.
+          {props.data?.fetchProduct.description}
           <br />
           <S.ContentsImg src="/detail/sunglass03.jpeg" />
-          <br />
-          <S.ContentsImg src="/detail/sunglass04.jpeg" />
           <br />
         </S.ContentsBox>
         <S.SlickStyle>
@@ -244,7 +248,7 @@ export default function UseditemDetailPageUI(props) {
           </S.SliderContainer>
         </S.SlickStyle>
         <S.SlickStyle>
-          <S.RelativeTitle>[데이터값] 유저님의 다른상품</S.RelativeTitle>
+          <S.RelativeTitle>[데이터값] 연관된 상품 미리보기</S.RelativeTitle>
           <S.SliderContainer {...settings}>
             <div>
               <S.SliderBox></S.SliderBox>

@@ -1,8 +1,17 @@
 import BuyTable from './table/BuyTable.container'
 import SellTable from './table/SellTable.container'
 import * as S from './Transaction.styles'
+import { DatePicker, Space } from 'antd'
+import 'antd/dist/antd.css'
 
-export default function TransactionUI(props) {
+
+export default function TransactionUI() {
+  const { RangePicker } = DatePicker
+
+  const onChange = (dateString) => {
+    console.log(dateString)
+  }
+
   return (
     <>
       <S.Wrapper>
@@ -26,6 +35,9 @@ export default function TransactionUI(props) {
             <S.PeriodBtn>3개월</S.PeriodBtn>
             <S.PeriodBtn>6개월</S.PeriodBtn>
           </S.PeriodBtnBox>
+          <Space direction="vertical" size={12}>
+            <RangePicker onChange={onChange} />
+          </Space>
           <S.PeriodCalenderBox>
             <S.PeriodFetchBtn>조회</S.PeriodFetchBtn>
           </S.PeriodCalenderBox>

@@ -1,5 +1,11 @@
 import styled from '@emotion/styled'
+import { Rate } from 'antd'
+import 'antd/dist/antd.css'
 
+export const WrapperMain = styled.div`
+  /* width: 100%;
+  height: 100%; */
+`
 export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -14,18 +20,18 @@ export const Wrapper = styled.div`
 `
 
 export const WrapperContents = styled.div`
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 860px;
-  height: 930px;
+  /* height: 100vh; */
   background-color: #fff;
   border-radius: 20px 20px 0 0;
 `
 export const WrapperTitle = styled.p`
   color: #333;
-  padding: 25px 0;
+  padding: 20px 0;
   font-size: 20px;
   font-weight: 700;
   text-align: center;
@@ -41,10 +47,11 @@ export const CancleButton = styled.button`
   background-color: #f0f0f0;
   color: #333;
   border: none;
+  border-radius: 100%;
 `
 
 export const ReviewTable = styled.div`
-  padding: 20px 90px 0 90px;
+  padding: 20px 90px 30px;
   width: 100%;
 `
 
@@ -69,6 +76,14 @@ export const TableLeft = styled.div`
   color: #000;
   font-weight: 600;
 `
+
+export const StarRate = styled(Rate)`
+  .ant-rate-star-half .ant-rate-star-first,
+  .ant-rate-star-full .ant-rate-star-second {
+    color: #000;
+  }
+`
+
 export const TableRight = styled.div`
   margin-left: 25px;
 `
@@ -90,7 +105,7 @@ export const ContentText = styled.textarea`
 `
 
 export const ButtonSection = styled.div`
-  padding: 30px 90px;
+  padding: 20px 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -102,7 +117,7 @@ export const FileUpload = styled.div`
   background-color: #fff;
   font-weight: 600;
   font-size: 15px;
-  padding: 20px 0;
+  padding: 10px 0px;
   text-align: center;
 `
 export const InputFiles = styled.input`
@@ -122,7 +137,7 @@ export const NoticeText = styled.span`
   font-weight: 300;
 `
 export const SubmitButton = styled.button`
-  padding: 8px 0px;
+  padding: 10px 0px;
   width: 100%;
   background-color: #333;
   color: white;

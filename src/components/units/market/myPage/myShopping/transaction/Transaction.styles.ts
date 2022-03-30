@@ -43,42 +43,43 @@ export const PeriodSettingBox = styled.div`
   margin-bottom: 12px;
 `
 export const PeriodBtnBox = styled.div`
-  width: 168px;
+
+
   display: flex;
   justify-content: space-between;
-  height: 23px;
+  margin-right: 5px;
 `
 export const PeriodBtn = styled.button`
-  height: 23px;
-  width: 42px;
+
+
   display: flex;
   justify-content: center;
   align-items: center;
   color: #646464;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 300;
   border: none;
+  padding: 4px 12px 4px;
+  margin-right: 5px;
 `
 export const TodayPeriodBtn = styled.button`
-  height: 23px;
-  width: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #646464;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 300;
   border: none;
+  padding: 4px 12px 4px;
+  margin-right: 5px;
 `
 
 export const PeriodCalenderBox = styled.div`
-  width: 217px;
-  height: 23px;
   display: flex;
+  margin-left: 10px;
 `
 export const PeriodFetchBtn = styled.button`
-  width: 40px;
-  height: 23px;
+  padding: 4px 12px 4px;
   display: flex;
   justify-content: center;
   align-items: center;

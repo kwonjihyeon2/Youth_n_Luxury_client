@@ -1,8 +1,5 @@
-import UseditemDetailPage from "../../../src/components/units/market/detail/useditemDetail.container";
+import UseditemDetailPage from '../../../src/components/units/market/detail/useditemDetail.container'
 
-export default function UseditemDetail(){
-
-    return(
-        <UseditemDetailPage />
-    )
+export default function UseditemDetail() {
+  return <UseditemDetailPage />
 }
