@@ -79,6 +79,7 @@ export default function BuyTableUI() {
           <CreateReviewPage
             isReview={isReview}
             onClickOpenReview={onClickOpenReview}
+            setIsReview={setIsReview}
           />
         </div>
       )}

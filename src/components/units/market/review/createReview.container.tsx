@@ -61,6 +61,7 @@ export default function CreateReviewPage(props) {
       setReviewRate={setReviewRate}
       onChangeContent={onChangeContent}
       setUrl={setUrl}
+      setIsReview={props.setIsReview}
     />
   )
 }

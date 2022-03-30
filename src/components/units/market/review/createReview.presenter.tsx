@@ -59,6 +59,7 @@ export default function CreateReviewPageUI(props) {
             </S.ButtonSection>
           </S.ReviewTable>
         </S.WrapperContents>
+        <S.CancleBackground onClick={() => props.setIsReview(false)} />
       </S.Wrapper>
     </S.WrapperMain>
   )
