@@ -4,8 +4,7 @@ import * as S from './Transaction.styles'
 import { DatePicker, Space } from 'antd'
 import 'antd/dist/antd.css'
 
-
-export default function TransactionUI() {
+export default function TransactionUI(props) {
   const { RangePicker } = DatePicker
 
   const onChange = (dateString) => {
