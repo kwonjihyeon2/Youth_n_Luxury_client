@@ -54,7 +54,7 @@ export default function TabletItem(props) {
           {props.main === 'Acc' ? (
             <S.WrapperSubCategory>
               <div id="Ring" onClick={props.onClickSub}>
-                반지
+                반지지롱
               </div>
               <div id="Necklace" onClick={props.onClickSub}>
                 목걸이
