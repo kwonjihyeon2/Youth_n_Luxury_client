@@ -16,28 +16,28 @@ export default function UseditemWrite(props) {
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
   const [urls, setUrls] = useState('test')
-  const [brandId, setBrandId] = useState('')
-  const [subCategoryId, setSubCategoryId] = useState('')
+  const [brand, setBrand] = useState('')
+  const [subCategory, setSubCategory] = useState('')
   const [selectMain, setSelectMain] = useState('')
 
-  const onChangeUrls = async (event: ChangeEvent<HTMLInputElement>) => {
-    const imageUrls = []
+  // const onChangeUrls = async (event: ChangeEvent<HTMLInputElement>) => {
+  //   const imageUrls = []
 
-    for (let i = 0; i < event.target.files?.length; i++) {
-      const file = event.target.files?.[i]
-      const isVaild = checkFileValidation(file)
-      if (!isVaild) {
-        return
-      }
-      try {
-        const ImgResult = await createProduct({ variables: { urls: file } })
-        imageUrls.push(ImgResult.data?.createProduct?.urls)
-      } catch (error) {
-        alert(error.message)
-      }
-    }
-    setUrls([...urls, ...imageUrls])
-  }
+  //   for (let i = 0; i < event.target.files?.length; i++) {
+  //     const file = event.target.files?.[i]
+  //     const isVaild = checkFileValidation(file)
+  //     if (!isVaild) {
+  //       return
+  //     }
+  //     try {
+  //       const ImgResult = await createProduct({ variables: { urls: file } })
+  //       imageUrls.push(ImgResult.data?.createProduct?.urls)
+  //     } catch (error) {
+  //       alert(error.message)
+  //     }
+  //   }
+  //   setUrls([...urls, ...imageUrls])
+  // }
   const onChangeName = (event) => {
     setName(event.target.value)
   }
@@ -48,10 +48,10 @@ export default function UseditemWrite(props) {
     setPrice(event.target.value)
   }
   const onChangeBrandId = (event) => {
-    setBrandId(event.target.value)
+    setBrand(event.target.value)
   }
   const onChangeSubCategoryId = (event) => {
-    setSubCategoryId(event.target.value)
+    setSubCategory(event.target.value)
   }
   const onChangeMainCategory = (event) => {
     setSelectMain(event.target.value)
@@ -65,9 +65,9 @@ export default function UseditemWrite(props) {
             name,
             description,
             price: Number(price),
-            brandId,
-            urls,
-            subCategoryId,
+            brand,
+            // urls,
+            subCategory,
           },
         },
       })
@@ -77,12 +77,12 @@ export default function UseditemWrite(props) {
     }
   }
   const onClickUpdate = async () => {
-    const UpdateProductInput = {}
+    const UpdateProductInput = { name, description, price, brand, subCategory }
     if (name) UpdateProductInput.name = name
     if (description) UpdateProductInput.description = description
     if (price) UpdateProductInput.price = price
-    if (brandId) UpdateProductInput.brandId = brandId
-    if (subCategoryId) UpdateProductInput.subCategoryId = subCategoryId
+    if (brand) UpdateProductInput.brand = brand
+    if (subCategory) UpdateProductInput.subCategory = subCategory
     try {
       await updateProduct({
         variables: {

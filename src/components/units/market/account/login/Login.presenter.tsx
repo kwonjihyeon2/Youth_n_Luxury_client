@@ -1,5 +1,5 @@
-import * as S from './Login.styles';
-export default function LoginUI() {
+import * as S from './Login.styles'
+export default function LoginUI(props) {
   return (
     <S.Wrapper>
       <S.EmailLoginBtn>이메일 로그인</S.EmailLoginBtn>
@@ -26,5 +26,5 @@ export default function LoginUI() {
         <S.SocialImg></S.SocialImg>
       </S.SocialBox>
     </S.Wrapper>
-  );
+  )
 }

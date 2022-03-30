@@ -1,11 +1,13 @@
 import * as S from './MyList.styles'
 
-export default function MyListUI() {
+export default function MyListUI(props) {
   return (
     <>
       <S.Wrapper>
         <S.HeaderTxtBox>
-          <S.HeaderTxt>위시리스트</S.HeaderTxt>
+          <S.HeaderTxt>
+            {props.isWishList ? `위시리스트` : `최근 본 상품`}
+          </S.HeaderTxt>
           <S.HeaderNum>2</S.HeaderNum>
         </S.HeaderTxtBox>
         <S.SelectBtnBox>

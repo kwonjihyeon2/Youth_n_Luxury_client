@@ -1,5 +1,10 @@
 import SideBarUI from './SideBar.presenter'
 
 export default function SideBar(props) {
-  return <SideBarUI onClickSwitchPage={props.onClickSwitchPage} />
+  return (
+    <SideBarUI
+      onClickSwitchPage={props.onClickSwitchPage}
+      pageNum={props.pageNum}
+    />
+  )
 }

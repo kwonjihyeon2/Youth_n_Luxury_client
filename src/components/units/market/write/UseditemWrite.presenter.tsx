@@ -4,6 +4,16 @@ export default function UseditemWriteUI(props) {
   return (
     <S.Position>
       <S.Wrapper>
+        <S.WrapperAccount>
+          <S.WrapperImgTitle>
+            <S.TitleName>0.통장인증</S.TitleName>
+          </S.WrapperImgTitle>
+          <S.WrapperAccountInput>
+            <S.AccountBtn onClick={props.onClickAccountConfirm}>
+              계좌인증하기
+            </S.AccountBtn>
+          </S.WrapperAccountInput>
+        </S.WrapperAccount>
         <S.WrapperImages>
           <S.WrapperImgTitle>
             <S.TitleName>1.상품이미지등록</S.TitleName>

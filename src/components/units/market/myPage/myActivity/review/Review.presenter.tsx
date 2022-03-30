@@ -1,9 +1,13 @@
 import * as S from './Review.styles'
-
-export default function ReviewUI() {
+import { Rate } from 'antd'
+import 'antd/dist/antd.css'
+export default function ReviewUI(props) {
   return (
     <>
       <S.ReviewTable>
+        <S.ReviewTitleTxt>
+          {props.isReviewIWrite ? `내가 한 평가` : `내가 받은 평가`}
+        </S.ReviewTitleTxt>
         {new Array(3).fill(0).map(() => (
           <S.Row>
             <S.ReviewImg></S.ReviewImg>
@@ -16,7 +20,9 @@ export default function ReviewUI() {
               </S.ReviewHeader>
               <S.ReviewContentTxt>역시 샤넬이네요!</S.ReviewContentTxt>
             </S.ReviewContent>
-            <S.StarBox></S.StarBox>
+
+            <S.StarRate defaultValue={0} />
+
             <S.EditBtn>수정</S.EditBtn>
           </S.Row>
         ))}
