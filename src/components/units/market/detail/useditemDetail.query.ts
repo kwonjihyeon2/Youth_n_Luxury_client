@@ -1,23 +1,16 @@
 import { gql } from '@apollo/client'
 
 export const FETCH_PRODUCT = gql`
-  query fetchProduct(
-    $productId: String!
-    # $subCategoryId: String!
-    $userId: String!
-  ) {
-    fetchProduct(
-      productId: $productId
-      #   subCategoryId: $subCategoryId
-      userId: $userId
-    ) {
+  query fetchProduct($productId: String!) {
+    fetchProduct(productId: $productId) {
       id
       name
       description
       price
-      user {
-        id
-      }
+      #   user {
+      #     id
+      #     name
+      #   }
       #   subCategory {
       #     name
       #     mainCategory {
@@ -27,7 +20,7 @@ export const FETCH_PRODUCT = gql`
       #   brand {
       #     name
       #   }
-      #   urls
+      urls
       like
     }
   }

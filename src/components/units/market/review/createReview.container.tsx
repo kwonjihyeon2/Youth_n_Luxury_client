@@ -4,7 +4,7 @@ import { useRef, useState } from 'react'
 import CreateReviewPageUI from './createReview.presenter'
 import { CREATE_REVIEW, FETCH_PRODUCT } from './createReview.query'
 
-export default function CreateReviewPage() {
+export default function CreateReviewPage(props) {
   const fileRef = useRef(null)
   const router = useRouter()
 
@@ -53,6 +53,7 @@ export default function CreateReviewPage() {
 
   return (
     <CreateReviewPageUI
+      onClickOpenReview={props.onClickOpenReview}
       onClickRef={onClickRef}
       fileRef={fileRef}
       data={data}

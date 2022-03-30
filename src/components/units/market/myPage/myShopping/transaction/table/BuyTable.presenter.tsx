@@ -1,6 +1,14 @@
+import { useState } from 'react'
+import CreateReviewPage from '../../../../review/createReview.container'
 import * as S from '../Transaction.styles'
 
 export default function BuyTableUI() {
+  const [isReview, setIsReview] = useState(false)
+
+  const onClickOpenReview = () => {
+    setIsReview((prev) => !prev)
+  }
+
   return (
     <>
       <S.ProductDetailTxt>구매 상품 정보</S.ProductDetailTxt>
@@ -30,7 +38,7 @@ export default function BuyTableUI() {
         <S.RowStatusBox>완료</S.RowStatusBox>
         <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
         <S.RowReviewBox>
-          <S.ReviewBtn>작성하기</S.ReviewBtn>
+          <S.ReviewBtn onClick={onClickOpenReview}>작성하기</S.ReviewBtn>
         </S.RowReviewBox>
       </S.Row>
       <S.Row>
@@ -66,6 +74,14 @@ export default function BuyTableUI() {
           <S.ReviewBtn>작성하기</S.ReviewBtn>
         </S.RowReviewBox>
       </S.Row>
+      {isReview && (
+        <div>
+          <CreateReviewPage
+            isReview={isReview}
+            onClickOpenReview={onClickOpenReview}
+          />
+        </div>
+      )}
     </>
   )
 }

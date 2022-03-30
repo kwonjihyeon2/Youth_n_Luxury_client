@@ -413,7 +413,7 @@ export const HeartBox = styled.div`
   width: 200px;
   height: 220px;
   animation: ${boxOpen};
-  animation-duration: 3s;
+  animation-duration: 3.5s;
 `
 
 export const HeartOnbox = styled.div`
