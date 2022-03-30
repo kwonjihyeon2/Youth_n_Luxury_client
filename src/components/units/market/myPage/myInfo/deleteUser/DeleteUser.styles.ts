@@ -1,10 +1,20 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../../commons/styles/media'
+
 export const Wrapper = styled.div`
+  width: 100%;
+  padding: 60px 0;
+`
+export const WrapperBox = styled.div`
   width: 852px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 51px;
+  padding: 0 60px;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 
 export const DeleteUserHeaderTxt = styled.div`
@@ -17,9 +27,9 @@ export const DeleteUserHeaderTxt = styled.div`
 `
 
 export const Table = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
   border-top: 1px solid black;
 `
 export const TableRow = styled.div`
@@ -48,9 +58,10 @@ export const ContentTxt = styled.div`
   background-color: #c4c4c480;
 `
 export const ReasonValueBox = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `
 
 export const ReasonValueOption = styled.input`
@@ -68,7 +79,7 @@ export const ReasonValueSelect = styled.div`
 `
 
 export const ContentValue = styled.textarea`
-  width: 764px;
+  width: 100%;
   height: 98px;
   border: 1px solid #00000080;
   border-radius: 4px;

@@ -2,8 +2,8 @@ import * as S from './DeleteUser.styles'
 
 export default function DeleteUserUI() {
   return (
-    <>
-      <S.Wrapper>
+    <S.Wrapper>
+      <S.WrapperBox>
         <S.DeleteUserHeaderTxt>회원 탈퇴</S.DeleteUserHeaderTxt>
         <S.Table>
           <S.TableRow>
@@ -64,7 +64,7 @@ export default function DeleteUserUI() {
           <S.OkBtn>확인</S.OkBtn>
           <S.CancelBtn>취소</S.CancelBtn>
         </S.DeleteBtnBox>
-      </S.Wrapper>
-    </>
+      </S.WrapperBox>
+    </S.Wrapper>
   )
 }

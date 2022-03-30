@@ -1,23 +1,25 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../styles/media'
 export const Position = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0 60px;
 `
 export const Wrapper = styled.div`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 90px;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  padding-left: 60px;
-  justify-content: center;
+  align-items: center;
 `
 export const Container = styled.div`
   display: flex;
   align-items: center;
   height: 80px;
-  width: 1079px;
+  justify-content: space-between;
+  width: 100%;
 `
 
 export const MainNavContainer = styled.div`
@@ -47,11 +49,9 @@ export const BottomNavEl = styled.div`
   align-items: center;
 `
 export const NavRightBox = styled.div`
-  width: 226px;
   height: 40px;
   display: flex;
   justify-content: space-between;
-  margin-left: 140px;
 `
 
 export const IconBox = styled.div`
@@ -59,6 +59,10 @@ export const IconBox = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
+  @media ${breakPoints.tablet} {
+    width: 0px;
+    display: none;
+  }
 `
 export const IconContainer = styled.div`
   width: 40px;
