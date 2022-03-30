@@ -1,5 +1,7 @@
-import JoinUI from './Join.presenter';
+import { useRouter } from 'next/router'
+import JoinUI from './Join.presenter'
 
 export default function Join() {
-  return <JoinUI />;
+  const router = useRouter()
+  return <JoinUI router={router} />
 }
