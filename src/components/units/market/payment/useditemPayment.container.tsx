@@ -38,9 +38,10 @@ export default function UseditemPaymentpage() {
   const handleComplete = (data) => {
     setZipCode(data.zonecode)
     setAddress(data.address)
-
+    // console.log(data)
     onClickDaumModal()
   }
+
   // console.log('이게 뭐니?', isModalAdd, '이건?', isOpenAdd)
 
   const [inputs, setInputs] = useState({
