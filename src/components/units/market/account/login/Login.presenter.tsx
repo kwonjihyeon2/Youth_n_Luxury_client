@@ -4,15 +4,22 @@ export default function LoginUI(props) {
     <S.Wrapper>
       <S.EmailLoginBtn>이메일 로그인</S.EmailLoginBtn>
 
-      <S.Input placeholder="아이디"></S.Input>
-      <S.Input type="password" placeholder="비밀번호"></S.Input>
+      <S.Input
+        placeholder="아이디"
+        onChange={props.onChangeLoginInput('email')}
+      ></S.Input>
+      <S.Input
+        type="password"
+        placeholder="비밀번호"
+        onChange={props.onChangeLoginInput('password')}
+      ></S.Input>
       <S.InputBox>
         <S.CheckBoxContainer>
           <S.CheckBox type="checkbox" />
           <S.CheckBoxTxt>아이디 저장</S.CheckBoxTxt>
         </S.CheckBoxContainer>
       </S.InputBox>
-      <S.EmailJoinBtn>로그인</S.EmailJoinBtn>
+      <S.EmailJoinBtn onClick={props.onClickLoginBtn}>로그인</S.EmailJoinBtn>
       <S.FindTxtBox>
         <S.FindTxt>아이디 찾기</S.FindTxt>
         <S.FindTxt>비밀번호 찾기</S.FindTxt>

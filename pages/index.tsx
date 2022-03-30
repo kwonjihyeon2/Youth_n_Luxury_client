@@ -12,5 +12,5 @@ import WelcomeBox from '../src/components/units/market/myPage/welcomeBox/Welcome
 import MyPage from './mypage'
 
 export default function Home() {
-  return <Navigation />
+  return <Main />
 }
