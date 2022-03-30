@@ -5,6 +5,7 @@ import 'antd/dist/antd.css'
 export const WrapperMain = styled.div`
   /* width: 100%;
   height: 100%; */
+  z-index: 3;
 `
 export const Wrapper = styled.div`
   width: 100%;
@@ -142,4 +143,14 @@ export const SubmitButton = styled.button`
   background-color: #333;
   color: white;
   border: 1px solid #333;
+`
+
+export const CancleBackground = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background-color: gray;
+  opacity: 0.3;
+  z-index: -1;
 `
