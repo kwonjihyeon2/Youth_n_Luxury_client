@@ -26,6 +26,8 @@ export const CheckBoxTxt = styled.div`
   color: #00000080;
   font-size: 14px;
   font-weight: 600;
+  margin-top: 2px;
+  margin-left: 3px;
 `
 export const InputBox = styled.div`
   display: flex;
