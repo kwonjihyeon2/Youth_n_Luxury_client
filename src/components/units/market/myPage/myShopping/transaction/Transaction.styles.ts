@@ -36,22 +36,15 @@ export const SelectDetailBtn = styled.button`
 `
 
 export const PeriodSettingBox = styled.div`
-  width: 389px;
-  height: 23px;
   display: flex;
-  justify-content: space-between;
   margin-bottom: 12px;
 `
 export const PeriodBtnBox = styled.div`
-
-
   display: flex;
   justify-content: space-between;
   margin-right: 5px;
 `
 export const PeriodBtn = styled.button`
-
-
   display: flex;
   justify-content: center;
   align-items: center;
