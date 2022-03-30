@@ -23,9 +23,36 @@ export default function JoinWrite() {
   const [isSend, setIsSend] = useState(false)
   const [isNumCheck, setIsNumCheck] = useState(false)
   const [createUser] = useMutation(CREATE_USER)
+  const [isPwdCheck, setIsPwdCheck] = useState(false)
+  const [isPwdVal, setIsPwdVal] = useState(false)
   const onChangeInput = (key) => (event) => {
     setCreateUserInput({ ...createUserInput, [key]: event.target.value })
     console.log(event.target.value)
+
+    // 비밀번호 확인 체크
+    if (key === 'passwordCheck') {
+      if (event.target.value === createUserInput.password) {
+        setIsPwdCheck(true)
+      } else {
+        if (isPwdCheck) setIsPwdCheck(false)
+      }
+    }
+
+    // 비밀번호 형식체크
+    if (key === 'password') {
+      const passwordRules = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/
+
+      https: if (passwordRules.test(event.target.value)) {
+        setIsPwdVal(true)
+      } else {
+        if (isPwdVal) setIsPwdVal(false)
+      }
+    }
+
+    console.log(isNumCheck)
+    console.log(isPwdCheck)
+
+    console.log(isPwdVal)
   }
   const onChangeCheckNum = (event) => {
     setCheckNum(event.target.value)
@@ -41,7 +68,11 @@ export default function JoinWrite() {
     }
   }
   const selectBoxChange = (event) => {
-    setCreateUserInput({ ...createUserInput, emailSecond: event.target.value })
+    setCreateUserInput({
+      ...createUserInput,
+      email: createUserInput.emailFirst + '@' + event.target.value,
+      emailSecond: event.target.value,
+    })
   }
   const onClickAuthNumBtn = async () => {
     console.log('실행은됨')
@@ -82,6 +113,11 @@ export default function JoinWrite() {
   }
 
   const onChangeNumber = (order) => (event) => {
+    const regex = /^[0-9\b -]{0,13}$/
+
+    if (!regex.test(event.target.value)) {
+      return
+    }
     if (order === 'numberFirst') {
       setCreateUserInput({
         ...createUserInput,
@@ -153,6 +189,9 @@ export default function JoinWrite() {
       onChangeNumber={onChangeNumber}
       onChangeCheckNum={onChangeCheckNum}
       onClickCheckNum={onClickCheckNum}
+      isNumCheck={isNumCheck}
+      isPwdCheck={isPwdCheck}
+      isPwdVal={isPwdVal}
     />
   )
 }

@@ -19,9 +19,7 @@ export default function JoinWriteUI(props) {
               value={props.createUserInput.emailSecond}
             ></S.EmailInput>
             <S.EmailDropdown onChange={props.selectBoxChange}>
-              <option value="" selected>
-                직접입력
-              </option>
+              <option value="">직접입력</option>
               <option value="naver.com">naver.com</option>
 
               <option value="nate.com">nate.com</option>
@@ -116,18 +114,24 @@ export default function JoinWriteUI(props) {
               }}
             >
               <S.NumInput
+                value={props.createUserInput.numberFirst}
+                type="text"
                 onChange={props.onChangeNumber('numberFirst')}
                 maxLength={3}
                 style={{ marginRight: '3px' }}
               ></S.NumInput>
               -
               <S.NumInput
+                type="text"
+                value={props.createUserInput.numberSecond}
                 onChange={props.onChangeNumber('numberSecond')}
                 maxLength={4}
                 style={{ marginRight: '3px', marginLeft: '3px' }}
               ></S.NumInput>
               -
               <S.NumInput
+                type="text"
+                value={props.createUserInput.numberThird}
                 onChange={props.onChangeNumber('numberThird')}
                 maxLength={4}
                 style={{ marginLeft: '3px' }}
@@ -139,7 +143,10 @@ export default function JoinWriteUI(props) {
           </S.Row>
         )}
       </S.InputBox>
-      <S.SubmitBtn disabled={!props.isSend} onClick={props.onClickJoinBtn}>
+      <S.SubmitBtn
+        disabled={!(props.isNumCheck && props.isPwdCheck && props.isPwdVal)}
+        onClick={props.onClickJoinBtn}
+      >
         입력완료
       </S.SubmitBtn>
     </S.Wrapper>

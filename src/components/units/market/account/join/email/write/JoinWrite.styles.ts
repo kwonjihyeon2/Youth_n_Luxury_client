@@ -46,24 +46,28 @@ export const EmailInput = styled.input`
   border-radius: 2px;
   height: 30px;
   width: 117px;
+  padding: 5px 7px;
 `
 export const PasswordInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   height: 30px;
   width: 198px;
+  padding: 5px 7px;
 `
 export const NumInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   height: 30px;
   width: 59px;
+  padding: 5px 7px;
 `
 export const CheckNumInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   height: 30px;
   width: 98px;
+  padding: 5px 7px;
 `
 export const EmailDropdown = styled.select`
   width: 122px;
@@ -86,16 +90,17 @@ export const SendAuthNumBtn = styled.button`
 `
 
 export const SubmitBtn = styled.button`
-  background-color: #393939;
+  background-color: ${(props) => (props.disabled ? '#CCCCCC' : '#393939')};
   width: 723px;
   height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: ${(props) => (props.disabled ? '#333333' : 'white')};
   font-size: 20px;
   font-weight: 600;
   margin-top: 57px;
+  border: none;
 `
 export const IsSubmitPhoneNumRow = styled.div`
   width: 723px;
