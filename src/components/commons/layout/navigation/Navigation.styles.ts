@@ -1,22 +1,26 @@
 import styled from '@emotion/styled'
-
+export const Position = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`
 export const Wrapper = styled.div`
   width: 1200px;
   height: 90px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
+  padding-left: 60px;
+  justify-content: center;
 `
-
-export const Img = styled.div`
-  width: 34px;
-  height: 34px;
-  background-color: grey;
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  height: 80px;
+  width: 1079px;
 `
 
 export const MainNavContainer = styled.div`
-  width: 464px;
-  height: 40px;
   display: flex;
   align-items: center;
 `
@@ -47,6 +51,7 @@ export const NavRightBox = styled.div`
   height: 40px;
   display: flex;
   justify-content: space-between;
+  margin-left: 140px;
 `
 
 export const IconBox = styled.div`
@@ -77,6 +82,13 @@ export const SellBtn = styled.button`
   width: 98px;
   height: 40px;
   border: none;
+`
+export const DropDownColBox = styled.div`
+  width: 464px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `
 export const DropDownCol = styled.div`
   display: flex;

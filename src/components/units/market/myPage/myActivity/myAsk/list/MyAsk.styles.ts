@@ -158,3 +158,10 @@ export const WriteAskBtn = styled.button`
   font-weight: 300;
   border: none;
 `
+export const PaginationBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+  margin-bottom: 26px;
+`

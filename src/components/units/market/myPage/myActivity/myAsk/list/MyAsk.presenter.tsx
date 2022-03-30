@@ -1,5 +1,6 @@
 import * as S from './MyAsk.styles'
-
+import Pagination from '@mui/material/Pagination'
+import Stack from '@mui/material/Stack'
 export default function MyAskUI() {
   return (
     <>
@@ -49,7 +50,11 @@ export default function MyAskUI() {
             <S.ColFlex1>2022/03/21</S.ColFlex1>
           </S.Row>
         </S.Table>
-
+        <S.PaginationBox>
+          <Stack spacing={2}>
+            <Pagination count={1} color="secondary" />
+          </Stack>
+        </S.PaginationBox>
         <S.WriteAskBtnBox>
           <S.WriteAskBtn>1:1문의 쓰기</S.WriteAskBtn>
         </S.WriteAskBtnBox>

@@ -1,5 +1,11 @@
+import { useState } from 'react'
 import TransactionUI from './Transaction.presenter'
 
 export default function Transaction() {
-  return <TransactionUI />
+  const [isBuy, setIsBuy] = useState(true)
+  const onClickBuy = (transaction) => () => {
+    setIsBuy(transaction)
+  }
+
+  return <TransactionUI isBuy={isBuy} onClickBuy={onClickBuy} />
 }

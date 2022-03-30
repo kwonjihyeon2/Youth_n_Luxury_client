@@ -1,14 +1,23 @@
 import BuyTable from './table/BuyTable.container'
+import SellTable from './table/SellTable.container'
 import * as S from './Transaction.styles'
 
-export default function TransactionUI() {
+export default function TransactionUI(props) {
   return (
     <>
       <S.Wrapper>
-        <S.TransactionHeaderTxt>구매내역</S.TransactionHeaderTxt>
+        <S.TransactionHeaderTxt>
+          {props.isBuy ? `구매내역` : `판매내역`}
+        </S.TransactionHeaderTxt>
         <S.SelectTransactionBar>
-          <S.SelectDetailBtn>{`구매내역(0)`}</S.SelectDetailBtn>
-          <S.SelectDetailBtn>{`판매내역(0)`}</S.SelectDetailBtn>
+          <S.SelectDetailBtn
+            isBuy={props.isBuy}
+            onClick={props.onClickBuy(true)}
+          >{`구매내역(0)`}</S.SelectDetailBtn>
+          <S.SelectDetailBtn
+            isBuy={!props.isBuy}
+            onClick={props.onClickBuy(false)}
+          >{`판매내역(0)`}</S.SelectDetailBtn>
         </S.SelectTransactionBar>
         <S.PeriodSettingBox>
           <S.PeriodBtnBox>
@@ -30,7 +39,7 @@ export default function TransactionUI() {
           주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수
           있습니다.
         </S.TxtBox>
-        <BuyTable />
+        {props.isBuy ? <BuyTable /> : <SellTable />}
       </S.Wrapper>
     </>
   )
