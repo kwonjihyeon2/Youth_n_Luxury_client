@@ -189,7 +189,7 @@ export default function UseditemListUI(props) {
           </S.WrapperSelectBot>
         </S.WrapperSelect>
         <S.WrapperBottom>
-          <S.WrapperUseditem>
+          <S.WrapperUseditem onClick={props.onClickProduct}>
             <S.UseditemImg></S.UseditemImg>
             <S.UseditemName>{}루이비통 알마 뭐시기</S.UseditemName>
             <S.UseditemPrice>{}100,000,000원</S.UseditemPrice>
