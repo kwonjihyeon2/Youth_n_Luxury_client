@@ -20,9 +20,15 @@ export default function Login() {
   const onClickLoginBtn = async () => {
     console.log('눌러는짐')
     try {
-      const accessToken = await login({ variables: { ...loginInput } })
-      console.log(accessToken.data.login)
-      setAccessToken(accessToken.data.login)
+      const result = await login({ variables: { ...loginInput } })
+      // console.log(accessToken.data.login)
+      // setAccessToken(accessToken.data.login)
+      const accessToken = result.data?.login
+      console.log(accessToken)
+      if (setAccessToken) {
+        setAccessToken(accessToken || '') //로그인토큰 저장
+        localStorage.setItem('accessToken', accessToken || '')
+      }
       console.log('로그인성공')
       router.push('/')
     } catch (err) {

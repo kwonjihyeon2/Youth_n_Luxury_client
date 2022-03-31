@@ -4,7 +4,11 @@ import UseditemDetailPageUI from './useditemDetail.presenter'
 import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
 import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { DELETE_PRODUCT, FETCH_PRODUCT } from './useditemDetail.query'
+import {
+  DELETE_PRODUCT,
+  FETCH_PRODUCT,
+  RELATIVE_PRODUCT,
+} from './useditemDetail.query'
 
 declare const window: typeof globalThis & {
   Kakao: any
@@ -128,9 +132,16 @@ export default function UseditemDetailPage(props) {
   //   e.clipboardData.setData('Text', copyUrl)
   // }
 
+  const { data: relativeData } = useQuery(RELATIVE_PRODUCT, {
+    variables: { name: data?.fetchProduct.subCategory.mainCategory.name },
+  })
+  // console.log(relativeData)
+
   return (
     <UseditemDetailPageUI
+      relativeData={relativeData}
       // onClickCopy={onClickCopy}
+      isSold={props.isSold}
       data={data}
       isHeart={isHeart}
       isOpen={isOpen}

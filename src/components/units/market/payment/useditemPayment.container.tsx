@@ -2,7 +2,14 @@ import { useMutation, useQuery } from '@apollo/client'
 import { useState } from 'react'
 import { FETCH_PRODUCT } from '../detail/useditemDetail.query'
 import UseditemPaymentpageUI from './UseditemPayment.presenter'
-import { CREATE_ORDER } from './useditemPayment.queries'
+import {
+  CREATE_ADDRESS,
+  CREATE_ORDER,
+  FETCH_ADDRESS,
+  FETCH_ADDRS,
+  FETCH_USER,
+  UPDATE_ADDRESS,
+} from './useditemPayment.queries'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -10,16 +17,25 @@ declare const window: typeof globalThis & {
   IMP: any
 }
 
-export default function UseditemPaymentpage() {
+export default function UseditemPaymentpage(props) {
   const router = useRouter()
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: {
-      userId: 'bbf01217-6618-488e-95d5-c0cd1be4aa79',
-      productId: '2b5d1b27-0a5b-44dc-9c2e-219914617b21',
-      subCategoryId: '',
+      productId: String(router.query.boardId),
     },
   })
-  console.log(data?.fetchProduct)
+
+  const { data: fetchUser } = useQuery(FETCH_USER)
+  const { data: AddrOne } = useQuery(FETCH_ADDRESS)
+  console.log(AddrOne)
+  const [createAddr] = useMutation(CREATE_ADDRESS)
+
+  // const
+  // const { data: fetchUser } = useQuery(FETCH_ADDRESS, {
+  //   variables: { userAddrId: String(data?.fetchProduct.user.id) },
+  // })
+  // console.log(data?.fetchProduct.user.id)
+
   const [isOpenAdd, setIsOpenAdd] = useState(false)
 
   const onClickAdd = () => {
@@ -27,22 +43,68 @@ export default function UseditemPaymentpage() {
   }
 
   const [isModalAdd, setIsModalAdd] = useState(false)
-  const [zipCode, setZipCode] = useState('')
   const [address, setAddress] = useState('')
-  // const [addressDetail, setAddressDetail] = useState('') -> 결제 API 완료 후 테스트
+  const [zoneCode, setZipcode] = useState('')
+  const [addressDetail, setAddressDetail] = useState('')
+  const [resultAddr, setResultAddr] = useState({})
 
   const onClickDaumModal = () => {
     setIsModalAdd((prev) => !prev)
   }
 
   const handleComplete = (data) => {
-    setZipCode(data.zonecode)
     setAddress(data.address)
-    // console.log(data)
+    setZipcode(data.zonecode)
+    setAddressDetail(data.addressDetail)
+
     onClickDaumModal()
   }
+  console.log(address, zoneCode, addressDetail)
 
-  // console.log('이게 뭐니?', isModalAdd, '이건?', isOpenAdd)
+  const onChangeAddr = (event) => {
+    setAddressDetail(event.target.value)
+  }
+
+  const onClickSelect = async () => {
+    // setIsOpenAdd((prev) => !prev)
+    try {
+      const Addrresult = await createAddr({
+        variables: {
+          createUserAddrInput: {
+            address,
+            addressDetail,
+            zipCode: zoneCode,
+          },
+        },
+      })
+      // console.log(Addrresult)
+      setResultAddr(Addrresult)
+      setIsOpenAdd((prev) => !prev)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  // const onClickEditAddr = async () => {
+  //   try {
+  //     const Addrresult = await createAddr({
+  //       variables: {
+  //         createUserAddrInput: {
+  //           address,
+  //           addressDetail,
+  //           zipCode: zoneCode,
+  //         },
+  //       },
+  //     })
+  //     setResultAddr(Addrresult)
+  //     setIsOpenAdd((prev) => !prev)
+  //   } catch (error) {
+  //     console.log(error.message)
+  //   }
+  // }
+
+  const { data: Addrs } = useQuery(FETCH_ADDRS)
+  console.log(Addrs?.fetchUserAddrs.length)
 
   const [inputs, setInputs] = useState({
     input: '',
@@ -70,10 +132,10 @@ export default function UseditemPaymentpage() {
         pg: 'html5_inicis',
         pay_method: 'card',
         // merchant_uid: 'ORD20180131-0000011',
-        name: '노르웨이 회전 의자',
+        name: 'Youth&Luxury',
         amount: Number(data?.fetchProduct.price),
-        buyer_email: 'gildong@gmail.com',
-        buyer_name: '홍길동',
+        buyer_email: fetchUser.fetchUser.email,
+        buyer_name: fetchUser.fetchUser.name,
         buyer_tel: inputs.input + inputs.secInput + inputs.thirdInput,
         buyer_addr: '서울특별시 강남구 신사동',
         buyer_postcode: '01181',
@@ -103,6 +165,11 @@ export default function UseditemPaymentpage() {
     )
   }
 
+  const [isSame, setIsSame] = useState(false)
+  const onClickSame = () => {
+    setIsSame((prev) => !prev)
+  }
+
   return (
     <>
       <Head>
@@ -116,6 +183,16 @@ export default function UseditemPaymentpage() {
         ></script>
       </Head>
       <UseditemPaymentpageUI
+        AddrOne={AddrOne}
+        fetchUser={fetchUser}
+        addressDetail={addressDetail}
+        onChangeAddr={onChangeAddr}
+        onClickSelect={onClickSelect}
+        Addrs={Addrs}
+        // isSold={isSold}
+        inputs={inputs}
+        isSame={isSame}
+        onClickSame={onClickSame}
         data={data}
         onChangeNum={onChangeNum}
         onClickOrder={onClickOrder}
@@ -124,7 +201,7 @@ export default function UseditemPaymentpage() {
         onClickAdd={onClickAdd}
         handleComplete={handleComplete}
         onClickDaumModal={onClickDaumModal}
-        zipCode={zipCode}
+        zipCode={zoneCode}
         address={address}
       />
     </>

@@ -12,7 +12,9 @@ export default function SellerInfo(props) {
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <S.ProfileBox></S.ProfileBox>
           <S.ContentBox>
-            <S.ProfileName>유저네임</S.ProfileName>
+            <S.ProfileName>
+              {props.data?.fetchProduct.user.name}님
+            </S.ProfileName>
             <div>
               판매상품 <S.BoldSpan> 2개 </S.BoldSpan> 거래후기
               <S.BoldSpan> 4개 </S.BoldSpan>
@@ -21,13 +23,19 @@ export default function SellerInfo(props) {
               <S.BoldSpan style={{ marginRight: '10px' }}>
                 판매자평가
               </S.BoldSpan>
-              <Rating name="read-only" defaultValue={5} readOnly />
+              <Rating
+                name="read-only"
+                defaultValue={Number(props.data?.fetchProduct.user.ratingAvg)}
+                readOnly
+              />
             </S.Content>
           </S.ContentBox>
         </div>
         <div>
           <div>
-            <S.BoldSpan style={{ fontSize: '1.25rem' }}>유저네임</S.BoldSpan>
+            <S.BoldSpan style={{ fontSize: '1.25rem' }}>
+              {props.data?.fetchProduct.user.name}
+            </S.BoldSpan>
             님이 판매중인 상품
           </div>
           <S.SpaceImg>

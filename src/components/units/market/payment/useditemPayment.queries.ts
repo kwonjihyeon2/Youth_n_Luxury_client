@@ -1,16 +1,8 @@
 import { gql } from '@apollo/client'
 
 export const FETCH_PRODUCT = gql`
-  query fetchProduct(
-    $productId: String!
-    $subCategoryId: String!
-    $userId: String!
-  ) {
-    fetchProduct(
-      productId: $productId
-      subCategoryId: $subCategoryId
-      userId: $userId
-    ) {
+  query fetchProduct($productId: String!) {
+    fetchProduct(productId: $productId) {
       id
       name
       description
@@ -18,17 +10,29 @@ export const FETCH_PRODUCT = gql`
       user {
         id
       }
-      #   subCategory {
-      #     name
-      #     mainCategory {
-      #       name
-      #     }
-      #   }
-      #   brand {
-      #     name
-      #   }
-      #   urls
+      subCategory {
+        name
+        mainCategory {
+          name
+        }
+      }
+      brand {
+        name
+      }
+      urls
       like
+    }
+  }
+`
+
+export const FETCH_USER = gql`
+  query fetchUser {
+    fetchUser {
+      id
+      nickname
+      name
+      email
+      phoneNum
     }
   }
 `
@@ -54,6 +58,49 @@ export const CREATE_ORDER = gql`
         id
         name
       }
+    }
+  }
+`
+
+export const CREATE_ADDRESS = gql`
+  mutation createUserAddr($createUserAddrInput: CreateUserAddrInput!) {
+    createUserAddr(createUserAddrInput: $createUserAddrInput) {
+      id
+      address
+      addressDetail
+      zipCode
+      user {
+        id
+        name
+        phoneNum
+        email
+      }
+    }
+  }
+`
+
+export const FETCH_ADDRESS = gql`
+  query fetchUserAddr {
+    fetchUserAddr {
+      id
+      address
+      addressDetail
+      zipCode
+      user {
+        id
+        phoneNum
+        name
+      }
+    }
+  }
+`
+export const FETCH_ADDRS = gql`
+  query fetchUserAddrs {
+    fetchUserAddrs {
+      id
+      address
+      addressDetail
+      zipCode
     }
   }
 `

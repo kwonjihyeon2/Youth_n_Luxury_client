@@ -244,7 +244,6 @@ export const PaymentResult = styled.button`
 
 export const ModalBox = styled.div`
   width: 500px;
-  height: 500px;
   background-color: #fff;
   position: fixed;
   top: 50%;
@@ -269,7 +268,7 @@ export const submitAddress = styled.div`
 export const MoreAddress = styled.div`
   text-align: center;
   padding: 10px;
-  margin: 40px 10px;
+  margin: 20px 10px;
   border: 1px solid #000;
 `
 // export const
