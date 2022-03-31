@@ -1,48 +1,58 @@
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
-import {
-  CREATE_PRODUCT,
-  UPDATE_PRODUCT,
-  UPLOAD_FILE,
-} from './UseditemWrite.queries'
+import { CREATE_PRODUCT, UPDATE_PRODUCT } from './UseditemWrite.queries'
 import UseditemWriteUI from './UseditemWrite.presenter'
-import { checkFileValidation } from '../../../../commons/libraries/utils'
+import {
+  checkFileValidation,
+  getDate,
+} from '../../../../commons/libraries/utils'
 
 export default function UseditemWrite(props) {
   const router = useRouter()
-
+  // const axios = require('axios')
   const fileRef = useRef<HTMLInputElement>(null)
-
   const [createProduct] = useMutation(CREATE_PRODUCT)
   const [updateProduct] = useMutation(UPDATE_PRODUCT)
-  const [uploadFile] = useMutation(UPLOAD_FILE)
 
   const [isOpen, setIsOpen] = useState(false)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
-  const [urls, setUrls] = useState([])
+  const [urls, setUrls] = useState(['', '', '', '', '', '', '', '', '', ''])
   const [brand, setBrand] = useState('')
   const [subCategory, setSubCategory] = useState('')
   const [selectMain, setSelectMain] = useState('')
 
-  const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
-    const imageUrl = []
+  // const onClickAccountConfirm = async () => {
+  //   const temp = String(Math.random())
+  //   const randomNum = temp.slice(9)
+  //   const date = new Date()
+  //   const time = getDate(date)
+  //   const result = await axios.post(
+  //     `https://testapi.openbanking.or.kr/v2.0/inquiry/real_name`,
+  //     {
+  //       headers: {
+  //         Authorization:
+  //           'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMjAwNTkyIiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjU2NDI5ODY2LCJqdGkiOiJjNjFmZjMyYi0yNTQyLTQ5MWItOGUzYS02ZGY1YTE1ZjE5Y2UifQ.A1t724j6vIGPLO7I_TPvEZTev_ds4DSxFjfaThe7uXc',
+  //       },
+  //       params: {
+  //         bank_code_std: '004',
+  //         account_num: '71790201314675',
+  //         account_holder_info_type: '',
+  //         account_holder_info: '000426',
+  //         tran_dtime: time,
+  //         bank_tran_id: `M202200592U${randomNum}`,
+  //       },
+  //     }
+  //   )
+  //   console.log(result)
+  // }
 
-    for (let i = 0; i < event.target.files?.length; i++) {
-      const file = []
-      file.push(event.target.files?.[i])
-
-      try {
-        const result = await uploadFile({ variables: { files: file } })
-
-        imageUrl.push(result.data?.uploadFile?.url)
-      } catch (error) {
-        alert(error.message)
-      }
-    }
-    setUrls([...urls, ...imageUrl])
+  const onChangeUrls = (url: string, index: number) => {
+    const newUrls = [...urls]
+    newUrls[index] = url
+    setUrls(newUrls)
   }
   const onChangeName = (event) => {
     setName(event.target.value)
@@ -75,7 +85,7 @@ export default function UseditemWrite(props) {
             description,
             price: Number(price),
             brandName: brand,
-            urls,
+            urls: 'test',
             subCategoryName: subCategory,
           },
         },
@@ -121,8 +131,9 @@ export default function UseditemWrite(props) {
       onChangeMainCategory={onChangeMainCategory}
       fileRef={fileRef}
       onClickImage={onClickImage}
-      onChangeFile={onChangeFile}
+      onChangeUrls={onChangeUrls}
       urls={urls}
+      // onClickAccountConfirm={onClickAccountConfirm}
     />
   )
 }

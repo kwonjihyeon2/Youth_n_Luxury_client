@@ -18,18 +18,21 @@ export const getPrice = (price: Number) => {
   return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
-export const getDate = (getDate) => {
-  const change = new Date(getDate)
-  const yyyy = change.getFullYear()
-  const mm = change.getMonth() + 1
-  const dd = change.getDate()
-  return `${yyyy}-${mm}-${dd}`
+export const getDate = (el) => {
+  const temp = new Date(el)
+  const yyyy = temp.getFullYear()
+  const mm = temp.getMonth() + 1
+  const dd = temp.getDate()
+  const hour = temp.getHours()
+  const min = temp.getMinutes()
+  const sec = temp.getSeconds()
+  return `${yyyy}${'0' + mm}${dd}${hour}${min}${sec}`
 }
 
-export const getDate2 = (getDate2) => {
-  const change = new Date(getDate2)
-  const yyyy = change.getFullYear()
-  const mm = change.getMonth() + 1
-  const dd = change.getDate()
+export const getDate2 = (el) => {
+  const temp = new Date(el)
+  const yyyy = temp.getFullYear()
+  const mm = temp.getMonth() + 1
+  const dd = temp.getDate()
   return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`
 }
