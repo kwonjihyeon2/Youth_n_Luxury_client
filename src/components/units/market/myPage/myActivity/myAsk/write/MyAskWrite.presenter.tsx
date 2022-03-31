@@ -2,7 +2,7 @@ import * as S from './MyAskWrite.styles'
 
 export default function MyAskWriteUI() {
   return (
-    <>
+    <S.WrapperResponse>
       <S.Wrapper>
         <S.Row>
           <S.Key>분류</S.Key>
@@ -48,6 +48,6 @@ export default function MyAskWriteUI() {
           <S.CancelBtn>취소</S.CancelBtn>
         </S.BtnBox>
       </S.Wrapper>
-    </>
+    </S.WrapperResponse>
   )
 }

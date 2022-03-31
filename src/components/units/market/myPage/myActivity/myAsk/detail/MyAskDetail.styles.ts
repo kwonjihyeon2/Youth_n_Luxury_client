@@ -1,11 +1,21 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../../../commons/styles/media'
 
+export const WrapperResponse = styled.div`
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    padding: 0 60px;
+  }
+`
 export const Wrapper = styled.div`
   width: 794px;
   display: flex;
   flex-direction: column;
   border-top: 1px solid black;
   align-items: center;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 export const Row = styled.div`
   display: flex;
