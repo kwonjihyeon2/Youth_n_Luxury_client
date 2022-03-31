@@ -1,4 +1,18 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../../../commons/utils/media'
+
+export const ResponsiveBox = styled.div`
+  width: 100%;
+  padding: 60px;
+  display: flex;
+  justify-content: center;
+  @media ${breakPoints.tablet} {
+    padding: 100px;
+  }
+  @media ${breakPoints.mobile} {
+    padding: 60px;
+  }
+`
 
 export const Wrapper = styled.div`
   width: 726px;
@@ -6,6 +20,12 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 51px;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `
 
 export const JoinHeaderTxt = styled.div`
@@ -19,6 +39,9 @@ export const Row = styled.div`
   height: 48px;
   display: flex;
   align-items: center;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 
 export const VarTxt = styled.div`
@@ -32,6 +55,9 @@ export const VarTxt = styled.div`
 export const InputBox = styled.div`
   width: 723px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 export const ValueBox = styled.div`
   width: 583px;
@@ -40,6 +66,9 @@ export const ValueBox = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 export const EmailInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -101,11 +130,17 @@ export const SubmitBtn = styled.button`
   font-weight: 600;
   margin-top: 57px;
   border: none;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 export const IsSubmitPhoneNumRow = styled.div`
   width: 723px;
   height: 96px;
   display: flex;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 export const IsSubmitPhoneNumVar = styled.div`
   width: 140px;

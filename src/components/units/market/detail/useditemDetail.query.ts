@@ -49,3 +49,13 @@ export const RELATIVE_PRODUCT = gql`
     }
   }
 `
+export const SELLER_PRODUCT = gql`
+  query fetchSellerProduct($userId: String!) {
+    fetchSellerProduct(userId: $userId) {
+      id
+      urls
+      name
+      price
+    }
+  }
+`

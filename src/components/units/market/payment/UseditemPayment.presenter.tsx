@@ -245,30 +245,33 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             </S.WrapperContentBox>
             <S.ModalCenter>
               <S.AddressSelect>배송지 수정</S.AddressSelect>
-              <S.submitAddress>
-                <div>
-                  배송지 <button>기본배송지</button>
-                </div>
-                <S.DeliveryTextSmallInput
-                  type="tel"
-                  placeholder="07250"
-                  value={props.Addrs?.fetchUserAddrs[0].zipCode}
-                  readOnly
-                />
-                <S.CommonsButton onClick={props.onClickDaumModal}>
-                  우편번호 검색
-                </S.CommonsButton>
-                <S.DeliveryLongInput
-                  type="text"
-                  value={props.Addrs?.fetchUserAddrs[0].address}
-                  readOnly
-                />
-                <S.DeliveryLongInput
-                  type="text"
-                  readOnly
-                  value={props.Addrs?.fetchUserAddrs[0].addressDetail}
-                />
-              </S.submitAddress>
+              {props.addressList.map((el) => (
+                <S.submitAddress>
+                  <div>
+                    배송지 <button>기본배송지</button>
+                  </div>
+
+                  <S.DeliveryTextSmallInput
+                    type="tel"
+                    placeholder="07250"
+                    value={el.zipCode}
+                    readOnly
+                  />
+                  <S.CommonsButton onClick={props.onClickDaumModal}>
+                    우편번호 검색
+                  </S.CommonsButton>
+                  <S.DeliveryLongInput
+                    type="text"
+                    value={el.address}
+                    readOnly
+                  />
+                  <S.DeliveryLongInput
+                    type="text"
+                    readOnly
+                    value={props.addressDetail}
+                  />
+                </S.submitAddress>
+              ))}
             </S.ModalCenter>
             <S.WrapperContentBox style={{ padding: '0 10px' }}>
               <button>수정</button>

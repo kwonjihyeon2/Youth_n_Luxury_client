@@ -1,24 +1,42 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
+import { breakPoints } from '../../../../../../commons/utils/media'
+
+export const ResponsiveBox = styled.div`
+  width: 100%;
+  padding: 60px;
+  display: flex;
+  justify-content: center;
+  @media ${breakPoints.tablet} {
+    padding: 100px;
+  }
+  @media ${breakPoints.mobile} {
+    padding: 60px;
+  }
+`
 
 export const Wrapper = styled.div`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
 
 export const JoinHeaderTxt = styled.div`
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 76px;
-`;
+`
 
 export const Row = styled.div`
   width: 723px;
   height: 48px;
   display: flex;
   align-items: center;
-`;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
+`
 
 export const VarTxt = styled.div`
   width: 140px;
@@ -27,11 +45,14 @@ export const VarTxt = styled.div`
   background-color: #fafafa;
   font-weight: 400;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-`;
+`
 export const InputBox = styled.div`
   width: 723px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-`;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
+`
 export const ValueBox = styled.div`
   width: 583px;
   height: 48px;
@@ -39,31 +60,34 @@ export const ValueBox = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
-`;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
+`
 export const EmailInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   height: 30px;
   width: 117px;
-`;
+`
 export const PasswordInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   height: 30px;
   width: 198px;
-`;
+`
 export const NumInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   height: 30px;
   width: 59px;
-`;
+`
 export const CheckNumInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   height: 30px;
   width: 98px;
-`;
+`
 export const EmailDropdown = styled.select`
   width: 122px;
   height: 30px;
@@ -71,7 +95,7 @@ export const EmailDropdown = styled.select`
   font-size: 13px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin-left: 5px;
-`;
+`
 export const SendAuthNumBtn = styled.button`
   width: 97px;
   height: 30px;
@@ -82,7 +106,7 @@ export const SendAuthNumBtn = styled.button`
   font-size: 12px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
-`;
+`
 
 export const SubmitBtn = styled.button`
   background-color: #393939;
@@ -95,29 +119,32 @@ export const SubmitBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
   margin-top: 57px;
-`;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
+`
 export const IsSubmitPhoneNumRow = styled.div`
   width: 723px;
   height: 96px;
   display: flex;
-`;
+`
 export const IsSubmitPhoneNumVar = styled.div`
   width: 140px;
   height: 96px;
   background-color: #fafafa;
   padding: 14px 12px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-`;
+`
 export const PhoneNumValueBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 583px;
   height: 96px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-`;
+`
 
 export const NickNameTxt = styled.div`
   color: #00000066;
   font-weight: 400;
   font-size: 12px;
-`;
+`

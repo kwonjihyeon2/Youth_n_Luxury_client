@@ -27,14 +27,7 @@ export default function UseditemPaymentpage(props) {
 
   const { data: fetchUser } = useQuery(FETCH_USER)
   const { data: AddrOne } = useQuery(FETCH_ADDRESS)
-  console.log(AddrOne)
   const [createAddr] = useMutation(CREATE_ADDRESS)
-
-  // const
-  // const { data: fetchUser } = useQuery(FETCH_ADDRESS, {
-  //   variables: { userAddrId: String(data?.fetchProduct.user.id) },
-  // })
-  // console.log(data?.fetchProduct.user.id)
 
   const [isOpenAdd, setIsOpenAdd] = useState(false)
 
@@ -104,7 +97,7 @@ export default function UseditemPaymentpage(props) {
   // }
 
   const { data: Addrs } = useQuery(FETCH_ADDRS)
-  console.log(Addrs?.fetchUserAddrs.length)
+  const addressList = Addrs?.fetchUserAddrs.slice(0, 3)
 
   const [inputs, setInputs] = useState({
     input: '',
@@ -182,6 +175,7 @@ export default function UseditemPaymentpage(props) {
         ></script>
       </Head>
       <UseditemPaymentpageUI
+        addressList={addressList}
         AddrOne={AddrOne}
         fetchUser={fetchUser}
         addressDetail={addressDetail}

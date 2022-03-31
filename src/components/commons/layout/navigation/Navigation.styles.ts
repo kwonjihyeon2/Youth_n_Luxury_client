@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { breakPoints } from '../../styles/media'
+import { breakPoints } from '../../utils/media'
+
 export const Position = styled.div`
   display: flex;
   justify-content: center;

@@ -121,11 +121,9 @@ export default function UseditemDetailPageUI(props) {
                     <FiShare2 />
                     <S.KakaoButton isShare={props.isShare}>
                       <div id="kakao-link-btn">
-                        <S.ShareButton className="kakao-share-button">
-                          <FiShare2 />
-                        </S.ShareButton>
+                        <S.ShareButton className="kakao-share-button"></S.ShareButton>
                       </div>
-                      <button>url복사</button>
+                      <S.CopyButton></S.CopyButton>
                       {/* <input
                         style={{ display: 'none' }}
                         type="text"
@@ -191,7 +189,8 @@ export default function UseditemDetailPageUI(props) {
                 <div>
                   <div>{props.data?.fetchProduct.user.name}님</div>
                   <span style={{ fontWeight: '300' }}>
-                    판매 상품 0개 거래 후기 0개
+                    판매 상품 {props.productData?.fetchSellerProduct.length}개
+                    거래 후기 0개
                   </span>
                 </div>
                 <S.SellerRate>
@@ -223,36 +222,14 @@ export default function UseditemDetailPageUI(props) {
             {props.data?.fetchProduct.user.name}님의 다른상품
           </S.RelativeTitle>
           <S.SliderContainer {...settings}>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>1000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
+            {props.productData?.fetchSellerProduct.map((el) => (
+              <div key={el.id}>
+                <S.SliderBox></S.SliderBox>
+                {/* urls parse 필요 */}
+                <p>{el.name}</p>
+                <div>{el.price}원</div>
+              </div>
+            ))}
           </S.SliderContainer>
         </S.SlickStyle>
         <S.SlickStyle>
@@ -300,6 +277,7 @@ export default function UseditemDetailPageUI(props) {
       </S.WrapperBody>
       <S.WrapperSellerInfo isOpen={props.isOpen}>
         <SellerInfo
+          productData={props.productData}
           data={props.data}
           isOpen={props.isOpen}
           setIsOpen={props.setIsOpen}
