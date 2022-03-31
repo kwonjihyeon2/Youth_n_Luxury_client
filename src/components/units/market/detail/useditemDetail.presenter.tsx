@@ -146,8 +146,12 @@ export default function UseditemDetailPageUI(props) {
               </S.WrapperBodyUl>
               <S.WrapperBodyUl>
                 <S.WrapperLiStyle>아래 '상품설명' 참조</S.WrapperLiStyle>
-                <S.WrapperLiStyle>[데이터값 브랜드]</S.WrapperLiStyle>
-                <S.WrapperLiStyle>[상의]</S.WrapperLiStyle>
+                <S.WrapperLiStyle>
+                  {props.data?.fetchProduct.brand.name}
+                </S.WrapperLiStyle>
+                <S.WrapperLiStyle>
+                  {props.data?.fetchProduct.subCategory.name}
+                </S.WrapperLiStyle>
                 <S.WrapperLiStyle>택배</S.WrapperLiStyle>
               </S.WrapperBodyUl>
             </S.FlexPocket>
@@ -185,7 +189,7 @@ export default function UseditemDetailPageUI(props) {
                   <img src="/detail/rion.png" />
                 </S.SellerProfile>
                 <div>
-                  <div>유저닉네임</div>
+                  <div>{props.data?.fetchProduct.user.name}님</div>
                   <span style={{ fontWeight: '300' }}>
                     판매 상품 0개 거래 후기 0개
                   </span>
@@ -195,7 +199,9 @@ export default function UseditemDetailPageUI(props) {
                   <Rating
                     name="read-only"
                     size="small"
-                    defaultValue={5}
+                    defaultValue={Number(
+                      props.data?.fetchProduct.user.ratingAvg
+                    )}
                     readOnly
                   />
                 </S.SellerRate>
@@ -213,7 +219,9 @@ export default function UseditemDetailPageUI(props) {
           <br />
         </S.ContentsBox>
         <S.SlickStyle>
-          <S.RelativeTitle>[데이터값] 유저님의 다른상품</S.RelativeTitle>
+          <S.RelativeTitle>
+            {props.data?.fetchProduct.user.name}님의 다른상품
+          </S.RelativeTitle>
           <S.SliderContainer {...settings}>
             <div>
               <S.SliderBox></S.SliderBox>
@@ -248,38 +256,18 @@ export default function UseditemDetailPageUI(props) {
           </S.SliderContainer>
         </S.SlickStyle>
         <S.SlickStyle>
-          <S.RelativeTitle>[데이터값] 연관된 상품 미리보기</S.RelativeTitle>
+          <S.RelativeTitle>
+            [ {props.data?.fetchProduct.subCategory.name} ]과 연관된 상품
+            미리보기
+          </S.RelativeTitle>
           <S.SliderContainer {...settings}>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>1000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
-            <div>
-              <S.SliderBox></S.SliderBox>
-              <p>에르메스 사고싶다</p>
-              <div>2000만원이다</div>
-            </div>
+            {props.relativeData?.fetchProductRelateMainCategory.map((el) => (
+              <div>
+                <S.SliderBox></S.SliderBox>
+                <p>{el.name}</p>
+                <div>{el.price}원</div>
+              </div>
+            ))}
           </S.SliderContainer>
         </S.SlickStyle>
 
@@ -300,7 +288,11 @@ export default function UseditemDetailPageUI(props) {
         </S.ButtonBox>
       </S.WrapperBody>
       <S.WrapperSellerInfo isOpen={props.isOpen}>
-        <SellerInfo isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
+        <SellerInfo
+          data={props.data}
+          isOpen={props.isOpen}
+          setIsOpen={props.setIsOpen}
+        />
       </S.WrapperSellerInfo>
       <S.HeartBox isHeart={props.isHeart}>
         <S.HeartOnbox>

@@ -7,19 +7,21 @@ export const FETCH_PRODUCT = gql`
       name
       description
       price
-      #   user {
-      #     id
-      #     name
-      #   }
-      #   subCategory {
-      #     name
-      #     mainCategory {
-      #       name
-      #     }
-      #   }
-      #   brand {
-      #     name
-      #   }
+      user {
+        id
+        name
+      }
+      subCategory {
+        id
+        name
+        mainCategory {
+          id
+          name
+        }
+      }
+      brand {
+        name
+      }
       urls
       like
     }
@@ -28,5 +30,16 @@ export const FETCH_PRODUCT = gql`
 export const DELETE_PRODUCT = gql`
   mutation deleteProduct($productId: String!) {
     deleteProduct(productId: $productId)
+  }
+`
+
+export const RELATIVE_PRODUCT = gql`
+  query fetchProductRelateMainCategory($name: String!) {
+    fetchProductRelateMainCategory(name: $name) {
+      id
+      name
+      description
+      price
+    }
   }
 `
