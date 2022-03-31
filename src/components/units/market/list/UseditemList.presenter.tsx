@@ -1,4 +1,4 @@
-import { breakPoints } from '../../../commons/styles/media'
+import { breakPoints } from '../../../commons/utils/media'
 import DesktopItem from './ResposiveOnDesktopItem'
 import TabletItem from './ResposiveOnTabletItem'
 import * as S from './UseditemList.styles'

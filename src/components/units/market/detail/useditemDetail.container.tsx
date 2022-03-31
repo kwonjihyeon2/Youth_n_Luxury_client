@@ -8,7 +8,9 @@ import {
   DELETE_PRODUCT,
   FETCH_PRODUCT,
   RELATIVE_PRODUCT,
+  SELLER_PRODUCT,
 } from './useditemDetail.query'
+import { ConsoleSqlOutlined } from '@ant-design/icons'
 
 declare const window: typeof globalThis & {
   Kakao: any
@@ -17,7 +19,6 @@ declare const window: typeof globalThis & {
 export default function UseditemDetailPage(props) {
   const { moveToPage } = useMoveToPage()
   const router = useRouter()
-  //   const el = useRef();
   const [isOpen, setIsOpen] = useState(false)
   const [isShare, setIsShare] = useState(false)
   const [isHeart, setIsHeart] = useState(false)
@@ -32,8 +33,9 @@ export default function UseditemDetailPage(props) {
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: { productId: String(router.query.boardId) },
   })
-  console.log(String(router.query.boardId), data?.fetchProduct)
-
+  const { data: productData } = useQuery(SELLER_PRODUCT, {
+    variables: { userId: String(data?.fetchProduct.user.id) },
+  })
   const onClickHeart = () => {
     setIsHeart((prev) => !prev)
   }
@@ -78,29 +80,17 @@ export default function UseditemDetailPage(props) {
         container: '#kakao-link-btn',
         objectType: 'feed',
         content: {
-          title: '타이틀',
-          description: '#리액트 #카카오 #공유버튼',
-          imageUrl: 'http://localhost:3000/vercel.svg', // i.e. process.env.FETCH_URL + '/logo.png'
+          title: `${data?.fetchProduct.name}`,
+          description: `${data?.fetchProduct.description}`,
+          imageUrl: `http://localhost:3000/vercel.svg`, // i.e. process.env.FETCH_URL + '/logo.png'
           link: {
             mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
+            // webUrl: window.location.href,
           },
-        },
-        social: {
-          likeCount: 77,
-          commentCount: 55,
-          sharedCount: 333,
         },
         buttons: [
           {
             title: '웹으로 보기',
-            link: {
-              mobileWebUrl: window.location.href,
-              webUrl: window.location.href,
-            },
-          },
-          {
-            title: '앱으로 보기',
             link: {
               mobileWebUrl: window.location.href,
               webUrl: window.location.href,
@@ -116,12 +106,11 @@ export default function UseditemDetailPage(props) {
       name: String(data?.fetchProduct.subCategory.mainCategory.name),
     },
   })
-  // console.log(relativeData)
 
   return (
     <UseditemDetailPageUI
+      productData={productData}
       relativeData={relativeData}
-      // onClickCopy={onClickCopy}
       isSold={props.isSold}
       data={data}
       isHeart={isHeart}

@@ -1,5 +1,10 @@
 import styled from '@emotion/styled'
 
+export const ResponsiveBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
 export const Wrapper = styled.div`
   width: 552px;
   display: flex;
@@ -23,9 +28,9 @@ export const SelectSwitchBtn = styled.div`
   height: 41px;
   font-size: 14px;
   font-weight: 400;
-  border-left: 1px solid #000000;
-  border-top: 1px solid #000000;
-  border-right: 1px solid #000000;
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
 `
 
 export const FindTxtHeaderBox = styled.div`
@@ -173,7 +178,6 @@ export const PhoneNumValueBox = styled.div`
   flex-direction: column;
   width: 583px;
   height: 96px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `
 
 export const NickNameTxt = styled.div`
