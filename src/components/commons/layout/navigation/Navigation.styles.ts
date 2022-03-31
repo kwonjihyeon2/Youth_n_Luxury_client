@@ -113,7 +113,7 @@ export const DropDownBox = styled.div`
   background-color: #333333;
   margin-top: 2px;
   position: absolute;
-  top: 40px;
+  top: 38px;
   display: none;
 `
 
