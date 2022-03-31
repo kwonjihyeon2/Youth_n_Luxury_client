@@ -3,7 +3,7 @@ import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 export default function MyAskUI() {
   return (
-    <>
+    <S.WrapperResponse>
       <S.Wrapper>
         <S.AskHeaderTxt></S.AskHeaderTxt>
         <S.SearchBox>
@@ -59,6 +59,6 @@ export default function MyAskUI() {
           <S.WriteAskBtn>1:1문의 쓰기</S.WriteAskBtn>
         </S.WriteAskBtnBox>
       </S.Wrapper>
-    </>
+    </S.WrapperResponse>
   )
 }

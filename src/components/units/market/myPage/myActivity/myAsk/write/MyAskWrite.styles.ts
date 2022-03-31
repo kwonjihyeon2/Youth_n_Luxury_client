@@ -1,4 +1,12 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../../../commons/styles/media'
+
+export const WrapperResponse = styled.div`
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    padding: 0 60px;
+  }
+`
 
 export const Wrapper = styled.div`
   width: 794px;
@@ -6,6 +14,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   border-top: 1px solid black;
   align-items: center;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 export const Row = styled.div`
   display: flex;
@@ -29,6 +40,9 @@ export const Value = styled.div`
   display: flex;
   align-items: center;
   padding-left: 8px;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 export const SettingOptionDropBox = styled.select`
   width: 95px;
@@ -66,6 +80,9 @@ export const Title = styled.input`
   border: 1px solid #cccccc;
   border-radius: 2px;
   color: #666666;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 
 export const Content = styled.textarea`
@@ -78,6 +95,9 @@ export const Content = styled.textarea`
   border-radius: 2px;
   color: #666666;
   margin-top: 14px;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 export const AttachmentsRow = styled.div`
   width: 100%;

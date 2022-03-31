@@ -1,9 +1,19 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../../../commons/styles/media'
 
+export const WrapperResponse = styled.div`
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    padding: 0 60px;
+  }
+`
 export const Wrapper = styled.div`
   width: 795px;
   display: flex;
   flex-direction: column;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 
 export const AskHeaderTxt = styled.div`

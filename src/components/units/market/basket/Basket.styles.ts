@@ -1,7 +1,16 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../commons/styles/media'
+
+export const WrapperResponse = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
 
 export const Wrapper = styled.div`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,13 +25,20 @@ export const BasketTitleTxt = styled.div`
   margin-top: 64px;
 `
 export const Container = styled.div`
-  width: 1078px;
+  width: 100%;
   display: flex;
+  @media ${breakPoints.tablet} {
+    justify-content: space-between;
+  }
 `
 export const LeftContainer = styled.div`
   width: 610px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 1024px) {
+    font-size: 12px;
+    width: 70%;
+  }
 `
 
 export const AllSelectBox = styled.div`
@@ -68,9 +84,12 @@ export const BasketTable = styled.div`
   flex-direction: column;
   border-left: 1px solid #afb2b7;
   border-right: 1px solid #afb2b7;
-
   margin-top: 12px;
   border-radius: 8px;
+  @media (max-width: 1024px) {
+    width: 100%
+    font-size: 12px;
+  }
 `
 export const TableTopRow = styled.div`
   width: 100%;
@@ -155,9 +174,12 @@ export const RightContainer = styled.div`
   flex-direction: column;
   margin-left: 21px;
   margin-top: 20px;
+  @media (max-width: 1024px) {
+    width: 30%;
+  }
 `
 export const PriceTitleTxt = styled.div`
-  font-weight: 500px;
+  font-weight: 500;
   font-size: 23px;
   color: #333333;
   margin-bottom: 16px;
@@ -165,9 +187,11 @@ export const PriceTitleTxt = styled.div`
 
 export const RightPriceBox = styled.div`
   width: 100%;
-  height: 128px;
   padding: 12px 10px 12px 16px;
   border: 1px solid #454954;
+  @media ${breakPoints.tablet} {
+    font-size: 12px;
+  }
 `
 export const AllPriceHeadBox = styled.div`
   display: flex;
@@ -185,21 +209,36 @@ export const PriceTitleValueTxt = styled.div`
   font-weight: 500;
   font-size: 21px;
   color: #666666;
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
 `
 
 export const SendPrice = styled.div`
   font-size: 15px;
   font-weight: 300;
   color: #666666;
+  @media ${breakPoints.tablet} {
+    font-size: 12px;
+  }
 `
 export const AllPriceKeyTxt = styled.div`
   font-size: 19px;
   font-weight: 500;
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
 `
 export const AllPriceValueTxt = styled.div`
   font-size: 30px;
   font-weight: 500;
   color: #666666;
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
+  /* @media ${breakPoints.tablet} {
+    font-size: 12px;
+  } */
 `
 export const AllBuyBtn = styled.button`
   width: 100%;
@@ -212,5 +251,8 @@ export const AllBuyBtn = styled.button`
   color: white;
   font-size: 26px;
   font-weight: 400;
-  margin-top: 49px;
+  margin-top: 40px;
+  @media ${breakPoints.tablet} {
+    font-size: 16px;
+  }
 `

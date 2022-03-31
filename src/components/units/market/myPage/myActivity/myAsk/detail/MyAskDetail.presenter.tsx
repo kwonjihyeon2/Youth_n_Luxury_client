@@ -2,7 +2,7 @@ import * as S from './MyAskDetail.styles'
 
 export default function MyAskDetailUI() {
   return (
-    <>
+    <S.WrapperResponse>
       <S.Wrapper>
         <S.Row>
           <S.Key>분류</S.Key>
@@ -28,6 +28,6 @@ export default function MyAskDetailUI() {
           </S.EditDeleteBtnBox>
         </S.BtnBox>
       </S.Wrapper>
-    </>
+    </S.WrapperResponse>
   )
 }

@@ -2,10 +2,9 @@ import * as S from './Basket.styles'
 
 export default function BasketUI() {
   return (
-    <>
+    <S.WrapperResponse>
       <S.Wrapper>
         <S.BasketTitleTxt>장바구니</S.BasketTitleTxt>
-
         <S.Container>
           <S.LeftContainer>
             <S.AllCheckBoxRow>
@@ -89,6 +88,6 @@ export default function BasketUI() {
           </S.RightContainer>
         </S.Container>
       </S.Wrapper>
-    </>
+    </S.WrapperResponse>
   )
 }
