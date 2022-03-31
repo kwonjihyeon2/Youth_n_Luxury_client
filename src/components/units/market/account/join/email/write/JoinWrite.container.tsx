@@ -17,7 +17,7 @@ export default function JoinWrite(props) {
     numberSecond: '',
     numberThird: '',
   })
-
+  const [updateUserInfo, setUpdateUserInfo] = useState({})
   const [tokenMaker] = useMutation(TOKEN_MAKER)
   const [tokenValidate] = useMutation(TOKEN_VALIDATE)
   const [isSend, setIsSend] = useState(false)
@@ -65,6 +65,30 @@ export default function JoinWrite(props) {
       setIsNumCheck(true)
     } else {
       console.log('인증번호 확인 실')
+    }
+  }
+  const onClickUpdateUser = async () => {
+    try {
+      const {
+        email,
+        name,
+        phoneNum,
+        emailFirst,
+        emailSecond,
+        passwordCheck,
+        numberFirst,
+        numberSecond,
+        numberThird,
+        ...rest
+      } = createUserInput
+      const updateUserInput = { ...rest }
+      console.log(updateUserInput)
+      const result = await props.updateUser({
+        variables: { updateUserInfo: updateUserInput },
+      })
+      console.log(result)
+    } catch (err) {
+      console.log(err.message)
     }
   }
   const selectBoxChange = (event) => {
@@ -193,6 +217,9 @@ export default function JoinWrite(props) {
       isPwdCheck={isPwdCheck}
       isPwdVal={isPwdVal}
       isEdit={props.isEdit}
+      data={props.data}
+      updateUser={props.updateUser}
+      onClickUpdateUser={onClickUpdateUser}
     />
   )
 }
