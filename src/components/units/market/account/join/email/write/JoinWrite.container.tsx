@@ -48,7 +48,7 @@ export default function JoinWrite() {
         if (isPwdVal) setIsPwdVal(false)
       }
     }
-
+    console.log(createUserInput.password)
     console.log(isNumCheck)
     console.log(isPwdCheck)
 

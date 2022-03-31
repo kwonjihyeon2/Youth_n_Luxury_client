@@ -21,7 +21,7 @@ export default function UseditemList() {
   const onClickBrand = (event) => {
     setBrand(event.target.value)
   }
-  const onClickProduct = (event) => {
+  const onClickMoveProductDetail = (event) => {
     router.push(`/market/${event.target.id}`)
   }
 
@@ -32,7 +32,7 @@ export default function UseditemList() {
       main={main}
       sub={sub}
       brand={brand}
-      onClickProduct={onClickProduct}
+      onClickProduct={onClickMoveProductDetail}
       onClickMain={onClickMain}
       onClickSub={onClickSub}
       onClickBrand={onClickBrand}

@@ -22,11 +22,9 @@ const Box1 = styled.div`
   justify-content: center;
 `
 
-const LogoImg = styled.div`
-  margin-bottom: 30px;
-  height: 30%;
-  width: 100%;
-  background-color: gray;
+const LogoImg = styled.img`
+  width: 20%;
+  margin-bottom: 20px;
 `
 
 const FooterNavi = styled.div`
@@ -58,7 +56,7 @@ export default function LayoutFooter() {
     <Position>
       <Wrapper>
         <Box1>
-          <LogoImg>LOGO IMAGE</LogoImg>
+          <LogoImg src="/images/LogoWhite.png" />
           <FooterNavi>
             COMPANY | AGREEMENT | PRIVACY POLICY | GUIDE | PARTNER
           </FooterNavi>

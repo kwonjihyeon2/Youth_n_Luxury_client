@@ -15,7 +15,8 @@ export const GlobalContext = createContext(null)
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState('')
-  const value = { accessToken, setAccessToken }
+  const [item, setItem] = useState([])
+  const value = { accessToken, setAccessToken, item, setItem }
 
   useEffect(() => {
     getAccessToken().then((newAccessToken) => {
@@ -52,7 +53,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const uploadLink = createUploadLink({
     uri: 'http://mybackend.project5-sos.shop:3000/graphql',
     headers: { authorization: 'Bearer ' + accessToken },
-    credentials: 'include',
+    // credentials: 'include',
   })
 
   const client = new ApolloClient({
@@ -63,9 +64,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>
-        {/* <Layout> */}
-        <Component {...pageProps} />
-        {/* </Layout> */}
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ApolloProvider>
     </GlobalContext.Provider>
   )

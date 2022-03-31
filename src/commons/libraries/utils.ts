@@ -13,3 +13,23 @@ export const checkFileValidation = (files?: File) => {
   }
   return true
 }
+
+export const getPrice = (price: Number) => {
+  return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+export const getDate = (getDate) => {
+  const change = new Date(getDate)
+  const yyyy = change.getFullYear()
+  const mm = change.getMonth() + 1
+  const dd = change.getDate()
+  return `${yyyy}-${mm}-${dd}`
+}
+
+export const getDate2 = (getDate2) => {
+  const change = new Date(getDate2)
+  const yyyy = change.getFullYear()
+  const mm = change.getMonth() + 1
+  const dd = change.getDate()
+  return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`
+}

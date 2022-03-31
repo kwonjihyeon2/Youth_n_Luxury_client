@@ -19,16 +19,51 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>1.상품이미지등록</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperInput>
-            <S.UploadImage src="/images/uploadImg.png" />
-            <S.UploadImage src="/images/uploadImg.png" />
-            <S.UploadImage src="/images/uploadImg.png" />
-            <S.UploadImage src="/images/uploadImg.png" />
-            <S.UploadImage src="/images/uploadImg.png" />
-            <S.UploadImage src="/images/uploadImg.png" />
-            <S.UploadImage src="/images/uploadImg.png" />
-            <S.UploadImage src="/images/uploadImg.png" />
-            <S.UploadImage src="/images/uploadImg.png" />
-            <S.UploadImage src="/images/uploadImg.png" />
+            <input
+              style={{ display: 'none' }}
+              ref={props?.fileRef}
+              type="file"
+              onChange={props?.onChangeFile}
+            />
+            <img src={`https://storage.googleapis.com/${props.urls[0]}`} />
+            <S.UploadImage onClick={props?.onClickImage} />
+            <img src={`https://storage.googleapis.com/${props.urls[1]}`} />
+            <S.UploadImage
+              onClick={props?.onClickImage}
+              src="/images/uploadImg.png"
+            />
+            <S.UploadImage
+              onClick={props?.onClickImage}
+              src="/images/uploadImg.png"
+            />
+            <S.UploadImage
+              onClick={props?.onClickImage}
+              src="/images/uploadImg.png"
+            />
+            <S.UploadImage
+              onClick={props?.onClickImage}
+              src="/images/uploadImg.png"
+            />
+            <S.UploadImage
+              onClick={props?.onClickImage}
+              src="/images/uploadImg.png"
+            />
+            <S.UploadImage
+              onClick={props?.onClickImage}
+              src="/images/uploadImg.png"
+            />
+            <S.UploadImage
+              onClick={props?.onClickImage}
+              src="/images/uploadImg.png"
+            />
+            <S.UploadImage
+              onClick={props?.onClickImage}
+              src="/images/uploadImg.png"
+            />
+            <S.UploadImage
+              onClick={props?.onClickImage}
+              src="/images/uploadImg.png"
+            />
           </S.WrapperInput>
         </S.WrapperImages>
         <S.WrapperContents>

@@ -143,12 +143,7 @@ export default function JoinWriteUI(props) {
           </S.Row>
         )}
       </S.InputBox>
-      <S.SubmitBtn
-        disabled={!(props.isNumCheck && props.isPwdCheck && props.isPwdVal)}
-        onClick={props.onClickJoinBtn}
-      >
-        입력완료
-      </S.SubmitBtn>
+      <S.SubmitBtn onClick={props.onClickJoinBtn}>입력완료</S.SubmitBtn>
     </S.Wrapper>
   )
 }
