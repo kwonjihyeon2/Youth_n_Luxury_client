@@ -21,8 +21,8 @@ export default function Login() {
     console.log('눌러는짐')
     try {
       const result = await login({ variables: { ...loginInput } })
-      // console.log(accessToken.data.login)
-      // setAccessToken(accessToken.data.login)
+      // console.log(result.data.login)
+      // setAccessToken(result.data.login)
       const accessToken = result.data?.login
       console.log(accessToken)
       if (setAccessToken) {

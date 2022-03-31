@@ -59,7 +59,7 @@ export default function UseditemPaymentpage(props) {
 
     onClickDaumModal()
   }
-  console.log(address, zoneCode, addressDetail)
+  console.log(data?.fetchProduct.price)
 
   const onChangeAddr = (event) => {
     setAddressDetail(event.target.value)
@@ -149,7 +149,6 @@ export default function UseditemPaymentpage(props) {
               variables: {
                 impUid: rsp.imp_uid,
                 productId: String(data?.fetchProduct.productId),
-                price: Number(data?.fetchProduct.price),
                 status: 'PAYMENT',
               },
             })

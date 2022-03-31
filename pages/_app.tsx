@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     if (localStorage.getItem('accessToken')) {
       setAccessToken(localStorage.getItem('accessToken') || '')
     }
-    // console.log("000");
+    // console.log('000')
   }, [])
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {

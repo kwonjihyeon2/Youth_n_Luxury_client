@@ -52,8 +52,12 @@ export default function CustomCenterPageUI() {
         <S.WrapperTable>
           <S.TableSelect>
             <S.WrapperTitle>고객센터</S.WrapperTitle>
-            <S.CommonIndex onClick={onVisible}>공지사항</S.CommonIndex>
-            <S.CommonIndex onClick={onClickVisible}>자주묻는질문</S.CommonIndex>
+            <S.ResponsiveBox>
+              <S.CommonIndex onClick={onVisible}>공지사항</S.CommonIndex>
+              <S.CommonIndex onClick={onClickVisible}>
+                자주묻는질문
+              </S.CommonIndex>
+            </S.ResponsiveBox>
           </S.TableSelect>
 
           <S.ParentTable>

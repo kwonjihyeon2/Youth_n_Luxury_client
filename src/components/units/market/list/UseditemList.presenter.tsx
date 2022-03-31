@@ -25,7 +25,11 @@ export default function UseditemListUI(props) {
         />
         <S.WrapperBottom>
           {props.data?.fetchProducts.map((el) => (
-            <S.WrapperUseditem key={el.id}>
+            <S.WrapperUseditem
+              key={el.id}
+              id={el.id}
+              onClick={props.onClickProduct}
+            >
               {/* <img src="/images/uploadImg.png" /> */}
               <S.UseditemName>{el.name}</S.UseditemName>
               <S.UseditemPrice>{el.price}</S.UseditemPrice>

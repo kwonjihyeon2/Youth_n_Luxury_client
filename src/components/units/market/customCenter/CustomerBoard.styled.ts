@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../commons/styles/media'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -11,7 +12,6 @@ export const Wrapper = styled.div`
 export const WrapperBox = styled.div`
   max-width: 1200px;
   width: 100%;
-  padding: 40px 0;
 `
 
 export const WrapperTitle = styled.h2`
@@ -24,15 +24,24 @@ export const WrapperTable = styled.div`
   width: 100%;
   justify-content: space-between;
   padding: 40px 0;
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+  }
 `
 
 export const TableSelect = styled.div`
-  width: 10%;
-  margin-right: 50px;
+  /* width: 10%;
+  margin-right: 50px; */
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 
 export const ParentTable = styled.div`
   width: 80%;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
 `
 
 interface IpropsStyle {
@@ -52,7 +61,6 @@ export const RightTableBox = styled.div`
   height: ${(props: IpropsStyle) => (props.onDisplay ? '0' : '100%')};
   visibility: ${(props) => (props.onDisplay ? 'hidden' : 'visible')};
   opacity: ${(props) => (props.onDisplay ? '0' : '100')};
-  /* visibility: hidden; */
   transition: opacity 0.3s;
 `
 
@@ -68,10 +76,16 @@ export const TableList = styled.div`
 
 export const TableListRow = styled.div`
   width: 10%;
+  @media ${breakPoints.tablet} {
+    width: 15%;
+  }
 `
 
 export const TableListLongRow = styled.div`
   width: 60%;
+  /* @media ${breakPoints.tablet} {
+    width: 30%;
+  } */
 `
 export const CommonsTitle = styled.div`
   padding-bottom: 10px;
@@ -86,4 +100,15 @@ export const CommonIndex = styled.div`
     color: #000;
   }
   cursor: pointer;
+`
+
+export const ResponsiveBox = styled.div`
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    display: flex;
+    padding-bottom: 10px;
+    div {
+      margin-right: 30px;
+    }
+  }
 `
