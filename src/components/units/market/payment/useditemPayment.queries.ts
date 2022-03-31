@@ -42,7 +42,6 @@ export const CREATE_ORDER = gql`
     $impUid: String!
     $productId: String!
     $status: String!
-    $price: Float!
   ) {
     createOrder(
       impUid: $impUid

@@ -24,6 +24,12 @@ export const FETCH_PRODUCT = gql`
       }
       urls
       like
+      # product {
+      #   name
+      #   user {
+      #     name
+      #   }
+      # }
     }
   }
 `

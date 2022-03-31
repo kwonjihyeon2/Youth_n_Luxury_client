@@ -34,20 +34,6 @@ export default function UseditemDetailPage(props) {
   })
   console.log(String(router.query.boardId), data?.fetchProduct)
 
-  //   const CloseModal = ({ target }) => {
-  //     console.log(!el.current.contains(target));
-  //     if (isOpen && !el.current.contains(target)) {
-  //       setIsOpen(false);
-  //     }
-  //   };
-  //   console.log(isOpen);
-  //   useEffect(() => {
-  //     window.addEventListener("click", CloseModal);
-  //     return () => {
-  //       window.removeEventListener("click", CloseModal);
-  //     };
-  //   }, []);
-
   const onClickHeart = () => {
     setIsHeart((prev) => !prev)
   }
@@ -58,7 +44,6 @@ export default function UseditemDetailPage(props) {
       const result = await deleteProduct({
         variables: { productId: String(router.query.boardId) },
       })
-
       console.log(result)
       router.push('/market/list')
     } catch (error) {
@@ -126,14 +111,10 @@ export default function UseditemDetailPage(props) {
     }
   }
 
-  // const copyUrl = `http://localhost:3000/market/${data?.fetchProduct.id}`
-  // const onClickCopy = (e) => {
-  //   e.preventDefault()
-  //   e.clipboardData.setData('Text', copyUrl)
-  // }
-
   const { data: relativeData } = useQuery(RELATIVE_PRODUCT, {
-    variables: { name: data?.fetchProduct.subCategory.mainCategory.name },
+    variables: {
+      name: String(data?.fetchProduct.subCategory.mainCategory.name),
+    },
   })
   // console.log(relativeData)
 

@@ -263,11 +263,22 @@ export default function UseditemDetailPageUI(props) {
           <S.SliderContainer {...settings}>
             {props.relativeData?.fetchProductRelateMainCategory.map((el) => (
               <div>
-                <S.SliderBox></S.SliderBox>
-                <p>{el.name}</p>
-                <div>{el.price}원</div>
+                <div key={el.id}>
+                  <S.SliderBox></S.SliderBox>
+                  <p>{el.name}</p>
+                  <div>{el.price}원</div>
+                </div>
               </div>
             ))}
+            {props.relativeData?.fetchProductRelateMainCategory.length < 4 ? (
+              <div>
+                <S.SliderBox></S.SliderBox>
+                <p>에르메스 버킷백</p>
+                <div>2000만원</div>
+              </div>
+            ) : (
+              <></>
+            )}
           </S.SliderContainer>
         </S.SlickStyle>
 
