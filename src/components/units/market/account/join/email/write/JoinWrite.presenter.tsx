@@ -1,24 +1,43 @@
 import * as S from './JoinWrite.styles'
 
 export default function JoinWriteUI(props) {
+  console.log(props.data)
   return (
-    <S.ResponsiveBox>
+    <>
       <S.Wrapper>
         <S.JoinHeaderTxt>회원정보 입력</S.JoinHeaderTxt>
         <S.InputBox>
           <S.Row>
             <S.VarTxt>이메일</S.VarTxt>
             <S.ValueBox>
-              <S.EmailInput
-                style={{ marginRight: '5px' }}
-                onChange={props.onChangeEmail('emailFirst')}
-              ></S.EmailInput>
-              @
-              <S.EmailInput
-                style={{ marginLeft: '5px' }}
-                onChange={props.onChangeEmail('emailSecond')}
-                value={props.createUserInput.emailSecond}
-              ></S.EmailInput>
+              {props.isEdit ? (
+                <>
+                  <S.EmailInput
+                    style={{ marginRight: '5px' }}
+                    value={props.data?.fetchUser.email.split('@')[0]}
+                  ></S.EmailInput>
+                  @
+                  <S.EmailInput
+                    style={{ marginLeft: '5px' }}
+                    onChange={props.onChangeEmail('emailSecond')}
+                    value={props.data?.fetchUser.email.split('@')[1]}
+                  ></S.EmailInput>
+                </>
+              ) : (
+                <>
+                  <S.EmailInput
+                    style={{ marginRight: '5px' }}
+                    onChange={props.onChangeEmail('emailFirst')}
+                  ></S.EmailInput>
+                  @
+                  <S.EmailInput
+                    style={{ marginLeft: '5px' }}
+                    onChange={props.onChangeEmail('emailSecond')}
+                    value={props.createUserInput.emailSecond}
+                  ></S.EmailInput>
+                </>
+              )}
+
               <S.EmailDropdown onChange={props.selectBoxChange}>
                 <option value="">직접입력</option>
                 <option value="naver.com">naver.com</option>
@@ -55,9 +74,15 @@ export default function JoinWriteUI(props) {
           <S.Row>
             <S.VarTxt>이름</S.VarTxt>
             <S.ValueBox>
-              <S.PasswordInput
-                onChange={props.onChangeInput('name')}
-              ></S.PasswordInput>
+              {props.isEdit ? (
+                <S.PasswordInput
+                  value={props.data?.fetchUser.name}
+                ></S.PasswordInput>
+              ) : (
+                <S.PasswordInput
+                  onChange={props.onChangeInput('name')}
+                ></S.PasswordInput>
+              )}
             </S.ValueBox>
           </S.Row>
 
@@ -144,8 +169,12 @@ export default function JoinWriteUI(props) {
             </S.Row>
           )}
         </S.InputBox>
-        <S.SubmitBtn onClick={props.onClickJoinBtn}>입력완료</S.SubmitBtn>
+        {props.isEdit ? (
+          <S.SubmitBtn onClick={props.onClickUpdateUser}>수정완료</S.SubmitBtn>
+        ) : (
+          <S.SubmitBtn onClick={props.onClickJoinBtn}>입력완료</S.SubmitBtn>
+        )}
       </S.Wrapper>
-    </S.ResponsiveBox>
+    </>
   )
 }
