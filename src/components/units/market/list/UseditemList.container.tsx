@@ -1,16 +1,15 @@
-import { useQuery } from '@apollo/client'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
 import UseditemListUI from './UseditemList.presenter'
+import { useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
 import { FETCH_PRODUCTS } from './UseditemList.queries'
 
 export default function UseditemList() {
-  const router = useRouter()
-
-  const { data, refetch } = useQuery(FETCH_PRODUCTS)
   const [main, setMain] = useState('')
   const [sub, setSub] = useState('')
   const [brand, setBrand] = useState('')
+  const router = useRouter()
+  const { data, refetch } = useQuery(FETCH_PRODUCTS)
 
   const onClickMain = (event) => {
     setMain(event.target.id)
@@ -27,15 +26,15 @@ export default function UseditemList() {
 
   return (
     <UseditemListUI
-      data={data}
-      refetch={refetch}
       main={main}
       sub={sub}
       brand={brand}
-      onClickProduct={onClickMoveProductDetail}
       onClickMain={onClickMain}
       onClickSub={onClickSub}
       onClickBrand={onClickBrand}
+      data={data}
+      refetch={refetch}
+      onClickProduct={onClickMoveProductDetail}
     />
   )
 }
