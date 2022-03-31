@@ -1,43 +1,49 @@
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { ChangeEvent, useEffect, useState } from 'react'
-import { CREATE_PRODUCT, UPDATE_PRODUCT } from './UseditemWrite.queries'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import {
+  CREATE_PRODUCT,
+  UPDATE_PRODUCT,
+  UPLOAD_FILE,
+} from './UseditemWrite.queries'
 import UseditemWriteUI from './UseditemWrite.presenter'
 import { checkFileValidation } from '../../../../commons/libraries/utils'
 
 export default function UseditemWrite(props) {
   const router = useRouter()
 
+  const fileRef = useRef<HTMLInputElement>(null)
+
   const [createProduct] = useMutation(CREATE_PRODUCT)
   const [updateProduct] = useMutation(UPDATE_PRODUCT)
+  const [uploadFile] = useMutation(UPLOAD_FILE)
 
   const [isOpen, setIsOpen] = useState(false)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
-  const [urls, setUrls] = useState('test')
+  const [urls, setUrls] = useState([])
   const [brand, setBrand] = useState('')
   const [subCategory, setSubCategory] = useState('')
   const [selectMain, setSelectMain] = useState('')
 
-  // const onChangeUrls = async (event: ChangeEvent<HTMLInputElement>) => {
-  //   const imageUrls = []
+  const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
+    const imageUrl = []
 
-  //   for (let i = 0; i < event.target.files?.length; i++) {
-  //     const file = event.target.files?.[i]
-  //     const isVaild = checkFileValidation(file)
-  //     if (!isVaild) {
-  //       return
-  //     }
-  //     try {
-  //       const ImgResult = await createProduct({ variables: { urls: file } })
-  //       imageUrls.push(ImgResult.data?.createProduct?.urls)
-  //     } catch (error) {
-  //       alert(error.message)
-  //     }
-  //   }
-  //   setUrls([...urls, ...imageUrls])
-  // }
+    for (let i = 0; i < event.target.files?.length; i++) {
+      const file = []
+      file.push(event.target.files?.[i])
+
+      try {
+        const result = await uploadFile({ variables: { files: file } })
+
+        imageUrl.push(result.data?.uploadFile?.url)
+      } catch (error) {
+        alert(error.message)
+      }
+    }
+    setUrls([...urls, ...imageUrl])
+  }
   const onChangeName = (event) => {
     setName(event.target.value)
   }
@@ -57,6 +63,9 @@ export default function UseditemWrite(props) {
     setSelectMain(event.target.value)
   }
 
+  const onClickImage = () => {
+    fileRef.current?.click()
+  }
   const onClickSubmit = async () => {
     try {
       const result = await createProduct({
@@ -65,9 +74,9 @@ export default function UseditemWrite(props) {
             name,
             description,
             price: Number(price),
-            brand,
-            // urls,
-            subCategory,
+            brandName: brand,
+            urls,
+            subCategoryName: subCategory,
           },
         },
       })
@@ -110,6 +119,10 @@ export default function UseditemWrite(props) {
       description={description}
       selectMain={selectMain}
       onChangeMainCategory={onChangeMainCategory}
+      fileRef={fileRef}
+      onClickImage={onClickImage}
+      onChangeFile={onChangeFile}
+      urls={urls}
     />
   )
 }

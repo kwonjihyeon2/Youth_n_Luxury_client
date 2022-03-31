@@ -5,6 +5,8 @@ export default function UseditemList() {
   const [main, setMain] = useState('')
   const [sub, setSub] = useState('')
   const [brand, setBrand] = useState('')
+  const router = useRouter()
+  const { data, refetch } = useQuery(FETCH_PRODUCTS)
 
   const onClickMain = (event) => {
     setMain(event.target.id)
@@ -24,6 +26,9 @@ export default function UseditemList() {
       onClickMain={onClickMain}
       onClickSub={onClickSub}
       onClickBrand={onClickBrand}
+      data={data}
+      refetch={refetch}
+      onClickProduct={onClickMoveProductDetail}
     />
   )
 }
