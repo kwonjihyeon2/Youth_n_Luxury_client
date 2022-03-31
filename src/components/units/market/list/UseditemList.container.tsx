@@ -1,8 +1,5 @@
 import { useState } from 'react'
 import UseditemListUI from './UseditemList.presenter'
-import { useQuery } from '@apollo/client'
-import { useRouter } from 'next/router'
-import { FETCH_PRODUCTS } from './UseditemList.queries'
 
 export default function UseditemList() {
   const [main, setMain] = useState('')
@@ -19,9 +16,6 @@ export default function UseditemList() {
   }
   const onClickBrand = (event) => {
     setBrand(event.target.value)
-  }
-  const onClickMoveProductDetail = (event) => {
-    router.push(`/market/${event.target.id}`)
   }
 
   return (
