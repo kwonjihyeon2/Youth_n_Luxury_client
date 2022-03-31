@@ -76,13 +76,22 @@ export default function NavigationUI() {
           <S.NavRightBox>
             <S.IconBox>
               <S.IconContainer>
-                <img src="/images/myPageNav/navBasket.png" />
+                <img
+                  style={{ width: '15.5px', height: '18.5px' }}
+                  src="/images/myPageNav/navProfile.png"
+                />
               </S.IconContainer>
               <S.IconContainer>
-                <S.IconImg />
+                <img
+                  style={{ width: '15.5px', height: '18.5px' }}
+                  src="/images/myPageNav/navBasket.png"
+                />
               </S.IconContainer>
               <S.IconContainer>
-                <S.IconImg />
+                <img
+                  style={{ width: '15.5px', height: '18.5px' }}
+                  src="/images/myPageNav/navSearch.png"
+                />
               </S.IconContainer>
             </S.IconBox>
             <S.SellBtn>내 명품 팔기</S.SellBtn>

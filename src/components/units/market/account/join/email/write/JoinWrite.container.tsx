@@ -2,7 +2,7 @@ import { useState } from 'react'
 import JoinWriteUI from './JoinWrite.presenter'
 import { useMutation } from '@apollo/client'
 import { CREATE_USER, TOKEN_MAKER, TOKEN_VALIDATE } from './JoinWrite.queries'
-export default function JoinWrite() {
+export default function JoinWrite(props) {
   const [checkNum, setCheckNum] = useState(0)
   const [createUserInput, setCreateUserInput] = useState({
     email: '',
@@ -192,6 +192,7 @@ export default function JoinWrite() {
       isNumCheck={isNumCheck}
       isPwdCheck={isPwdCheck}
       isPwdVal={isPwdVal}
+      isEdit={props.isEdit}
     />
   )
 }
