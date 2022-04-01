@@ -1,16 +1,17 @@
 import { useQuery } from '@apollo/client'
-import { useRouter } from 'next/router'
-import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
-import { FETCH_PRODUCTS } from './Main.queries'
+import { FETCH_LIKE_PRODUCT, FETCH_PRODUCTS } from './Main.queries'
 import MainUI from './Main.presenter'
 
 export default function Main() {
   const { data } = useQuery(FETCH_PRODUCTS)
-  const NewArrival = data?.fetchProducts.slice(0, 9)
+  const NewArrival = data?.fetchProducts.slice(0, 12)
+
+  const { data: like } = useQuery(FETCH_LIKE_PRODUCT)
+  console.log(like)
 
   return (
     <>
-      <MainUI data={data} NewArrival={NewArrival} />
+      <MainUI data={data} NewArrival={NewArrival} like={like} />
     </>
   )
 }

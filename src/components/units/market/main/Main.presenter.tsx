@@ -56,18 +56,18 @@ export default function MainUI(props) {
               </S.NewArrivalsSubTxt>
             </S.NewArrivalsTxtBox>
             <S.ProductBox>
-              {new Array(9).fill(0).map(() => (
+              {props.like?.fetchProductLike.map((el) => (
                 <S.Product>
                   <S.ProductImg />
-                  <S.ProductTxt>
-                    샤넬 유광 그레인드 카프스킨, 골드메탈 ..
-                  </S.ProductTxt>
+                  <S.ProductTxt>{el.name}</S.ProductTxt>
                   <S.ProductTxt>24,500,000원</S.ProductTxt>
                 </S.Product>
               ))}
             </S.ProductBox>
 
-            <S.LoadMoreBtn>더보기</S.LoadMoreBtn>
+            <S.LoadBtn>
+              <S.LoadMoreBtn>더보기</S.LoadMoreBtn>
+            </S.LoadBtn>
           </S.ResponsiveBox>
         </S.Wrapper>
       </S.Position>
