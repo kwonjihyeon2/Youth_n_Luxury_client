@@ -124,12 +124,6 @@ export default function UseditemDetailPageUI(props) {
                         <S.ShareButton className="kakao-share-button"></S.ShareButton>
                       </div>
                       <S.CopyButton></S.CopyButton>
-                      {/* <input
-                        style={{ display: 'none' }}
-                        type="text"
-                        value={`http://localhost:3000/market/${props.data?.fetchProduct.id}`}
-                        ref={props.ShareRef}
-                      /> */}
                     </S.KakaoButton>
                   </div>
                 </S.IconBox>

@@ -59,3 +59,11 @@ export const SELLER_PRODUCT = gql`
     }
   }
 `
+export const CREATE_LIKE = gql`
+  mutation createLike($productId: String!) {
+    createLike(productId: $productId) {
+      id
+      islike
+    }
+  }
+`
