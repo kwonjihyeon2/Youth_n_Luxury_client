@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
-import { UploadButton, UploadFileHidden, UploadImage } from './Uploads01.styles'
-import { IUploads01UIProps } from './Uploads01.types'
+import { UploadButton, UploadFileHidden, UploadImage } from './Uploads05.styles'
+import { IUploads05UIProps } from './Uploads05.types'
 
-export default function Uploads01UI(props: IUploads01UIProps) {
+export default function Uploads05UI(props: IUploads05UIProps) {
   const [test, setTest] = useState([])
   useEffect(() => {
-    if (!props.fileUrl) return
-    const temp = JSON.parse(props.fileUrl)
+    if (!props.fileUrl5) return
+    const temp = JSON.parse(props.fileUrl5)
     setTest(temp)
-  }, [props.fileUrl])
+  }, [props.fileUrl5])
   return (
     <>
-      {props.fileUrl ? (
+      {props.fileUrl5 ? (
         <UploadImage
           onClick={props.onClickUpload}
           src={`https://storage.googleapis.com/${test[0]}`}
@@ -19,6 +19,11 @@ export default function Uploads01UI(props: IUploads01UIProps) {
       ) : (
         <UploadButton onClick={props.onClickUpload}></UploadButton>
       )}
+      <UploadFileHidden
+        type="file"
+        ref={props.fileRef}
+        onChange={props.onChangeFile}
+      />
       <UploadFileHidden
         type="file"
         ref={props.fileRef}
