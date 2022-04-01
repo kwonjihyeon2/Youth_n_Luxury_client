@@ -1,6 +1,6 @@
 import * as S from './Basket.styles'
 
-export default function BasketUI() {
+export default function BasketUI(props) {
   return (
     <S.WrapperResponse>
       <S.Wrapper>
@@ -12,58 +12,26 @@ export default function BasketUI() {
               <S.AllCheckTxt>전체선택</S.AllCheckTxt>
               <S.SelectDeleteBtn>선택삭제</S.SelectDeleteBtn>
             </S.AllCheckBoxRow>
-
             <S.BasketTable>
               <S.TableTopRow>
                 <S.TopMainTxt>배송 :</S.TopMainTxt>
                 <S.TopSubTxt>{`택배(선물)무료`}</S.TopSubTxt>
               </S.TableTopRow>
+              {props.basket.map((el) => (
+                <S.Row>
+                  <S.CheckBox></S.CheckBox>
+                  <S.ProductImg />
+                  <S.ProductNameTxtBox>
+                    <S.ProductNameTxt>{el.fetchProduct.name}</S.ProductNameTxt>
+                    <S.BuyBtn>바로구매</S.BuyBtn>
+                  </S.ProductNameTxtBox>
 
-              <S.Row>
-                <S.CheckBox></S.CheckBox>
-                <S.ProductImg />
-                <S.ProductNameTxtBox>
-                  <S.ProductNameTxt>
-                    샤넬 유광 그레인드 카프스킨..
-                  </S.ProductNameTxt>
-                  <S.BuyBtn>바로구매</S.BuyBtn>
-                </S.ProductNameTxtBox>
-
-                <S.ProductPriceBox>
-                  <S.PriceKey>상품금액</S.PriceKey>
-                  <S.PriceValue>670,000원</S.PriceValue>
-                </S.ProductPriceBox>
-              </S.Row>
-              <S.Row>
-                <S.CheckBox></S.CheckBox>
-                <S.ProductImg />
-                <S.ProductNameTxtBox>
-                  <S.ProductNameTxt>
-                    샤넬 유광 그레인드 카프스킨..
-                  </S.ProductNameTxt>
-                  <S.BuyBtn>바로구매</S.BuyBtn>
-                </S.ProductNameTxtBox>
-
-                <S.ProductPriceBox>
-                  <S.PriceKey>상품금액</S.PriceKey>
-                  <S.PriceValue>670,000원</S.PriceValue>
-                </S.ProductPriceBox>
-              </S.Row>
-              <S.Row>
-                <S.CheckBox></S.CheckBox>
-                <S.ProductImg />
-                <S.ProductNameTxtBox>
-                  <S.ProductNameTxt>
-                    샤넬 유광 그레인드 카프스킨..
-                  </S.ProductNameTxt>
-                  <S.BuyBtn>바로구매</S.BuyBtn>
-                </S.ProductNameTxtBox>
-
-                <S.ProductPriceBox>
-                  <S.PriceKey>상품금액</S.PriceKey>
-                  <S.PriceValue>670,000원</S.PriceValue>
-                </S.ProductPriceBox>
-              </S.Row>
+                  <S.ProductPriceBox>
+                    <S.PriceKey>상품금액</S.PriceKey>
+                    <S.PriceValue>{el.fetchProduct.price + '원'}</S.PriceValue>
+                  </S.ProductPriceBox>
+                </S.Row>
+              ))}
             </S.BasketTable>
           </S.LeftContainer>
           <S.RightContainer>

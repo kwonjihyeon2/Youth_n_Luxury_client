@@ -114,7 +114,7 @@ export default function UseditemDetailPageUI(props) {
                   <FiHeart />
                 </S.IconBox>
                 <S.IconBox style={{ cursor: 'pointer' }}>
-                  <FiShoppingCart />
+                  <FiShoppingCart onClick={props.onClickBasketBtn} />
                 </S.IconBox>
                 <S.IconBox style={{ cursor: 'pointer' }}>
                   <div onClick={props.onClickShare}>

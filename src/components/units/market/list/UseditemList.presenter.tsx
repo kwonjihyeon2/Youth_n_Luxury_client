@@ -28,7 +28,7 @@ export default function UseditemListUI(props) {
             <S.WrapperUseditem
               key={el.id}
               id={el.id}
-              onClick={props.onClickProduct}
+              onClick={props.onClickProduct(el)}
             >
               {/* <img src="/images/uploadImg.png" /> */}
               <S.UseditemName>{el.name}</S.UseditemName>

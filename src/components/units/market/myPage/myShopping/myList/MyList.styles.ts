@@ -90,10 +90,9 @@ export const Product = styled.div`
   justify-content: space-between;
   margin-bottom: 25px;
 `
-export const ProductImg = styled.div`
+export const ProductImg = styled.img`
   width: 126px;
   height: 116px;
-  background-color: grey;
 `
 export const ProductRightContent = styled.div`
   display: flex;
@@ -106,12 +105,21 @@ export const ProductRightContent = styled.div`
 export const ProductCheckBox = styled.input`
   width: 14.08px;
   height: 14.08px;
-  margin-top: 3px;
+  margin-top: 7px;
   margin-right: 5px;
 `
 export const ProductName = styled.div`
   font-size: 18px;
   font-weight: 400;
+  display: inline-block;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  width: 150px;
 `
 export const ProductTopRow = styled.div`
   width: 100%;

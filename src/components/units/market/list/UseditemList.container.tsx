@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import UseditemListUI from './UseditemList.presenter'
 import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
@@ -20,7 +20,21 @@ export default function UseditemList() {
   const onClickBrand = (event) => {
     setBrand(event.target.value)
   }
-  const onClickMoveProductDetail = (event) => {
+  const onClickMoveProductDetail = (el) => (event) => {
+    let isExist = false
+    const recentView = JSON.parse(localStorage.getItem('recentView') || '[]') // [{_id: 1, writer: 영희}, {_id: 2, writer: 훈이}, {_id: 3, writer: 철수}]
+    // const temp = baskets.filter((basketEl) => basketEl._id === el._id);
+
+    recentView.forEach((recentViewEl, i) => {
+      if (recentViewEl.id === el.id) {
+        isExist = true
+        return false
+      }
+    })
+    if (!isExist) {
+      recentView.push({ ...el })
+      localStorage.setItem('recentView', JSON.stringify(recentView))
+    }
     router.push(`/market/${event.target.id}`)
   }
 

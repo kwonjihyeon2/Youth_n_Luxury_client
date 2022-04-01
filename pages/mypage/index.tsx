@@ -1,5 +1,5 @@
-import MyPageContainer from '../../src/components/units/market/myPage/MyPage.container'
+import Transaction from '../../src/components/units/market/myPage/myShopping/transaction/Transaction.container'
 
 export default function MyPage() {
-  return <MyPageContainer />
+  return <Transaction />
 }

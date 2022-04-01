@@ -18,18 +18,17 @@ export default function MyListUI(props) {
           <S.SelectDeleteBtn>선택삭제</S.SelectDeleteBtn>
         </S.SelectBtnBox>
         <S.ProductBox>
-          {new Array(10).fill(0).map(() => (
+          {props.isSaw.map((el) => (
             <S.Product>
-              <S.ProductImg></S.ProductImg>
+              <S.ProductImg src={`${el.urls[0]}`}></S.ProductImg>
               <S.ProductRightContent>
                 <S.ProductTopCol>
                   <S.ProductTopRow>
                     <S.ProductCheckBox type="checkbox"></S.ProductCheckBox>
-                    <S.ProductName>샤넬 유광 그레인드 카프스킨..</S.ProductName>
+                    <S.ProductName>{el.name}</S.ProductName>
                   </S.ProductTopRow>
-                  <S.Price>24,500,000원</S.Price>
+                  <S.Price>{el.price + '원'}</S.Price>
                 </S.ProductTopCol>
-
                 <S.ProductBtnBox>
                   <S.TopBtnBox>
                     <S.BasketBtn>장바구니담기</S.BasketBtn>

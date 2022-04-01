@@ -87,7 +87,7 @@ export const BasketTable = styled.div`
   margin-top: 12px;
   border-radius: 8px;
   @media (max-width: 1024px) {
-    width: 100%
+    width: 100%;
     font-size: 12px;
   }
 `
@@ -142,6 +142,15 @@ export const ProductNameTxt = styled.div`
   font-size: 16px;
   font-weight: 400;
   color: #333333;
+  display: inline-block;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  width: 197px;
 `
 export const BuyBtn = styled.button`
   width: 84px;
