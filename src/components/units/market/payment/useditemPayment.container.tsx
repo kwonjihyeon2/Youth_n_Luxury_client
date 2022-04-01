@@ -24,6 +24,7 @@ export default function UseditemPaymentpage(props) {
       productId: String(router.query.boardId),
     },
   })
+  console.log(data?.fetchProduct.productId)
 
   const { data: fetchUser } = useQuery(FETCH_USER)
   const { data: AddrOne } = useQuery(FETCH_ADDRESS)
@@ -39,7 +40,6 @@ export default function UseditemPaymentpage(props) {
   const [address, setAddress] = useState('')
   const [zoneCode, setZipcode] = useState('')
   const [addressDetail, setAddressDetail] = useState('')
-  const [resultAddr, setResultAddr] = useState({})
 
   const onClickDaumModal = () => {
     setIsModalAdd((prev) => !prev)
@@ -52,14 +52,13 @@ export default function UseditemPaymentpage(props) {
 
     onClickDaumModal()
   }
-  console.log(data?.fetchProduct.price)
+  // console.log(data?.fetchProduct.price)
 
   const onChangeAddr = (event) => {
     setAddressDetail(event.target.value)
   }
 
-  const onClickSelect = async () => {
-    // setIsOpenAdd((prev) => !prev)
+  const onClickSubmit = async () => {
     try {
       const Addrresult = await createAddr({
         variables: {
@@ -70,8 +69,6 @@ export default function UseditemPaymentpage(props) {
           },
         },
       })
-      // console.log(Addrresult)
-      setResultAddr(Addrresult)
       setIsOpenAdd((prev) => !prev)
     } catch (error) {
       console.log(error.message)
@@ -97,7 +94,8 @@ export default function UseditemPaymentpage(props) {
   // }
 
   const { data: Addrs } = useQuery(FETCH_ADDRS)
-  const addressList = Addrs?.fetchUserAddrs.slice(0, 3)
+  const Arr = Addrs?.fetchUserAddrs.slice(0, 2)
+  console.log(Arr)
 
   const [inputs, setInputs] = useState({
     input: '',
@@ -141,7 +139,7 @@ export default function UseditemPaymentpage(props) {
             const result = await createOrder({
               variables: {
                 impUid: rsp.imp_uid,
-                productId: String(data?.fetchProduct.productId),
+                productId: String(router.query.boardId),
                 status: 'PAYMENT',
               },
             })
@@ -162,6 +160,21 @@ export default function UseditemPaymentpage(props) {
     setIsSame((prev) => !prev)
   }
 
+  const [index, setIndex] = useState()
+  const onClickFetch = (id) => () => {
+    setIndex(id)
+    // setIsOpenAdd((prev) => !prev)
+    // console.log(id)
+  }
+
+  const onClickSelect = () => {
+    // console.log(index, Arr.id)
+    if (index) {
+      setIsOpenAdd((prev) => !prev)
+      onClickSame()
+    }
+  }
+
   return (
     <>
       <Head>
@@ -175,12 +188,15 @@ export default function UseditemPaymentpage(props) {
         ></script>
       </Head>
       <UseditemPaymentpageUI
-        addressList={addressList}
+        index={index}
+        onClickFetch={onClickFetch}
+        Arr={Arr}
         AddrOne={AddrOne}
         fetchUser={fetchUser}
         addressDetail={addressDetail}
         onChangeAddr={onChangeAddr}
         onClickSelect={onClickSelect}
+        onClickSubmit={onClickSubmit}
         Addrs={Addrs}
         // isSold={isSold}
         inputs={inputs}

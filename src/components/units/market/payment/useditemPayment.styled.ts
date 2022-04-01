@@ -262,7 +262,7 @@ export const submitAddress = styled.div`
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #000;
+  border: 1px solid black;
   text-align: left;
 `
 export const MoreAddress = styled.div`

@@ -9,6 +9,9 @@ export const FETCH_PRODUCT = gql`
       price
       user {
         id
+        name
+        email
+        phoneNum
       }
       subCategory {
         name
@@ -43,12 +46,7 @@ export const CREATE_ORDER = gql`
     $productId: String!
     $status: String!
   ) {
-    createOrder(
-      impUid: $impUid
-      productId: $productId
-      status: $status
-      price: $price
-    ) {
+    createOrder(impUid: $impUid, productId: $productId, status: $status) {
       id
       impUid
       price
