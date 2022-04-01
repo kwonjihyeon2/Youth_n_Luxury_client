@@ -6,7 +6,6 @@ import Uploads05 from '../../../commons/uploads/05/Uploads05.container'
 import * as S from './UseditemWrite.styles'
 
 export default function UseditemWriteUI(props) {
-  console.log(props.urls)
   return (
     <S.Position>
       <S.Wrapper>
