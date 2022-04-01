@@ -70,6 +70,12 @@ export const FETCH_PRODUCTS = gql`
   }
 `
 
+export const DELETE_USER = gql`
+  mutation deleteUser {
+    deleteUser
+  }
+`
+
 export const DELETE_PRODUCT = gql`
   mutation deleteProduct($productId: String!) {
     deleteProduct(productId: $productId)
