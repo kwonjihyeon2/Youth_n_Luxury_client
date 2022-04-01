@@ -15,6 +15,15 @@ interface IpropsType {
   onClickOrder: () => void
   data: any
   fetchUser: any
+  addressList: any
+  AddrOne: any
+  addressDetail: any
+  onChangeAddr: any
+  onClickSelect: any
+  Addrs: any
+  inputs: any
+  isSame: any
+  onClickSame: any
 }
 
 export default function UseditemPaymentpageUI(props: IpropsType) {
@@ -245,7 +254,7 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             </S.WrapperContentBox>
             <S.ModalCenter>
               <S.AddressSelect>배송지 수정</S.AddressSelect>
-              {props.addressList.map((el) => (
+              {props?.addressList?.map((el) => (
                 <S.submitAddress>
                   <div>
                     배송지 <button>기본배송지</button>

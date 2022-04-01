@@ -8,7 +8,6 @@ import {
   FETCH_ADDRESS,
   FETCH_ADDRS,
   FETCH_USER,
-  UPDATE_ADDRESS,
 } from './useditemPayment.queries'
 import Head from 'next/head'
 import { useRouter } from 'next/router'

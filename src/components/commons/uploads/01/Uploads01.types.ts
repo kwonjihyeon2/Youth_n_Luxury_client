@@ -4,7 +4,8 @@ export interface IUploads01Props {
   index: number
   fileUrl: string
   defaultFileUrl?: string
-  onChangeUrls: (fileUrl: string, index: number) => void
+  onChangeUrls?: any
+  onChangeFileUrls?: any
 }
 
 export interface IUploads01UIProps {
