@@ -49,11 +49,11 @@ export default function UseditemWrite(props) {
   //   console.log(result)
   // }
 
-  const onChangeUrls = (url: string, index: number) => {
-    const newUrls = [...urls]
-    newUrls[index] = url
-    setUrls(newUrls)
-  }
+  // const onChangeUrls = (url: string, index: number) => {
+  //   const newUrls = [...urls]
+  //   newUrls[index] = url
+  //   setUrls(newUrls)
+  // }
 
   const onChangeName = (event) => {
     setName(event.target.value)
