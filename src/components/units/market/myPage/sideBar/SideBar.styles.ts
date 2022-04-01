@@ -42,6 +42,9 @@ export const TitleTxt = styled.div`
   padding-left: 19px;
   border-bottom: 1px solid #6666664d;
 `
+interface IProps {
+  isSelected: boolean
+}
 export const SubTxt = styled.div`
   color: #767676;
   font-size: 14px;

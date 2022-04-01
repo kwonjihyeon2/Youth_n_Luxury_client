@@ -10,13 +10,15 @@ const Position = styled.div`
   top: 0px;
   z-index: 30000;
 `
-
+interface Status {
+  isTrue: boolean
+}
 const Wrapper = styled.div`
   width: 300px;
   height: 100%;
   position: absolute;
   transition: 0.5s;
-  left: ${(props) => (props.isTrue === true ? '0px' : '-300px')};
+  left: ${(props: Status) => (props.isTrue === true ? '0px' : '-300px')};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -173,7 +175,7 @@ const HelpBtn = styled.button`
 `
 
 const MenuBtn = styled.div`
-  left: ${(props) => (props.isTrue === true ? '300px' : '0px')};
+  left: ${(props: Status) => (props.isTrue === true ? '300px' : '0px')};
   transition: 0.5s;
   position: absolute;
   display: flex;
