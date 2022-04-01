@@ -26,11 +26,14 @@ export const WrapperContents = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 860px;
   /* height: 100vh; */
   background-color: #fff;
   border-radius: 20px 20px 0 0;
   @media ${breakPoints.tablet} {
+    width: 80%;
+  }
+  @media ${breakPoints.mobile} {
     width: 80%;
   }
 `
@@ -58,6 +61,9 @@ export const CancleButton = styled.button`
 export const ReviewTable = styled.div`
   padding: 20px 90px 30px;
   width: 100%;
+  @media ${breakPoints.tablet} {
+    padding: 20px 50px 30px;
+  }
 `
 
 export const TableBox = styled.div`

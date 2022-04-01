@@ -1,6 +1,5 @@
 import { useMutation, useQuery } from '@apollo/client'
-import { useState } from 'react'
-import { FETCH_PRODUCT } from '../detail/useditemDetail.query'
+import { ChangeEvent, useState } from 'react'
 import UseditemPaymentpageUI from './UseditemPayment.presenter'
 import {
   CREATE_ADDRESS,
@@ -8,7 +7,8 @@ import {
   FETCH_ADDRESS,
   FETCH_ADDRS,
   FETCH_USER,
-  UPDATE_ADDRESS,
+  // UPDATE_ADDRESS,
+  FETCH_PRODUCT,
 } from './useditemPayment.queries'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -19,100 +19,83 @@ declare const window: typeof globalThis & {
 
 export default function UseditemPaymentpage(props) {
   const router = useRouter()
+
+  //물건 조회 -> 유저 조회까지 가능
   const { data } = useQuery(FETCH_PRODUCT, {
-    variables: {
-      productId: String(router.query.boardId),
-    },
+    variables: { productId: String(router.query.boardId) },
   })
-  console.log(data?.fetchProduct.productId)
 
-  const { data: fetchUser } = useQuery(FETCH_USER)
-  const { data: AddrOne } = useQuery(FETCH_ADDRESS)
-  const [createAddr] = useMutation(CREATE_ADDRESS)
+  //Daumpostcode 관련,
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [Address, setAddress] = useState('')
+  const [zonecode, setZonecode] = useState('')
+  const [AddressDetail, setAddressDetail] = useState('')
 
+  const onTogglePostModal = () => {
+    setIsModalVisible((prev) => !prev)
+  }
+
+  const onCompleteAddress = (data: any) => {
+    console.log(data)
+    setAddress(data.address)
+    setZonecode(data.zonecode)
+    setAddressDetail(data.addressDetail)
+    onTogglePostModal()
+  }
+
+  const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
+    setAddressDetail(event.target.value)
+  }
+  // const onClickSetPost = () => {
+  //   setAddress(data.address)
+  //   setZonecode(data.zonecode)
+  //   setAddressDetail(data.addressDetail)
+  // }
+
+  //배송지 관련 true, false css
   const [isOpenAdd, setIsOpenAdd] = useState(false)
-
-  const onClickAdd = () => {
+  const onClickOpen = () => {
     setIsOpenAdd((prev) => !prev)
   }
 
-  const [isModalAdd, setIsModalAdd] = useState(false)
-  const [address, setAddress] = useState('')
-  const [zoneCode, setZipcode] = useState('')
-  const [addressDetail, setAddressDetail] = useState('')
-
-  const onClickDaumModal = () => {
-    setIsModalAdd((prev) => !prev)
-  }
-
-  const handleComplete = (data) => {
-    setAddress(data.address)
-    setZipcode(data.zonecode)
-    setAddressDetail(data.addressDetail)
-
-    onClickDaumModal()
-  }
-  // console.log(data?.fetchProduct.price)
-
-  const onChangeAddr = (event) => {
-    setAddressDetail(event.target.value)
-  }
-
+  //배송지 등록
+  const [createAddr] = useMutation(CREATE_ADDRESS)
   const onClickSubmit = async () => {
     try {
-      const Addrresult = await createAddr({
+      const submit = await createAddr({
         variables: {
           createUserAddrInput: {
-            address,
-            addressDetail,
-            zipCode: zoneCode,
+            address: Address,
+            zipCode: zonecode,
+            addressDetail: AddressDetail,
           },
         },
       })
+      console.log(submit)
       setIsOpenAdd((prev) => !prev)
     } catch (error) {
       console.log(error.message)
     }
   }
 
-  // const onClickEditAddr = async () => {
-  //   try {
-  //     const Addrresult = await createAddr({
-  //       variables: {
-  //         createUserAddrInput: {
-  //           address,
-  //           addressDetail,
-  //           zipCode: zoneCode,
-  //         },
-  //       },
-  //     })
-  //     setResultAddr(Addrresult)
-  //     setIsOpenAdd((prev) => !prev)
-  //   } catch (error) {
-  //     console.log(error.message)
-  //   }
-  // }
+  //등록된 배송지 fetch
+  const { data: addrData } = useQuery(FETCH_ADDRESS)
 
-  const { data: Addrs } = useQuery(FETCH_ADDRS)
-  const Arr = Addrs?.fetchUserAddrs.slice(0, 2)
-  console.log(Arr)
-
-  const [inputs, setInputs] = useState({
-    input: '',
-    secInput: '',
-    thirdInput: '',
-  })
-
-  const onChangeNum = (event: any) => {
-    // console.log(event.target.id)
-    setInputs({
-      ...inputs,
-      [event.target.id]: event.target.value,
-    })
+  //사용자 기본 배송지
+  const [basic, setBasic] = useState(false)
+  const onClickBasic = () => {
+    setBasic((prev) => !prev)
+  }
+  const onClickEvent = () => {
+    setIsOpenAdd((prev) => !prev)
+    setBasic((prev) => !prev)
   }
 
-  const [createOrder] = useMutation(CREATE_ORDER)
+  //등록한 배송지 리스트
+  const { data: listAddr } = useQuery(FETCH_ADDRS)
 
+  // 결제 로직
+  const [createOrder] = useMutation(CREATE_ORDER)
   const onClickOrder = () => {
     const IMP = window.IMP
     IMP.init('imp89934474')
@@ -122,12 +105,11 @@ export default function UseditemPaymentpage(props) {
         // param
         pg: 'html5_inicis',
         pay_method: 'card',
-        // merchant_uid: 'ORD20180131-0000011',
         name: 'Youth&Luxury',
         amount: Number(data?.fetchProduct.price),
-        buyer_email: fetchUser.fetchUser.email,
-        buyer_name: fetchUser.fetchUser.name,
-        buyer_tel: inputs.input + inputs.secInput + inputs.thirdInput,
+        buyer_email: data?.fetchProduct.user.email,
+        buyer_name: data?.fetchProduct.user.name,
+        buyer_tel: data?.fetchProduct.user.phoneNum,
         buyer_addr: '서울특별시 강남구 신사동',
         buyer_postcode: '01181',
       },
@@ -155,26 +137,6 @@ export default function UseditemPaymentpage(props) {
     )
   }
 
-  const [isSame, setIsSame] = useState(false)
-  const onClickSame = () => {
-    setIsSame((prev) => !prev)
-  }
-
-  const [index, setIndex] = useState()
-  const onClickFetch = (id) => () => {
-    setIndex(id)
-    // setIsOpenAdd((prev) => !prev)
-    // console.log(id)
-  }
-
-  const onClickSelect = () => {
-    // console.log(index, Arr.id)
-    if (index) {
-      setIsOpenAdd((prev) => !prev)
-      onClickSame()
-    }
-  }
-
   return (
     <>
       <Head>
@@ -188,30 +150,23 @@ export default function UseditemPaymentpage(props) {
         ></script>
       </Head>
       <UseditemPaymentpageUI
-        index={index}
-        onClickFetch={onClickFetch}
-        Arr={Arr}
-        AddrOne={AddrOne}
-        fetchUser={fetchUser}
-        addressDetail={addressDetail}
-        onChangeAddr={onChangeAddr}
-        onClickSelect={onClickSelect}
-        onClickSubmit={onClickSubmit}
-        Addrs={Addrs}
-        // isSold={isSold}
-        inputs={inputs}
-        isSame={isSame}
-        onClickSame={onClickSame}
         data={data}
-        onChangeNum={onChangeNum}
-        onClickOrder={onClickOrder}
         isOpenAdd={isOpenAdd}
-        isModalAdd={isModalAdd}
-        onClickAdd={onClickAdd}
-        handleComplete={handleComplete}
-        onClickDaumModal={onClickDaumModal}
-        zipCode={zoneCode}
-        address={address}
+        onClickOpen={onClickOpen}
+        onClickOrder={onClickOrder}
+        isModalVisible={isModalVisible}
+        onTogglePostModal={onTogglePostModal}
+        onCompleteAddress={onCompleteAddress}
+        onChangeAddressDetail={onChangeAddressDetail}
+        Address={Address}
+        zonecode={zonecode}
+        AddressDetail={AddressDetail}
+        onClickSubmit={onClickSubmit}
+        addrData={addrData}
+        onClickBasic={onClickBasic}
+        basic={basic}
+        onClickEvent={onClickEvent}
+        listAddr={listAddr}
       />
     </>
   )

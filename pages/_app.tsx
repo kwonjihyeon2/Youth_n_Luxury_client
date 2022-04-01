@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
 
   const uploadLink = createUploadLink({
-    uri: 'http://mybackend.project5-sos.shop:3000/graphql',
+    uri: 'http://mybackend.project5-sos.shop/graphql',
     headers: { authorization: 'Bearer ' + accessToken },
     // credentials: 'include',
   })
