@@ -121,7 +121,7 @@ export const Box1QuestionWrapper = styled.div`
   font-size: 20px;
   height: 50px;
   border-bottom: 2px solid #333333;
-  overflow: hidden;
+  overflow: scroll;
   text-overflow: ellipsis;
   white-space: nowrap;
   div {

@@ -19,9 +19,7 @@ export default function AdminMain() {
     useQuery(FETCH_PRODUCTS)
   const [deleteUser] = useMutation(DELETE_USER)
 
-  const onClickMoveToQuery = () => {
-    // router.push(`/mypage/`)
-  }
+  const onClickMoveToQuery = () => {}
   const onClickLogout = () => {}
   const onClickDeleteProduct = () => {}
   const onClickDeleteUser = async () => {
