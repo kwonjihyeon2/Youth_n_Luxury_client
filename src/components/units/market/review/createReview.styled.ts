@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { Rate } from 'antd'
 import 'antd/dist/antd.css'
+import { breakPoints } from '../../../commons/utils/media'
 
 export const WrapperMain = styled.div`
   /* width: 100%;
@@ -25,10 +26,13 @@ export const WrapperContents = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 860px;
+  width: 50%;
   /* height: 100vh; */
   background-color: #fff;
   border-radius: 20px 20px 0 0;
+  @media ${breakPoints.tablet} {
+    width: 80%;
+  }
 `
 export const WrapperTitle = styled.p`
   color: #333;
