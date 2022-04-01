@@ -184,19 +184,19 @@ const MenuBtn = styled.div`
   height: 35px;
   width: 35px;
   cursor: pointer;
-  &:hover :nth-of-type(1) {
+  &::before :nth-of-type(1) {
     transform: rotate(360deg);
     transition: 1s;
   }
-  &:hover :nth-of-type(2) {
+  &:after:active :nth-of-type(2) {
     transform: rotate(360deg);
     transition: 0.8s;
   }
-  &:hover :nth-of-type(3) {
+  &:active :nth-of-type(3) {
     transform: rotate(360deg);
     transition: 0.6s;
   }
-  &:hover :nth-of-type(4) {
+  &:active:after :nth-of-type(4) {
     transform: rotate(360deg);
     transition: 0.4s;
   }
