@@ -56,15 +56,18 @@ export default function AdminMainUI(props) {
             <S.TempWrapper>
               <S.UserWrapper>
                 <S.UserList>
-                  <S.UserImgWrapper>
-                    <S.UserTempImg></S.UserTempImg>
-                    <S.UserDeleteBtn>X</S.UserDeleteBtn>
-                  </S.UserImgWrapper>
                   {props.dataUsers?.fetchUsers.map((el) => (
-                    <div>
+                    <S.UserImgWrapper>
+                      <S.UserTempImg>
+                        <S.UserImg
+                          key={el}
+                          src={`https://storage.googleapis.com/${el.image}`}
+                        />
+                      </S.UserTempImg>
                       <S.UserName>{el.name}</S.UserName>
                       <S.UserEmail>{el.email}</S.UserEmail>
-                    </div>
+                      <S.UserDeleteBtn>X</S.UserDeleteBtn>
+                    </S.UserImgWrapper>
                   ))}
                 </S.UserList>
               </S.UserWrapper>
