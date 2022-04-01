@@ -21,13 +21,16 @@ export const SelectTransactionBar = styled.div`
   border-bottom: 1px solid #333333;
   margin-bottom: 8px;
 `
+interface IProps {
+  isBuy: boolean
+}
 export const SelectDetailBtn = styled.button`
   width: 187px;
   height: 39px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${(props) => (props.isBuy ? 'white' : '#747474')};
+  color: ${(props: IProps) => (props.isBuy ? 'white' : '#747474')};
   background-color: ${(props) => (props.isBuy ? 'black' : '#F1F1F1')};
   font-size: 14px;
   font-weight: 300;
