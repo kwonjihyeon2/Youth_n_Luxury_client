@@ -7,7 +7,7 @@ export const Position = styled.div`
   align-items: center;
 `
 export const Wrapper = styled.div`
-  width: 1200px;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   display: flex;
@@ -24,9 +24,11 @@ export const CarouselBox = styled.div`
     }
   }
 `
-// export const BannerChanelImg = styled.img`
-//   width: 100vw;
-// `
+export const ResponsiveBox = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 60px;
+`
 
 export const Carousel = styled.div`
   width: 100%;
@@ -50,7 +52,8 @@ export const CarouselTxt = styled.div`
 
 export const NewArrivalsTxtBox = styled.div`
   display: flex;
-  width: 1078px;
+  max-width: 1200px;
+  width: 100%;
   height: 56px;
   margin-top: 80px;
   align-items: center;
@@ -59,7 +62,6 @@ export const NewArrivalsTxtBox = styled.div`
 `
 export const NewArrivalsTitleTxt = styled.div`
   font-weight: 400;
-
   font-size: 34px;
 `
 
@@ -71,20 +73,20 @@ export const NewArrivalsSubTxt = styled.div`
 `
 
 export const ProductBox = styled.div`
-  width: 1020px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 `
 export const Product = styled.div`
-  width: 320px;
+  width: 30%;
   display: flex;
   flex-direction: column;
   margin-bottom: 48px;
   align-items: center;
 `
 export const ProductImg = styled.div`
-  width: 320px;
+  width: 100%;
   height: 374px;
   background-color: gray;
   margin-bottom: 12px;

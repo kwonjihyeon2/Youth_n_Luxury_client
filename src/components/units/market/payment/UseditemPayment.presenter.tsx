@@ -2,27 +2,12 @@ import DaumPostcode from 'react-daum-postcode'
 import { Modal } from 'antd'
 import 'antd/dist/antd.css'
 import * as S from './useditemPayment.styled'
-
-interface IpropsType {
-  isOpenAdd: boolean
-  onClickAdd: () => void
-  isModalAdd: boolean
-  onClickDaumModal: () => void
-  handleComplete: (data: any) => void
-  zipCode: any
-  address: any
-  onChangeNum: (event: any) => void
-  onClickOrder: () => void
-  data: any
-  fetchUser: any
-  Arr: any
-  onClickFetch: (id) => () => void
-}
+import { IpropsType } from './useditemPayment.types'
 
 export default function UseditemPaymentpageUI(props: IpropsType) {
-  const Num = props.fetchUser?.fetchUser.phoneNum.slice(0, 3)
-  const Num2 = props.fetchUser?.fetchUser.phoneNum.slice(3, 7)
-  const Num3 = props.fetchUser?.fetchUser.phoneNum.slice(7, 11)
+  const Num = props.data?.fetchProduct.user.phoneNum.slice(0, 3)
+  const Num2 = props.data?.fetchProduct.user.phoneNum.slice(3, 7)
+  const Num3 = props.data?.fetchProduct.user.phoneNum.slice(7, 11)
 
   return (
     <S.Wrapper>
@@ -30,7 +15,7 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
         <S.WrapperTitle>주문서작성</S.WrapperTitle>
 
         <S.WrapperContentBox>
-          <div style={{ width: '600px' }}>
+          <S.LeftContentBox>
             <S.CommonTitle>주문상품정보</S.CommonTitle>
             <S.WrapperLeft>
               <S.LeftText>
@@ -52,7 +37,7 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             <S.DeliveryTextInput
               type="text"
               name="user"
-              value={props.fetchUser?.fetchUser.name}
+              value={props.data?.fetchProduct.user.name}
               readOnly
             />
             <S.DeliveryText>
@@ -63,13 +48,23 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                 value={Num}
               />
               -
-              <S.DeliveryTextSmallInput type="tel" name="phone2" value={Num2} />
+              <S.DeliveryTextSmallInput
+                type="tel"
+                name="phone2"
+                readOnly
+                value={Num2}
+              />
               -
-              <S.DeliveryTextSmallInput type="tel" name="phone3" value={Num3} />
+              <S.DeliveryTextSmallInput
+                type="tel"
+                name="phone3"
+                readOnly
+                value={Num3}
+              />
             </S.DeliveryText>
             <S.DeliveryTextInput
               type="email"
-              value={props.fetchUser?.fetchUser.email}
+              value={props.data?.fetchProduct.user.email}
             />
             <S.CommonTitle>배송지</S.CommonTitle>
 
@@ -77,24 +72,23 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
               <div>
                 <S.PostSelect>
                   <S.ChangeSelect
-                    onClick={props.onClickAdd}
                     isOpenAdd={props.isOpenAdd}
+                    onClick={props.onClickOpen}
                   >
                     배송지선택
                   </S.ChangeSelect>
                   <S.ChangeSelect
-                    onClick={props.onClickAdd}
                     isOpenAdd={!props.isOpenAdd}
+                    onClick={props.onClickOpen}
                   >
-                    기본배송지
+                    신규수정
                   </S.ChangeSelect>
-                  <div></div>
                 </S.PostSelect>
                 <S.DeliveryTextInput
                   type="text"
-                  value={props.fetchUser?.fetchUser.name}
+                  value={props.data?.fetchProduct.user.name}
                 />
-                <S.CommonsButton onClick={props.onClickSame}>
+                <S.CommonsButton onClick={props.onClickBasic}>
                   주문자 정보와 동일
                 </S.CommonsButton>
               </div>
@@ -103,53 +97,54 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                 placeholder="07250"
                 readOnly
                 value={
-                  props.isSame
-                    ? props.AddrOne?.fetchUserAddr.zipCode
-                    : props.zipCode
+                  props.basic
+                    ? props.addrData?.fetchUserAddr.zipCode
+                    : props.zonecode
                 }
               />
               <S.DeliveryLongInput
                 type="text"
-                value={
-                  props.isSame
-                    ? props.AddrOne?.fetchUserAddr.address
-                    : props.address
-                }
                 placeholder="기본 주소"
                 readOnly
+                defaultValue={
+                  props.basic
+                    ? props.addrData?.fetchUserAddr.address
+                    : props.Address
+                }
               />
               <S.DeliveryLongInput
                 type="text"
                 placeholder="나머지 주소"
                 value={
-                  props.isSame ? props.Arr?.addressDetail : props.addressDetail
+                  props.basic
+                    ? props.addrData?.fetchUserAddr.addressDetail
+                    : props.AddressDetail
                 }
+                onChange={props.onChangeAddressDetail}
               />
               <S.DeliveryText>
                 <S.DeliveryTextSmallInput
                   id="input"
                   type="tel"
                   name="phone1"
-                  onChange={props.onChangeNum}
-                  defaultValue={props.isSame ? Num : '휴대폰'}
+                  value={Num}
+                  readOnly
                 />
                 -
                 <S.DeliveryTextSmallInput
                   id="secInput"
                   type="tel"
                   name="phone2"
-                  onChange={props.onChangeNum}
-                  defaultValue={props.isSame ? Num2 : ''}
-                  // value={!props.isSame ? props.onChangeNum : Num2}
+                  value={Num2}
+                  readOnly
                 />
                 -
                 <S.DeliveryTextSmallInput
                   type="tel"
                   name="phone3"
                   id="thirdInput"
-                  onChange={props.onChangeNum}
-                  defaultValue={props.isSame ? Num3 : ''}
-                  // defaultValue={event.target.value}
+                  value={Num3}
+                  readOnly
                 />
               </S.DeliveryText>
               <div>
@@ -175,19 +170,19 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                 </S.DeliveryTextselect>
               </S.DeliveryText>
             </div>
-          </div>
-          {props.isModalAdd && (
+          </S.LeftContentBox>
+          {props.isModalVisible && (
             <Modal
               centered
               visible={true}
-              onCancel={props.onClickDaumModal}
-              onOk={props.onClickDaumModal}
+              onCancel={props.onTogglePostModal}
+              onOk={props.onTogglePostModal}
             >
-              <DaumPostcode onComplete={props.handleComplete} />
+              <DaumPostcode onComplete={props.onCompleteAddress} />
             </Modal>
           )}
 
-          <div style={{ width: '450px', marginLeft: '20px' }}>
+          <S.RightContentBox>
             <S.CommonTitle>결제정보</S.CommonTitle>
             <S.PaymentItem>
               <ul>
@@ -232,46 +227,46 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             <S.PaymentResult onClick={props.onClickOrder}>
               결제하기
             </S.PaymentResult>
-          </div>
+          </S.RightContentBox>
         </S.WrapperContentBox>
+
+        {/* 여기부터 모달 관련 */}
         <S.ModalAddress isOpenAdd={props.isOpenAdd}>
           <S.ModalBox>
             <S.WrapperContentBox style={{ padding: '10px' }}>
               <div>주문 / 결제</div>
-              <button onClick={props.onClickAdd}> X </button>
+              <button onClick={props.onClickOpen}> X </button>
             </S.WrapperContentBox>
             <S.ModalCenter>
               <S.AddressSelect>배송지 수정</S.AddressSelect>
               <S.submitAddress>
-                <div>
-                  배송지 <button>기본배송지</button>
-                </div>
+                <div>신규 배송지</div>
                 <S.DeliveryTextSmallInput
                   type="tel"
                   placeholder="07250"
-                  value={props.zipCode}
+                  value={props.zonecode}
                   readOnly
                 />
-                <S.CommonsButton onClick={props.onClickDaumModal}>
+                <S.CommonsButton onClick={props.onTogglePostModal}>
                   우편번호 검색
                 </S.CommonsButton>
                 <S.DeliveryLongInput
                   type="text"
-                  value={props.address}
+                  value={props.Address}
                   readOnly
                 />
                 <S.DeliveryLongInput
                   type="text"
-                  onChange={props.onChangeAddr}
+                  onChange={props.onChangeAddressDetail}
                 />
               </S.submitAddress>
-              {props.Addrs?.fetchUserAddrs.length >= 2 &&
-                props.Arr.map((el, index) => (
+              {props.listAddr?.fetchUserAddrs.length <= 2 &&
+                props.listAddr?.fetchUserAddrs.map((el, index) => (
                   <S.submitAddress
                     key={el.id}
-                    onClick={props.onClickFetch(el.id)}
+                    // onClick={props.onClickFetch(el.id)}
                   >
-                    <div>배송지</div>
+                    <div>배송지 {index + 1}</div>
                     <S.DeliveryTextSmallInput
                       type="tel"
                       placeholder="07250"
@@ -294,13 +289,11 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             <S.WrapperContentBox style={{ padding: '0 10px' }}>
               <button>수정</button>
               <div>
-                <button onClick={props.onClickSelect}>선택</button>
+                <button onClick={props.onClickEvent}>선택</button>
                 <button onClick={props.onClickSubmit}>등록</button>
               </div>
             </S.WrapperContentBox>
-            <S.MoreAddress onClick={props.onClickDaumModal}>
-              + 배송지 추가
-            </S.MoreAddress>
+            <S.MoreAddress>+ 배송지 추가</S.MoreAddress>
           </S.ModalBox>
         </S.ModalAddress>
       </S.WrapperBox>
