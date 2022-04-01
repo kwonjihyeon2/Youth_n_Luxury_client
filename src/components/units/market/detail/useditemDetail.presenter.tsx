@@ -53,15 +53,16 @@ export default function UseditemDetailPageUI(props) {
     if (!props.data) return
 
     const urls = props.data?.fetchProduct.urls
-
-    const urlsarr = urls.substring(1, urls.length - 1)
-    const urlmap = urlsarr.split(', ')
-    setArr(urlmap)
-
-    // const images = props.productData?.fetchSellerProduct.urls
-    // const temp = JSON.parse(images)
-    // setSellerArr(images)
+    const test = urls.split('"]["')
+    test[0] = test[0].replaceAll('["', '')
+    test[4] = test[4].replaceAll('"]', '')
+    // 0 번째 사진만쓴다. 대표이미지
+    // const urls = props.data?.fetchProduct.urls
+    // const test = urls.split('"]["')
+    // const 대표이미지 = test[0].replaceAll('["', '')
+    setArr(test)
   }, [props.data])
+  console.log(arr)
 
   return (
     <S.Wrapper>
@@ -148,7 +149,7 @@ export default function UseditemDetailPageUI(props) {
               총 상품금액
               <S.PriceStyleColor>
                 &nbsp; {props.data?.fetchProduct.price} &nbsp;
-              </S.PriceStyleColor>{' '}
+              </S.PriceStyleColor>
               원
             </S.PriceResult>
 
