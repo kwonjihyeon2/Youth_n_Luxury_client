@@ -51,11 +51,13 @@ export default function UseditemDetailPage(props) {
       console.log(error.message)
     }
   }
-  useEffect(() => {
-    if (data?.fetchProduct.like) {
-      setIsHeart(true)
-    }
-  })
+  // const [isLike, setIslike] = useState(false)
+  // useEffect(() => {
+  //   if (data?.fetchProduct.like) {
+  //     setIslike(true)
+  //   }
+  //   console.log(isLike)
+  // }, [])
 
   const [deleteProduct] = useMutation(DELETE_PRODUCT)
   const onClickDelete = async () => {

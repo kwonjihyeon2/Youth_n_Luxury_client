@@ -19,12 +19,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   const value = { accessToken, setAccessToken, item, setItem }
 
   useEffect(() => {
-    // getAccessToken().then((newAccessToken) => {
-    //   setAccessToken(newAccessToken)
-    // })
-    if (localStorage.getItem('accessToken')) {
-      setAccessToken(localStorage.getItem('accessToken') || '')
-    }
+    getAccessToken().then((newAccessToken) => {
+      setAccessToken(newAccessToken)
+    })
+    // if (localStorage.getItem('accessToken')) {
+    //   setAccessToken(localStorage.getItem('accessToken') || '')
+    // }
     // console.log('000')
   }, [])
 
@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const uploadLink = createUploadLink({
     uri: 'https://mybackend.project5-sos.shop/graphql',
     headers: { authorization: 'Bearer ' + accessToken },
-    // credentials: 'include',
+    credentials: 'include',
   })
 
   const client = new ApolloClient({
