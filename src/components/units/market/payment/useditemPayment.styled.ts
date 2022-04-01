@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../commons/utils/media'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -19,20 +20,35 @@ export const Wrapper = styled.div`
 
 export const WrapperTitle = styled.div`
   text-align: center;
-  padding-top: 64px;
+  padding: 30px 0;
   font-size: 2rem;
   font-weight: 500;
 `
 
 export const WrapperBox = styled.div`
   max-width: 1200px;
-  padding: 0 60px;
+  padding: 60px;
   width: 100%;
 `
 export const WrapperContentBox = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+`
+
+export const LeftContentBox = styled.div`
+  width: 600px;
+  @media ${breakPoints.tablet} {
+    width: 50%;
+  }
+`
+
+export const RightContentBox = styled.div`
+  margin-left: 20px;
+  width: 450px;
+  @media ${breakPoints.tablet} {
+    width: 50%;
+  }
 `
 
 export const CommonTitle = styled.p`
@@ -262,7 +278,7 @@ export const submitAddress = styled.div`
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #000;
+  border: 1px solid black;
   text-align: left;
 `
 export const MoreAddress = styled.div`
@@ -271,4 +287,3 @@ export const MoreAddress = styled.div`
   margin: 20px 10px;
   border: 1px solid #000;
 `
-// export const
