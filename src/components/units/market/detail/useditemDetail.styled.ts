@@ -6,6 +6,7 @@ import { FiHeart } from 'react-icons/fi'
 import { BsSuitHeartFill } from 'react-icons/bs'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { keyframes } from '@emotion/react'
+import { breakPoints } from '../../../commons/utils/media'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -24,11 +25,18 @@ export const WrapperTitle = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1199px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 export const TitleStyle = styled.p`
   font-size: 1.75rem;
-  padding: 40px 0 15px 0;
+  padding: 40px 0 20px 0;
   text-align: center;
+  @media ${breakPoints.tablet} {
+    margin: 0;
+  }
 `
 
 export const Titleprice = styled.div`
@@ -104,10 +112,12 @@ export const TitleImg = styled.img`
 export const WrapperBodyUl = styled.ul`
   display: flex;
   flex-direction: column;
-  justify-content: space;
   padding: 0;
   margin: 0;
   margin-right: 30px;
+  @media ${breakPoints.tablet} {
+    margin: 30px;
+  }
 `
 
 export const PriceStyle = styled.div`
@@ -126,6 +136,19 @@ export const PriceResult = styled.div`
 
 export const PageContainer = styled.div`
   width: 580px;
+`
+
+export const ResponsiveMiddle = styled.div`
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    margin-top: 30px;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100;
+  }
+  @media ${breakPoints.xsmobile} {
+    width: 100%;
+  }
 `
 
 export const PagingSlickBox = styled(Slider)`
@@ -166,7 +189,6 @@ export const PagingSmallSlick = styled.div`
   width: auto;
   height: 95px;
   margin: 0px 10px;
-  background-color: #f4f4f4;
 `
 
 export const NextButton = styled(RightOutlined)`
@@ -193,6 +215,10 @@ export const ButtonFlexBox = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    @media ${breakPoints.tablet} {
+      width: 33%;
+      margin: 0;
+    }
   }
 `
 
@@ -320,6 +346,10 @@ export const SliderContainer = styled(Slider)`
     &:hover {
       color: #000;
     }
+    @media ${breakPoints.tablet} {
+      height: 70%;
+      top: 35%;
+    }
   }
   .anticon svg {
     width: 100%;
@@ -351,7 +381,9 @@ export const SlickStyle = styled.div`
 export const SliderBox = styled.div`
   height: 200px;
   width: 100%;
-  background-color: #bdbdbd;
+  @media ${breakPoints.tablet} {
+    height: 150px;
+  }
 `
 export const RelativeTitle = styled.div`
   font-size: 1rem;
@@ -367,9 +399,12 @@ export const SellerBox = styled.div`
   align-items: center;
   cursor: pointer;
   div {
-    margin-right: 15px;
+    margin-right: 20px;
   }
   font-weight: 500;
+  @media ${breakPoints.tablet} {
+    justify-content: center;
+  }
 `
 
 export const SellerProfile = styled.div`

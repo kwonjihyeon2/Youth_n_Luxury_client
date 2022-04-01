@@ -46,6 +46,23 @@ export default function UseditemDetailPageUI(props) {
     prevArrow: <S.PreviousButton />,
   }
 
+  const [arr, setArr] = useState([])
+  const [sellerArr, setSellerArr] = useState([])
+  const [resArr, setResArr] = useState([])
+  useEffect(() => {
+    if (!props.data) return
+
+    const urls = props.data?.fetchProduct.urls
+
+    const urlsarr = urls.substring(1, urls.length - 1)
+    const urlmap = urlsarr.split(', ')
+    setArr(urlmap)
+
+    // const images = props.productData?.fetchSellerProduct.urls
+    // const temp = JSON.parse(images)
+    // setSellerArr(images)
+  }, [props.data])
+
   return (
     <S.Wrapper>
       <S.WrapperBody>
@@ -53,47 +70,27 @@ export default function UseditemDetailPageUI(props) {
         <S.WrapperTitle>
           <S.PageContainer>
             <Slider asNavFor={nav2} {...mainSettings} ref={slider1}>
-              <div>
-                <S.TitleImg src="/detail/Rectangle-226.png" />
-              </div>
-              <div>
-                <S.TitleImg src="/detail/Rectangle-226.png" />
-              </div>
-              <div>
-                <S.PagingSlick></S.PagingSlick>
-              </div>
-              <div>
-                <S.PagingSlick></S.PagingSlick>
-              </div>
-              <div>
-                <S.PagingSlick></S.PagingSlick>
-              </div>
-              <div>
-                <S.PagingSlick></S.PagingSlick>
-              </div>
+              {arr.map((el, index) => (
+                <S.PagingSlick key={index}>
+                  <img
+                    src={`https://storage.googleapis.com/${el}`}
+                    alt="이미지"
+                  />
+                </S.PagingSlick>
+              ))}
             </Slider>
             <S.PagingSlickBox asNavFor={nav1} ref={slider2} {...pagingSettings}>
-              <div>
-                <S.PagingSmallSlick>1</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>2</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>3</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>4</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>5</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>6</S.PagingSmallSlick>
-              </div>
+              {arr.map((el, index) => (
+                <S.PagingSmallSlick key={index}>
+                  <img
+                    src={`https://storage.googleapis.com/${el}`}
+                    alt="이미지"
+                  />
+                </S.PagingSmallSlick>
+              ))}
             </S.PagingSlickBox>
           </S.PageContainer>
-          <div>
+          <S.ResponsiveMiddle>
             <S.Titleprice>
               <S.PriceStyleColor>
                 {props.data?.fetchProduct.price}
@@ -200,7 +197,7 @@ export default function UseditemDetailPageUI(props) {
                 </S.SellerRate>
               </S.SellerBox>
             </S.ProfileBox>
-          </div>
+          </S.ResponsiveMiddle>
         </S.WrapperTitle>
         <S.SelectBox></S.SelectBox>
         <S.ContentsBox>
@@ -219,7 +216,6 @@ export default function UseditemDetailPageUI(props) {
             {props.productData?.fetchSellerProduct.map((el) => (
               <div key={el.id}>
                 <S.SliderBox></S.SliderBox>
-                {/* urls parse 필요 */}
                 <p>{el.name}</p>
                 <div>{el.price}원</div>
               </div>

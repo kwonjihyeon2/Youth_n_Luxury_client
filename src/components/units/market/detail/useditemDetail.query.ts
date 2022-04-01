@@ -46,6 +46,7 @@ export const RELATIVE_PRODUCT = gql`
       name
       description
       price
+      urls
     }
   }
 `

@@ -59,6 +59,7 @@ export default function UseditemWrite(props) {
   //   newUrls[index] = url
   //   setUrls(newUrls)
   // }
+
   const onChangeName = (event) => {
     setName(event.target.value)
   }

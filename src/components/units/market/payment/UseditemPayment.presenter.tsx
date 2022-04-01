@@ -223,7 +223,22 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
               카드매출전표(또는 휴대폰결제전표)로 대체합니다.
             </div>
             <S.CommonTitle>약관동의</S.CommonTitle>
-            <div>약관동의~</div>
+            <div>
+              <ul>
+                <li>
+                  <input type="checkbox" style={{ marginRight: '5px' }} />
+                  전체동의
+                </li>
+                <li>
+                  <input type="checkbox" style={{ marginRight: '5px' }} />
+                  개인정보 제3자 제공 동의 (필수)
+                </li>
+                <li>
+                  <input type="checkbox" style={{ marginRight: '5px' }} />
+                  개인정보 취급위탁에 대한 동의 (필수)
+                </li>
+              </ul>
+            </div>
             <S.PaymentResult onClick={props.onClickOrder}>
               결제하기
             </S.PaymentResult>

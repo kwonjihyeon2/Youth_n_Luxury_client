@@ -56,10 +56,10 @@ export default function MainUI(props) {
               </S.NewArrivalsSubTxt>
             </S.NewArrivalsTxtBox>
             <S.ProductBox>
-              {props.like?.fetchProductLike.map((el) => (
+              {new Array(12).fill(1).map((el) => (
                 <S.Product>
                   <S.ProductImg />
-                  <S.ProductTxt>{el.name}</S.ProductTxt>
+                  <S.ProductTxt>샤넬 가방 나도사고싶어</S.ProductTxt>
                   <S.ProductTxt>24,500,000원</S.ProductTxt>
                 </S.Product>
               ))}
