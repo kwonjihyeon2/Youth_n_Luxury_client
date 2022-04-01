@@ -28,6 +28,11 @@ export const Wrapper = styled.div`
   }
 `
 
+export const ErrorMsg = styled.div`
+  font-size: 9px;
+  font-weight: 400;
+  color: #ff0000;
+`
 export const JoinHeaderTxt = styled.div`
   font-size: 24px;
   font-weight: 700;

@@ -3,6 +3,7 @@ import JoinWriteUI from './JoinWrite.presenter'
 import { useMutation } from '@apollo/client'
 import { CREATE_USER, TOKEN_MAKER, TOKEN_VALIDATE } from './JoinWrite.queries'
 export default function JoinWrite(props) {
+  console.log(props.data)
   const [checkNum, setCheckNum] = useState(0)
   const [createUserInput, setCreateUserInput] = useState({
     email: '',
