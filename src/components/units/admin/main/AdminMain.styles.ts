@@ -205,16 +205,21 @@ export const UserDeleteBtn = styled.button`
   cursor: pointer;
 `
 export const UserTempImg = styled.div`
-  margin-top: 5px;
-  width: 150px;
-  height: 150px;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
 `
 export const UserName = styled.div`
   margin-top: 20px;
 `
 export const UserEmail = styled.div`
   margin-top: 10px;
+`
+
+export const UsersImg = styled.img`
+  margin-top: 5px;
+  width: 150px;
+  height: 150px;
+  border: 1px solid white;
 `
 
 export const MidBox3 = styled.div`

@@ -25,6 +25,7 @@ export default function CreateReviewPage(props) {
   const [reviewRate, setReviewRate] = useState(0)
   const [reviewContent, setReviewContent] = useState('')
   const [url, setUrl] = useState('')
+
   //2. img GCP에 넣을 API 필요 -> if 사용해서 필수값없으면 등록 자체가 안되도록 진행
 
   const onClickSubmit = async () => {

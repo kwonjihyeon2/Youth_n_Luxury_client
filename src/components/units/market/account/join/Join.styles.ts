@@ -2,12 +2,14 @@ import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
   width: 100%;
+  padding: 60px;
   display: flex;
   justify-content: center;
 `
 
 export const WrapperBox = styled.div`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

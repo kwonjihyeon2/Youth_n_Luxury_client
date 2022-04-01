@@ -2,7 +2,7 @@ import * as S from './AdminMain.styles'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 
-export default function AdminMainUI() {
+export default function AdminMainUI(props) {
   return (
     <S.Position>
       <S.Wrapper>
@@ -11,7 +11,7 @@ export default function AdminMainUI() {
           <S.WrapperTopText>관리자모드</S.WrapperTopText>
           <S.AvatarImg src="/images/admin/Avatar.png" />
           <S.WrapperTopName>관리자</S.WrapperTopName>
-          <S.LogoutBtn>로그아웃</S.LogoutBtn>
+          <S.LogoutBtn onClick={props.onClickLogout}>로그아웃</S.LogoutBtn>
         </S.WrapperTop>
         <S.WrapperMid>
           <S.MidBox1Title>
@@ -32,87 +32,19 @@ export default function AdminMainUI() {
               <div>상태</div>
             </S.Box1MenuWrapper>
             <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
-            </S.Box1QuestionWrapper>
-            <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
-            </S.Box1QuestionWrapper>
-            <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
-            </S.Box1QuestionWrapper>
-            <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
-            </S.Box1QuestionWrapper>
-            <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
-            </S.Box1QuestionWrapper>
-            <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
-            </S.Box1QuestionWrapper>
-            <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
-            </S.Box1QuestionWrapper>
-            <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
-            </S.Box1QuestionWrapper>
-            <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
-            </S.Box1QuestionWrapper>
-            <S.Box1QuestionWrapper>
-              <div>01</div>
-              <div>2022/03/21</div>
-              <div>[배송문의]</div>
-              <div>왜안와요?왜?</div>
-              <div>왜안오냐</div>
-              <S.QuestionCheck>미답변</S.QuestionCheck>
+              {props.dataQuerys?.fetchAdminQuerys.map((el, index) => (
+                <div key={el.id}>
+                  <div>{index}</div>
+                  <div>{el.createdAt}</div>
+                  <div>{el.adminCategory.name}</div>
+                  <div>{el.title}</div>
+                  <div>{el.contents}</div>
+                  <S.QuestionCheck>{el.adminAnswer}</S.QuestionCheck>
+                </div>
+              ))}
             </S.Box1QuestionWrapper>
             <S.PaginationWrapper>
-              <Pagination count={10} color="secondary" />
+              <Pagination count={1} color="secondary" />
             </S.PaginationWrapper>
           </S.MidBox1>
           <S.MidBox2>
@@ -120,71 +52,28 @@ export default function AdminMainUI() {
               <S.UserImg src="images/admin/UserIcon.png" />
               유저 검색하기
             </S.UserTitleWrapper>
-            <S.UserSearch type="text" placeholder="닉네임을 입력하세요" />
+            <S.UserSearch type="text" placeholder="이름을 입력하세요" />
             <S.TempWrapper>
               <S.UserWrapper>
                 <S.UserList>
-                  <S.UserImgWrapper>
-                    <S.UserTempImg></S.UserTempImg>
-                    <S.UserDeleteBtn>X</S.UserDeleteBtn>
-                  </S.UserImgWrapper>
-                  <S.UserName>{}홍길동</S.UserName>
-                  <S.UserEmail>{}honggildong@naver.com</S.UserEmail>
-                </S.UserList>
-              </S.UserWrapper>
-              <S.UserWrapper>
-                <S.UserList>
-                  <S.UserImgWrapper>
-                    <S.UserTempImg></S.UserTempImg>
-                    <S.UserDeleteBtn>X</S.UserDeleteBtn>
-                  </S.UserImgWrapper>
-                  <S.UserName>{}홍길동</S.UserName>
-                  <S.UserEmail>{}honggildong@naver.com</S.UserEmail>
-                </S.UserList>
-              </S.UserWrapper>
-              <S.UserWrapper>
-                <S.UserList>
-                  <S.UserImgWrapper>
-                    <S.UserTempImg></S.UserTempImg>
-                    <S.UserDeleteBtn>X</S.UserDeleteBtn>
-                  </S.UserImgWrapper>
-                  <S.UserName>{}홍길동</S.UserName>
-                  <S.UserEmail>{}honggildong@naver.com</S.UserEmail>
-                </S.UserList>
-              </S.UserWrapper>
-              <S.UserWrapper>
-                <S.UserList>
-                  <S.UserImgWrapper>
-                    <S.UserTempImg></S.UserTempImg>
-                    <S.UserDeleteBtn>X</S.UserDeleteBtn>
-                  </S.UserImgWrapper>
-                  <S.UserName>{}홍길동</S.UserName>
-                  <S.UserEmail>{}honggildong@naver.com</S.UserEmail>
-                </S.UserList>
-              </S.UserWrapper>
-              <S.UserWrapper>
-                <S.UserList>
-                  <S.UserImgWrapper>
-                    <S.UserTempImg></S.UserTempImg>
-                    <S.UserDeleteBtn>X</S.UserDeleteBtn>
-                  </S.UserImgWrapper>
-                  <S.UserName>{}홍길동</S.UserName>
-                  <S.UserEmail>{}honggildong@naver.com</S.UserEmail>
-                </S.UserList>
-              </S.UserWrapper>
-              <S.UserWrapper>
-                <S.UserList>
-                  <S.UserImgWrapper>
-                    <S.UserTempImg></S.UserTempImg>
-                    <S.UserDeleteBtn>X</S.UserDeleteBtn>
-                  </S.UserImgWrapper>
-                  <S.UserName>{}홍길동</S.UserName>
-                  <S.UserEmail>{}honggildong@naver.com</S.UserEmail>
+                  {props.dataUsers?.fetchUsers.map((el) => (
+                    <S.UserImgWrapper>
+                      <S.UserTempImg>
+                        <S.UserImg
+                          key={el}
+                          src={`https://storage.googleapis.com/${el.image}`}
+                        />
+                      </S.UserTempImg>
+                      <S.UserName>{el.name}</S.UserName>
+                      <S.UserEmail>{el.email}</S.UserEmail>
+                      <S.UserDeleteBtn>X</S.UserDeleteBtn>
+                    </S.UserImgWrapper>
+                  ))}
                 </S.UserList>
               </S.UserWrapper>
             </S.TempWrapper>
             <S.PaginationWrapper>
-              <Pagination count={10} color="secondary" />
+              <Pagination count={1} color="secondary" />
             </S.PaginationWrapper>
           </S.MidBox2>
           <S.MidBox3>
@@ -201,109 +90,27 @@ export default function AdminMainUI() {
               <div>주문처리상태</div>
             </S.Box3MenuWrapper>
             <S.Box3UseditemWrapper>
-              <div>03/23</div>
-              <S.TempImg></S.TempImg>
-              <div>샤넬 유광 그레인드 카프스킨</div>
-              <div>24,500,000</div>
-              <div>쑤잉</div>
-              <S.SelectStatus>
-                <option value="">--선택하세요--</option>
-                <option value="Receiving">상품수령중</option>
-                <option value="Inspecting">검수중</option>
-                <option value="Shipping">배송중</option>
-                <option value="Shipped">배송완료</option>
-              </S.SelectStatus>
-            </S.Box3UseditemWrapper>
-            <S.Box3MenuWrapper>
-              <div>주문일자</div>
-              <div>이미지</div>
-              <div>상품정보</div>
-              <div>상품구매금액</div>
-              <div>구매자</div>
-              <div>주문처리상태</div>
-            </S.Box3MenuWrapper>
-            <S.Box3UseditemWrapper>
-              <div>03/23</div>
-              <S.TempImg></S.TempImg>
-              <div>샤넬 유광 그레인드 카프스킨</div>
-              <div>24,500,000</div>
-              <div>쑤잉</div>
-              <S.SelectStatus>
-                <option value="">--선택하세요--</option>
-                <option value="">상품수령중</option>
-                <option value="">검수중</option>
-                <option value="">배송중</option>
-                <option value="">배송완료</option>
-              </S.SelectStatus>
-            </S.Box3UseditemWrapper>
-            <S.Box3MenuWrapper>
-              <div>주문일자</div>
-              <div>이미지</div>
-              <div>상품정보</div>
-              <div>상품구매금액</div>
-              <div>구매자</div>
-              <div>주문처리상태</div>
-            </S.Box3MenuWrapper>
-            <S.Box3UseditemWrapper>
-              <div>03/23</div>
-              <S.TempImg></S.TempImg>
-              <div>샤넬 유광 그레인드 카프스킨</div>
-              <div>24,500,000</div>
-              <div>쑤잉</div>
-              <S.SelectStatus>
-                <option value="">--선택하세요--</option>
-                <option value="">상품수령중</option>
-                <option value="">검수중</option>
-                <option value="">배송중</option>
-                <option value="">배송완료</option>
-              </S.SelectStatus>
-            </S.Box3UseditemWrapper>
-            <S.Box3MenuWrapper>
-              <div>주문일자</div>
-              <div>이미지</div>
-              <div>상품정보</div>
-              <div>상품구매금액</div>
-              <div>구매자</div>
-              <div>주문처리상태</div>
-            </S.Box3MenuWrapper>
-            <S.Box3UseditemWrapper>
-              <div>03/23</div>
-              <S.TempImg></S.TempImg>
-              <div>샤넬 유광 그레인드 카프스킨</div>
-              <div>24,500,000</div>
-              <div>쑤잉</div>
-              <S.SelectStatus>
-                <option value="">--선택하세요--</option>
-                <option value="">상품수령중</option>
-                <option value="">검수중</option>
-                <option value="">배송중</option>
-                <option value="">배송완료</option>
-              </S.SelectStatus>
-            </S.Box3UseditemWrapper>
-            <S.Box3MenuWrapper>
-              <div>주문일자</div>
-              <div>이미지</div>
-              <div>상품정보</div>
-              <div>상품구매금액</div>
-              <div>구매자</div>
-              <div>주문처리상태</div>
-            </S.Box3MenuWrapper>
-            <S.Box3UseditemWrapper>
-              <div>03/23</div>
-              <S.TempImg></S.TempImg>
-              <div>샤넬 유광 그레인드 카프스킨</div>
-              <div>24,500,000</div>
-              <div>쑤잉</div>
-              <S.SelectStatus>
-                <option value="">--선택하세요--</option>
-                <option value="">상품수령중</option>
-                <option value="">검수중</option>
-                <option value="">배송중</option>
-                <option value="">배송완료</option>
-              </S.SelectStatus>
+              {props.dataOrders?.fetchOrders.map((el) => (
+                <div>
+                  <div>{el.createdAt}</div>
+                  <S.TempImg></S.TempImg>
+                  <div>{el.product.urls}</div>
+                  <div>{el.price}</div>
+                  <div>{el.user.name}</div>
+                  <S.SelectStatus>
+                    <option value="">--선택하세요--</option>
+                    <option value="PAYMENT">결재완료</option>
+                    <option value="EXAMINATION">검수중</option>
+                    <option value="ONTHEWAY">배송중</option>
+                    <option value="DELIVERED">배송완료</option>
+                    <option value="CANCEL">취소</option>
+                  </S.SelectStatus>
+                  <div>{el.status}</div>
+                </div>
+              ))}
             </S.Box3UseditemWrapper>
             <S.PaginationWrapper>
-              <Pagination count={10} color="secondary" />
+              <Pagination count={1} color="secondary" />
             </S.PaginationWrapper>
           </S.MidBox3>
           <S.MidBox4>
@@ -320,70 +127,23 @@ export default function AdminMainUI() {
               <div>관리</div>
             </S.Box4MenuWrapper>
             <S.Box4UseditemListWrapper>
-              <div>샤넬 유광 그레인드</div>
-              <div>쑤잉</div>
-              <S.TempImg></S.TempImg>
-              <div>24,500,000원</div>
-              <S.UseditemDeleteBtn>삭제하기</S.UseditemDeleteBtn>{' '}
-            </S.Box4UseditemListWrapper>
-            <S.Box4MenuWrapper>
-              <div>제목</div>
-              <div>판매자</div>
-              <div>이미지</div>
-              <div>상품금액</div>
-              <div>관리</div>
-            </S.Box4MenuWrapper>
-            <S.Box4UseditemListWrapper>
-              <div>샤넬 유광 그레인드</div>
-              <div>쑤잉</div>
-              <S.TempImg></S.TempImg>
-              <div>24,500,000원</div>
-              <S.UseditemDeleteBtn>삭제하기</S.UseditemDeleteBtn>{' '}
-            </S.Box4UseditemListWrapper>
-            <S.Box4MenuWrapper>
-              <div>제목</div>
-              <div>판매자</div>
-              <div>이미지</div>
-              <div>상품금액</div>
-              <div>관리</div>
-            </S.Box4MenuWrapper>
-            <S.Box4UseditemListWrapper>
-              <div>샤넬 유광 그레인드</div>
-              <div>쑤잉</div>
-              <S.TempImg></S.TempImg>
-              <div>24,500,000원</div>
-              <S.UseditemDeleteBtn>삭제하기</S.UseditemDeleteBtn>
-            </S.Box4UseditemListWrapper>
-            <S.Box4MenuWrapper>
-              <div>제목</div>
-              <div>판매자</div>
-              <div>이미지</div>
-              <div>상품금액</div>
-              <div>관리</div>
-            </S.Box4MenuWrapper>
-            <S.Box4UseditemListWrapper>
-              <div>샤넬 유광 그레인드</div>
-              <div>쑤잉</div>
-              <S.TempImg></S.TempImg>
-              <div>24,500,000원</div>
-              <S.UseditemDeleteBtn>삭제하기</S.UseditemDeleteBtn>{' '}
-            </S.Box4UseditemListWrapper>
-            <S.Box4MenuWrapper>
-              <div>제목</div>
-              <div>판매자</div>
-              <div>이미지</div>
-              <div>상품금액</div>
-              <div>관리</div>
-            </S.Box4MenuWrapper>
-            <S.Box4UseditemListWrapper>
-              <div>샤넬 유광 그레인드</div>
-              <div>쑤잉</div>
-              <S.TempImg></S.TempImg>
-              <div>24,500,000원</div>
-              <S.UseditemDeleteBtn>삭제하기</S.UseditemDeleteBtn>{' '}
+              {props.dataProducts?.fetchProducts.map((el) => (
+                <div>
+                  <div>{el.name}</div>
+                  <div>{el.user.name}</div>
+                  <S.TempImg></S.TempImg>
+                  <div>{el.price}</div>
+                  <S.UseditemDeleteBtn
+                    onClick={props.onClickDeleteProduct}
+                    id={el.id}
+                  >
+                    삭제하기
+                  </S.UseditemDeleteBtn>
+                </div>
+              ))}
             </S.Box4UseditemListWrapper>
             <S.PaginationWrapper>
-              <Pagination count={10} color="secondary" />
+              <Pagination count={1} color="secondary" />
             </S.PaginationWrapper>
           </S.MidBox4>
         </S.WrapperMid>

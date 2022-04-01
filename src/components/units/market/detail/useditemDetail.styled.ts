@@ -48,12 +48,34 @@ export const MyRightBox = styled.div`
   padding: 10px 0;
 `
 
+interface propsIsShare {
+  isShare: boolean
+}
+
+export const KakaoButton = styled.div`
+  /* display: flex; */
+  display: ${(props: propsIsShare) => (props.isShare ? 'flex' : 'none')};
+  position: absolute;
+  top: 130%;
+  right: -80px;
+  width: 100px;
+  button {
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    border: none;
+  }
+`
 export const ShareButton = styled.button`
-  display: flex;
-  align-items: center;
+  background: url('/detail/kakao.png') center;
+  background-size: cover;
   margin-right: 10px;
-  background-color: #fff;
-  border: none;
+`
+export const CopyButton = styled.button`
+  background: url('/detail/copy.png') center;
+  background-size: cover;
 `
 
 export const SelectBox = styled.div`
@@ -272,20 +294,6 @@ export const RedCount = styled.span`
   top: 2px;
   right: -2px;
 `
-
-interface propsIsShare {
-  isShare: boolean
-}
-
-export const KakaoButton = styled.div`
-  /* display: flex; */
-  display: ${(props: propsIsShare) => (props.isShare ? 'flex' : 'none')};
-  position: absolute;
-  top: 130%;
-  right: -100px;
-  width: 100px;
-`
-
 export const WrapperLiStyle = styled.li`
   padding: 5px 0;
   list-style: none;

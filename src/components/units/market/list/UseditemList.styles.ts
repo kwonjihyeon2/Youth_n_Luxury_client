@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { breakPoints } from '../../../commons/styles/media'
+import { breakPoints } from '../../../commons/utils/media'
 
 export const Position = styled.div`
   display: flex;

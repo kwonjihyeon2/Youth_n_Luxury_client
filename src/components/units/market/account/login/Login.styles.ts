@@ -1,7 +1,14 @@
 import styled from '@emotion/styled'
 
+export const ResponsiveBox = styled.div`
+  width: 100%;
+  padding: 60px;
+  display: flex;
+  justify-content: center;
+`
+
 export const EmailLoginBtn = styled.div`
-  width: 359px;
+  width: 360px;
   height: 41px;
   display: flex;
   justify-content: center;

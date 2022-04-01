@@ -1,4 +1,6 @@
+import Uploads01 from '../../../commons/uploads/01/Uploads01.container'
 import * as S from './UseditemWrite.styles'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function UseditemWriteUI(props) {
   return (
@@ -9,6 +11,10 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>0.통장인증</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperAccountInput>
+            <input type="text" />
+            <input type="text" />
+            <input type="text" />
+            <input type="text" />
             <S.AccountBtn onClick={props.onClickAccountConfirm}>
               계좌인증하기
             </S.AccountBtn>
@@ -19,51 +25,14 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>1.상품이미지등록</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperInput>
-            <input
-              style={{ display: 'none' }}
-              ref={props?.fileRef}
-              type="file"
-              onChange={props?.onChangeFile}
-            />
-            <img src={`https://storage.googleapis.com/${props.urls[0]}`} />
-            <S.UploadImage onClick={props?.onClickImage} />
-            <img src={`https://storage.googleapis.com/${props.urls[1]}`} />
-            <S.UploadImage
-              onClick={props?.onClickImage}
-              src="/images/uploadImg.png"
-            />
-            <S.UploadImage
-              onClick={props?.onClickImage}
-              src="/images/uploadImg.png"
-            />
-            <S.UploadImage
-              onClick={props?.onClickImage}
-              src="/images/uploadImg.png"
-            />
-            <S.UploadImage
-              onClick={props?.onClickImage}
-              src="/images/uploadImg.png"
-            />
-            <S.UploadImage
-              onClick={props?.onClickImage}
-              src="/images/uploadImg.png"
-            />
-            <S.UploadImage
-              onClick={props?.onClickImage}
-              src="/images/uploadImg.png"
-            />
-            <S.UploadImage
-              onClick={props?.onClickImage}
-              src="/images/uploadImg.png"
-            />
-            <S.UploadImage
-              onClick={props?.onClickImage}
-              src="/images/uploadImg.png"
-            />
-            <S.UploadImage
-              onClick={props?.onClickImage}
-              src="/images/uploadImg.png"
-            />
+            {props.urls.map((el, index) => (
+              <Uploads01
+                key={uuidv4()}
+                index={index}
+                fileUrl={el}
+                onChangeFileUrls={props.onChangeUrls}
+              />
+            ))}
           </S.WrapperInput>
         </S.WrapperImages>
         <S.WrapperContents>

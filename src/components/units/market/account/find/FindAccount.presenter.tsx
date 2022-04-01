@@ -2,7 +2,7 @@ import * as S from './FindAccount.styles'
 
 export default function FindAccountUI(props) {
   return (
-    <>
+    <S.ResponsiveBox>
       <S.Wrapper>
         <S.FlexRow>
           <S.SelectSwitchBtn>아이디 찾기</S.SelectSwitchBtn>
@@ -149,6 +149,6 @@ export default function FindAccountUI(props) {
         </S.FindPwdTable> */}
         <S.OkBtn>확인</S.OkBtn>
       </S.Wrapper>
-    </>
+    </S.ResponsiveBox>
   )
 }
