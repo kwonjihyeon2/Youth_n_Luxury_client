@@ -1,10 +1,10 @@
 import { useMutation } from '@apollo/client'
-import { ChangeEvent, MouseEvent, useRef } from 'react'
-import Uploads01UI from './Uploads01.presenter'
-import { IUploads01Props } from './Uploads01.types'
-import { UPLOAD_FILE } from './Uploads01.queries'
+import { ChangeEvent, useRef } from 'react'
+import Uploads03UI from './Uploads03.presenter'
+import { IUploads03Props } from './Uploads03.types'
+import { UPLOAD_FILE } from './Uploads03.queries'
 
-export default function Uploads01(props: IUploads01Props) {
+export default function Uploads03(props: IUploads03Props) {
   const fileRef = useRef<HTMLInputElement>(null)
   const [uploadFile] = useMutation(UPLOAD_FILE)
 
@@ -13,23 +13,23 @@ export default function Uploads01(props: IUploads01Props) {
   }
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
-    const files = [event.target.files?.[0]]
+    const files = event.target.files?.[0]
     try {
       const result = await uploadFile({
         variables: {
           files,
         },
       })
-      props.setUrls(result.data?.uploadFile)
+      props.setUrls3(result.data?.uploadFile)
     } catch (error) {
       alert(error.message)
     }
   }
 
   return (
-    <Uploads01UI
+    <Uploads03UI
       fileRef={fileRef}
-      fileUrl={props.fileUrl}
+      fileUrl3={props.fileUrl3}
       defaultFileUrl={props.defaultFileUrl}
       onClickUpload={onClickUpload}
       onChangeFile={onChangeFile}
