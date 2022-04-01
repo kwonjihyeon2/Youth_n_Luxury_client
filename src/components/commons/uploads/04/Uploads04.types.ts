@@ -1,15 +1,15 @@
-import { ChangeEvent, MouseEvent, RefObject } from 'react'
+import { ChangeEvent, RefObject } from 'react'
 
-export interface IUploads01Props {
+export interface IUploads04Props {
   index: number
   fileUrl: string
   defaultFileUrl?: string
   onChangeUrls?: any
   onChangeFileUrls?: any
-  setUrls: any
+  setUrls4: any
 }
 
-export interface IUploads01UIProps {
+export interface IUploads04UIProps {
   fileRef: RefObject<HTMLInputElement>
   fileUrl: string
   defaultFileUrl?: string
