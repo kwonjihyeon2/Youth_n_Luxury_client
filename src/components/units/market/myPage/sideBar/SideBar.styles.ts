@@ -55,6 +55,3 @@ export const SubTxt = styled.div`
   background-color: ${(props: IProps) =>
     props.isSelected ? '#F8F8F8' : 'white'};
 `
-interface IProps {
-  isSelected: boolean
-}

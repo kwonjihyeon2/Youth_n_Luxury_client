@@ -17,7 +17,6 @@ export default function JoinWrite(props) {
     numberSecond: '',
     numberThird: '',
   })
-  const [updateUserInfo, setUpdateUserInfo] = useState({})
   const [tokenMaker] = useMutation(TOKEN_MAKER)
   const [tokenValidate] = useMutation(TOKEN_VALIDATE)
   const [isSend, setIsSend] = useState(false)

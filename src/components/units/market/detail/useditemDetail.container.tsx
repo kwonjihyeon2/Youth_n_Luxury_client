@@ -33,6 +33,7 @@ export default function UseditemDetailPage(props) {
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: { productId: String(router.query.boardId) },
   })
+
   const { data: productData } = useQuery(SELLER_PRODUCT, {
     variables: { userId: String(data?.fetchProduct.user.id) },
   })
@@ -46,10 +47,24 @@ export default function UseditemDetailPage(props) {
       const result = await deleteProduct({
         variables: { productId: String(router.query.boardId) },
       })
-      console.log(result)
       router.push('/market/list')
     } catch (error) {
       console.log(error.message)
+    }
+  }
+
+  const onClickBasketBtn = () => {
+    let isExist = false
+    const baskets = JSON.parse(localStorage.getItem('basket') || '[]')
+    baskets.forEach((basketEl) => {
+      if (basketEl.fetchProduct.id === data.fetchProduct.id) {
+        isExist = true
+        return false
+      }
+    })
+    if (!isExist) {
+      baskets.push(data)
+      localStorage.setItem('basket', JSON.stringify(baskets))
     }
   }
 
@@ -122,6 +137,7 @@ export default function UseditemDetailPage(props) {
       onClickDelete={onClickDelete}
       onClickShare={onClickShare}
       isShare={isShare}
+      onClickBasketBtn={onClickBasketBtn}
     />
   )
 }
