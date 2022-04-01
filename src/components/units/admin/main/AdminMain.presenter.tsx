@@ -43,9 +43,9 @@ export default function AdminMainUI(props) {
                 </div>
               ))}
             </S.Box1QuestionWrapper>
-            <S.PaginationWrapper>
+            {/* <S.PaginationWrapper>
               <Pagination count={1} color="secondary" />
-            </S.PaginationWrapper>
+            </S.PaginationWrapper> */}
           </S.MidBox1>
           <S.UserTitleWrapper>
             <S.UserImg src="images/admin/UserIcon.png" />
@@ -69,9 +69,9 @@ export default function AdminMainUI(props) {
               ))}
             </S.UserWrapper>
           </S.MidBox2>
-          <S.PaginationWrapper>
+          {/* <S.PaginationWrapper>
             <Pagination count={1} color="secondary" />
-          </S.PaginationWrapper>
+          </S.PaginationWrapper> */}
           <S.MidBox3>
             <S.StatusWrapper>
               <S.BoxImg src="/images/admin/Delivery.png" />
@@ -105,9 +105,9 @@ export default function AdminMainUI(props) {
                 </div>
               ))}
             </S.Box3UseditemWrapper>
-            <S.PaginationWrapper>
+            {/* <S.PaginationWrapper>
               <Pagination count={1} color="secondary" />
-            </S.PaginationWrapper>
+            </S.PaginationWrapper> */}
           </S.MidBox3>
           <S.MidBox4>
             <S.UseditemTextWrapper>
@@ -140,9 +140,9 @@ export default function AdminMainUI(props) {
                 </div>
               ))}
             </S.Box4UseditemListWrapper>
-            <S.PaginationWrapper>
+            {/* <S.PaginationWrapper>
               <Pagination count={1} color="secondary" />
-            </S.PaginationWrapper>
+            </S.PaginationWrapper> */}
           </S.MidBox4>
         </S.WrapperMid>
       </S.Wrapper>
