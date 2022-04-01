@@ -12,14 +12,13 @@ export const Wrapper = styled.div`
   width: 1200px;
   min-height: 2000px;
   height: auto;
-  background-color: #e5e5e5;
 `
 export const WrapperTop = styled.div`
   align-items: center;
   display: flex;
   width: 100%;
   height: 70px;
-  background-color: #232428;
+  background-color: #333333;
   font-size: 24px;
 `
 export const HouseImg = styled.img`
@@ -39,7 +38,8 @@ export const AvatarImg = styled.img`
 
 export const WrapperTopName = styled.div`
   margin-left: 10px;
-  color: #d3d3d3;
+  color: white;
+  font-size: 20px;
 `
 
 export const LogoutBtn = styled.button`
@@ -48,9 +48,12 @@ export const LogoutBtn = styled.button`
   border: none;
   width: 90px;
   height: 30px;
-  background-color: #232428;
-  color: #d3d3d3;
+  background-color: #333333;
+  color: white;
   cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
 `
 export const WrapperMid = styled.div`
   display: flex;
@@ -92,13 +95,20 @@ export const SearchBarBtn = styled.button`
   width: 50px;
   margin-left: 10px;
   cursor: pointer;
+  background-color: #333333;
+  color: white;
+  border: none;
+  :hover {
+    color: #7a36ff;
+  }
 `
 export const Box1MenuWrapper = styled.div`
   display: flex;
   align-items: center;
   font-size: 20px;
   height: 50px;
-  background-color: #8a92a6;
+  background-color: #333333;
+  color: white;
   div {
     margin-left: 10px;
     margin-right: 100px;
@@ -106,12 +116,14 @@ export const Box1MenuWrapper = styled.div`
 `
 
 export const Box1QuestionWrapper = styled.div`
-  background-color: white;
   display: flex;
   align-items: center;
   font-size: 20px;
   height: 50px;
-  border-bottom: 2px solid #8a92a6;
+  border-bottom: 2px solid #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   div {
     margin-left: 10px;
     margin-right: 60px;
@@ -127,7 +139,7 @@ export const PaginationWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 20px;
 `
 export const MidBox2 = styled.div`
   display: flex;
@@ -137,18 +149,19 @@ export const MidBox2 = styled.div`
   height: auto;
   min-height: 400px;
   border-radius: 20px;
-  background-color: #dce4f0;
-  margin-top: 70px;
+  background-color: #333333;
 `
 
 export const UserTitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  width: 1200px;
-  height: 100px;
-  justify-content: center;
+  width: 80%;
+  height: auto;
+
   align-items: center;
   font-size: 20px;
+  margin-top: 70px;
+  margin-bottom: 10px;
 `
 export const UserImg = styled.img`
   margin-right: 10px;
@@ -166,60 +179,51 @@ export const UserSearch = styled.input`
   background-image: url(/images/admin/Search.png);
   background-position: 20px 30px;
   background-repeat: no-repeat;
-`
-export const TempWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  margin-top: 20px;
 `
 
 export const UserWrapper = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
 `
 
 export const UserList = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 200px;
   height: 250px;
-  background-color: green;
-  margin-top: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
+  background-color: white;
+  margin: 20px 50px 20px 50px;
 `
-export const UserImgWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`
+
 export const UserDeleteBtn = styled.button`
   width: 25px;
   height: 25px;
-  margin-top: 7px;
-  margin-left: 10px;
   border: none;
-  background: purple;
+  background: #333333;
+  color: white;
   border-radius: 30px;
   cursor: pointer;
-`
-export const UserTempImg = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-export const UserName = styled.div`
-  margin-top: 20px;
-`
-export const UserEmail = styled.div`
+  :hover {
+    color: #7a36ff;
+  }
   margin-top: 10px;
 `
+
+export const UserName = styled.div`
+  margin-top: 10px;
+`
+export const UserEmail = styled.div``
 
 export const UsersImg = styled.img`
   margin-top: 5px;
   width: 150px;
   height: 150px;
-  border: 1px solid white;
 `
 
 export const MidBox3 = styled.div`
@@ -247,8 +251,8 @@ export const Box3MenuWrapper = styled.div`
   align-items: center;
   font-size: 18px;
   height: 50px;
-  background-color: #8a92a6;
-
+  background-color: #333333;
+  color: white;
   div {
     margin-left: 10px;
     margin-right: 80px;
@@ -261,7 +265,10 @@ export const Box3UseditemWrapper = styled.div`
   align-items: center;
   font-size: 18px;
   height: 120px;
-  border-bottom: 2px solid #8a92a6;
+  border-bottom: 2px solid #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   div {
     margin-left: 10px;
     margin-right: 60px;
@@ -284,15 +291,24 @@ export const MidBox4 = styled.div`
   margin-top: 70px;
   margin-bottom: 100px;
 `
+export const UseditemTextWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: auto;
+  font-size: 20px;
+  margin-bottom: 20px;
+`
 
 export const UseditemSearchWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #dce4f0;
+  justify-content: center;
+  background-color: #333333;
   width: 100%;
   height: 100px;
   font-size: 18px;
+  color: white;
 `
 export const Search = styled.img`
   width: 20px;
@@ -317,7 +333,8 @@ export const Box4MenuWrapper = styled.div`
   align-items: center;
   font-size: 20px;
   height: 50px;
-  background-color: #8a92a6;
+  background-color: #333333;
+  color: white;
   div {
     margin-left: 20px;
     margin-right: 120px;
@@ -330,7 +347,7 @@ export const Box4UseditemListWrapper = styled.div`
   align-items: center;
   font-size: 20px;
   height: 120px;
-  border-bottom: 2px solid #8a92a6;
+  border-bottom: 2px solid #333333;
   div {
     margin-left: 10px;
     margin-right: 80px;
@@ -340,9 +357,12 @@ export const Box4UseditemListWrapper = styled.div`
 export const UseditemDeleteBtn = styled.button`
   width: 100px;
   height: 50px;
-  background-color: #393939;
+  background-color: #cccccc;
   color: white;
   font-size: 16px;
   border: none;
   cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
 `
