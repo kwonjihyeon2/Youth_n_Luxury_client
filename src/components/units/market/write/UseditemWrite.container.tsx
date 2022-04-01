@@ -85,7 +85,7 @@ export default function UseditemWrite(props) {
             description,
             price: Number(price),
             brandName: brand,
-            urls: 'test',
+            urls: urls,
             subCategoryName: subCategory,
           },
         },
@@ -133,6 +133,7 @@ export default function UseditemWrite(props) {
       onClickImage={onClickImage}
       onChangeUrls={onChangeUrls}
       urls={urls}
+      setUrls={setUrls}
       // onClickAccountConfirm={onClickAccountConfirm}
     />
   )

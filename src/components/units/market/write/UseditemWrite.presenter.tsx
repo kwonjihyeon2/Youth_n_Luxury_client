@@ -3,6 +3,7 @@ import * as S from './UseditemWrite.styles'
 import { v4 as uuidv4 } from 'uuid'
 
 export default function UseditemWriteUI(props) {
+  console.log(props.urls)
   return (
     <S.Position>
       <S.Wrapper>
@@ -25,12 +26,13 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>1.상품이미지등록</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperInput>
-            {props.urls.map((el, index) => (
+            {props.urls?.map((el, index) => (
               <Uploads01
                 key={uuidv4()}
                 index={index}
                 fileUrl={el}
                 onChangeFileUrls={props.onChangeUrls}
+                setUrls={props.setUrls}
               />
             ))}
           </S.WrapperInput>
