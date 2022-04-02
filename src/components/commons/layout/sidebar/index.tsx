@@ -4,15 +4,16 @@ import { RightOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/router'
 import { gql, useQuery } from '@apollo/client'
 
+interface Status {
+  isTrue: boolean
+}
+
 const Position = styled.div`
   height: 100vh;
   position: fixed;
   top: 0px;
   z-index: 30000;
 `
-interface Status {
-  isTrue: boolean
-}
 const Wrapper = styled.div`
   width: 300px;
   height: 100%;
@@ -23,48 +24,65 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #f2f2f2;
+  overflow: scroll;
 `
 
 const WrapperTop = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 250px;
   display: flex;
   margin-top: 20px;
   align-items: center;
   padding-bottom: 20px;
   border-bottom: 1px solid black;
+  div {
+    display: flex;
+    flex-direction: row;
+  }
 `
 
 const LoginBtn = styled.button`
-  font-size: 10px;
+  width: 80px;
+  font-size: 14px;
   margin-right: 10px;
   height: 30px;
   cursor: pointer;
   color: white;
   border: none;
   background-color: #2f2f2f;
+  :hover {
+    color: #7a36ff;
+  }
 `
 
 const SigninBtn = styled.button`
-  font-size: 10px;
+  width: 80px;
+  font-size: 14px;
   height: 30px;
   cursor: pointer;
   color: white;
   border: none;
   background-color: #2f2f2f;
+  :hover {
+    color: #7a36ff;
+  }
 `
 
 const LoginText = styled.div`
-  width: 155px;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 `
 
 const WelcomeText = styled.div`
+  display: flex;
+  justify-content: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-right: 25px;
 `
 
 const WrapperMid = styled.div`
@@ -184,19 +202,19 @@ const MenuBtn = styled.div`
   height: 35px;
   width: 35px;
   cursor: pointer;
-  &::before :nth-of-type(1) {
+  &:hover :nth-of-type(1) {
     transform: rotate(360deg);
     transition: 1s;
   }
-  &:after:active :nth-of-type(2) {
+  &:hover :nth-of-type(2) {
     transform: rotate(360deg);
     transition: 0.8s;
   }
-  &:active :nth-of-type(3) {
+  &:hover :nth-of-type(3) {
     transform: rotate(360deg);
     transition: 0.6s;
   }
-  &:active:after :nth-of-type(4) {
+  &:hover :nth-of-type(4) {
     transform: rotate(360deg);
     transition: 0.4s;
   }
@@ -212,6 +230,13 @@ const BtnLine1 = styled.span`
 const BtnLine2 = styled.span``
 const BtnLine3 = styled.span``
 const BtnLine4 = styled.span``
+const WpapperTopMid = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
 
 // overflow: auto 스크롤생성
 // span 태그로 작대기 3개 만들고
@@ -253,6 +278,9 @@ export default function LayoutSidebar() {
   const onClickLogin = () => {
     router.push(`/login`)
   }
+  const onclickMoveToList = () => {
+    router.push(`/market/list`)
+  }
   const onClickLogout = () => {}
   const onClickOpen = () => {
     setIsTrue((prev) => !prev)
@@ -267,12 +295,18 @@ export default function LayoutSidebar() {
             ) : (
               <WelcomeText>{data?.fetchUser.nickname}님환영합니다!</WelcomeText>
             )}
-            {data?.fetchUser.nickname === undefined ? (
-              <LoginBtn onClick={onClickLogin}>로그인</LoginBtn>
-            ) : (
-              <LoginBtn onClick={onClickLogout}>로그아웃</LoginBtn>
-            )}
-            <SigninBtn onClick={onClickJoin}>회원가입</SigninBtn>
+            <WpapperTopMid>
+              {data?.fetchUser.nickname === undefined ? (
+                <LoginBtn onClick={onClickLogin}>로그인</LoginBtn>
+              ) : (
+                <LoginBtn onClick={onClickLogout}>로그아웃</LoginBtn>
+              )}
+              {data?.fetchUser.nickname === undefined ? (
+                <SigninBtn onClick={onClickJoin}>회원가입</SigninBtn>
+              ) : (
+                ''
+              )}
+            </WpapperTopMid>
           </WrapperTop>
           <WrapperMid>
             <WrapperIcon1>
@@ -302,27 +336,27 @@ export default function LayoutSidebar() {
             </WrapperIcon4>
           </WrapperMid>
           <WrapperBot>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>구찌</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>버버리</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>에르메스</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>샤넬</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>루이비통</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>프라다</BrnadText>
             </WrapperNavi>
@@ -332,7 +366,7 @@ export default function LayoutSidebar() {
             <PhoneText>02-000-0000</PhoneText>
             <OpenTime>WEEKDAY: 10:10 ~ 20:00</OpenTime>
             <OpenTime>WEEKEND: 12:00 ~ 19:00</OpenTime>
-            <HelpBtn>고객센터</HelpBtn>
+            <HelpBtn onClick={onClickQuery}>고객센터</HelpBtn>
           </WrapperHelp>
         </Wrapper>
 

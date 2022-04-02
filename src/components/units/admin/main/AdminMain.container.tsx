@@ -17,8 +17,9 @@ export default function AdminMain() {
   const { data: dataOrders, refetch: refetchOrders } = useQuery(FETCH_ORDERS)
   const { data: dataProducts, refetch: refetchProducts } =
     useQuery(FETCH_PRODUCTS)
-  const [deleteUser] = useMutation(DELETE_USER)
 
+  console.log(dataUsers)
+  const [deleteUser] = useMutation(DELETE_USER)
   const onClickMoveToQuery = () => {}
   const onClickLogout = () => {}
   const onClickDeleteProduct = () => {}

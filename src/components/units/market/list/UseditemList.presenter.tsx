@@ -14,6 +14,8 @@ export default function UseditemListUI(props) {
           main={props.main}
           sub={props.sub}
           brand={props.brand}
+          isClickMain={props.isClickMain}
+          isClickSub={props.isClickSub}
         />
         <TabletItem
           onClickMain={props.onClickMain}

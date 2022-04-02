@@ -35,7 +35,7 @@ export default function UseditemWrite(props) {
   //   const date = new Date()
   //   const time = getDate(date)
   //   const result = await axios.post(
-  //     `https://testapi.openbanking.or.kr/v2.0/inquiry/real_name`,
+  //     `https://cors.bridged.cc/https://testapi.openbanking.or.kr/v2.0/inquiry/real_name`,
   //     {
   //       headers: {
   //         Authorization:
@@ -52,12 +52,6 @@ export default function UseditemWrite(props) {
   //     }
   //   )
   //   console.log(result)
-  // }
-
-  // const onChangeUrls = (url: string, index: number) => {
-  //   const newUrls = [...urls]
-  //   newUrls[index] = url
-  //   setUrls(newUrls)
   // }
 
   const onChangeName = (event) => {
@@ -147,7 +141,6 @@ export default function UseditemWrite(props) {
       setUrls3={setUrls3}
       setUrls4={setUrls4}
       setUrls5={setUrls5}
-      // onChangeUrls={onChangeUrls}
       // onClickAccountConfirm={onClickAccountConfirm}
     />
   )

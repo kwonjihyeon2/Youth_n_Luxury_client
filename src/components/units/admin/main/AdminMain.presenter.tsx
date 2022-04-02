@@ -60,7 +60,7 @@ export default function AdminMainUI(props) {
                     key={el}
                     src={`https://storage.googleapis.com/${el.image}`}
                   />
-                  <S.UserName>{el.name}</S.UserName>
+                  <S.UserName>{el.name || '아이디가없어'}</S.UserName>
                   <S.UserEmail>{el.email}</S.UserEmail>
                   <S.UserDeleteBtn onClick={props.onClickDeleteUser}>
                     X
@@ -90,9 +90,9 @@ export default function AdminMainUI(props) {
                 <div>
                   <div>{el.createdAt}</div>
                   <S.TempImg></S.TempImg>
-                  <div>{el.product.urls}</div>
-                  <div>{el.price}</div>
-                  <div>{el.user.name}</div>
+                  {/* <div>{el.product.urls}</div> */}
+                  <div>{el.product.price}</div>
+                  {/* <div>{el.user.name}</div> */}
                   <S.SelectStatus>
                     <option value="">--선택하세요--</option>
                     <option value="PAYMENT">결재완료</option>

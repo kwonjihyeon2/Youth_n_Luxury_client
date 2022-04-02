@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import * as S from './UseditemList.styles'
 
 export default function TabletItem(props) {
