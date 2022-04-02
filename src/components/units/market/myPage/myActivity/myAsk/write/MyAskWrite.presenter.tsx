@@ -1,6 +1,6 @@
 import * as S from './MyAskWrite.styles'
 
-export default function MyAskWriteUI() {
+export default function MyAskWriteUI(props) {
   return (
     <S.WrapperResponse>
       <S.Wrapper>
