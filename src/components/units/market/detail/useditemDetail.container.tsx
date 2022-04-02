@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import {
   CREATE_LIKE,
   DELETE_PRODUCT,
+  FETCH_LIKE,
   FETCH_PRODUCT,
   RELATIVE_PRODUCT,
   SELLER_PRODUCT,
@@ -33,13 +34,15 @@ export default function UseditemDetailPage(props) {
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: { productId: String(router.query.boardId) },
   })
-  console.log(data?.fetchProduct.urls, typeof data?.fetchProduct.urls)
+  console.log(data?.fetchProduct)
 
   const { data: productData } = useQuery(SELLER_PRODUCT, {
     variables: { userId: String(data?.fetchProduct.user.id) },
   })
 
   const [createLike] = useMutation(CREATE_LIKE)
+  // const { data: picked } = useQuery(FETCH_LIKE)
+
   const onClickHeart = async () => {
     setIsHeart((prev) => !prev)
     try {
@@ -52,13 +55,17 @@ export default function UseditemDetailPage(props) {
       console.log(error.message)
     }
   }
-  // const [isLike, setIslike] = useState(false)
+
+  const [keep, setKeep] = useState(false)
+  // const { data } = useQuery()
+
   // useEffect(() => {
-  //   if (data?.fetchProduct.like) {
-  //     setIslike(true)
-  //   }
-  //   console.log(isLike)
-  // }, [])
+  //   const pick = picked?.fetchProductLike.filter(
+  //     (el) => el.id === data?.fetchProduct.id
+  //   )
+
+  //   console.log(picked?.fetchProductLike)
+  // })
 
   const [deleteProduct] = useMutation(DELETE_PRODUCT)
   const onClickDelete = async () => {

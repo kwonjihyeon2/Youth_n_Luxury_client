@@ -18,4 +18,5 @@ export interface IpropsType {
   basic: boolean
   onClickEvent: () => void
   listAddr: any
+  isSold: boolean
 }

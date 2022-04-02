@@ -19,6 +19,9 @@ export const WrapperBody = styled.div`
   max-width: 1200px;
   width: 100%;
   padding: 60px;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    padding: 0 20px;
+  }
 `
 
 export const WrapperTitle = styled.div`
@@ -29,25 +32,40 @@ export const WrapperTitle = styled.div`
     flex-direction: column;
     align-items: center;
   }
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    margin-top: 30px;
+  }
 `
 export const TitleStyle = styled.p`
   font-size: 1.75rem;
   padding: 40px 0 20px 0;
   text-align: center;
-  @media ${breakPoints.tablet} {
+  @media ${breakPoints.tablet}, ${breakPoints.mobile}, ${breakPoints.xsmobile} {
     margin: 0;
   }
 `
-
+export const ResponsiveMiddle = styled.div`
+  @media (max-width: 991px) {
+    width: 100%;
+    margin-top: 30px;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`
 export const Titleprice = styled.div`
   padding: 20px 0 10px 0;
   border-bottom: 1px solid #c4c4c4;
   margin-bottom: 10px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   font-size: 1.5rem;
   justify-content: space-between;
+  @media ${breakPoints.xsmobile} {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 10px 0;
+  }
 `
 export const MyRightBox = styled.div`
   display: flex;
@@ -74,6 +92,21 @@ export const KakaoButton = styled.div`
     height: 35px;
     cursor: pointer;
     border: none;
+  }
+  @media (max-width: 1199px) {
+    right: -80px;
+    flex-direction: column;
+    button {
+      margin-top: 5px;
+    }
+  }
+  @media ${breakPoints.xsmobile} {
+    flex-direction: row;
+    top: -5px;
+    right: -120px;
+    button {
+      margin-top: 0px;
+    }
   }
 `
 export const ShareButton = styled.button`
@@ -103,6 +136,9 @@ export const ContentsBox = styled.div`
   text-align: center;
   margin: 100px 0;
   border-top: 1px solid #bdbdbd;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    margin: 60px 20px 0 20px;
+  }
 `
 
 export const TitleImg = styled.img`
@@ -115,7 +151,7 @@ export const WrapperBodyUl = styled.ul`
   padding: 0;
   margin: 0;
   margin-right: 30px;
-  @media ${breakPoints.tablet} {
+  @media (max-width: 991px) {
     margin: 30px;
   }
 `
@@ -136,15 +172,8 @@ export const PriceResult = styled.div`
 
 export const PageContainer = styled.div`
   width: 580px;
-`
-
-export const ResponsiveMiddle = styled.div`
-  @media ${breakPoints.tablet} {
-    width: 100%;
-    margin-top: 30px;
-  }
   @media ${breakPoints.mobile} {
-    width: 100;
+    width: 100%;
   }
   @media ${breakPoints.xsmobile} {
     width: 100%;
@@ -183,6 +212,13 @@ export const PagingSlick = styled.div`
   height: 470px;
   background-color: #f4f4f4;
   margin-bottom: 20px;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    width: 100%;
+  }
+  @media ${breakPoints.xsmobile} {
+    width: 100%;
+    height: auto;
+  }
 `
 
 export const PagingSmallSlick = styled.div`
@@ -293,10 +329,22 @@ export const VerifyBox = styled.span`
   padding: 5px 0;
   border-radius: 12px;
   background-color: #ffbb0b;
+  @media ${breakPoints.xsmobile} {
+    width: 30px;
+    right: -35px;
+  }
 `
-
+export const VerifySpan = styled.span`
+  @media ${breakPoints.xsmobile} {
+    display: none;
+  }
+`
 export const FlexPocket = styled.div`
   display: flex;
+
+  @media ${breakPoints.xsmobile} {
+    margin-top: 20px;
+  }
 `
 
 export const IconBox = styled.div`
@@ -329,6 +377,9 @@ export const WrapperLiStyle = styled.li`
 
 export const ContentsImg = styled.img`
   width: 500px;
+  @media ${breakPoints.xsmobile} {
+    width: 50%;
+  }
 `
 
 export const SliderContainer = styled(Slider)`
@@ -381,6 +432,7 @@ export const SlickStyle = styled.div`
 export const SliderBox = styled.div`
   height: 200px;
   width: 100%;
+  background-color: #c4c4c4;
   @media ${breakPoints.tablet} {
     height: 150px;
   }
@@ -400,9 +452,12 @@ export const SellerBox = styled.div`
   cursor: pointer;
   div {
     margin-right: 20px;
+    @media ${breakPoints.xsmobile} {
+      margin-right: 10px;
+    }
   }
   font-weight: 500;
-  @media ${breakPoints.tablet} {
+  @media ${breakPoints.tablet}, ${breakPoints.mobile}, ${breakPoints.xsmobile} {
     justify-content: center;
   }
 `

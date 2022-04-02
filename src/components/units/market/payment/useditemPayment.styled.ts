@@ -185,6 +185,7 @@ export const DeliveryTextselect = styled.select`
   border: 1px solid #c4c4c4;
   border-radius: 5px;
   margin-bottom: 5px;
+  background: #fff;
 `
 
 export const PaymentItem = styled.div`

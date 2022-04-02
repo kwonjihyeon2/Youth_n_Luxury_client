@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../commons/utils/media'
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -13,6 +14,24 @@ export const Wrapper = styled.div`
   h1 {
     margin: 0;
   }
+  @media${breakPoints.tablet} {
+    width: 700px;
+    padding: 40px;
+  }
+  @media${breakPoints.mobile} {
+    width: 500px;
+    padding: 40px;
+  }
+  @media${breakPoints.xsmobile} {
+    width: 320px;
+    padding: 40px;
+  }
+`
+
+export const Productlist = styled.div`
+  @media ${breakPoints.mobile} {
+    margin-top: 20px;
+  }
 `
 
 export const BoldSpan = styled.span`
@@ -25,19 +44,25 @@ export const ProfileName = styled.div`
 
 export const SpaceImg = styled.div`
   margin-top: 20px;
+  @media ${breakPoints.mobile} {
+    margin-top: 0px;
+  }
 `
-
+export const productImage = styled.img`
+  width: 90px;
+  @media ${breakPoints.tablet} {
+    width: 33%;
+  }
+`
 export const WrapperContents = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   position: relative;
-`
-
-export const TestBox = styled.div`
-  width: 400px;
-  height: 400px;
-  background-color: #bdbdbd;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const ContentBox = styled.div`
@@ -61,6 +86,10 @@ export const ProfileBox = styled.div`
   border-radius: 100%;
   background-color: #bdbdbd;
   margin-right: 25px;
+  @media (max-width: 1199px) {
+    width: 100px;
+    height: 100px;
+  }
 `
 export const CancelBtn = styled.button`
   position: absolute;
@@ -69,4 +98,8 @@ export const CancelBtn = styled.button`
   background-color: #fff;
   border: none;
   font-size: 1.25rem;
+  @media (max-width: 1199px) {
+    top: -5%;
+    right: -3%;
+  }
 `
