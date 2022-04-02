@@ -22,6 +22,7 @@ export const WrapperTabletSelect = styled.div`
   z-index: 9999;
   width: 100%;
   height: 150px;
+  margin-top: 50px;
   @media ${breakPoints.tablet} {
     display: none;
     height: auto;
@@ -49,14 +50,16 @@ export const WrapperSelectTop = styled.div`
 `
 
 export const SelectTopBox1 = styled.div`
+  font-size: 20px;
+  color: white;
   width: 20%;
   height: 100%;
-  background-color: rgba(130, 67, 255, 0.6);
+  background-color: #333333;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
-  border-top: 1px solid rgba(51, 51, 51, 0.3);
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
 `
 export const SelectTopBox2 = styled.div`
   width: 80%;
@@ -71,8 +74,8 @@ export const TopBox2Top = styled.div`
   display: flex;
   align-items: center;
   padding-left: 20px;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
-  border-top: 1px solid rgba(51, 51, 51, 0.3);
+  border-bottom: 1px solid #333333;
+  border-top: 1px solid #333333;
   @media ${breakPoints.tablet} {
     height: auto;
     padding: 10px 0 10px 20px;
@@ -81,6 +84,7 @@ export const TopBox2Top = styled.div`
 export const MainCategory = styled.div`
   cursor: pointer;
   margin-right: 20px;
+  font-weight: ${(props) => (props.isClickMain === true ? 'bold' : '')};
 `
 
 export const TopBox2Bot = styled.div`
@@ -89,7 +93,7 @@ export const TopBox2Bot = styled.div`
   width: 100%;
   height: 50%;
   align-items: center;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
+  border-bottom: 1px solid #333333;
   @media ${breakPoints.tablet} {
     height: auto;
   }
@@ -100,6 +104,7 @@ export const WrapperSubCategory = styled.div`
   display: flex;
   flex-direction: row;
   div {
+    font-weight: ${(props) => (props.isClickSub === true ? 'bold' : '')};
     margin-right: 20px;
     cursor: pointer;
   }
@@ -117,13 +122,15 @@ export const WrapperSelectMid = styled.div`
   }
 `
 export const SelectMidBox1 = styled.div`
+  font-size: 20px;
+  color: white;
   width: 20%;
   height: 100%;
-  background-color: rgba(130, 67, 255, 0.6);
+  background-color: #333333;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
+  border-bottom: 1px solid white;
   @media ${breakPoints.tablet} {
     width: 100%;
     height: auto;
@@ -135,9 +142,10 @@ export const SelectMidBox2 = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
+  border-bottom: 1px solid #333333;
   div {
     padding-left: 20px;
+    font-weight: ${(props) => (props.isClick === true ? 'bold' : '')};
   }
   input {
     margin-left: 10px;
@@ -159,31 +167,44 @@ export const WrapperSelectBot = styled.div`
   }
 `
 export const SelectBotBox1 = styled.div`
+  color: white;
+  font-size: 20px;
   width: 20%;
   height: 100%;
-  background-color: rgba(130, 67, 255, 0.6);
+  background-color: #333333;
   display: flex;
   align-items: center;
   justify-content: center;
   /* padding-left: 20px; */
-  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
+  border-bottom: 1px solid #333333;
 `
 export const SelectBotBox2 = styled.div`
   width: 80%;
   height: 100%;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
+  border-bottom: 1px solid #333333;
   div {
     padding-left: 20px;
+    padding-right: 10px;
   }
-  input,
+  input {
+    width: 350px;
+    height: 30px;
+  }
   button {
     background-color: white;
     padding: 5px;
     margin: 0 5px;
-    border: 1px solid rgba(51, 51, 51, 0.6);
+    border: 1px solid #333333;
     border-radius: 3px;
+    background-color: #7a36ff;
+    color: white;
+    cursor: pointer;
+    :hover {
+      color: #333333;
+      font-size: bold;
+    }
   }
   @media ${breakPoints.tablet} {
     width: 100%;

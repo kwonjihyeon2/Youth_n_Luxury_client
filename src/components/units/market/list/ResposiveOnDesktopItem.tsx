@@ -10,7 +10,11 @@ export default function DesktopItem(props) {
             <S.MainCategory id="All" onClick={props.onClickMain}>
               ALL
             </S.MainCategory>
-            <S.MainCategory id="Bag" onClick={props.onClickMain}>
+            <S.MainCategory
+              isClickMain={props.isClickMain}
+              id="Bag"
+              onClick={props.onClickMain}
+            >
               BAG
             </S.MainCategory>
             <S.MainCategory id="Acc" onClick={props.onClickMain}>
@@ -30,7 +34,11 @@ export default function DesktopItem(props) {
             {props.main === 'All' ? '' : ''}
             {props.main === 'Bag' ? (
               <S.WrapperSubCategory>
-                <div id="CrossBag" onClick={props.onClickSub}>
+                <div
+                  id="CrossBag"
+                  isClickSub={props.isClickSub}
+                  onClick={props.onClickSub}
+                >
                   크로스백
                 </div>
                 <div id="Backpack" onClick={props.onClickSub}>
@@ -179,10 +187,6 @@ export default function DesktopItem(props) {
         <S.SelectBotBox2>
           <div>검색</div>
           <input className="SearchInput" type="text" />
-          <button>적용</button>
-          <div>가격</div>
-          <input className="PriceInput" type="text" /> ~
-          <input className="PriceInput" type="text" />
           <button>적용</button>
         </S.SelectBotBox2>
       </S.WrapperSelectBot>

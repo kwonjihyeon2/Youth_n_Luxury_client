@@ -30,7 +30,9 @@ export default function Login() {
         localStorage.setItem('accessToken', accessToken || '')
       }
       console.log('로그인성공')
+      console.log(result)
       router.push('/')
+      // router.push('/admin')
     } catch (err) {
       console.log(err.message)
     }

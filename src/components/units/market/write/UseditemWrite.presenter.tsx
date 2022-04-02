@@ -28,11 +28,7 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>1.상품이미지등록</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperInput>
-            <Uploads01
-              fileUrl={props.urls}
-              setUrls={props.setUrls}
-              // onChangeFileUrls={props.onChangeUrls}
-            />
+            <Uploads01 fileUrl={props.urls} setUrls={props.setUrls} />
             <Uploads02 fileUrl2={props.urls2} setUrls2={props.setUrls2} />
             <Uploads03 fileUrl3={props.urls3} setUrls3={props.setUrls3} />
             <Uploads04 fileUrl4={props.urls4} setUrls4={props.setUrls4} />
