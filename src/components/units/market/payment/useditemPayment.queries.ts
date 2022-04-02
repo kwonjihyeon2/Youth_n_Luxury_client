@@ -49,11 +49,11 @@ export const CREATE_ORDER = gql`
     createOrder(impUid: $impUid, productId: $productId, status: $status) {
       id
       impUid
-      price
       status
       product {
         id
         name
+        price
       }
     }
   }

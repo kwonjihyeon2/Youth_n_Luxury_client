@@ -7,9 +7,14 @@ export const FETCH_PRODUCTS = gql`
       name
       description
       price
-      view
-      like
       urls
+      brand {
+        name
+      }
+      subCategory {
+        name
+        mainCategory
+      }
     }
   }
 `

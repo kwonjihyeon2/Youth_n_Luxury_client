@@ -11,3 +11,15 @@ export const FETCH_PRODUCTS = gql`
     }
   }
 `
+
+export const FETCH_LIKE_PRODUCT = gql`
+  query fetchProductLike {
+    fetchProductLike {
+      id
+      name
+      description
+      price
+      urls
+    }
+  }
+`
