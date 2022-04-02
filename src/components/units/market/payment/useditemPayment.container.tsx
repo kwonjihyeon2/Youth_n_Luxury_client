@@ -95,6 +95,7 @@ export default function UseditemPaymentpage(props) {
   const { data: listAddr } = useQuery(FETCH_ADDRS)
 
   // 결제 로직
+  const [isSold, setIsSold] = useState(false)
   const [createOrder] = useMutation(CREATE_ORDER)
   const onClickOrder = () => {
     const IMP = window.IMP
@@ -126,7 +127,8 @@ export default function UseditemPaymentpage(props) {
               },
             })
             console.log(result)
-            // router.push('/mypage')
+            setIsSold(true)
+            router.push('/mypage')
           } catch (error) {
             console.log(error.message)
           }
@@ -167,6 +169,7 @@ export default function UseditemPaymentpage(props) {
         basic={basic}
         onClickEvent={onClickEvent}
         listAddr={listAddr}
+        isSold={isSold}
       />
     </>
   )

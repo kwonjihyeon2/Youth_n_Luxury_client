@@ -27,6 +27,20 @@ export default function UseditemDetailPageUI(props) {
     slidesToScroll: 1,
     nextArrow: <S.NextButton />,
     prevArrow: <S.PreviousButton />,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
   }
 
   const mainSettings = {
@@ -44,13 +58,22 @@ export default function UseditemDetailPageUI(props) {
     focusOnSelect: true,
     nextArrow: <S.NextButton />,
     prevArrow: <S.PreviousButton />,
+    responsive: [
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
   }
 
   const [arr, setArr] = useState([])
   const [sellerArr, setSellerArr] = useState([])
   const [resArr, setResArr] = useState([])
   useEffect(() => {
-    if (!props.data) return
+    if (!props.data?.fetchProduct.urls) return
+    console.log(props.data?.fetchProduct.urls)
 
     const urls = props.data?.fetchProduct.urls
     const test = urls.split('"]["')
@@ -62,7 +85,7 @@ export default function UseditemDetailPageUI(props) {
     // const 대표이미지 = test[0].replaceAll('["', '')
     setArr(test)
   }, [props.data])
-  console.log(arr)
+  // console.log(arr)
 
   return (
     <S.Wrapper>
@@ -76,6 +99,7 @@ export default function UseditemDetailPageUI(props) {
                   <img
                     src={`https://storage.googleapis.com/${el}`}
                     alt="이미지"
+                    style={{ width: '100%', height: '100%' }}
                   />
                 </S.PagingSlick>
               ))}
@@ -86,6 +110,7 @@ export default function UseditemDetailPageUI(props) {
                   <img
                     src={`https://storage.googleapis.com/${el}`}
                     alt="이미지"
+                    style={{ height: '100%' }}
                   />
                 </S.PagingSmallSlick>
               ))}
@@ -98,7 +123,7 @@ export default function UseditemDetailPageUI(props) {
                 <span style={{ fontSize: '24px' }}>원</span>
                 <S.VerifyBox>
                   <img src="/detail/verified_user.png" />
-                  &nbsp; 사용자 인증 완료
+                  <S.VerifySpan> 사용자 인증 완료 </S.VerifySpan>
                   {/* 계좌인증되면 업데이트되도록 */}
                 </S.VerifyBox>
               </S.PriceStyleColor>
@@ -182,7 +207,6 @@ export default function UseditemDetailPageUI(props) {
                   <div>{props.data?.fetchProduct.user.name}님</div>
                   <span style={{ fontWeight: '300' }}>
                     판매 상품 {props.productData?.fetchSellerProduct.length}개
-                    거래 후기 0개
                   </span>
                 </div>
                 <S.SellerRate>
@@ -202,12 +226,11 @@ export default function UseditemDetailPageUI(props) {
         </S.WrapperTitle>
         <S.SelectBox></S.SelectBox>
         <S.ContentsBox>
-          <S.ContentsImg src="/detail/sunglass.jpeg" />
+          <S.ContentsImg src={`https://storage.googleapis.com/${arr[0]}`} />
           <br />
           {props.data?.fetchProduct.description}
           <br />
-          <S.ContentsImg src="/detail/sunglass03.jpeg" />
-          <br />
+          <S.ContentsImg src={`https://storage.googleapis.com/${arr[1]}`} />
         </S.ContentsBox>
         <S.SlickStyle>
           <S.RelativeTitle>

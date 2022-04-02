@@ -24,15 +24,23 @@ export const FETCH_PRODUCT = gql`
       }
       urls
       like
-      # product {
-      #   name
-      #   user {
-      #     name
-      #   }
-      # }
+      product {
+        name
+        description
+        price
+      }
     }
   }
 `
+
+export const FETCH_LIKE = gql`
+  query fetchProductLike {
+    fetchProductLike {
+      id
+    }
+  }
+`
+
 export const DELETE_PRODUCT = gql`
   mutation deleteProduct($productId: String!) {
     deleteProduct(productId: $productId)
@@ -68,3 +76,5 @@ export const CREATE_LIKE = gql`
     }
   }
 `
+
+// export const FETCH_ORDER = gql``
