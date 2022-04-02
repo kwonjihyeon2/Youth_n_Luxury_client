@@ -149,21 +149,23 @@ export default function UseditemDetailPage(props) {
   })
 
   return (
-    <UseditemDetailPageUI
-      productData={productData}
-      relativeData={relativeData}
-      isSold={props.isSold}
-      data={data}
-      isHeart={isHeart}
-      isOpen={isOpen}
-      setIsOpen={setIsOpen}
-      onClickHeart={onClickHeart}
-      onClickOpen={onClickOpen}
-      moveToPage={moveToPage}
-      onClickDelete={onClickDelete}
-      onClickShare={onClickShare}
-      isShare={isShare}
-      onClickBasketBtn={onClickBasketBtn}
-    />
+    <>
+      <UseditemDetailPageUI
+        productData={productData}
+        relativeData={relativeData}
+        isSold={props.isSold}
+        data={data}
+        isHeart={isHeart}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        onClickHeart={onClickHeart}
+        onClickOpen={onClickOpen}
+        moveToPage={moveToPage}
+        onClickDelete={onClickDelete}
+        onClickShare={onClickShare}
+        isShare={isShare}
+        onClickBasketBtn={onClickBasketBtn}
+      />
+    </>
   )
 }
