@@ -7,6 +7,7 @@ import {
   checkFileValidation,
   getDate,
 } from '../../../../commons/libraries/utils'
+import axios from 'axios'
 
 export default function UseditemWrite(props) {
   const router = useRouter()
@@ -24,30 +25,32 @@ export default function UseditemWrite(props) {
   const [subCategory, setSubCategory] = useState('')
   const [selectMain, setSelectMain] = useState('')
 
-  // const onClickAccountConfirm = async () => {
-  //   const temp = String(Math.random())
-  //   const randomNum = temp.slice(9)
-  //   const date = new Date()
-  //   const time = getDate(date)
-  //   const result = await axios.post(
-  //     `https://testapi.openbanking.or.kr/v2.0/inquiry/real_name`,
-  //     {
-  //       headers: {
-  //         Authorization:
-  //           'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMjAwNTkyIiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjU2NDI5ODY2LCJqdGkiOiJjNjFmZjMyYi0yNTQyLTQ5MWItOGUzYS02ZGY1YTE1ZjE5Y2UifQ.A1t724j6vIGPLO7I_TPvEZTev_ds4DSxFjfaThe7uXc',
-  //       },
-  //       params: {
-  //         bank_code_std: '004',
-  //         account_num: '71790201314675',
-  //         account_holder_info_type: '',
-  //         account_holder_info: '000426',
-  //         tran_dtime: time,
-  //         bank_tran_id: `M202200592U${randomNum}`,
-  //       },
-  //     }
-  //   )
-  //   console.log(result)
-  // }
+  const onClickAccountConfirm = async () => {
+    const temp = String(Math.random())
+    const randomNum = temp.slice(9)
+    const date = new Date()
+    const time = getDate(date)
+    console.log(time)
+    console.log(randomNum)
+    const result = await axios.post(
+      `https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/inquiry/real_name`,
+      {
+        bank_code_std: '004',
+        account_num: '71790201314675',
+        account_holder_info_type: '',
+        account_holder_info: '000426',
+        tran_dtime: '20220331123131',
+        bank_tran_id: 'M202200592U123456720',
+      },
+      {
+        headers: {
+          Authorization:
+            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMjAwNTkyIiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjU2NDI5ODY2LCJqdGkiOiJjNjFmZjMyYi0yNTQyLTQ5MWItOGUzYS02ZGY1YTE1ZjE5Y2UifQ.A1t724j6vIGPLO7I_TPvEZTev_ds4DSxFjfaThe7uXc',
+        },
+      }
+    )
+    console.log(result)
+  }
 
   const onChangeUrls = (url: string, index: number) => {
     const newUrls = [...urls]
@@ -133,7 +136,7 @@ export default function UseditemWrite(props) {
       onClickImage={onClickImage}
       onChangeUrls={onChangeUrls}
       urls={urls}
-      // onClickAccountConfirm={onClickAccountConfirm}
+      onClickAccountConfirm={onClickAccountConfirm}
     />
   )
 }
