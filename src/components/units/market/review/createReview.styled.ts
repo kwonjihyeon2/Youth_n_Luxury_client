@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { Rate } from 'antd'
 import 'antd/dist/antd.css'
+import { breakPoints } from '../../../commons/utils/media'
 
 export const WrapperMain = styled.div`
   /* width: 100%;
@@ -29,6 +30,12 @@ export const WrapperContents = styled.div`
   /* height: 100vh; */
   background-color: #fff;
   border-radius: 20px 20px 0 0;
+  @media ${breakPoints.tablet} {
+    width: 80%;
+  }
+  @media ${breakPoints.mobile} {
+    width: 80%;
+  }
 `
 export const WrapperTitle = styled.p`
   color: #333;
@@ -54,6 +61,9 @@ export const CancleButton = styled.button`
 export const ReviewTable = styled.div`
   padding: 20px 90px 30px;
   width: 100%;
+  @media ${breakPoints.tablet} {
+    padding: 20px 50px 30px;
+  }
 `
 
 export const TableBox = styled.div`

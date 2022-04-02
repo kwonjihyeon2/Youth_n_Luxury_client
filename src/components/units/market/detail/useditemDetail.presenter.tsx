@@ -27,6 +27,20 @@ export default function UseditemDetailPageUI(props) {
     slidesToScroll: 1,
     nextArrow: <S.NextButton />,
     prevArrow: <S.PreviousButton />,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
   }
 
   const mainSettings = {
@@ -44,7 +58,34 @@ export default function UseditemDetailPageUI(props) {
     focusOnSelect: true,
     nextArrow: <S.NextButton />,
     prevArrow: <S.PreviousButton />,
+    responsive: [
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
   }
+
+  const [arr, setArr] = useState([])
+  const [sellerArr, setSellerArr] = useState([])
+  const [resArr, setResArr] = useState([])
+  useEffect(() => {
+    if (!props.data?.fetchProduct.urls) return
+    console.log(props.data?.fetchProduct.urls)
+
+    const urls = props.data?.fetchProduct.urls
+    const test = urls.split('"]["')
+    test[0] = test[0].replaceAll('["', '')
+    test[4] = test[4].replaceAll('"]', '')
+    // 0 번째 사진만쓴다. 대표이미지
+    // const urls = props.data?.fetchProduct.urls
+    // const test = urls.split('"]["')
+    // const 대표이미지 = test[0].replaceAll('["', '')
+    setArr(test)
+  }, [props.data])
+  // console.log(arr)
 
   return (
     <S.Wrapper>
@@ -53,54 +94,36 @@ export default function UseditemDetailPageUI(props) {
         <S.WrapperTitle>
           <S.PageContainer>
             <Slider asNavFor={nav2} {...mainSettings} ref={slider1}>
-              <div>
-                <S.TitleImg src="/detail/Rectangle-226.png" />
-              </div>
-              <div>
-                <S.TitleImg src="/detail/Rectangle-226.png" />
-              </div>
-              <div>
-                <S.PagingSlick></S.PagingSlick>
-              </div>
-              <div>
-                <S.PagingSlick></S.PagingSlick>
-              </div>
-              <div>
-                <S.PagingSlick></S.PagingSlick>
-              </div>
-              <div>
-                <S.PagingSlick></S.PagingSlick>
-              </div>
+              {arr.map((el, index) => (
+                <S.PagingSlick key={index}>
+                  <img
+                    src={`https://storage.googleapis.com/${el}`}
+                    alt="이미지"
+                    style={{ width: '100%', height: '100%' }}
+                  />
+                </S.PagingSlick>
+              ))}
             </Slider>
             <S.PagingSlickBox asNavFor={nav1} ref={slider2} {...pagingSettings}>
-              <div>
-                <S.PagingSmallSlick>1</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>2</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>3</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>4</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>5</S.PagingSmallSlick>
-              </div>
-              <div>
-                <S.PagingSmallSlick>6</S.PagingSmallSlick>
-              </div>
+              {arr.map((el, index) => (
+                <S.PagingSmallSlick key={index}>
+                  <img
+                    src={`https://storage.googleapis.com/${el}`}
+                    alt="이미지"
+                    style={{ height: '100%' }}
+                  />
+                </S.PagingSmallSlick>
+              ))}
             </S.PagingSlickBox>
           </S.PageContainer>
-          <div>
+          <S.ResponsiveMiddle>
             <S.Titleprice>
               <S.PriceStyleColor>
                 {props.data?.fetchProduct.price}
                 <span style={{ fontSize: '24px' }}>원</span>
                 <S.VerifyBox>
                   <img src="/detail/verified_user.png" />
-                  &nbsp; 사용자 인증 완료
+                  <S.VerifySpan> 사용자 인증 완료 </S.VerifySpan>
                   {/* 계좌인증되면 업데이트되도록 */}
                 </S.VerifyBox>
               </S.PriceStyleColor>
@@ -124,12 +147,6 @@ export default function UseditemDetailPageUI(props) {
                         <S.ShareButton className="kakao-share-button"></S.ShareButton>
                       </div>
                       <S.CopyButton></S.CopyButton>
-                      {/* <input
-                        style={{ display: 'none' }}
-                        type="text"
-                        value={`http://localhost:3000/market/${props.data?.fetchProduct.id}`}
-                        ref={props.ShareRef}
-                      /> */}
                     </S.KakaoButton>
                   </div>
                 </S.IconBox>
@@ -157,7 +174,7 @@ export default function UseditemDetailPageUI(props) {
               총 상품금액
               <S.PriceStyleColor>
                 &nbsp; {props.data?.fetchProduct.price} &nbsp;
-              </S.PriceStyleColor>{' '}
+              </S.PriceStyleColor>
               원
             </S.PriceResult>
 
@@ -190,7 +207,6 @@ export default function UseditemDetailPageUI(props) {
                   <div>{props.data?.fetchProduct.user.name}님</div>
                   <span style={{ fontWeight: '300' }}>
                     판매 상품 {props.productData?.fetchSellerProduct.length}개
-                    거래 후기 0개
                   </span>
                 </div>
                 <S.SellerRate>
@@ -206,16 +222,15 @@ export default function UseditemDetailPageUI(props) {
                 </S.SellerRate>
               </S.SellerBox>
             </S.ProfileBox>
-          </div>
+          </S.ResponsiveMiddle>
         </S.WrapperTitle>
         <S.SelectBox></S.SelectBox>
         <S.ContentsBox>
-          <S.ContentsImg src="/detail/sunglass.jpeg" />
+          <S.ContentsImg src={`https://storage.googleapis.com/${arr[0]}`} />
           <br />
           {props.data?.fetchProduct.description}
           <br />
-          <S.ContentsImg src="/detail/sunglass03.jpeg" />
-          <br />
+          <S.ContentsImg src={`https://storage.googleapis.com/${arr[1]}`} />
         </S.ContentsBox>
         <S.SlickStyle>
           <S.RelativeTitle>
@@ -225,7 +240,6 @@ export default function UseditemDetailPageUI(props) {
             {props.productData?.fetchSellerProduct.map((el) => (
               <div key={el.id}>
                 <S.SliderBox></S.SliderBox>
-                {/* urls parse 필요 */}
                 <p>{el.name}</p>
                 <div>{el.price}원</div>
               </div>

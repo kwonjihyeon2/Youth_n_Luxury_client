@@ -1,6 +1,12 @@
 import styled from '@emotion/styled'
 import { useState } from 'react'
 import { RightOutlined } from '@ant-design/icons'
+import { useRouter } from 'next/router'
+import { gql, useQuery } from '@apollo/client'
+
+interface Status {
+  isTrue: boolean
+}
 
 const Position = styled.div`
   height: 100vh;
@@ -8,9 +14,6 @@ const Position = styled.div`
   top: 0px;
   z-index: 30000;
 `
-interface Status {
-  isTrue: boolean
-}
 const Wrapper = styled.div`
   width: 300px;
   height: 100%;
@@ -21,40 +24,65 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #f2f2f2;
+  overflow: scroll;
 `
 
 const WrapperTop = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 250px;
   display: flex;
   margin-top: 20px;
   align-items: center;
   padding-bottom: 20px;
   border-bottom: 1px solid black;
+  div {
+    display: flex;
+    flex-direction: row;
+  }
 `
 
 const LoginBtn = styled.button`
+  width: 80px;
+  font-size: 14px;
   margin-right: 10px;
   height: 30px;
   cursor: pointer;
   color: white;
   border: none;
   background-color: #2f2f2f;
+  :hover {
+    color: #7a36ff;
+  }
 `
 
 const SigninBtn = styled.button`
+  width: 80px;
+  font-size: 14px;
   height: 30px;
   cursor: pointer;
   color: white;
   border: none;
   background-color: #2f2f2f;
+  :hover {
+    color: #7a36ff;
+  }
 `
 
 const LoginText = styled.div`
-  margin-right: 40px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 const WelcomeText = styled.div`
-  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 const WrapperMid = styled.div`
@@ -91,28 +119,27 @@ const WrapperIcon4 = styled.div`
   align-items: center;
 `
 
-const Icon1Img = styled.div`
+const Icon1Img = styled.img`
   width: 20px;
   height: 20px;
-  background-color: red;
   margin-bottom: 10px;
+  cursor: pointer;
 `
-const Icon2Img = styled.div`
+const Icon2Img = styled.img`
   width: 20px;
   height: 20px;
-  background-color: red;
   margin-bottom: 10px;
+  cursor: pointer;
 `
-const Icon3Img = styled.div`
+const Icon3Img = styled.img`
   width: 20px;
   height: 20px;
-  background-color: red;
   margin-bottom: 10px;
+  cursor: pointer;
 `
-const Icon4Img = styled.div`
+const Icon4Img = styled.img`
   width: 20px;
   height: 20px;
-  background-color: red;
   margin-bottom: 10px;
   cursor: pointer;
 `
@@ -203,6 +230,13 @@ const BtnLine1 = styled.span`
 const BtnLine2 = styled.span``
 const BtnLine3 = styled.span``
 const BtnLine4 = styled.span``
+const WpapperTopMid = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
 
 // overflow: auto 스크롤생성
 // span 태그로 작대기 3개 만들고
@@ -212,9 +246,42 @@ const BtnLine4 = styled.span``
 // transition-delay: .2s ~몇초뒤에 실행해라
 // transition: .5s ~몇초안에 실행해라
 
+const FETCH_USER = gql`
+  query fetchUser {
+    fetchUser {
+      nickname
+    }
+  }
+`
+
 export default function LayoutSidebar() {
+  const { data } = useQuery(FETCH_USER)
+  const router = useRouter()
   const [isTrue, setIsTrue] = useState(false)
 
+  const onClickOrder = () => {
+    router.push(`/mypage/myShopping/transaction`)
+  }
+  const onClickUserInfo = () => {
+    router.push(`/mypage/myInfo/editUser`)
+  }
+  const onClickQuery = () => {
+    router.push(`mypage/myActivity/myAsk`)
+  }
+  const onClickAlert = () => {
+    router.push(`/alert`)
+  }
+  const onClickJoin = () => {
+    router.push(`/join`)
+  }
+
+  const onClickLogin = () => {
+    router.push(`/login`)
+  }
+  const onclickMoveToList = () => {
+    router.push(`/market/list`)
+  }
+  const onClickLogout = () => {}
   const onClickOpen = () => {
     setIsTrue((prev) => !prev)
   }
@@ -223,51 +290,73 @@ export default function LayoutSidebar() {
       <Position>
         <Wrapper isTrue={isTrue}>
           <WrapperTop>
-            <LoginText>로그인하세요.</LoginText>
-            {/* <WelcomeText>??님</WelcomeText> */}
-            <LoginBtn>로그인</LoginBtn>
-            <SigninBtn>회원가입</SigninBtn>
+            {data?.fetchUser.nickname === undefined ? (
+              <LoginText onClick={onClickLogin}>로그인해주세요.</LoginText>
+            ) : (
+              <WelcomeText>{data?.fetchUser.nickname}님환영합니다!</WelcomeText>
+            )}
+            <WpapperTopMid>
+              {data?.fetchUser.nickname === undefined ? (
+                <LoginBtn onClick={onClickLogin}>로그인</LoginBtn>
+              ) : (
+                <LoginBtn onClick={onClickLogout}>로그아웃</LoginBtn>
+              )}
+              {data?.fetchUser.nickname === undefined ? (
+                <SigninBtn onClick={onClickJoin}>회원가입</SigninBtn>
+              ) : (
+                ''
+              )}
+            </WpapperTopMid>
           </WrapperTop>
           <WrapperMid>
             <WrapperIcon1>
-              <Icon1Img></Icon1Img>
-              <IconText>주문조회</IconText>
+              <Icon1Img onClick={onClickOrder} src="/images/sidebar/cart.png" />
+              <IconText onClick={onClickOrder}>거래내역</IconText>
             </WrapperIcon1>
             <WrapperIcon2>
-              <Icon2Img></Icon2Img>
-              <IconText>회원정보</IconText>
+              <Icon2Img
+                onClick={onClickUserInfo}
+                src="/images/sidebar/info.png"
+              />
+              <IconText onClick={onClickUserInfo}>나의정보</IconText>
             </WrapperIcon2>
             <WrapperIcon3>
-              <Icon3Img></Icon3Img>
-              <IconText>1:1문의</IconText>
+              <Icon3Img
+                onClick={onClickQuery}
+                src="/images/sidebar/query.png"
+              />
+              <IconText onClick={onClickQuery}>1:1문의</IconText>
             </WrapperIcon3>
             <WrapperIcon4>
-              <Icon4Img></Icon4Img>
-              <IconText>알림센터</IconText>
+              <Icon4Img
+                onClick={onClickAlert}
+                src="/images/sidebar/alert.png"
+              />
+              <IconText onClick={onClickAlert}>알림센터</IconText>
             </WrapperIcon4>
           </WrapperMid>
           <WrapperBot>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>구찌</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>버버리</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>에르메스</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>샤넬</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>루이비통</BrnadText>
             </WrapperNavi>
-            <WrapperNavi>
+            <WrapperNavi onClick={onclickMoveToList}>
               <RightOutlined />
               <BrnadText>프라다</BrnadText>
             </WrapperNavi>
@@ -277,7 +366,7 @@ export default function LayoutSidebar() {
             <PhoneText>02-000-0000</PhoneText>
             <OpenTime>WEEKDAY: 10:10 ~ 20:00</OpenTime>
             <OpenTime>WEEKEND: 12:00 ~ 19:00</OpenTime>
-            <HelpBtn>고객센터</HelpBtn>
+            <HelpBtn onClick={onClickQuery}>고객센터</HelpBtn>
           </WrapperHelp>
         </Wrapper>
 

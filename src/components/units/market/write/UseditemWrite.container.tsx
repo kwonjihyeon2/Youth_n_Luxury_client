@@ -20,7 +20,12 @@ export default function UseditemWrite(props) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
-  const [urls, setUrls] = useState(['', '', '', '', '', '', '', '', '', ''])
+  // const [urls, setUrls] = useState(['', '', '', '', '', '', '', '', '', ''])
+  const [urls, setUrls] = useState('')
+  const [urls2, setUrls2] = useState('')
+  const [urls3, setUrls3] = useState('')
+  const [urls4, setUrls4] = useState('')
+  const [urls5, setUrls5] = useState('')
   const [brand, setBrand] = useState('')
   const [subCategory, setSubCategory] = useState('')
   const [selectMain, setSelectMain] = useState('')
@@ -52,11 +57,7 @@ export default function UseditemWrite(props) {
     console.log(result)
   }
 
-  const onChangeUrls = (url: string, index: number) => {
-    const newUrls = [...urls]
-    newUrls[index] = url
-    setUrls(newUrls)
-  }
+
   const onChangeName = (event) => {
     setName(event.target.value)
   }
@@ -88,7 +89,7 @@ export default function UseditemWrite(props) {
             description,
             price: Number(price),
             brandName: brand,
-            urls: 'test',
+            urls: urls + urls2 + urls3 + urls4 + urls5,
             subCategoryName: subCategory,
           },
         },
@@ -134,9 +135,18 @@ export default function UseditemWrite(props) {
       onChangeMainCategory={onChangeMainCategory}
       fileRef={fileRef}
       onClickImage={onClickImage}
-      onChangeUrls={onChangeUrls}
       urls={urls}
       onClickAccountConfirm={onClickAccountConfirm}
+
+      urls2={urls2}
+      urls3={urls3}
+      urls4={urls4}
+      urls5={urls5}
+      setUrls={setUrls}
+      setUrls2={setUrls2}
+      setUrls3={setUrls3}
+      setUrls4={setUrls4}
+      setUrls5={setUrls5}
     />
   )
 }

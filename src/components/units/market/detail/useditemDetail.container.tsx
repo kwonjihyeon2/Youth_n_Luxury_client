@@ -5,12 +5,13 @@ import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
 import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import {
+  CREATE_LIKE,
   DELETE_PRODUCT,
+  FETCH_LIKE,
   FETCH_PRODUCT,
   RELATIVE_PRODUCT,
   SELLER_PRODUCT,
 } from './useditemDetail.query'
-import { ConsoleSqlOutlined } from '@ant-design/icons'
 
 declare const window: typeof globalThis & {
   Kakao: any
@@ -33,13 +34,38 @@ export default function UseditemDetailPage(props) {
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: { productId: String(router.query.boardId) },
   })
+  console.log(data?.fetchProduct)
 
   const { data: productData } = useQuery(SELLER_PRODUCT, {
     variables: { userId: String(data?.fetchProduct.user.id) },
   })
-  const onClickHeart = () => {
+
+  const [createLike] = useMutation(CREATE_LIKE)
+  // const { data: picked } = useQuery(FETCH_LIKE)
+
+  const onClickHeart = async () => {
     setIsHeart((prev) => !prev)
+    try {
+      const toggle = await createLike({
+        variables: { productId: String(router.query.boardId) },
+        refetchQueries: [FETCH_PRODUCT],
+      })
+      console.log(toggle)
+    } catch (error) {
+      console.log(error.message)
+    }
   }
+
+  const [keep, setKeep] = useState(false)
+  // const { data } = useQuery()
+
+  // useEffect(() => {
+  //   const pick = picked?.fetchProductLike.filter(
+  //     (el) => el.id === data?.fetchProduct.id
+  //   )
+
+  //   console.log(picked?.fetchProductLike)
+  // })
 
   const [deleteProduct] = useMutation(DELETE_PRODUCT)
   const onClickDelete = async () => {

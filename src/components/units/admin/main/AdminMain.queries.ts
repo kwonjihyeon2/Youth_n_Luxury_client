@@ -4,12 +4,10 @@ export const FETCH_ADMIN_QUERYS = gql`
   query fetchAdminQuerys {
     fetchAdminQuerys {
       id
-      title
       contents
-      adminCategory {
-        name
+      useQuery {
+        title
       }
-      adminAnswer
     }
   }
 `
@@ -17,21 +15,24 @@ export const FETCH_ADMIN_QUERYS = gql`
 export const FETCH_USERS = gql`
   query fetchUsers {
     fetchUsers {
+      id
       nickname
       name
       email
-      profilePic
     }
   }
 `
 
 export const FETCH_ORDERS = gql`
-  query fetchOrder {
-    fetchOrder {
+  query fetchOrders {
+    fetchOrders {
       id
       impUid
-      price
       status
+      createdAt
+      product {
+        price
+      }
     }
   }
 `
@@ -67,6 +68,12 @@ export const FETCH_PRODUCTS = gql`
         name
       }
     }
+  }
+`
+
+export const DELETE_USER = gql`
+  mutation deleteUser {
+    deleteUser
   }
 `
 

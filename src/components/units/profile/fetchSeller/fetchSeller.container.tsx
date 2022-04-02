@@ -9,7 +9,7 @@ export default function SellerInfo(props) {
   return (
     <S.Wrapper>
       <S.WrapperContents>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
           <S.ProfileBox></S.ProfileBox>
           <S.ContentBox>
             <S.ProfileName>
@@ -35,7 +35,7 @@ export default function SellerInfo(props) {
             </S.Content>
           </S.ContentBox>
         </div>
-        <div>
+        <S.Productlist>
           <div>
             <S.BoldSpan style={{ fontSize: '1.25rem' }}>
               {props.data?.fetchProduct.user.name}
@@ -43,11 +43,11 @@ export default function SellerInfo(props) {
             님이 판매중인 상품
           </div>
           <S.SpaceImg>
-            <img style={{ width: '90px' }} src="/detail/bag.png" />
-            <img style={{ width: '90px' }} src="/detail/bag.png" />
-            <img style={{ width: '90px' }} src="/detail/bag.png" />
+            <S.productImage src="/detail/bag.png" />
+            <S.productImage src="/detail/bag.png" />
+            <S.productImage src="/detail/bag.png" />
           </S.SpaceImg>
-        </div>
+        </S.Productlist>
         <S.CancelBtn onClick={onClickClose}>X</S.CancelBtn>
       </S.WrapperContents>
     </S.Wrapper>

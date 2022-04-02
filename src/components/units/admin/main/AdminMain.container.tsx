@@ -1,7 +1,8 @@
-import { useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import AdminMainUI from './AdminMain.presenter'
 import {
+  DELETE_USER,
   FETCH_ADMIN_QUERYS,
   FETCH_ORDERS,
   FETCH_PRODUCTS,
@@ -17,11 +18,19 @@ export default function AdminMain() {
   const { data: dataProducts, refetch: refetchProducts } =
     useQuery(FETCH_PRODUCTS)
 
-  const onClickMoveToQuery = () => {
-    // router.push(`/mypage/`)
-  }
+  console.log(dataUsers)
+  const [deleteUser] = useMutation(DELETE_USER)
+  const onClickMoveToQuery = () => {}
   const onClickLogout = () => {}
   const onClickDeleteProduct = () => {}
+  const onClickDeleteUser = async () => {
+    try {
+      await deleteUser()
+      alert('유저가 삭제되었습니다.')
+    } catch (error) {
+      alert(error.message)
+    }
+  }
   return (
     <AdminMainUI
       dataQuerys={dataQuerys}
@@ -34,6 +43,7 @@ export default function AdminMain() {
       refetchProducts={refetchProducts}
       onClickLogout={onClickLogout}
       onClickDeleteProduct={onClickDeleteProduct}
+      onClickDeleteUser={onClickDeleteUser}
     />
   )
 }

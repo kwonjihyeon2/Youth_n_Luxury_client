@@ -6,6 +6,7 @@ import { FiHeart } from 'react-icons/fi'
 import { BsSuitHeartFill } from 'react-icons/bs'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { keyframes } from '@emotion/react'
+import { breakPoints } from '../../../commons/utils/media'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -18,28 +19,53 @@ export const WrapperBody = styled.div`
   max-width: 1200px;
   width: 100%;
   padding: 60px;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    padding: 0 20px;
+  }
 `
 
 export const WrapperTitle = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1199px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    margin-top: 30px;
+  }
 `
 export const TitleStyle = styled.p`
   font-size: 1.75rem;
-  padding: 40px 0 15px 0;
+  padding: 40px 0 20px 0;
   text-align: center;
+  @media ${breakPoints.tablet}, ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    margin: 0;
+  }
 `
-
+export const ResponsiveMiddle = styled.div`
+  @media (max-width: 991px) {
+    width: 100%;
+    margin-top: 30px;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`
 export const Titleprice = styled.div`
   padding: 20px 0 10px 0;
   border-bottom: 1px solid #c4c4c4;
   margin-bottom: 10px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   font-size: 1.5rem;
   justify-content: space-between;
+  @media ${breakPoints.xsmobile} {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 10px 0;
+  }
 `
 export const MyRightBox = styled.div`
   display: flex;
@@ -66,6 +92,21 @@ export const KakaoButton = styled.div`
     height: 35px;
     cursor: pointer;
     border: none;
+  }
+  @media (max-width: 1199px) {
+    right: -80px;
+    flex-direction: column;
+    button {
+      margin-top: 5px;
+    }
+  }
+  @media ${breakPoints.xsmobile} {
+    flex-direction: row;
+    top: -5px;
+    right: -120px;
+    button {
+      margin-top: 0px;
+    }
   }
 `
 export const ShareButton = styled.button`
@@ -95,6 +136,9 @@ export const ContentsBox = styled.div`
   text-align: center;
   margin: 100px 0;
   border-top: 1px solid #bdbdbd;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    margin: 60px 20px 0 20px;
+  }
 `
 
 export const TitleImg = styled.img`
@@ -104,10 +148,12 @@ export const TitleImg = styled.img`
 export const WrapperBodyUl = styled.ul`
   display: flex;
   flex-direction: column;
-  justify-content: space;
   padding: 0;
   margin: 0;
   margin-right: 30px;
+  @media (max-width: 991px) {
+    margin: 30px;
+  }
 `
 
 export const PriceStyle = styled.div`
@@ -126,6 +172,12 @@ export const PriceResult = styled.div`
 
 export const PageContainer = styled.div`
   width: 580px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+  @media ${breakPoints.xsmobile} {
+    width: 100%;
+  }
 `
 
 export const PagingSlickBox = styled(Slider)`
@@ -160,13 +212,19 @@ export const PagingSlick = styled.div`
   height: 470px;
   background-color: #f4f4f4;
   margin-bottom: 20px;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    width: 100%;
+  }
+  @media ${breakPoints.xsmobile} {
+    width: 100%;
+    height: auto;
+  }
 `
 
 export const PagingSmallSlick = styled.div`
   width: auto;
   height: 95px;
   margin: 0px 10px;
-  background-color: #f4f4f4;
 `
 
 export const NextButton = styled(RightOutlined)`
@@ -193,6 +251,10 @@ export const ButtonFlexBox = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    @media ${breakPoints.tablet} {
+      width: 33%;
+      margin: 0;
+    }
   }
 `
 
@@ -267,10 +329,22 @@ export const VerifyBox = styled.span`
   padding: 5px 0;
   border-radius: 12px;
   background-color: #ffbb0b;
+  @media ${breakPoints.xsmobile} {
+    width: 30px;
+    right: -35px;
+  }
 `
-
+export const VerifySpan = styled.span`
+  @media ${breakPoints.xsmobile} {
+    display: none;
+  }
+`
 export const FlexPocket = styled.div`
   display: flex;
+
+  @media ${breakPoints.xsmobile} {
+    margin-top: 20px;
+  }
 `
 
 export const IconBox = styled.div`
@@ -303,6 +377,9 @@ export const WrapperLiStyle = styled.li`
 
 export const ContentsImg = styled.img`
   width: 500px;
+  @media ${breakPoints.xsmobile} {
+    width: 50%;
+  }
 `
 
 export const SliderContainer = styled(Slider)`
@@ -319,6 +396,10 @@ export const SliderContainer = styled(Slider)`
     border: 1px solid rgba(196, 196, 196, 0.4);
     &:hover {
       color: #000;
+    }
+    @media ${breakPoints.tablet} {
+      height: 70%;
+      top: 35%;
     }
   }
   .anticon svg {
@@ -351,7 +432,10 @@ export const SlickStyle = styled.div`
 export const SliderBox = styled.div`
   height: 200px;
   width: 100%;
-  background-color: #bdbdbd;
+  background-color: #c4c4c4;
+  @media ${breakPoints.tablet} {
+    height: 150px;
+  }
 `
 export const RelativeTitle = styled.div`
   font-size: 1rem;
@@ -367,9 +451,15 @@ export const SellerBox = styled.div`
   align-items: center;
   cursor: pointer;
   div {
-    margin-right: 15px;
+    margin-right: 20px;
+    @media ${breakPoints.xsmobile} {
+      margin-right: 10px;
+    }
   }
   font-weight: 500;
+  @media ${breakPoints.tablet}, ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    justify-content: center;
+  }
 `
 
 export const SellerProfile = styled.div`

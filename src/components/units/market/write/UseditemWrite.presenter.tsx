@@ -1,6 +1,9 @@
 import Uploads01 from '../../../commons/uploads/01/Uploads01.container'
+import Uploads02 from '../../../commons/uploads/02/Uploads02.container'
+import Uploads03 from '../../../commons/uploads/03/Uploads03.container'
+import Uploads04 from '../../../commons/uploads/04/Uploads04.container'
+import Uploads05 from '../../../commons/uploads/05/Uploads05.container'
 import * as S from './UseditemWrite.styles'
-import { v4 as uuidv4 } from 'uuid'
 
 export default function UseditemWriteUI(props) {
   return (
@@ -25,14 +28,11 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>1.상품이미지등록</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperInput>
-            {props.urls.map((el, index) => (
-              <Uploads01
-                key={uuidv4()}
-                index={index}
-                fileUrl={el}
-                onChangeFileUrls={props.onChangeUrls}
-              />
-            ))}
+            <Uploads01 fileUrl={props.urls} setUrls={props.setUrls} />
+            <Uploads02 fileUrl2={props.urls2} setUrls2={props.setUrls2} />
+            <Uploads03 fileUrl3={props.urls3} setUrls3={props.setUrls3} />
+            <Uploads04 fileUrl4={props.urls4} setUrls4={props.setUrls4} />
+            <Uploads05 fileUrl5={props.urls5} setUrls5={props.setUrls5} />
           </S.WrapperInput>
         </S.WrapperImages>
         <S.WrapperContents>

@@ -9,7 +9,7 @@ export default function AdminMainUI(props) {
         <S.WrapperTop>
           <S.HouseImg src="/images/admin/Headset.png" />
           <S.WrapperTopText>관리자모드</S.WrapperTopText>
-          <S.AvatarImg src="/images/admin/Avatar.png" />
+          <S.AvatarImg src="/images/sidebar/info.png" />
           <S.WrapperTopName>관리자</S.WrapperTopName>
           <S.LogoutBtn onClick={props.onClickLogout}>로그아웃</S.LogoutBtn>
         </S.WrapperTop>
@@ -43,39 +43,35 @@ export default function AdminMainUI(props) {
                 </div>
               ))}
             </S.Box1QuestionWrapper>
-            <S.PaginationWrapper>
+            {/* <S.PaginationWrapper>
               <Pagination count={1} color="secondary" />
-            </S.PaginationWrapper>
+            </S.PaginationWrapper> */}
           </S.MidBox1>
+          <S.UserTitleWrapper>
+            <S.UserImg src="images/admin/UserIcon.png" />
+            유저 검색하기
+          </S.UserTitleWrapper>
           <S.MidBox2>
-            <S.UserTitleWrapper>
-              <S.UserImg src="images/admin/UserIcon.png" />
-              유저 검색하기
-            </S.UserTitleWrapper>
             <S.UserSearch type="text" placeholder="이름을 입력하세요" />
-            <S.TempWrapper>
-              <S.UserWrapper>
+            <S.UserWrapper>
+              {props.dataUsers?.fetchUsers.map((el) => (
                 <S.UserList>
-                  {props.dataUsers?.fetchUsers.map((el) => (
-                    <S.UserImgWrapper>
-                      <S.UserTempImg>
-                        <S.UserImg
-                          key={el}
-                          src={`https://storage.googleapis.com/${el.image}`}
-                        />
-                      </S.UserTempImg>
-                      <S.UserName>{el.name}</S.UserName>
-                      <S.UserEmail>{el.email}</S.UserEmail>
-                      <S.UserDeleteBtn>X</S.UserDeleteBtn>
-                    </S.UserImgWrapper>
-                  ))}
+                  <S.UsersImg
+                    key={el}
+                    src={`https://storage.googleapis.com/${el.image}`}
+                  />
+                  <S.UserName>{el.name || '아이디가없어'}</S.UserName>
+                  <S.UserEmail>{el.email}</S.UserEmail>
+                  <S.UserDeleteBtn onClick={props.onClickDeleteUser}>
+                    X
+                  </S.UserDeleteBtn>
                 </S.UserList>
-              </S.UserWrapper>
-            </S.TempWrapper>
-            <S.PaginationWrapper>
-              <Pagination count={1} color="secondary" />
-            </S.PaginationWrapper>
+              ))}
+            </S.UserWrapper>
           </S.MidBox2>
+          {/* <S.PaginationWrapper>
+            <Pagination count={1} color="secondary" />
+          </S.PaginationWrapper> */}
           <S.MidBox3>
             <S.StatusWrapper>
               <S.BoxImg src="/images/admin/Delivery.png" />
@@ -94,9 +90,9 @@ export default function AdminMainUI(props) {
                 <div>
                   <div>{el.createdAt}</div>
                   <S.TempImg></S.TempImg>
-                  <div>{el.product.urls}</div>
-                  <div>{el.price}</div>
-                  <div>{el.user.name}</div>
+                  {/* <div>{el.product.urls}</div> */}
+                  <div>{el.product.price}</div>
+                  {/* <div>{el.user.name}</div> */}
                   <S.SelectStatus>
                     <option value="">--선택하세요--</option>
                     <option value="PAYMENT">결재완료</option>
@@ -109,14 +105,16 @@ export default function AdminMainUI(props) {
                 </div>
               ))}
             </S.Box3UseditemWrapper>
-            <S.PaginationWrapper>
+            {/* <S.PaginationWrapper>
               <Pagination count={1} color="secondary" />
-            </S.PaginationWrapper>
+            </S.PaginationWrapper> */}
           </S.MidBox3>
           <S.MidBox4>
-            <S.UseditemSearchWrapper>
+            <S.UseditemTextWrapper>
               <S.Search src="/images/admin/Search.png" />
-              상품 조회하기
+              <div>상품 조회하기</div>
+            </S.UseditemTextWrapper>
+            <S.UseditemSearchWrapper>
               <S.UseditemSearch type="text" placeholder="제목기준" />
             </S.UseditemSearchWrapper>
             <S.Box4MenuWrapper>
@@ -142,9 +140,9 @@ export default function AdminMainUI(props) {
                 </div>
               ))}
             </S.Box4UseditemListWrapper>
-            <S.PaginationWrapper>
+            {/* <S.PaginationWrapper>
               <Pagination count={1} color="secondary" />
-            </S.PaginationWrapper>
+            </S.PaginationWrapper> */}
           </S.MidBox4>
         </S.WrapperMid>
       </S.Wrapper>

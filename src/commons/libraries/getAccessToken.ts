@@ -1,4 +1,5 @@
-import { GraphQLClient, gql } from 'graphql-request'
+import { gql } from '@apollo/client'
+import { GraphQLClient } from 'graphql-request'
 
 const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -9,8 +10,8 @@ const RESTORE_ACCESS_TOKEN = gql`
 export async function getAccessToken() {
   try {
     const graphqlClient = new GraphQLClient(
-      'http://mybackend.project5-sos.shop:3000/graphql'
-      // { credentials: 'include' }
+      'https://mybackend.project5-sos.shop/graphql',
+      { credentials: 'include' }
     )
     const result = await graphqlClient.request(RESTORE_ACCESS_TOKEN)
     console.log(result)

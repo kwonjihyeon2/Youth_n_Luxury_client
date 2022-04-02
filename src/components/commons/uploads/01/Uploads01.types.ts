@@ -1,4 +1,4 @@
-import { ChangeEvent, RefObject } from 'react'
+import { ChangeEvent, MouseEvent, RefObject } from 'react'
 
 export interface IUploads01Props {
   index: number
@@ -6,6 +6,7 @@ export interface IUploads01Props {
   defaultFileUrl?: string
   onChangeUrls?: any
   onChangeFileUrls?: any
+  setUrls: any
 }
 
 export interface IUploads01UIProps {
