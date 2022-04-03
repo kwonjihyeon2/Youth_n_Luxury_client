@@ -9,19 +9,23 @@
 .WrapperContents {
   width: 100%;
   max-width: 1200px;
-  height: 800px;
+  min-height: 800px;
+  height: auto;
   padding: 60px;
-  display: flex;
 }
-
+.WrapperBox {
+  display: flex;
+  border: 1px solid #e3e3e3;
+}
 .WrapperLeft {
-  width: 40%;
-  background-color: #9e9e9e;
+  width: 30%;
+  background-color: #fff;
+  border-right: 1px solid #e3e3e3;
 }
 .WrapperRight {
-  width: 60%;
-  background-color: rgba(204, 199, 242, 0.55);
-  padding: 20px;
+  width: 70%;
+  background-color: #f4f4f9;
+  /* padding: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -29,28 +33,29 @@
 .WrapperName {
   font-weight: 700;
   padding: 20px;
-  border-bottom: 1px solid #7b7b7b;
 }
 
 .UserList {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid #7b7b7b;
+  padding: 10px 20px;
+  border-top: 1px solid #e3e3e3;
+}
+.UserList:hover {
+  background-color: #f4f4f9;
 }
 
 .UserProfile {
   width: 60px;
   height: 60px;
   border-radius: 100%;
-  background-color: #fff;
+  background: url('/detail/profile.png') center;
   padding: 10px;
   margin-right: 10px;
 }
 .UserName {
   font-weight: 700;
-  line-height: 20px;
 }
 .ChatDay {
   font-weight: 300;
@@ -63,28 +68,36 @@
   margin-bottom: 30px;
   justify-content: flex-end;
 }
-
+.Chatground {
+  padding: 20px;
+}
 .YourComments {
+  width: 100%;
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
 }
 
 .TalkBalloon {
-  width: 50%;
+  width: 350px;
   height: 50px;
   padding: 10px;
   background: #c4c4c4;
   border-radius: 10px;
-  margin: 0 20px;
-  margin-top: 30px;
+  margin: 0 10px;
+  margin-top: 5px;
   position: relative;
 }
-
+.align {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
 .Triangle {
   position: absolute;
   top: 0;
-  right: -10%;
+  right: -8%;
   width: 0;
   height: 0;
   border-bottom: 20px solid transparent;
@@ -96,7 +109,7 @@
 .LeftTriangle {
   position: absolute;
   top: 0;
-  left: -4%;
+  left: -3%;
   width: 0;
   height: 0;
   border-bottom: 20px solid transparent;
@@ -104,11 +117,24 @@
   border-left: 0px solid transparent;
   border-right: 20px solid rgba(196, 196, 196, 0.9);
 }
-
-.ChatValue {
+.SendChat {
   width: 100%;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.ChatValue {
+  width: 90%;
   padding: 10px;
   border-radius: 30px;
-  background-color: rgba(196, 196, 196, 0.4);
+  background-color: #f4f4f9;
   border: none;
+}
+.SendButton {
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f4f4f9;
+  border: none;
+  cursor: pointer;
 }

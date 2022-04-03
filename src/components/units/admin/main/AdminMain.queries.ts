@@ -43,32 +43,15 @@ export const FETCH_ORDERS = gql`
   }
 `
 
-export const CREATE_ORDER = gql`
-  mutation createOrder(
-    $impUid: String!
-    $productId: String!
-    $status: String!
-  ) {
-    createOrder(impUid: $impUid, productId: $productId, status: $status) {
+export const UPDATE_TRANSACTION = gql`
+  mutation updateTransaction($impuid: String!, $statusCode: String!) {
+    updateTransaction(impuid: $impuid, statusCode: $statusCode) {
       id
-      status
       impUid
+      status
     }
   }
 `
-
-// export const FETCH_PRODUCTS = gql`
-//   query fetchProducts {
-//     fetchProducts {
-//       id
-//       name
-//       price
-//       user {
-//         name
-//       }
-//     }
-//   }
-// `
 export const FETCH_ALL_PRODUCT = gql`
   query fetchAllProduct {
     fetchAllProduct {
