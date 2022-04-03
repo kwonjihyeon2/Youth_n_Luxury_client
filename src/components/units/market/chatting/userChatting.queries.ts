@@ -8,9 +8,10 @@ export const FETCH_CHAT = gql`
       chatLog
       user {
         name
+        profilePic
       }
       product {
-        id
+        name
         user {
           name
         }
@@ -27,11 +28,34 @@ export const UPDATE_CHAT = gql`
       chatLog
       user {
         name
+        profilePic
+      }
+      product {
+        name
+        profilePic
+        user {
+          name
+        }
+      }
+    }
+  }
+`
+
+export const JOIN_SELLER = gql`
+  query joinSeller {
+    joinSeller {
+      id
+      roomId
+      chatLog
+      user {
+        name
+        profilePic
       }
       product {
         name
         user {
           name
+          profilePic
         }
       }
     }

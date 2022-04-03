@@ -261,6 +261,9 @@ export const ButtonFlexBox = styled.div`
 export const ButtonBlackStyle = styled.button`
   background-color: black !important;
   color: #fff;
+  &:hover {
+    background-color: #7a36ff !important;
+  }
 `
 
 export const PhoneIconSpan = styled.span`
@@ -582,4 +585,7 @@ export const EditBtn = styled.button`
   border: 1px solid #000;
   background-color: #000;
   color: white;
+  &:hover {
+    background-color: #7a36ff;
+  }
 `

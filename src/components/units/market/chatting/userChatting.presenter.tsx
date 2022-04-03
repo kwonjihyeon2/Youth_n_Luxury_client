@@ -1,66 +1,35 @@
-export default function UserChattingPageUI(props) {
-  const UserArr = [
-    {
-      name: '조진일',
-      createdAt: '3월 25일',
-      content: '몇시에 만날까요?',
-      profile: '이미지',
-    },
-    {
-      name: '양진영',
-      createdAt: '3월 25일',
-      content: '일단 좀 자고 올게요',
-      profile: '이미지',
-    },
-    {
-      name: '황규빈',
-      createdAt: '3월 25일',
-      content: '저는 다 좋아요',
-      profile: '이미지',
-    },
-  ]
+import ChatlogPage from './userChattingItem'
 
+export default function UserChattingPageUI(props) {
   return (
     <div className="Wrapper">
       <div className="WrapperContents">
-        <div className="WrapperLeft">
-          <div className="WrapperName">유저이름</div>
-          {UserArr.map((el, index) => (
-            <div className="UserList" key={index}>
-              <div className="UserProfile">{el.profile}</div>
-              <div>
-                <div className="UserName">
-                  {el.name}
-                  <span className="ChatDay">{el.createdAt}</span>
+        <div className="WrapperBox">
+          <div className="WrapperLeft">
+            <div className="WrapperName">
+              {props.chatInfo.product.user.name}
+            </div>
+            {props.data?.joinSeller?.map((el, index) => (
+              <div
+                className="UserList"
+                key={index}
+                onClick={props.onClickOpenRoom(el.roomId)}
+              >
+                <div className="UserProfile">{el.user?.profilePic}</div>
+                <div>
+                  <div className="UserName">
+                    {el.user?.name}
+                    {/* <span className="ChatDay">{el.chatLog}</span> */}
+                  </div>
+                  {/* <div>{el.content}</div> */}
                 </div>
-                <div>{el.content}</div>
               </div>
-            </div>
-          ))}
-        </div>
-        <div className="WrapperRight">
-          <div className="YourComments">
-            <div>
-              <img src="/detail/profile.png" />
-            </div>
-            <div className="TalkBalloon">
-              말풍선
-              <div className="LeftTriangle"></div>
-            </div>
+            ))}
           </div>
-          <div className="MyComments">
-            <div className="TalkBalloon">
-              <div className="Triangle"></div>
-              말풍선
-            </div>
-            <div>
-              <img src="/detail/profile.png" />
-            </div>
-          </div>
-          <input
-            className="ChatValue"
-            type="text"
-            placeholder="내용을 입력하세요."
+          <ChatlogPage
+            onChangeText={props.onChangeText}
+            chatInfo={props.chatInfo}
+            onSendChat={props.onSendChat}
           />
         </div>
       </div>

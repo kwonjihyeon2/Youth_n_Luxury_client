@@ -19,14 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState('')
   const [item, setItem] = useState([])
   const value = { accessToken, setAccessToken, item, setItem }
-
   useEffect(() => {
-    // getAccessToken().then((newAccessToken) => {
-    //   setAccessToken(newAccessToken)
-    // })
-    if (localStorage.getItem('accessToken')) {
-      setAccessToken(localStorage.getItem('accessToken') || '')
-    }
+
+    getAccessToken().then((newAccessToken) => {
+      setAccessToken(newAccessToken)
+    })
   }, [])
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
