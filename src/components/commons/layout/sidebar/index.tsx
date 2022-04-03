@@ -261,7 +261,7 @@ const LOG_OUT = gql`
 `
 
 const JOIN_SELLER = gql`
-  mutation joinSeller {
+  query joinSeller {
     joinSeller {
       id
       roomId
@@ -280,16 +280,12 @@ export default function LayoutSidebar() {
   const onClickUserInfo = () => {
     router.push(`/mypage/myInfo/editUser`)
   }
-  const [joinSeller] = useMutation(JOIN_SELLER)
-  const onClickQuery = async () => {
-    try {
-      const joinResult = await joinSeller()
-      console.log('판매자가 채팅 요청 성공 : ' + joinResult)
-      router.push(`mypage/chatting`)
-    } catch (error) {
-      console.log('판매자 채팅방 진입 실패' + error.message + '아니 왜,,')
-    }
+  const { data: join } = useQuery(JOIN_SELLER)
+  const onClickQuery = () => {
+    console.log(join)
+    router.push(`market/chatting`)
   }
+
   const onClickAlert = () => {
     router.push(`/alert`)
   }

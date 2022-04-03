@@ -14,11 +14,14 @@ import {
   RELATIVE_PRODUCT,
   SELLER_PRODUCT,
 } from './useditemDetail.query'
+import SocketIOClient from 'socket.io-client'
 
 declare const window: typeof globalThis & {
   Kakao: any
 }
-
+const socket = SocketIOClient.connect(
+  'https://mybackend.project5-sos.shop/graphql'
+)
 export default function UseditemDetailPage(props) {
   const { moveToPage } = useMoveToPage()
   const router = useRouter()
@@ -156,9 +159,13 @@ export default function UseditemDetailPage(props) {
   const onClickMakeRoom = async () => {
     try {
       const result = await createChat({
-        variables: { productId: String(router.query.boardId) },
+        variables: { productId: String(data?.fetchProduct.id) },
       })
-      console.log('구매자가 채팅 요청 성공 :' + result.data)
+      console.log('구매자가 채팅 요청 성공 :' + JSON.stringify(result))
+      socket.on('return_roomId', (result) => {
+        socket.emit('joinSeller', result)
+      })
+      console.log(socket)
       router.push('/market/chatting')
     } catch (error) {
       console.log('구매자가 채팅 요청했는데 실패 :' + error.message)
