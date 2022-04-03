@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     // getAccessToken().then((newAccessToken) => {
     //   setAccessToken(newAccessToken)
     // })
+    console.log(localStorage.getItem('accessToken'))
     if (localStorage.getItem('accessToken')) {
       setAccessToken(localStorage.getItem('accessToken') || '')
     }

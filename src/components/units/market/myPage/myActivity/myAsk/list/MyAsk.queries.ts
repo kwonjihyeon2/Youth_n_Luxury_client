@@ -7,3 +7,12 @@ export const FETCH_ADMIN_QUERYS = gql`
     }
   }
 `
+export const FETCH_USER_QUERYS = gql`
+  query fetchUserQuerys($adminCategoryId: String!) {
+    fetchUserQuerys(adminCategoryId: $adminCategoryId) {
+      id
+      title
+      contents
+    }
+  }
+`
