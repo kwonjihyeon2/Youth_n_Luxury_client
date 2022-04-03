@@ -61,7 +61,7 @@ export default function AdminMainUI(props) {
                     src={`https://storage.googleapis.com/${el.image}`}
                   />
                   <S.UserName>{el.name || '아이디가없어'}</S.UserName>
-                  <S.UserEmail>{el.email}</S.UserEmail>
+                  <S.UserEmail>{el.email || ''}</S.UserEmail>
                   <S.UserDeleteBtn onClick={props.onClickDeleteUser}>
                     X
                   </S.UserDeleteBtn>
@@ -128,7 +128,7 @@ export default function AdminMainUI(props) {
               {props.dataProducts?.fetchProducts.map((el) => (
                 <div>
                   <div>{el.name}</div>
-                  <div>{el.user.name}</div>
+                  {/* <div>{el.user.name}</div> */}
                   <S.TempImg></S.TempImg>
                   <div>{el.price}</div>
                   <S.UseditemDeleteBtn
