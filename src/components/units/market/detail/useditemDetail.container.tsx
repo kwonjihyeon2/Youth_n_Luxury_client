@@ -5,9 +5,11 @@ import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
 import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import {
+  CREATE_CHAT,
   CREATE_LIKE,
   DELETE_PRODUCT,
   FETCH_LIKE,
+  FETCH_ORDER,
   FETCH_PRODUCT,
   RELATIVE_PRODUCT,
   SELLER_PRODUCT,
@@ -34,14 +36,14 @@ export default function UseditemDetailPage(props) {
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: { productId: String(router.query.boardId) },
   })
-  console.log(data?.fetchProduct)
 
   const { data: productData } = useQuery(SELLER_PRODUCT, {
     variables: { userId: String(data?.fetchProduct.user.id) },
   })
 
   const [createLike] = useMutation(CREATE_LIKE)
-  // const { data: picked } = useQuery(FETCH_LIKE)
+  const { data: picked } = useQuery(FETCH_LIKE)
+  const [info, setInfo] = useState()
 
   const onClickHeart = async () => {
     setIsHeart((prev) => !prev)
@@ -56,17 +58,6 @@ export default function UseditemDetailPage(props) {
     }
   }
 
-  const [keep, setKeep] = useState(false)
-  // const { data } = useQuery()
-
-  // useEffect(() => {
-  //   const pick = picked?.fetchProductLike.filter(
-  //     (el) => el.id === data?.fetchProduct.id
-  //   )
-
-  //   console.log(picked?.fetchProductLike)
-  // })
-
   const [deleteProduct] = useMutation(DELETE_PRODUCT)
   const onClickDelete = async () => {
     try {
@@ -78,6 +69,17 @@ export default function UseditemDetailPage(props) {
       console.log(error.message)
     }
   }
+
+  const [isKeep, setKeep] = useState(false)
+  useEffect(() => {
+    const pick = picked?.fetchProductLike.filter(
+      (el) => el.id === data?.fetchProduct.id
+    )
+    console.log(pick)
+    if (pick?.length) {
+      setKeep(true)
+    }
+  }, [picked?.fetchProductLike])
 
   const onClickBasketBtn = () => {
     let isExist = false
@@ -144,28 +146,43 @@ export default function UseditemDetailPage(props) {
 
   const { data: relativeData } = useQuery(RELATIVE_PRODUCT, {
     variables: {
-      name: String(data?.fetchProduct.subCategory.mainCategory.name),
+      name: String(data?.fetchProduct.subCategory?.mainCategory.name),
     },
   })
 
+  //상품문의에서 채팅 요청API
+  const [createChat] = useMutation(CREATE_CHAT)
+
+  const onClickMakeRoom = async () => {
+    try {
+      const result = await createChat({
+        variables: { productId: String(router.query.boardId) },
+      })
+      console.log('구매자가 채팅 요청 성공 :' + result.data)
+      router.push('/market/chatting')
+    } catch (error) {
+      console.log('구매자가 채팅 요청했는데 실패 :' + error.message)
+    }
+  }
+
   return (
-    <>
-      <UseditemDetailPageUI
-        productData={productData}
-        relativeData={relativeData}
-        isSold={props.isSold}
-        data={data}
-        isHeart={isHeart}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        onClickHeart={onClickHeart}
-        onClickOpen={onClickOpen}
-        moveToPage={moveToPage}
-        onClickDelete={onClickDelete}
-        onClickShare={onClickShare}
-        isShare={isShare}
-        onClickBasketBtn={onClickBasketBtn}
-      />
-    </>
+    <UseditemDetailPageUI
+      productData={productData}
+      relativeData={relativeData}
+      isSold={props.isSold}
+      data={data}
+      isHeart={isHeart}
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      onClickHeart={onClickHeart}
+      onClickOpen={onClickOpen}
+      moveToPage={moveToPage}
+      onClickDelete={onClickDelete}
+      onClickShare={onClickShare}
+      isShare={isShare}
+      onClickBasketBtn={onClickBasketBtn}
+      isKeep={isKeep}
+      onClickMakeRoom={onClickMakeRoom}
+    />
   )
 }

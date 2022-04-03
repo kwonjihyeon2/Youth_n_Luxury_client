@@ -1,9 +1,33 @@
+import { useEffect, useState } from 'react'
 import { breakPoints } from '../../../commons/utils/media'
 import DesktopItem from './ResposiveOnDesktopItem'
 import TabletItem from './ResposiveOnTabletItem'
 import * as S from './UseditemList.styles'
 
 export default function UseditemListUI(props) {
+  const [arr, setArr] = useState([])
+  // useEffect(() => {
+  //   // if (!props.data?.fetchAllProduct.urls) return
+  //   // console.log(props.data?.fetchAllProduct.urls)
+  //   for (let i = 0; i < 10; i++) {
+  //     setArr(props.data?.fetchAllProduct[i].urls)
+  //   }
+
+  //   console.log(props.data?.fetchAllProduct[0].urls)
+  //   console.log(props.data?.fetchAllProduct[1].urls)
+  //   console.log(props.data?.fetchAllProduct[2].urls)
+  //   console.log(props.data?.fetchAllProduct[3].urls)
+
+  //   // const test = urls.split('"]["')
+  //   // test[0] = test[0].replaceAll('["', '')
+  //   // test[4] = test[4].replaceAll('"]', '')
+
+  //   // setArr(test)
+  // }, [props.data])
+  console.log('----------------')
+  console.log(props.data?.fetchAllProduct.urls)
+  console.log('----------------')
+
   return (
     <S.Position>
       <S.Wrapper>
@@ -26,13 +50,13 @@ export default function UseditemListUI(props) {
           brand={props.brand}
         />
         <S.WrapperBottom>
-          {props.data?.fetchProducts.map((el) => (
+          {props.data?.fetchAllProduct.map((el) => (
             <S.WrapperUseditem
               key={el.id}
               id={el.id}
               onClick={props.onClickProduct(el)}
             >
-              {/* <img src="/images/uploadImg.png" /> */}
+              <img src={`https://storage.googleapis.com/${arr}`} />
               <S.UseditemName>{el.name}</S.UseditemName>
               <S.UseditemPrice>{el.price}</S.UseditemPrice>
             </S.WrapperUseditem>

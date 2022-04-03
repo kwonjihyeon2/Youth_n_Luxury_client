@@ -275,11 +275,15 @@ interface propsIsHeart {
   isHeart: boolean
 }
 
+interface propsKeep {
+  isKeep: boolean
+}
+
 export const HeartIconSpan = styled.span`
   width: 19px;
   height: 16px;
-  background: ${(props: propsIsHeart) =>
-      props.isHeart ? "url('/detail/redHeart.png')" : "url('/detail/Like.png')"}
+  background: ${(props: propsKeep) =>
+      props.isKeep ? "url('/detail/redHeart.png')" : "url('/detail/Like.png')"}
     center;
   background-size: cover;
   margin-left: 5px;
@@ -299,7 +303,7 @@ export const ButtonRightStyle = styled.button`
     span {
       /* background: url('/detail/BlackLike.png') center; */
       background: ${(props: propsIsHeart) =>
-          props.isHeart
+          !props.isHeart
             ? "url('/detail/redHeart.png')"
             : "url('/detail/BlackLike.png')"}
         center;

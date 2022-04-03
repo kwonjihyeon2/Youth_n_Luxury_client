@@ -73,19 +73,16 @@ export default function UseditemDetailPageUI(props) {
   const [resArr, setResArr] = useState([])
   useEffect(() => {
     if (!props.data?.fetchProduct.urls) return
-    console.log(props.data?.fetchProduct.urls)
+    // console.log(props.data?.fetchProduct.urls)
 
     const urls = props.data?.fetchProduct.urls
     const test = urls.split('"]["')
     test[0] = test[0].replaceAll('["', '')
     test[4] = test[4].replaceAll('"]', '')
     // 0 번째 사진만쓴다. 대표이미지
-    // const urls = props.data?.fetchProduct.urls
-    // const test = urls.split('"]["')
-    // const 대표이미지 = test[0].replaceAll('["', '')
+
     setArr(test)
   }, [props.data])
-  // console.log(arr)
 
   return (
     <S.Wrapper>
@@ -162,10 +159,10 @@ export default function UseditemDetailPageUI(props) {
               <S.WrapperBodyUl>
                 <S.WrapperLiStyle>아래 '상품설명' 참조</S.WrapperLiStyle>
                 <S.WrapperLiStyle>
-                  {props.data?.fetchProduct.brand.name}
+                  {props.data?.fetchProduct.brand?.name}
                 </S.WrapperLiStyle>
                 <S.WrapperLiStyle>
-                  {props.data?.fetchProduct.subCategory.name}
+                  {props.data?.fetchProduct.subCategory?.name}
                 </S.WrapperLiStyle>
                 <S.WrapperLiStyle>택배</S.WrapperLiStyle>
               </S.WrapperBodyUl>
@@ -186,16 +183,17 @@ export default function UseditemDetailPageUI(props) {
               >
                 바로구매
               </S.ButtonBlackStyle>
-              <S.ButtonStyle>
+              <S.ButtonStyle onClick={props.onClickMakeRoom}>
                 문의하기
                 <S.PhoneIconSpan></S.PhoneIconSpan>
               </S.ButtonStyle>
               <S.ButtonRightStyle
                 isHeart={props.isHeart}
+                isKeep={props.isKeep}
                 onClick={props.onClickHeart}
               >
                 찜하기
-                <S.HeartIconSpan isHeart={props.isHeart}></S.HeartIconSpan>
+                <S.HeartIconSpan isKeep={props.isKeep}></S.HeartIconSpan>
               </S.ButtonRightStyle>
             </S.ButtonFlexBox>
             <S.ProfileBox>
@@ -234,12 +232,18 @@ export default function UseditemDetailPageUI(props) {
         </S.ContentsBox>
         <S.SlickStyle>
           <S.RelativeTitle>
-            {props.data?.fetchProduct.user.name}님의 다른상품
+            [ {props.data?.fetchProduct.user.name} ]님의 다른상품
           </S.RelativeTitle>
           <S.SliderContainer {...settings}>
-            {props.productData?.fetchSellerProduct.map((el) => (
+            {props.productData?.fetchSellerProduct.map((el, index) => (
               <div key={el.id}>
-                <S.SliderBox></S.SliderBox>
+                <S.SliderBox key={el.id}>
+                  {/* <div>{el.urls}</div> */}
+                  <img
+                    style={{ width: '100%', height: '100%' }}
+                    src={`https://storage.googleapis.com/${arr[index]}`}
+                  />
+                </S.SliderBox>
                 <p>{el.name}</p>
                 <div>{el.price}원</div>
               </div>
@@ -248,27 +252,32 @@ export default function UseditemDetailPageUI(props) {
         </S.SlickStyle>
         <S.SlickStyle>
           <S.RelativeTitle>
-            [ {props.data?.fetchProduct.subCategory.name} ]과 연관된 상품
+            [ {props.data?.fetchProduct.subCategory?.name} ]과 연관된 상품
             미리보기
           </S.RelativeTitle>
           <S.SliderContainer {...settings}>
-            {props.relativeData?.fetchProductRelateMainCategory.map((el) => (
-              <div>
-                <div key={el.id}>
-                  <S.SliderBox></S.SliderBox>
-                  <p>{el.name}</p>
-                  <div>{el.price}원</div>
+            {props.relativeData?.fetchProductRelateMainCategory.map(
+              (el, index) => (
+                <div>
+                  <div key={el.id}>
+                    <S.SliderBox>
+                      <img
+                        style={{ width: '100%', height: '100%' }}
+                        src={`https://storage.googleapis.com/${arr[index]}`}
+                      />
+                    </S.SliderBox>
+                    <p>{el.name}</p>
+                    <div>{el.price}원</div>
+                  </div>
                 </div>
-              </div>
-            ))}
-            {props.relativeData?.fetchProductRelateMainCategory.length < 4 ? (
+              )
+            )}
+            {props.relativeData?.fetchProductRelateMainCategory.length < 4 && (
               <div>
                 <S.SliderBox></S.SliderBox>
                 <p>에르메스 버킷백</p>
                 <div>2000만원</div>
               </div>
-            ) : (
-              <></>
             )}
           </S.SliderContainer>
         </S.SlickStyle>

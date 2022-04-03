@@ -16,6 +16,9 @@ export const Wrapper = styled.div`
   p {
     margin: 0;
   }
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    font-size: 12px;
+  }
 `
 
 export const WrapperTitle = styled.div`
@@ -23,6 +26,9 @@ export const WrapperTitle = styled.div`
   padding: 30px 0;
   font-size: 2rem;
   font-weight: 500;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    font-size: 1.5rem;
+  }
 `
 
 export const WrapperBox = styled.div`
@@ -34,12 +40,18 @@ export const WrapperContentBox = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    flex-direction: column;
+  }
 `
 
 export const LeftContentBox = styled.div`
   width: 600px;
   @media ${breakPoints.tablet} {
     width: 50%;
+  }
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    width: 100%;
   }
 `
 
@@ -49,11 +61,18 @@ export const RightContentBox = styled.div`
   @media ${breakPoints.tablet} {
     width: 50%;
   }
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    width: 100%;
+    margin-left: 0;
+  }
 `
 
 export const CommonTitle = styled.p`
-  padding: 25px 0;
+  padding: 20px 0;
   font-size: 1.5rem;
+  @media ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+    font-size: 1rem;
+  }
 `
 
 export const WrapperLeft = styled.div`
@@ -287,4 +306,17 @@ export const MoreAddress = styled.div`
   padding: 10px;
   margin: 20px 10px;
   border: 1px solid #000;
+`
+export const ListButton = styled.button`
+  padding: 5px 15px;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+`
+export const SubmitButton = styled.button`
+  padding: 5px 15px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
 `

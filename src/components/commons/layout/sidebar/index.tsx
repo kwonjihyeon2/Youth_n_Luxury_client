@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { useState } from 'react'
 import { RightOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/router'
-import { gql, useQuery } from '@apollo/client'
+import { gql, useMutation, useQuery } from '@apollo/client'
 
 interface Status {
   isTrue: boolean
@@ -254,6 +254,21 @@ const FETCH_USER = gql`
   }
 `
 
+const LOG_OUT = gql`
+  mutation logout {
+    logout
+  }
+`
+
+const JOIN_SELLER = gql`
+  mutation joinSeller {
+    joinSeller {
+      id
+      roomId
+    }
+  }
+`
+
 export default function LayoutSidebar() {
   const { data } = useQuery(FETCH_USER)
   const router = useRouter()
@@ -265,11 +280,21 @@ export default function LayoutSidebar() {
   const onClickUserInfo = () => {
     router.push(`/mypage/myInfo/editUser`)
   }
-  const onClickQuery = () => {
-    router.push(`mypage/myActivity/myAsk`)
+
+  const [joinSeller] = useMutation(JOIN_SELLER)
+
+  const onClickChat = async () => {
+    try {
+      const joinResult = await joinSeller()
+      console.log('판매자가 채팅 요청 성공 : ' + joinResult)
+      router.push(`mypage/chatting`)
+    } catch (error) {
+      console.log('판매자 채팅방 진입 실패' + error.message + '아니 왜,,')
+    }
+   
   }
-  const onClickAlert = () => {
-    router.push(`/alert`)
+  const onClickCreateProduct = () => {
+    router.push(`/market/new`)
   }
   const onClickJoin = () => {
     router.push(`/join`)
@@ -281,7 +306,12 @@ export default function LayoutSidebar() {
   const onclickMoveToList = () => {
     router.push(`/market/list`)
   }
-  const onClickLogout = () => {}
+  const [logout] = useMutation(LOG_OUT)
+  const onClickLogout = () => {
+    logout()
+    console.log('로그아웃되었습니다. 메인페이지로 이동합니다')
+    router.push('/')
+  }
   const onClickOpen = () => {
     setIsTrue((prev) => !prev)
   }
@@ -321,18 +351,15 @@ export default function LayoutSidebar() {
               <IconText onClick={onClickUserInfo}>나의정보</IconText>
             </WrapperIcon2>
             <WrapperIcon3>
-              <Icon3Img
-                onClick={onClickQuery}
-                src="/images/sidebar/query.png"
-              />
-              <IconText onClick={onClickQuery}>1:1문의</IconText>
+              <Icon3Img onClick={onClickChat} src="/images/sidebar/alert.png" />
+              <IconText onClick={onClickChat}>1:1채팅</IconText>
             </WrapperIcon3>
             <WrapperIcon4>
               <Icon4Img
-                onClick={onClickAlert}
-                src="/images/sidebar/alert.png"
+                onClick={onClickCreateProduct}
+                src="/images/sidebar/product.png"
               />
-              <IconText onClick={onClickAlert}>알림센터</IconText>
+              <IconText onClick={onClickCreateProduct}>상품등록</IconText>
             </WrapperIcon4>
           </WrapperMid>
           <WrapperBot>
@@ -366,7 +393,7 @@ export default function LayoutSidebar() {
             <PhoneText>02-000-0000</PhoneText>
             <OpenTime>WEEKDAY: 10:10 ~ 20:00</OpenTime>
             <OpenTime>WEEKEND: 12:00 ~ 19:00</OpenTime>
-            <HelpBtn onClick={onClickQuery}>고객센터</HelpBtn>
+            <HelpBtn>고객센터</HelpBtn>
           </WrapperHelp>
         </Wrapper>
 

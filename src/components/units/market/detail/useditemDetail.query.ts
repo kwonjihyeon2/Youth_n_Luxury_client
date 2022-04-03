@@ -24,11 +24,6 @@ export const FETCH_PRODUCT = gql`
       }
       urls
       like
-      product {
-        name
-        description
-        price
-      }
     }
   }
 `
@@ -37,6 +32,7 @@ export const FETCH_LIKE = gql`
   query fetchProductLike {
     fetchProductLike {
       id
+      name
     }
   }
 `
@@ -77,4 +73,22 @@ export const CREATE_LIKE = gql`
   }
 `
 
-// export const FETCH_ORDER = gql``
+export const FETCH_ORDER = gql`
+  query fetchBuyerOrders {
+    fetchBuyerOrders {
+      id
+    }
+  }
+`
+
+export const CREATE_CHAT = gql`
+  mutation createChat($productId: String!) {
+    createChat(productId: $productId) {
+      id
+      roomId
+      user {
+        name
+      }
+    }
+  }
+`
