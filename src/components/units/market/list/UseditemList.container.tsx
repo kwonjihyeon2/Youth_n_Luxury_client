@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import UseditemListUI from './UseditemList.presenter'
 import { useQuery, useLazyQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { FETCH_PRODUCTS } from './UseditemList.queries'
+import { FETCH_ALL_PRODUCT, FETCH_PRODUCTS } from './UseditemList.queries'
 
 import _ from 'lodash'
 
@@ -14,7 +14,7 @@ export default function UseditemList() {
   const [isClickSub, setIsClickSub] = useState(false)
 
   const router = useRouter()
-  const { data, refetch } = useQuery(FETCH_PRODUCTS)
+  const { data, refetch } = useQuery(FETCH_ALL_PRODUCT)
 
   const onClickMain = (event) => {
     setMain(event.target.id)

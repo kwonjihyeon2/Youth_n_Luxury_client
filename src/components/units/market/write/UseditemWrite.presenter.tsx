@@ -14,9 +14,11 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>0.통장인증</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperAccountInput>
-            <input type="text" />
-            <input type="text" />
-            <input type="text" />
+            <div>계좌번호입력</div>
+            <input onChange={props.onChangeAccountNum} type="text" />
+            <div>은행입력</div>
+            <input onChange={props.onChangeBank} type="text" />
+            <div>이름</div>
             <input type="text" />
             <S.AccountBtn onClick={props.onClickAccountConfirm}>
               계좌인증하기

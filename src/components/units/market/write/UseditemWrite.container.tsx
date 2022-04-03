@@ -20,6 +20,8 @@ export default function UseditemWrite(props) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
+  const [accountNum, setAccountNum] = useState('')
+  const [bank, setBank] = useState('')
   // const [urls, setUrls] = useState(['', '', '', '', '', '', '', '', '', ''])
   const [urls, setUrls] = useState('')
   const [urls2, setUrls2] = useState('')
@@ -32,11 +34,12 @@ export default function UseditemWrite(props) {
 
   const onClickAccountConfirm = async () => {
     const temp = String(Math.random())
-    const randomNum = temp.slice(9)
+    const temp2 = temp.slice(10)
+    const randomNum = Number(temp2) > 99999999 ? temp2 : '0' + temp2
     const date = new Date()
     const time = getDate(date)
     console.log(time)
-    console.log(randomNum)
+    console.log(randomNum, typeof randomNum)
     const result = await axios.post(
       `https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/inquiry/real_name`,
       {
@@ -44,8 +47,8 @@ export default function UseditemWrite(props) {
         account_num: '71790201314675',
         account_holder_info_type: '',
         account_holder_info: '000426',
-        tran_dtime: '20220331123131',
-        bank_tran_id: 'M202200592U123456720',
+        tran_dtime: time,
+        bank_tran_id: `M202200592U${randomNum}`,
       },
       {
         headers: {
@@ -55,8 +58,17 @@ export default function UseditemWrite(props) {
       }
     )
     console.log(result)
+    alert('인증성공!')
   }
-
+  const onChangeAccountNum = (event) => {
+    setAccountNum(event.target.value)
+  }
+  const onChangeBank = (event) => {
+    setBank(event.target.value)
+    if (bank == '국민') {
+      setBank('004')
+    }
+  }
 
   const onChangeName = (event) => {
     setName(event.target.value)
@@ -117,6 +129,7 @@ export default function UseditemWrite(props) {
     } catch (error) {
       alert(error.message)
     }
+    console.log(bank)
   }
   return (
     <UseditemWriteUI
@@ -137,7 +150,6 @@ export default function UseditemWrite(props) {
       onClickImage={onClickImage}
       urls={urls}
       onClickAccountConfirm={onClickAccountConfirm}
-
       urls2={urls2}
       urls3={urls3}
       urls4={urls4}
@@ -147,6 +159,10 @@ export default function UseditemWrite(props) {
       setUrls3={setUrls3}
       setUrls4={setUrls4}
       setUrls5={setUrls5}
+      accountNum={accountNum}
+      bank={bank}
+      onChangeAccountNum={onChangeAccountNum}
+      onChangeBank={onChangeBank}
     />
   )
 }
