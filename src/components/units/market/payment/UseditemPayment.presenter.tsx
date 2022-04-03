@@ -20,7 +20,6 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             <S.WrapperLeft>
               <S.LeftText>
                 <div>배송 : 택배(선불)무료</div>
-                <S.CommonsButton>배송 변경</S.CommonsButton>
               </S.LeftText>
               <S.LeftcontentBox>
                 <img src="/detail/bag.png" />
@@ -302,11 +301,10 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                 ))}
             </S.ModalCenter>
             <S.WrapperContentBox style={{ padding: '0 10px' }}>
-              <button>수정</button>
-              <div>
-                <button onClick={props.onClickEvent}>선택</button>
-                <button onClick={props.onClickSubmit}>등록</button>
-              </div>
+              <S.ListButton onClick={props.onClickEvent}>선택</S.ListButton>
+              <S.SubmitButton onClick={props.onClickSubmit}>
+                등록
+              </S.SubmitButton>
             </S.WrapperContentBox>
             <S.MoreAddress>+ 배송지 추가</S.MoreAddress>
           </S.ModalBox>

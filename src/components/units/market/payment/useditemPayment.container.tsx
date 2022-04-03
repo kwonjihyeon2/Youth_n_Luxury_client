@@ -128,7 +128,7 @@ export default function UseditemPaymentpage(props) {
             })
             console.log(result)
             setIsSold(true)
-            router.push('/mypage')
+            router.push('/market/list')
           } catch (error) {
             console.log(error.message)
           }
