@@ -23,22 +23,26 @@ export default function MainUI(props) {
         <S.Wrapper>
           <S.CarouselBox>
             <Slider {...settings}>
-              <S.Carousel>
-                <S.CarouselTxt>전 상품 100% 정품 보장</S.CarouselTxt>
-              </S.Carousel>
-              <S.Carousel>
-                <S.CarouselTxt>전 상품 100% 정품 보장</S.CarouselTxt>
-              </S.Carousel>
+              <S.Carousel1>
+                <S.CarouselTxt>전 상품 100% 정품 검수 보장</S.CarouselTxt>
+              </S.Carousel1>
+              <S.Carousel2>
+                <S.CarouselTxt>
+                  보다 안전한 결제로 믿고 결제가능한 사이트
+                </S.CarouselTxt>
+              </S.Carousel2>
+              <S.Carousel3>
+                <S.CarouselTxt>5년 간 거래 수 10만 건 돌파!</S.CarouselTxt>
+              </S.Carousel3>
             </Slider>
           </S.CarouselBox>
           <S.ResponsiveBox>
             <S.NewArrivalsTxtBox>
               <S.NewArrivalsTitleTxt>New Arrivals</S.NewArrivalsTitleTxt>
               <S.NewArrivalsSubTxt>
-                새로 입고된 아이템들을 만나보세요!
+                새로 등록된 명품들을 만나보세요!
               </S.NewArrivalsSubTxt>
             </S.NewArrivalsTxtBox>
-
             <S.ProductBox>
               {props.NewArrival?.map((el) => (
                 <S.Product onClick={moveToPage(`market/${el.id}`)}>
@@ -56,18 +60,17 @@ export default function MainUI(props) {
               </S.NewArrivalsSubTxt>
             </S.NewArrivalsTxtBox>
             <S.ProductBox>
-              {new Array(12).fill(1).map((el) => (
-                <S.Product>
-                  <S.ProductImg />
-                  <S.ProductTxt>샤넬 가방 나도사고싶어</S.ProductTxt>
-                  <S.ProductTxt>24,500,000원</S.ProductTxt>
-                </S.Product>
-              ))}
+              {props.data?.fetchAllProduct
+                .filter((el) => el.like > 0)
+                .map((el) => (
+                  <S.Product>
+                    <S.ProductImg />
+                    <S.ProductTxt>{el.name}</S.ProductTxt>
+                    <S.ProductTxt>{el.price}</S.ProductTxt>
+                  </S.Product>
+                ))}
             </S.ProductBox>
-
-            <S.LoadBtn>
-              <S.LoadMoreBtn>더보기</S.LoadMoreBtn>
-            </S.LoadBtn>
+            <S.LoadBtn></S.LoadBtn>
           </S.ResponsiveBox>
         </S.Wrapper>
       </S.Position>

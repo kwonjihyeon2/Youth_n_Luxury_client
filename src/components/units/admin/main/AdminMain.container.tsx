@@ -3,13 +3,12 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import AdminMainUI from './AdminMain.presenter'
 import {
-  CREATE_ORDER,
   DELETE_USER,
   FETCH_ADMIN_QUERYS,
   FETCH_ALL_PRODUCT,
   FETCH_ORDERS,
-  // FETCH_PRODUCTS,
   FETCH_USERS,
+  UPDATE_TRANSACTION,
 } from './AdminMain.queries'
 
 export default function AdminMain() {
@@ -25,18 +24,19 @@ export default function AdminMain() {
     useQuery(FETCH_ALL_PRODUCT)
 
   const [deleteUser] = useMutation(DELETE_USER)
-  const [createOrder] = useMutation(CREATE_ORDER)
+  const [updateTransaction] = useMutation(UPDATE_TRANSACTION)
   const onClickMoveToQuery = () => {}
   const onClickLogout = () => {}
   const onClickDeleteProduct = () => {}
+
   const onChangeStatus = async (event) => {
     setStatus(event.target.value)
+    console.log(status)
     try {
-      await createOrder({
+      await updateTransaction({
         variables: {
-          impUid: dataOrders?.fetchOrders.impUid || 'no',
-          productId: dataOrders?.fetchOrders.id || 'no',
-          status: status,
+          impuid: dataOrders?.fetchOrders[0].impUid,
+          statusCode: status,
         },
       })
     } catch (error) {
@@ -44,7 +44,7 @@ export default function AdminMain() {
     }
   }
   console.log('--------------')
-  console.log(dataQuerys)
+  // console.log(dataOrders.fetchOrders[0].impUid)
   console.log('--------------')
 
   const onClickDeleteUser = async () => {

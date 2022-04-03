@@ -94,7 +94,6 @@ export default function AdminMainUI(props) {
                   <div>{el.product.user.name}</div>
                   <div>
                     <S.SelectStatus onChange={props.onChangeStatus}>
-                      <option value="">--선택하세요--</option>
                       <option value="PAYMENT">결재완료</option>
                       <option value="EXAMINATION">검수중</option>
                       <option value="ONTHEWAY">배송중</option>

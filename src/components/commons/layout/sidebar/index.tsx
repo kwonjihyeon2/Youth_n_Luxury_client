@@ -254,18 +254,17 @@ const FETCH_USER = gql`
   }
 `
 
-const LOG_OUT = gql`
-  mutation logout {
-    logout
-  }
-`
-
 const JOIN_SELLER = gql`
   mutation joinSeller {
     joinSeller {
       id
       roomId
     }
+  }
+`
+const LOGOUT = gql`
+  mutation logout {
+    logout
   }
 `
 
@@ -291,7 +290,6 @@ export default function LayoutSidebar() {
     } catch (error) {
       console.log('판매자 채팅방 진입 실패' + error.message + '아니 왜,,')
     }
-   
   }
   const onClickCreateProduct = () => {
     router.push(`/market/new`)
@@ -306,7 +304,7 @@ export default function LayoutSidebar() {
   const onclickMoveToList = () => {
     router.push(`/market/list`)
   }
-  const [logout] = useMutation(LOG_OUT)
+  const [logout] = useMutation(LOGOUT)
   const onClickLogout = () => {
     logout()
     console.log('로그아웃되었습니다. 메인페이지로 이동합니다')

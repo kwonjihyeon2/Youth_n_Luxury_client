@@ -7,6 +7,13 @@ export const Position = styled.div`
   width: 100%;
   padding: 0 60px;
 `
+export const LogoImg = styled.img`
+  margin-left: 225px;
+  :hover {
+    cursor: pointer;
+  }
+`
+
 export const Wrapper = styled.div`
   max-width: 1200px;
   width: 100%;
@@ -71,6 +78,9 @@ export const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  :hover {
+    cursor: pointer;
+  }
 `
 
 export const IconImg = styled.img`
@@ -87,6 +97,10 @@ export const SellBtn = styled.button`
   width: 98px;
   height: 40px;
   border: none;
+  :hover {
+    color: #7a36ff;
+    cursor: pointer;
+  }
 `
 export const DropDownColBox = styled.div`
   width: 464px;
@@ -116,6 +130,7 @@ export const DropDownBox = styled.div`
   position: absolute;
   top: 38px;
   display: none;
+  z-index: 40000;
 `
 
 export const DropDownEl = styled.div`
@@ -128,4 +143,7 @@ export const DropDownEl = styled.div`
   font-size: 14px;
   font-weight: 400;
   cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
 `

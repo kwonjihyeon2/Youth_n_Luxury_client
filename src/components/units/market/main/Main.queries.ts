@@ -1,25 +1,14 @@
 import { gql } from '@apollo/client'
 
-export const FETCH_PRODUCTS = gql`
-  query fetchProducts {
-    fetchProducts {
+export const FETCH_ALL_PRODUCT = gql`
+  query fetchAllProduct {
+    fetchAllProduct {
       id
       name
       description
       price
       urls
-    }
-  }
-`
-
-export const FETCH_LIKE_PRODUCT = gql`
-  query fetchProductLike {
-    fetchProductLike {
-      id
-      name
-      description
-      price
-      urls
+      like
     }
   }
 `
