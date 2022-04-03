@@ -5,6 +5,7 @@ import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
 import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import {
+  CREATE_CHAT,
   CREATE_LIKE,
   DELETE_PRODUCT,
   FETCH_LIKE,
@@ -41,21 +42,8 @@ export default function UseditemDetailPage(props) {
   })
 
   const [createLike] = useMutation(CREATE_LIKE)
-  // const { data: picked } = useQuery(FETCH_ORDER)
   const { data: picked } = useQuery(FETCH_LIKE)
-  // console.log(picked)
-
-  const [keep, setKeep] = useState(false)
-  useEffect(() => {
-    const pick = picked?.fetchProductLike.filter(
-      (el) => el.id === data?.fetchProduct.id
-    )
-    if (pick?.length) {
-      setKeep(true)
-    }
-  }, [picked, data])
-  // console.log(productData?.fetchSellerProduct)
-  // console.log(picked?.fetchProductLike, keep)
+  const [info, setInfo] = useState()
 
   const onClickHeart = async () => {
     setIsHeart((prev) => !prev)
@@ -64,7 +52,7 @@ export default function UseditemDetailPage(props) {
         variables: { productId: String(router.query.boardId) },
         refetchQueries: [FETCH_PRODUCT],
       })
-      // console.log(toggle)
+      console.log(toggle)
     } catch (error) {
       console.log(error.message)
     }
@@ -81,6 +69,17 @@ export default function UseditemDetailPage(props) {
       console.log(error.message)
     }
   }
+
+  const [isKeep, setKeep] = useState(false)
+  useEffect(() => {
+    const pick = picked?.fetchProductLike.filter(
+      (el) => el.id === data?.fetchProduct.id
+    )
+    console.log(pick)
+    if (pick?.length) {
+      setKeep(true)
+    }
+  }, [picked?.fetchProductLike])
 
   const onClickBasketBtn = () => {
     let isExist = false
@@ -147,9 +146,24 @@ export default function UseditemDetailPage(props) {
 
   const { data: relativeData } = useQuery(RELATIVE_PRODUCT, {
     variables: {
-      name: String(data?.fetchProduct.subCategory.mainCategory.name),
+      name: String(data?.fetchProduct.subCategory?.mainCategory.name),
     },
   })
+
+  //상품문의에서 채팅 요청API
+  const [createChat] = useMutation(CREATE_CHAT)
+
+  const onClickMakeRoom = async () => {
+    try {
+      const result = await createChat({
+        variables: { productId: String(router.query.boardId) },
+      })
+      console.log('구매자가 채팅 요청 성공 :' + result.data)
+      router.push('/market/chatting')
+    } catch (error) {
+      console.log('구매자가 채팅 요청했는데 실패 :' + error.message)
+    }
+  }
 
   return (
     <UseditemDetailPageUI
@@ -167,8 +181,8 @@ export default function UseditemDetailPage(props) {
       onClickShare={onClickShare}
       isShare={isShare}
       onClickBasketBtn={onClickBasketBtn}
-      keep={keep}
+      isKeep={isKeep}
+      onClickMakeRoom={onClickMakeRoom}
     />
-
   )
 }

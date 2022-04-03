@@ -11,6 +11,8 @@ import Layout from '../src/components/commons/layout'
 import '../styles/globals.css'
 import { onError } from '@apollo/client/link/error'
 import { createUploadLink } from 'apollo-upload-client'
+import '../src/components/units/market/chatting/userChatting.css'
+
 export const GlobalContext = createContext(null)
 
 function MyApp({ Component, pageProps }: AppProps) {
