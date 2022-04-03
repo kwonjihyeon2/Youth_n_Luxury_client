@@ -24,11 +24,6 @@ export const FETCH_PRODUCT = gql`
       }
       urls
       like
-      product {
-        name
-        description
-        price
-      }
     }
   }
 `
@@ -77,4 +72,10 @@ export const CREATE_LIKE = gql`
   }
 `
 
-// export const FETCH_ORDER = gql``
+export const FETCH_ORDER = gql`
+  query fetchBuyerOrders {
+    fetchBuyerOrders {
+      id
+    }
+  }
+`
