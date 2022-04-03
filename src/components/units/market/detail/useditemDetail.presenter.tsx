@@ -83,7 +83,6 @@ export default function UseditemDetailPageUI(props) {
 
     setArr(test)
   }, [props.data])
-  console.log(arr)
 
   return (
     <S.Wrapper>
@@ -160,10 +159,10 @@ export default function UseditemDetailPageUI(props) {
               <S.WrapperBodyUl>
                 <S.WrapperLiStyle>아래 '상품설명' 참조</S.WrapperLiStyle>
                 <S.WrapperLiStyle>
-                  {props.data?.fetchProduct.brand.name}
+                  {props.data?.fetchProduct.brand?.name}
                 </S.WrapperLiStyle>
                 <S.WrapperLiStyle>
-                  {props.data?.fetchProduct.subCategory.name}
+                  {props.data?.fetchProduct.subCategory?.name}
                 </S.WrapperLiStyle>
                 <S.WrapperLiStyle>택배</S.WrapperLiStyle>
               </S.WrapperBodyUl>
@@ -184,17 +183,17 @@ export default function UseditemDetailPageUI(props) {
               >
                 바로구매
               </S.ButtonBlackStyle>
-              <S.ButtonStyle>
+              <S.ButtonStyle onClick={props.onClickMakeRoom}>
                 문의하기
                 <S.PhoneIconSpan></S.PhoneIconSpan>
               </S.ButtonStyle>
               <S.ButtonRightStyle
                 isHeart={props.isHeart}
-                keep={props.keep}
+                isKeep={props.isKeep}
                 onClick={props.onClickHeart}
               >
                 찜하기
-                <S.HeartIconSpan keep={props.keep}></S.HeartIconSpan>
+                <S.HeartIconSpan isKeep={props.isKeep}></S.HeartIconSpan>
               </S.ButtonRightStyle>
             </S.ButtonFlexBox>
             <S.ProfileBox>
@@ -253,7 +252,7 @@ export default function UseditemDetailPageUI(props) {
         </S.SlickStyle>
         <S.SlickStyle>
           <S.RelativeTitle>
-            [ {props.data?.fetchProduct.subCategory.name} ]과 연관된 상품
+            [ {props.data?.fetchProduct.subCategory?.name} ]과 연관된 상품
             미리보기
           </S.RelativeTitle>
           <S.SliderContainer {...settings}>

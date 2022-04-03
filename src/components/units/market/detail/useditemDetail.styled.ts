@@ -276,14 +276,14 @@ interface propsIsHeart {
 }
 
 interface propsKeep {
-  keep: boolean
+  isKeep: boolean
 }
 
 export const HeartIconSpan = styled.span`
   width: 19px;
   height: 16px;
   background: ${(props: propsKeep) =>
-      props.keep ? "url('/detail/redHeart.png')" : "url('/detail/Like.png')"}
+      props.isKeep ? "url('/detail/redHeart.png')" : "url('/detail/Like.png')"}
     center;
   background-size: cover;
   margin-left: 5px;
