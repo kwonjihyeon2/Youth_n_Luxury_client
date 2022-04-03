@@ -27,7 +27,6 @@ export default function Login() {
       console.log(accessToken)
       if (setAccessToken) {
         setAccessToken(accessToken || '') //로그인토큰 저장
-        localStorage.setItem('accessToken', accessToken || '')
       }
       console.log('로그인성공')
       console.log(result)
