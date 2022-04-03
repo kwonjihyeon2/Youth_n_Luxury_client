@@ -45,6 +45,7 @@ export const DropDown = styled.select`
   color: #666666;
   font-size: 13px;
   font-weight: 300;
+  padding-left: 4px;
 `
 export const Option = styled.option``
 
