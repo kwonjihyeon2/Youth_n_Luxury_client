@@ -29,17 +29,7 @@ export const HouseImg = styled.img`
 export const WrapperTopText = styled.div`
   margin-left: 5px;
   color: white;
-`
-
-export const AvatarImg = styled.img`
-  width: 30px;
-  margin-left: 730px;
-`
-
-export const WrapperTopName = styled.div`
-  margin-left: 10px;
-  color: white;
-  font-size: 20px;
+  margin-right: 830px;
 `
 
 export const LogoutBtn = styled.button`
@@ -104,31 +94,45 @@ export const SearchBarBtn = styled.button`
 `
 export const Box1MenuWrapper = styled.div`
   display: flex;
+  flex-direction: row;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
   height: 50px;
   background-color: #333333;
   color: white;
+  width: 100%;
+
   div {
-    margin-left: 10px;
-    margin-right: 100px;
+    width: 105px;
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
   }
 `
 
 export const Box1QuestionWrapper = styled.div`
   display: flex;
-  align-items: center;
-  font-size: 20px;
-  height: 50px;
-  border-bottom: 2px solid #333333;
+  flex-direction: column;
+  width: 100%;
+  font-size: 18px;
+  height: 400px;
   overflow: scroll;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+`
+export const Box1Data = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  border-bottom: 2px solid #333333;
   div {
-    margin-left: 10px;
-    margin-right: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 70px;
+    width: 105px;
   }
-  cursor: pointer;
 `
 
 export const QuestionCheck = styled.div`
@@ -146,8 +150,8 @@ export const MidBox2 = styled.div`
   align-items: center;
   flex-direction: column;
   width: 80%;
-  height: auto;
-  min-height: 400px;
+  height: 700px;
+  overflow: scroll;
   border-radius: 20px;
   background-color: #333333;
 `
@@ -227,17 +231,25 @@ export const UsersImg = styled.img`
 `
 
 export const MidBox3 = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 600px;
+  overflow: scroll; */
   display: flex;
+  align-items: center;
   flex-direction: column;
   width: 80%;
   height: auto;
-  min-height: 400px;
-  margin-top: 70px;
-  padding-top: 70px;
 `
 export const StatusWrapper = styled.div`
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  height: auto;
   font-size: 20px;
+  margin-top: 70px;
   margin-bottom: 10px;
 `
 
@@ -248,40 +260,59 @@ export const BoxImg = styled.img`
 
 export const Box3MenuWrapper = styled.div`
   display: flex;
+  flex-direction: row;
   align-items: center;
   font-size: 18px;
   height: 50px;
   background-color: #333333;
   color: white;
+  width: 100%;
+
   div {
-    margin-left: 10px;
-    margin-right: 80px;
+    width: 105px;
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
   }
 `
 
 export const Box3UseditemWrapper = styled.div`
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 18px;
+  overflow: scroll;
+  height: 400px;
+`
+
+export const Box3Data = styled.div`
   display: flex;
   align-items: center;
-  font-size: 18px;
-  height: 120px;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  min-height: 100px;
   border-bottom: 2px solid #333333;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   div {
-    margin-left: 10px;
-    margin-right: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 105px;
+    margin-left: 40px;
   }
 `
 
 export const TempImg = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 80px;
   background-color: red;
 `
+export const SelectWrapper = styled.div``
 
-export const SelectStatus = styled.select``
+export const SelectStatus = styled.select`
+  width: 100%;
+  height: 30px;
+`
+export const StatusText = styled.div``
 
 export const MidBox4 = styled.div`
   display: flex;
@@ -330,34 +361,55 @@ export const UseditemSearch = styled.input`
 `
 export const Box4MenuWrapper = styled.div`
   display: flex;
+  flex-direction: row;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
   height: 50px;
   background-color: #333333;
   color: white;
+  width: 100%;
+
   div {
-    margin-left: 20px;
-    margin-right: 120px;
+    width: 105px;
+    margin-left: 70px;
+    display: flex;
+    justify-content: center;
   }
 `
 
 export const Box4UseditemListWrapper = styled.div`
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 18px;
+  height: 400px;
+  overflow: scroll;
+`
+
+export const Box4Data = styled.div`
   display: flex;
   align-items: center;
-  font-size: 20px;
-  height: 120px;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  min-height: 100px;
   border-bottom: 2px solid #333333;
   div {
-    margin-left: 10px;
-    margin-right: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 70px;
+    width: 105px;
+  }
+  button {
+    margin-left: 70px;
   }
 `
 
 export const UseditemDeleteBtn = styled.button`
   width: 100px;
   height: 50px;
-  background-color: #cccccc;
+  background-color: #333333;
   color: white;
   font-size: 16px;
   border: none;

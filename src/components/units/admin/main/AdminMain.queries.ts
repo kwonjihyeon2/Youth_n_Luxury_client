@@ -5,8 +5,11 @@ export const FETCH_ADMIN_QUERYS = gql`
     fetchAdminQuerys {
       id
       contents
-      useQuery {
+      userQuery {
         title
+        user {
+          name
+        }
       }
     }
   }
@@ -27,11 +30,14 @@ export const FETCH_ORDERS = gql`
   query fetchOrders {
     fetchOrders {
       id
-      impUid
-      status
       createdAt
+      impUid
       product {
         price
+        name
+        user {
+          name
+        }
       }
     }
   }
@@ -46,24 +52,30 @@ export const CREATE_ORDER = gql`
     createOrder(impUid: $impUid, productId: $productId, status: $status) {
       id
       status
-      price
-      product {
-        name
-      }
-      user {
-        id
-        name
-      }
+      impUid
     }
   }
 `
 
-export const FETCH_PRODUCTS = gql`
-  query fetchProducts {
-    fetchProducts {
+// export const FETCH_PRODUCTS = gql`
+//   query fetchProducts {
+//     fetchProducts {
+//       id
+//       name
+//       price
+//       user {
+//         name
+//       }
+//     }
+//   }
+// `
+export const FETCH_ALL_PRODUCT = gql`
+  query fetchAllProduct {
+    fetchAllProduct {
       id
       name
       price
+      urls
       user {
         name
       }
