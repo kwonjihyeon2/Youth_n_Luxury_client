@@ -13,7 +13,29 @@ export const FETCH_PRODUCTS = gql`
       }
       subCategory {
         name
-        mainCategory
+        mainCategory {
+          name
+        }
+      }
+    }
+  }
+`
+
+export const FETCH_ALL_PRODUCT = gql`
+  query fetchAllProduct {
+    fetchAllProduct {
+      id
+      name
+      price
+      urls
+      brand {
+        name
+      }
+      subCategory {
+        name
+        mainCategory {
+          name
+        }
       }
     }
   }

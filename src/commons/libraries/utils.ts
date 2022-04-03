@@ -26,7 +26,9 @@ export const getDate = (el) => {
   const hour = temp.getHours()
   const min = temp.getMinutes()
   const sec = temp.getSeconds()
-  return `${yyyy}${'0' + mm}${dd}${hour}${min}${sec}`
+  return `${yyyy}${mm < 10 ? '0' + mm : mm}${dd < 10 ? '0' + dd : dd}${
+    hour < 10 ? '0' + hour : hour
+  }${min < 10 ? '0' + min : min}${sec < 10 ? '0' + sec : sec}`
 }
 
 export const getDate2 = (el) => {

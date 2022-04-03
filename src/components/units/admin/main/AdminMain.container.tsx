@@ -25,7 +25,13 @@ export default function AdminMain() {
   const onClickDeleteProduct = () => {}
   const onClickDeleteUser = async () => {
     try {
-      await deleteUser()
+      await deleteUser({
+        refetchQueries: [
+          {
+            query: FETCH_USERS,
+          },
+        ],
+      })
       alert('유저가 삭제되었습니다.')
     } catch (error) {
       alert(error.message)
