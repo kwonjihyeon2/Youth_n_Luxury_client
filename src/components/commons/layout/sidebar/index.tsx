@@ -280,14 +280,15 @@ export default function LayoutSidebar() {
   const onClickUserInfo = () => {
     router.push(`/mypage/myInfo/editUser`)
   }
+  
   const { data: join } = useQuery(JOIN_SELLER)
   const onClickQuery = () => {
     console.log(join)
     router.push(`market/chatting`)
   }
 
-  const onClickAlert = () => {
-    router.push(`/alert`)
+  const onClickCreateProduct = () => {
+    router.push(`/market/new`)
   }
   const onClickJoin = () => {
     router.push(`/join`)
@@ -344,18 +345,15 @@ export default function LayoutSidebar() {
               <IconText onClick={onClickUserInfo}>나의정보</IconText>
             </WrapperIcon2>
             <WrapperIcon3>
-              <Icon3Img
-                onClick={onClickQuery}
-                src="/images/sidebar/query.png"
-              />
-              <IconText onClick={onClickQuery}>1:1문의</IconText>
+              <Icon3Img onClick={onClickChat} src="/images/sidebar/alert.png" />
+              <IconText onClick={onClickChat}>1:1채팅</IconText>
             </WrapperIcon3>
             <WrapperIcon4>
               <Icon4Img
-                onClick={onClickAlert}
-                src="/images/sidebar/alert.png"
+                onClick={onClickCreateProduct}
+                src="/images/sidebar/product.png"
               />
-              <IconText onClick={onClickAlert}>알림센터</IconText>
+              <IconText onClick={onClickCreateProduct}>상품등록</IconText>
             </WrapperIcon4>
           </WrapperMid>
           <WrapperBot>
@@ -389,7 +387,7 @@ export default function LayoutSidebar() {
             <PhoneText>02-000-0000</PhoneText>
             <OpenTime>WEEKDAY: 10:10 ~ 20:00</OpenTime>
             <OpenTime>WEEKEND: 12:00 ~ 19:00</OpenTime>
-            <HelpBtn onClick={onClickQuery}>고객센터</HelpBtn>
+            <HelpBtn>고객센터</HelpBtn>
           </WrapperHelp>
         </Wrapper>
 
