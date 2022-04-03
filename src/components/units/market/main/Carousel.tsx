@@ -33,7 +33,10 @@ export default function Carousel() {
             <img src="/images/MainCarouselImg1.png" />
           </Img>
           <Img>
-            <img src="/images/MainCarouselImg1.png" />
+            <img src="/images/MainCarouselImg2.png" />
+          </Img>
+          <Img>
+            <img src="/images/MainCarouselImg3.png" />
           </Img>
         </Slider>
       </Wrapper>

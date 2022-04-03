@@ -4,7 +4,7 @@ import { ReactChild } from 'react'
 import { useRouter } from 'next/router'
 import LayoutFooter from './footer'
 import MyPageLayout from './mypage'
-
+import Navigation from './navigation/Navigation.container'
 interface ILayoutProps {
   children: ReactChild
 }
@@ -22,6 +22,7 @@ export default function Layout(props: ILayoutProps) {
   return (
     <>
       <LayoutBody>
+        <Navigation />
         {!isHiddenSidebar && <LayoutSidebar />}
         {isViewMyPage ? (
           <MyPageLayout children={props.children}></MyPageLayout>

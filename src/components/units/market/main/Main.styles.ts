@@ -37,10 +37,36 @@ export const ResponsiveBox = styled.div`
   }
 `
 
-export const Carousel = styled.div`
+export const Carousel1 = styled.div`
   width: 100%;
   height: 530px;
   background-image: url(/images/MainCarouselImg1.png);
+  background-size: cover;
+  font-size: 40px;
+  font-weight: 400;
+  color: #fffbfbbf;
+  position: relative;
+  @media ${breakPoints.mobile} {
+    height: 230px;
+  }
+`
+export const Carousel2 = styled.div`
+  width: 100%;
+  height: 530px;
+  background-image: url(/images/MainCarouselImg2.png);
+  background-size: cover;
+  font-size: 40px;
+  font-weight: 400;
+  color: #fffbfbbf;
+  position: relative;
+  @media ${breakPoints.mobile} {
+    height: 230px;
+  }
+`
+export const Carousel3 = styled.div`
+  width: 100%;
+  height: 530px;
+  background-image: url(/images/MainCarouselImg3.png);
   background-size: cover;
   font-size: 40px;
   font-weight: 400;

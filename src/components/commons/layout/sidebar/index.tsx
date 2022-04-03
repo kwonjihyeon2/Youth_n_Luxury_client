@@ -254,18 +254,17 @@ const FETCH_USER = gql`
   }
 `
 
-const LOG_OUT = gql`
-  mutation logout {
-    logout
-  }
-`
-
 const JOIN_SELLER = gql`
   query joinSeller {
     joinSeller {
       id
       roomId
     }
+  }
+`
+const LOGOUT = gql`
+  mutation logout {
+    logout
   }
 `
 
@@ -300,7 +299,7 @@ export default function LayoutSidebar() {
   const onclickMoveToList = () => {
     router.push(`/market/list`)
   }
-  const [logout] = useMutation(LOG_OUT)
+  const [logout] = useMutation(LOGOUT)
   const onClickLogout = () => {
     logout()
     console.log('로그아웃되었습니다. 메인페이지로 이동합니다')
