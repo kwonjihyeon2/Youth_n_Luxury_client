@@ -18,7 +18,7 @@ export const FETCH_ADMIN_QUERYS = gql`
 export const FETCH_USERS = gql`
   query fetchUsers {
     fetchUsers {
-      user_id
+      id
       nickname
       name
       email

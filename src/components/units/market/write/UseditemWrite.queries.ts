@@ -14,7 +14,7 @@ export const CREATE_PRODUCT = gql`
         name
       }
       user {
-        user_id
+        id
         nickname
         name
         email
@@ -65,7 +65,7 @@ export const UPDATE_PRODUCT = gql`
         }
       }
       user {
-        user_id
+        id
         nickname
         name
         email

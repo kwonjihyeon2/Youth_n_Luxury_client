@@ -8,7 +8,7 @@ export const FETCH_PRODUCT = gql`
       description
       price
       user {
-        user_id
+        id
         name
         email
         phoneNum
@@ -31,7 +31,7 @@ export const FETCH_PRODUCT = gql`
 export const FETCH_USER = gql`
   query fetchUser {
     fetchUser {
-      user_id
+      id
       nickname
       name
       email
@@ -67,7 +67,7 @@ export const CREATE_ADDRESS = gql`
       addressDetail
       zipCode
       user {
-        user_id
+        id
         name
         phoneNum
         email

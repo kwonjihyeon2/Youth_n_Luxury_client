@@ -8,7 +8,7 @@ export const FETCH_PRODUCT = gql`
       description
       price
       user {
-        user_id
+        id
         name
       }
       subCategory {

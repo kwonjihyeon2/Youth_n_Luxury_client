@@ -3,7 +3,7 @@ import { gql } from '@apollo/client'
 export const FETCH_USER = gql`
   query fetchUser {
     fetchUser {
-      user_id
+      id
       role
       nickname
       name
@@ -14,7 +14,7 @@ export const FETCH_USER = gql`
 export const UPDATE_USER = gql`
   mutation updateUser($updateUserInfo: UpdateUserInfo!) {
     updateUser(updateUserInfo: $updateUserInfo) {
-      user_id
+      id
       name
       email
       phoneNum
