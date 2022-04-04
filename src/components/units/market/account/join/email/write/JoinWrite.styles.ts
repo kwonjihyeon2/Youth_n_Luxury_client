@@ -1,6 +1,13 @@
 import styled from '@emotion/styled'
 import { breakPoints } from '../../../../../../commons/utils/media'
 
+export const Position = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+`
+
 export const ResponsiveBox = styled.div`
   width: 100%;
   padding: 60px;
@@ -121,6 +128,10 @@ export const SendAuthNumBtn = styled.button`
   font-size: 12px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
+  cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
 `
 
 export const SubmitBtn = styled.button`
@@ -135,6 +146,10 @@ export const SubmitBtn = styled.button`
   font-weight: 600;
   margin-top: 57px;
   border: none;
+  cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
   @media ${breakPoints.tablet} {
     width: 100%;
   }
