@@ -24,19 +24,20 @@ export default function AdminMainUI(props) {
             <S.Box1MenuWrapper>
               <div>번호</div>
               <div>날짜</div>
-              <div>분류</div>
               <div>제목</div>
               <div>질문내용</div>
+              <div>유저명</div>
               <div>상태</div>
             </S.Box1MenuWrapper>
             <S.Box1QuestionWrapper>
               {props.dataQuerys?.fetchAdminQuerys.map((el, index) => (
                 <S.Box1Data key={el.id}>
-                  <div>{index}</div>
+                  <div>{index + 1}</div>
+                  <div>2022-04-01</div>
                   <div>{el.contents}</div>
                   <div>{el.userQuery.title}</div>
                   <div>{el.userQuery.user.name}</div>
-                  <S.QuestionCheck>ㄴㄴ</S.QuestionCheck>
+                  <S.QuestionCheck>미답변</S.QuestionCheck>
                 </S.Box1Data>
               ))}
             </S.Box1QuestionWrapper>
@@ -45,7 +46,7 @@ export default function AdminMainUI(props) {
             </S.PaginationWrapper> */}
           </S.MidBox1>
           <S.UserTitleWrapper>
-            <S.UserImg src="images/admin/UserIcon.png" />
+            <S.UserImg src="/images/admin/UserIcon.png" />
             유저 검색하기
           </S.UserTitleWrapper>
           <S.MidBox2>
@@ -55,10 +56,7 @@ export default function AdminMainUI(props) {
             <S.UserWrapper>
               {props.dataUsers?.fetchUsers.map((el) => (
                 <S.UserList>
-                  <S.UsersImg
-                    key={el}
-                    src={`https://storage.googleapis.com/${el.image}`}
-                  />
+                  <S.UsersImg />
                   <S.UserName>{el.name || 'id'}</S.UserName>
                   <S.UserEmail>{el.email || 'email@email.com'}</S.UserEmail>
                   <S.UserDeleteBtn onClick={props.onClickDeleteUser}>
@@ -100,6 +98,7 @@ export default function AdminMainUI(props) {
                       <option value="DELIVERED">배송완료</option>
                       <option value="CANCEL">취소</option>
                     </S.SelectStatus>
+                    <button onClick={props.onClickStatus}>V</button>
                   </div>
                 </S.Box3Data>
               ))}

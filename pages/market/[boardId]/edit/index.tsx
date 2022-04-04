@@ -16,10 +16,8 @@ const FETCH_PRODUCT = gql`
         name
       }
       subCategory {
-        id
         name
         mainCategory {
-          id
           name
         }
       }
