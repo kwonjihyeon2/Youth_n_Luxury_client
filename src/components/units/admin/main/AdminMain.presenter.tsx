@@ -126,7 +126,7 @@ export default function AdminMainUI(props) {
               {props.dataProducts?.fetchAllProduct.map((el) => (
                 <S.Box4Data>
                   <div>{el.name}</div>
-                  <div>{el.user.name}</div>
+                  <div>{el.user?.name}</div>
                   <S.TempImg></S.TempImg>
                   <div>{el.price}</div>
                   <S.UseditemDeleteBtn

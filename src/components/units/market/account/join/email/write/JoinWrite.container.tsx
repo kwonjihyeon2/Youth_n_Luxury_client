@@ -2,8 +2,10 @@ import { useState } from 'react'
 import JoinWriteUI from './JoinWrite.presenter'
 import { useMutation } from '@apollo/client'
 import { CREATE_USER, TOKEN_MAKER, TOKEN_VALIDATE } from './JoinWrite.queries'
+import { useRouter } from 'next/router'
 export default function JoinWrite(props) {
   console.log(props.data)
+  const router = useRouter()
   const [checkNum, setCheckNum] = useState(0)
   const [createUserInput, setCreateUserInput] = useState({
     email: '',
@@ -63,8 +65,9 @@ export default function JoinWrite(props) {
     })
     if (result) {
       setIsNumCheck(true)
+      alert('인증성공!')
     } else {
-      console.log('인증번호 확인 실')
+      console.log('fail')
     }
   }
   const onClickUpdateUser = async () => {
@@ -116,6 +119,7 @@ export default function JoinWrite(props) {
       console.log('토큰메이커 결과는')
       console.log(result)
       setIsSend(true)
+      alert('인증번호를 보냈습니다.')
     } catch (error) {
       console.log(error.message)
     }
@@ -174,11 +178,9 @@ export default function JoinWrite(props) {
 
   const onClickJoinBtn = async () => {
     if (createUserInput.password !== createUserInput.passwordCheck) {
-      console.log('비밀번호 확인이 달라요!')
+      alert('비밀번호가 일치하지 않습니다!')
       return
     }
-    console.log(isNumCheck)
-
     const {
       numberFirst,
       numberSecond,
@@ -188,16 +190,16 @@ export default function JoinWrite(props) {
       emailSecond,
       ...rest
     } = createUserInput
-    console.log(rest)
     try {
       const result = await createUser({
         variables: rest,
       })
-      console.log('회원가입 결과는')
       console.log(result)
     } catch (error) {
-      console.log(error.message)
+      alert(error.message)
     }
+    alert('회원가입이 완료되었습니다!')
+    router.push(`/`)
   }
 
   return (
