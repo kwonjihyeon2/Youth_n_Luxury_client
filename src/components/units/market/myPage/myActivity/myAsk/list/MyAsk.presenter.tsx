@@ -32,9 +32,14 @@ export default function MyAskUI(props) {
             <S.HeadColFlex1>날짜</S.HeadColFlex1>
           </S.HeadRow>
 
-          {props.data.fetchUserQuerys ? (
+          {props.data?.fetchUserQuerys ? (
             props.data?.fetchUserQuerys.map((el) => (
-              <S.Row>
+              <S.Row
+                key={el.adminQuery_id}
+                onClick={props.MoveToDetail(el.adminQuery_id)(
+                  el.adminCategory.adminCategory_id
+                )}
+              >
                 <S.ColFlex1>01</S.ColFlex1>
                 <S.ColFlex1>답변대기</S.ColFlex1>
                 <S.ColFlex2>{el.adminCategory?.name}</S.ColFlex2>

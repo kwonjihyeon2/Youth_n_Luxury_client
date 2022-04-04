@@ -33,7 +33,9 @@ export default function UseditemDetailPage(props) {
   const onClickShare = () => {
     setIsShare((prev) => !prev)
   }
-
+  const onClickMoveToDetail = (id) => () => {
+    router.push('/mypage/myActivity/myAsk/' + id)
+  }
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: { productId: String(router.query.boardId) },
   })
@@ -207,6 +209,7 @@ export default function UseditemDetailPage(props) {
       onClickBasketBtn={onClickBasketBtn}
       isKeep={isKeep}
       onClickMakeRoom={onClickMakeRoom}
+      onClickMoveToDetail={onClickMoveToDetail}
     />
   )
 }
