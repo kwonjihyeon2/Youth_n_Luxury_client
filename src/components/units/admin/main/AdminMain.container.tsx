@@ -18,7 +18,7 @@ export default function AdminMain() {
   const { data: dataQuerys, refetch: refetchQuerys } =
     useQuery(FETCH_ADMIN_QUERYS)
   const { data: dataUsers, refetch: refetchUsers } = useQuery(FETCH_USERS)
-  const { data: dataOrders, refetch: refetchOrders } = useQuery(FETCH_ORDERS)
+  // const { data: dataOrders, refetch: refetchOrders } = useQuery(FETCH_ORDERS)
   const { data: dataImpuid, refetch: refetchImpuid } = useQuery(
     FETCH_IMPUID_WITH_PRODUCTID_USERID,
     { variables: { productId: '62c4e753-fe64-4c4a-b74f-75f517e306a8' } }
@@ -74,11 +74,11 @@ export default function AdminMain() {
     <AdminMainUI
       dataQuerys={dataQuerys}
       dataUsers={dataUsers}
-      dataOrders={dataOrders}
+      // dataOrders={dataOrders}
       dataProducts={dataProducts}
       refetchQuerys={refetchQuerys}
       refetchUsers={refetchUsers}
-      refetchOrders={refetchOrders}
+      // refetchOrders={refetchOrders}
       refetchProducts={refetchProducts}
       onClickLogout={onClickLogout}
       onClickDeleteProduct={onClickDeleteProduct}

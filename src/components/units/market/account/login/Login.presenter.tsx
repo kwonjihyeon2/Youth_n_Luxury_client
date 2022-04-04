@@ -26,13 +26,6 @@ export default function LoginUI(props) {
           <S.FindTxt>비밀번호 찾기</S.FindTxt>
           <S.FindTxt>회원가입</S.FindTxt>
         </S.FindTxtBox>
-        <S.OrBox>
-          <S.OrLine></S.OrLine>또는<S.OrLine></S.OrLine>
-        </S.OrBox>
-        <S.SocialBox>
-          <S.SocialImg></S.SocialImg>
-          <S.SocialImg></S.SocialImg>
-        </S.SocialBox>
       </S.Wrapper>
     </S.ResponsiveBox>
   )
