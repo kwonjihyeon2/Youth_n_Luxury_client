@@ -6,7 +6,7 @@ import { breakPoints } from '../../../commons/utils/media'
 export const WrapperMain = styled.div`
   /* width: 100%;
   height: 100%; */
-  z-index: 3;
+  z-index: 100000;
 `
 export const Wrapper = styled.div`
   width: 100%;

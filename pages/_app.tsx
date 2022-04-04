@@ -20,11 +20,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [item, setItem] = useState([])
   const value = { accessToken, setAccessToken, item, setItem }
   useEffect(() => {
-
     getAccessToken().then((newAccessToken) => {
       setAccessToken(newAccessToken)
     })
-  }, [])
+  }, [accessToken])
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     // 1. 에러를 캐치

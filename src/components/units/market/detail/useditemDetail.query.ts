@@ -32,7 +32,6 @@ export const FETCH_LIKE = gql`
   query fetchProductLike {
     fetchProductLike {
       id
-      name
     }
   }
 `

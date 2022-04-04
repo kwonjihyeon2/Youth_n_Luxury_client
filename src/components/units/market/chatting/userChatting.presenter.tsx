@@ -6,9 +6,7 @@ export default function UserChattingPageUI(props) {
       <div className="WrapperContents">
         <div className="WrapperBox">
           <div className="WrapperLeft">
-            <div className="WrapperName">
-              {props.chatInfo.product.user.name}
-            </div>
+            <div className="WrapperName">{props.user?.fetchUser.name}</div>
             {props.data?.joinSeller?.map((el, index) => (
               <div
                 className="UserList"
@@ -27,6 +25,7 @@ export default function UserChattingPageUI(props) {
             ))}
           </div>
           <ChatlogPage
+            user={props.user}
             onChangeText={props.onChangeText}
             chatInfo={props.chatInfo}
             onSendChat={props.onSendChat}

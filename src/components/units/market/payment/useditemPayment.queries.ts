@@ -41,12 +41,12 @@ export const FETCH_USER = gql`
 `
 
 export const CREATE_ORDER = gql`
-  mutation createOrder(
-    $impUid: String!
-    $productId: String!
-    $status: String!
+  mutation createtransaction(
+    $impuid: String!
+    $amount: Float!
+    $productid: String!
   ) {
-    createOrder(impUid: $impUid, productId: $productId, status: $status) {
+    createtransaction(impuid: $impuid, amount: $amount, productid: $productid) {
       id
       impUid
       status
