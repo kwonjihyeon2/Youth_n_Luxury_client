@@ -15,7 +15,7 @@ export const CREATE_USER = gql`
       name: $name
       phoneNum: $phoneNum
     ) {
-      id
+      user_id
       nickname
       name
       email

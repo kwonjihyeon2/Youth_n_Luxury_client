@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import UseditemDetailPageUI from './useditemDetail.presenter'
 import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
-import { useLazyQuery, useMutation, useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import {
   CREATE_CHAT,
@@ -40,7 +40,7 @@ export default function UseditemDetailPage(props) {
   })
 
   const { data: productData } = useQuery(SELLER_PRODUCT, {
-    variables: { userId: String(data?.fetchProduct.user.id) },
+    variables: { userId: String(data?.fetchProduct.user.user_id) },
   })
 
   const [createLike] = useMutation(CREATE_LIKE)
@@ -87,7 +87,7 @@ export default function UseditemDetailPage(props) {
     let isExist = false
     const baskets = JSON.parse(localStorage.getItem('basket') || '[]')
     baskets.forEach((basketEl) => {
-      if (basketEl.fetchProduct.id === data.fetchProduct.id) {
+      if (basketEl.fetchProduct.product_id === data.fetchProduct.product_id) {
         isExist = true
         return false
       }
@@ -163,7 +163,7 @@ export default function UseditemDetailPage(props) {
     const { __typename, ...rest } = User
 
     const create = {
-      productId: String(data?.fetchProduct.id),
+      productId: String(data?.fetchProduct.product_id),
       currentUser: rest,
     }
 

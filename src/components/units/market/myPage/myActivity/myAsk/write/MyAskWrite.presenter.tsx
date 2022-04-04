@@ -7,7 +7,7 @@ export default function MyAskWriteUI(props) {
         <S.Row>
           <S.Key>분류</S.Key>
           <S.Value>
-            <S.SettingOptionDropBox>
+            <S.SettingOptionDropBox onChange={props.onChangeInput}>
               <option value="- 분류선택 -">- 분류선택 -</option>
               <option value="회원정보문의">회원정보문의</option>
               <option value="주문결제문의">주문결제문의</option>

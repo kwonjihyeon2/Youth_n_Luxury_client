@@ -1,4 +1,4 @@
-import { useLazyQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../../../../../../../pages/_app'
@@ -7,7 +7,7 @@ import { FETCH_USER_QUERYS } from './MyAsk.queries'
 
 export default function MyAsk() {
   const router = useRouter()
-  const [fetchUserQuerys] = useLazyQuery(FETCH_USER_QUERYS)
+  const { data: dataQuerys, refetch } = useQuery(FETCH_USER_QUERYS)
   const MoveToWrite = () => {
     router.push('/mypage/myActivity/myAsk/new')
   }
@@ -41,7 +41,7 @@ export default function MyAsk() {
   const onChangeAdminCategory = async (event) => {
     console.log('이벤트')
     console.log(adminCategoryObj[event.target.value])
-    const result = await fetchUserQuerys({
+    const result = await refetch({
       variables: { adminCategoryId: adminCategoryObj[event.target.value] },
     })
     setData(result.data)
