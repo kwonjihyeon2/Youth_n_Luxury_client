@@ -7,7 +7,7 @@ export const LOGIN = gql`
 export const FETCH_USER = gql`
   query fetchUser {
     fetchUser {
-      user_id
+      id
       nickname
       name
       email

@@ -8,7 +8,7 @@ export const FETCH_PRODUCT = gql`
       description
       price
       user {
-        user_id
+        id
         name
         email
         phoneNum
@@ -67,7 +67,7 @@ export const CREATE_ADDRESS = gql`
       addressDetail
       zipCode
       user {
-        user_id
+        id
         name
         phoneNum
         email
