@@ -13,6 +13,10 @@ export const FETCH_USER_QUERYS = gql`
       id
       title
       contents
+      adminCategory {
+        id
+        name
+      }
     }
   }
 `

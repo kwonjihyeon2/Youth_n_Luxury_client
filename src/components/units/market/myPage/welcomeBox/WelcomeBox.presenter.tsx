@@ -7,7 +7,9 @@ export default function WelcomeBoxUI(props) {
         <S.UserBox>
           <img src="/images/myPageProfile.png" />
           <S.UserTxtBox>
-            <S.UserHeadTxt>쑤잉님 반갑습니다</S.UserHeadTxt>
+            <S.UserHeadTxt>
+              {/* {props.result?.data?.name}님 반갑습니다 */}
+            </S.UserHeadTxt>
             <S.UserSubTxt>회원정보수정</S.UserSubTxt>
           </S.UserTxtBox>
         </S.UserBox>
