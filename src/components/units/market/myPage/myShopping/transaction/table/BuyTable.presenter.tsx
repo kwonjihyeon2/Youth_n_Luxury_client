@@ -2,9 +2,8 @@ import { useState } from 'react'
 import CreateReviewPage from '../../../../review/createReview.container'
 import * as S from '../Transaction.styles'
 
-export default function BuyTableUI() {
+export default function BuyTableUI(props) {
   const [isReview, setIsReview] = useState(false)
-
   const onClickOpenReview = () => {
     setIsReview((prev) => !prev)
   }
@@ -21,59 +20,19 @@ export default function BuyTableUI() {
         <S.SellerNameTableHeaderEl>판매자 닉네임</S.SellerNameTableHeaderEl>
         <S.ReviewTableHeaderEl>후기</S.ReviewTableHeaderEl>
       </S.TableHeaderBox>
-      <S.Row>
-        <S.RowDateBox>03/23</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 유광 그 카프스킨..</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-        <S.RowReviewBox>작성완료</S.RowReviewBox>
-      </S.Row>
-      <S.Row>
-        <S.RowDateBox>03/26</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 레드카페에 들</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-        <S.RowReviewBox>
-          <S.ReviewBtn onClick={onClickOpenReview}>작성하기</S.ReviewBtn>
-        </S.RowReviewBox>
-      </S.Row>
-      <S.Row>
-        <S.RowDateBox>03/26</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 레드카페에 들</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-        <S.RowReviewBox>
-          <S.ReviewBtn>작성하기</S.ReviewBtn>
-        </S.RowReviewBox>
-      </S.Row>
-      <S.Row>
-        <S.RowDateBox>03/26</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 레드카페에 들</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-        <S.RowReviewBox>
-          <S.ReviewBtn>작성하기</S.ReviewBtn>
-        </S.RowReviewBox>
-      </S.Row>
-      <S.Row>
-        <S.RowDateBox>03/26</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 레드카페에 들</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-        <S.RowReviewBox>
-          <S.ReviewBtn>작성하기</S.ReviewBtn>
-        </S.RowReviewBox>
-      </S.Row>
+      {props.dataBuyer?.fetchBuyerOrders.map((el) => (
+        <S.Row>
+          <S.RowDateBox>{el.createdAt.slice(0, 10)}</S.RowDateBox>
+          <S.RowImg></S.RowImg>
+          <S.RowNameBox>{el.product.name}</S.RowNameBox>
+          <S.RowPriceBox>{el.product.price}</S.RowPriceBox>
+          <S.RowStatusBox>{el.status}</S.RowStatusBox>
+          <S.RowSellerNameBox>{el.product.user.name}</S.RowSellerNameBox>
+          <S.RowReviewBox>
+            <S.ReviewBtn onClick={onClickOpenReview}>작성하기</S.ReviewBtn>
+          </S.RowReviewBox>
+        </S.Row>
+      ))}
       {isReview && (
         <div>
           <CreateReviewPage

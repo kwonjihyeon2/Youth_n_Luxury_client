@@ -36,6 +36,9 @@ export const SelectDetailBtn = styled.button`
   font-weight: 300;
   border: none;
   cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
 `
 
 export const PeriodSettingBox = styled.div`
@@ -100,7 +103,7 @@ export const ProductDetailTxt = styled.div`
 
 export const TableHeaderBox = styled.div`
   display: flex;
-  border: 1px solid #00000033;
+  border: 1px solid #333333;
   align-items: center;
   height: 38px;
 `
@@ -169,15 +172,15 @@ export const ReviewTableHeaderEl = styled.div`
 `
 
 export const Row = styled.div`
-  border-bottom: 1px solid #00000033;
-  border-left: 1px solid #00000033;
-  border-right: 1px solid #00000033;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #333333;
+  border-right: 1px solid #333333;
   display: flex;
   height: 142px;
 `
 export const RowImg = styled.div`
   height: 142px;
-  background-color: grey;
+  background-color: #333333;
   flex: 3;
 `
 export const RowDateBox = styled.div`
@@ -241,8 +244,13 @@ export const ReviewBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #dbdbdb;
+  background-color: #333333;
+  color: white;
   font-size: 12px;
   font-weight: 400;
   border: none;
+  cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
 `

@@ -130,8 +130,8 @@ export const Box1Data = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 70px;
     width: 105px;
+    margin-left: 40px;
   }
 `
 
@@ -228,6 +228,8 @@ export const UsersImg = styled.img`
   margin-top: 5px;
   width: 150px;
   height: 150px;
+  background-size: cover;
+  background-image: url('/images/admin/UserImg.png');
 `
 
 export const MidBox3 = styled.div`
