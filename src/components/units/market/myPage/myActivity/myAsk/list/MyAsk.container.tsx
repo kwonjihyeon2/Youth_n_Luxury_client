@@ -6,14 +6,12 @@ import MyAskUI from './MyAsk.presenter'
 import { FETCH_USER_QUERYS } from './MyAsk.queries'
 
 export default function MyAsk() {
-  const [adminCategory, setAdminCategory] = useState('회원정보문의')
   const router = useRouter()
   const [fetchUserQuerys] = useLazyQuery(FETCH_USER_QUERYS)
   const MoveToWrite = () => {
-    router.push('/mypage/myActivity/myAsk/write')
+    router.push('/mypage/myActivity/myAsk/new')
   }
-  const { accessToken } = useContext(GlobalContext)
-  console.log(accessToken)
+
   const MoveToDetail = () => {
     router.push('/mypage/myActivity/myAsk/')
   }
@@ -40,5 +38,21 @@ export default function MyAsk() {
   //   }
   //   fetchQuerys()
   // }, [adminCategory, accessToken])
-  return <MyAskUI MoveToWrite={MoveToWrite} data={data} />
+  const onChangeAdminCategory = async (event) => {
+    console.log('이벤트')
+    console.log(adminCategoryObj[event.target.value])
+    const result = await fetchUserQuerys({
+      variables: { adminCategoryId: adminCategoryObj[event.target.value] },
+    })
+    setData(result.data)
+    console.log(result.data)
+  }
+  return (
+    <MyAskUI
+      MoveToWrite={MoveToWrite}
+      data={data}
+      onChangeAdminCategory={onChangeAdminCategory}
+      adminCategoryObj={adminCategoryObj}
+    />
+  )
 }

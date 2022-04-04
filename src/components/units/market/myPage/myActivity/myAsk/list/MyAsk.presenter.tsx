@@ -6,7 +6,7 @@ export default function MyAskUI(props) {
       <S.Wrapper>
         <S.AskHeaderTxt></S.AskHeaderTxt>
         <S.SearchBox>
-          <S.DropDown name="type">
+          <S.DropDown name="type" onChange={props.onChangeAdminCategory}>
             <S.Option value="회원정보문의">회원정보문의</S.Option>
             <S.Option value="주문결제문의">주문결제문의</S.Option>
             <S.Option value="상품정보문의">상품정보문의</S.Option>
@@ -32,16 +32,20 @@ export default function MyAskUI(props) {
             <S.HeadColFlex1>날짜</S.HeadColFlex1>
           </S.HeadRow>
 
-          {/* {props.data?.fetchUserQuerys.map((el) => (
-            <S.Row>
-              <S.ColFlex1>01</S.ColFlex1>
-              <S.ColFlex1>답변대기</S.ColFlex1>
-              <S.ColFlex2>{`[회원정보문의]`}</S.ColFlex2>
+          {props.data.fetchUserQuerys ? (
+            props.data?.fetchUserQuerys.map((el) => (
+              <S.Row>
+                <S.ColFlex1>01</S.ColFlex1>
+                <S.ColFlex1>답변대기</S.ColFlex1>
+                <S.ColFlex2>{el.adminCategory?.name}</S.ColFlex2>
 
-              <S.ColFlex5>언제와요?</S.ColFlex5>
-              <S.ColFlex1>2022/03/21</S.ColFlex1>
-            </S.Row>
-          ))} */}
+                <S.ColFlex5>{el.title}</S.ColFlex5>
+                <S.ColFlex1>2022/03/21</S.ColFlex1>
+              </S.Row>
+            ))
+          ) : (
+            <></>
+          )}
         </S.Table>
 
         <S.WriteAskBtnBox>

@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 `
 
 export const UserBox = styled.div`
-  width: 309px;
+  width: 309x;
   height: 90px;
   display: flex;
   align-items: center;
@@ -21,7 +21,6 @@ export const UserBox = styled.div`
 `
 
 export const UserTxtBox = styled.div`
-  width: 208px;
   height: 66px;
   display: flex;
   flex-direction: column;
@@ -30,7 +29,6 @@ export const UserTxtBox = styled.div`
 export const UserHeadTxt = styled.div`
   font-weight: 400;
   font-size: 26px;
-  width: 198px;
   height: 35px;
   padding-left: 10px;
   color: #333333;
