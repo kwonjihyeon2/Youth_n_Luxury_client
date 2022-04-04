@@ -283,7 +283,7 @@ export default function LayoutSidebar() {
   const { data: join } = useQuery(JOIN_SELLER)
   const onClickQuery = () => {
     console.log(join)
-    router.push(`market/chatting`)
+    router.push(`/market/chatting`)
   }
 
   const onClickCreateProduct = () => {

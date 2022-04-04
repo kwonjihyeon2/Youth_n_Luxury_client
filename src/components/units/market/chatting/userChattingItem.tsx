@@ -8,16 +8,16 @@ export default function ChatlogPage(props) {
               <img src="/detail/profile.png" />
             </div>
             <div>
-              <div>{props.chatInfo.user.name}</div>
+              <div>{props.chatInfo.user?.name}</div>
               <div className="TalkBalloon">
-                말풍선
+                {props.chatInfo?.chatlog}
                 <div className="LeftTriangle"></div>
               </div>
             </div>
           </div>
           <div className="MyComments">
             <div className="align">
-              <div>{props.chatInfo.product.user.name}</div>
+              <div>{props.user?.fetchUser.name}</div>
               <div className="TalkBalloon">
                 말풍선
                 <div className="Triangle"></div>
@@ -35,10 +35,10 @@ export default function ChatlogPage(props) {
         <input
           className="ChatValue"
           type="text"
-          onClick={props.onSendChat}
+          onChange={props.onChangeText}
           placeholder="내용을 입력하세요."
         />
-        <button className="SendButton" onClick={props.onChangeText}>
+        <button className="SendButton" onClick={props.onSendChat}>
           전송
         </button>
       </div>

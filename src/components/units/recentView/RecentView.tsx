@@ -5,7 +5,7 @@ import { getDate2, getPrice } from '../../../commons/libraries/utils'
 import styled from '@emotion/styled'
 
 const Wrapper = styled.div`
-  z-index: 2;
+  z-index: 100000;
   width: 170px;
   padding: 20px 15px;
   position: fixed;

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import UseditemDetailPageUI from './useditemDetail.presenter'
 import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
-import { useMutation, useQuery } from '@apollo/client'
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import {
   CREATE_CHAT,
@@ -15,13 +15,12 @@ import {
   SELLER_PRODUCT,
 } from './useditemDetail.query'
 import SocketIOClient from 'socket.io-client'
+import { FETCH_USER } from '../payment/useditemPayment.queries'
 
 declare const window: typeof globalThis & {
   Kakao: any
 }
-const socket = SocketIOClient.connect(
-  'https://mybackend.project5-sos.shop/graphql'
-)
+const socket = SocketIOClient('https://mybackend.project5-sos.shop')
 export default function UseditemDetailPage(props) {
   const { moveToPage } = useMoveToPage()
   const router = useRouter()
@@ -45,7 +44,7 @@ export default function UseditemDetailPage(props) {
   })
 
   const [createLike] = useMutation(CREATE_LIKE)
-  const { data: picked } = useQuery(FETCH_LIKE)
+  // const { data: picked } = useQuery(FETCH_LIKE)
   const [info, setInfo] = useState()
 
   const onClickHeart = async () => {
@@ -74,15 +73,15 @@ export default function UseditemDetailPage(props) {
   }
 
   const [isKeep, setKeep] = useState(false)
-  useEffect(() => {
-    const pick = picked?.fetchProductLike.filter(
-      (el) => el.id === data?.fetchProduct.id
-    )
-    console.log(pick)
-    if (pick?.length) {
-      setKeep(true)
-    }
-  }, [picked?.fetchProductLike])
+  // useEffect(() => {
+  //   const pick = picked?.fetchProductLike.filter(
+  //     (el) => el.id === data?.fetchProduct.id
+  //   )
+  //   console.log(pick)
+  //   if (pick?.length) {
+  //     setKeep(true)
+  //   }
+  // }, [picked?.fetchProductLike])
 
   const onClickBasketBtn = () => {
     let isExist = false
@@ -155,22 +154,41 @@ export default function UseditemDetailPage(props) {
 
   //상품문의에서 채팅 요청API
   const [createChat] = useMutation(CREATE_CHAT)
+  const { refetch } = useQuery(FETCH_USER)
 
-  const onClickMakeRoom = async () => {
-    try {
-      const result = await createChat({
-        variables: { productId: String(data?.fetchProduct.id) },
-      })
-      console.log('구매자가 채팅 요청 성공 :' + JSON.stringify(result))
-      socket.on('return_roomId', (result) => {
-        socket.emit('joinSeller', result)
-      })
-      console.log(socket)
-      router.push('/market/chatting')
-    } catch (error) {
-      console.log('구매자가 채팅 요청했는데 실패 :' + error.message)
+  const onClickMakeRoom = async (e) => {
+    const userResult = await refetch()
+
+    const User = userResult.data?.fetchUser
+    const { __typename, ...rest } = User
+
+    const create = {
+      productId: String(data?.fetchProduct.id),
+      currentUser: rest,
     }
+
+    e.preventDefault()
+    socket.emit('createChat', create)
+    console.log(create)
+    console.log('클릭함', socket)
+
+    // try {
+    //   const result = await createChat({
+    //     variables: { productId: String(data?.fetchProduct.id) },
+    //   })
+    //   console.log('구매자가 채팅 요청 성공 :' + JSON.stringify(result))
+    //   socket.on('return_roomId', (result) => {
+    //     socket.emit('joinSeller', result)
+    //   })
+    //   console.log(socket)
+    //   router.push('/market/chatting')
+    // } catch (error) {
+    //   console.log('구매자가 채팅 요청했는데 실패 :' + error.message)
+    // }
   }
+  socket.on('roomInfo', (data) => {
+    console.log(data)
+  })
 
   return (
     <UseditemDetailPageUI
