@@ -3,6 +3,8 @@ import styled from '@emotion/styled'
 const Position = styled.div`
   display: flex;
   justify-content: center;
+  width: 100%;
+  background-color: #393939;
 `
 const Wrapper = styled.div`
   display: flex;
@@ -38,6 +40,7 @@ const Box2 = styled.div`
   padding-right: 20px;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   justify-content: center;
   width: 30%;
   height: 100%;

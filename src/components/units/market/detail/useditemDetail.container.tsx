@@ -39,7 +39,7 @@ export default function UseditemDetailPage(props) {
   })
 
   const { data: productData } = useQuery(SELLER_PRODUCT, {
-    variables: { userId: String(data?.fetchProduct.user.id) },
+    variables: { userId: String(data?.fetchProduct.user?.id) },
   })
 
   const [createLike] = useMutation(CREATE_LIKE)
@@ -147,7 +147,7 @@ export default function UseditemDetailPage(props) {
 
   const { data: relativeData } = useQuery(RELATIVE_PRODUCT, {
     variables: {
-      name: String(data?.fetchProduct.subCategory?.mainCategory.name),
+      name: String(data?.fetchProduct.subCategory?.mainCategory?.name),
     },
   })
 

@@ -79,7 +79,7 @@ export const CREATE_ADDRESS = gql`
 export const FETCH_ADDRESS = gql`
   query fetchUserAddr {
     fetchUserAddr {
-      id
+      userAddr_id
       address
       addressDetail
       zipCode
@@ -94,7 +94,7 @@ export const FETCH_ADDRESS = gql`
 export const FETCH_ADDRS = gql`
   query fetchUserAddrs {
     fetchUserAddrs {
-      id
+      userAddr_id
       address
       addressDetail
       zipCode

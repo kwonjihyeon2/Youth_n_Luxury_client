@@ -10,9 +10,7 @@ const socket = SocketIOClient('https://mybackend.project5-sos.shop/graphql')
 export default function UserChattingPage() {
   const { data: user } = useQuery(FETCH_USER)
   const [roomId, setRoomId] = useState('')
-  const { refetch } = useQuery(FETCH_CHAT, {
-    variables: { roomId: String(roomId) },
-  })
+  const { refetch } = useQuery(FETCH_CHAT)
   const [chatInfo, setChatInfo] = useState({})
   const { data } = useQuery(JOIN_SELLER)
 
@@ -31,7 +29,7 @@ export default function UserChattingPage() {
   //방목록 -> 대화내용 조회
   const onClickOpenRoom = (id) => async (e) => {
     setRoomId(id)
-    const resultChatInfo = await refetch()
+    const resultChatInfo = await refetch({ roomId: String(roomId) })
     setChatInfo(resultChatInfo?.data?.fetchChat)
 
     console.log(resultChatInfo)
