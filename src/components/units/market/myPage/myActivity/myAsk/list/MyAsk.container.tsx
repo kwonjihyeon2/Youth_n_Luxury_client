@@ -12,18 +12,19 @@ export default function MyAsk() {
     router.push('/mypage/myActivity/myAsk/new')
   }
 
-  const MoveToDetail = () => {
-    router.push('/mypage/myActivity/myAsk/')
-  }
   const [data, setData] = useState({})
+  const MoveToDetail = (id) => (category) => () => {
+    router.push('/mypage/myActivity/myAsk/' + id + '&' + category)
+  }
   const adminCategoryObj = {
-    환불문의: '06f3fed8-ad52-466d-b9dc-8e826ce5347a',
-    상품정보문의: '12446258-5273-4e1a-98dc-50b40a07b33e',
-    취소문의: '23f71f52-1336-4405-96bf-dac162ef3337',
-    반품문의: '2f51c068-acf2-44e3-85bb-1cf58fb3ad1f',
-    배송문의: '46dd94eb-0854-4340-9f72-34f3d6c5e696',
-    회원정보문의: '8b51befa-e6c5-486b-913f-682e6179a087',
-    주문결제문의: 'cd9227d9-7b77-4fd3-811c-28af1d6a531a',
+    환불문의: '253554a8-73db-492b-83ad-eca885d4c767',
+    상품정보문의: 'd0b696d0-5522-467f-b3b9-b6ce7d413e83',
+    취소문의: '23846fac-76b3-4fdc-99a3-2b7d947d5cf9',
+    반품문의: '70d288cd-f7e9-4e50-b930-433764e1b18a',
+    배송문의: '947c8eda-6380-40e4-b441-4bf8a3b38cbf',
+    회원정보문의: 'ce0e89c0-af77-4fa2-83f2-3412f12b261b',
+    주문결제문의: '1cfa8b49-4f0f-4370-ac3c-70d8b7df15cd',
+    기타문의: '8d18fe7e-43bc-42aa-b060-90890909e257',
   }
   // useEffect(() => {
   //   if (!accessToken) {
@@ -42,7 +43,7 @@ export default function MyAsk() {
     console.log('이벤트')
     console.log(adminCategoryObj[event.target.value])
     const result = await refetch({
-      variables: { adminCategoryId: adminCategoryObj[event.target.value] },
+      adminCategoryId: adminCategoryObj[event.target.value],
     })
     setData(result.data)
     console.log(result.data)
@@ -53,6 +54,7 @@ export default function MyAsk() {
       data={data}
       onChangeAdminCategory={onChangeAdminCategory}
       adminCategoryObj={adminCategoryObj}
+      MoveToDetail={MoveToDetail}
     />
   )
 }

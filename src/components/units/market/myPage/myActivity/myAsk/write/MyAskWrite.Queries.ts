@@ -1,12 +1,19 @@
 import { gql } from '@apollo/client'
 
 export const CREATE_USER_QUERY = gql`
-
-mutation createUserQuery(){
-
-createUserQuery ($title:title,$content:content,$img:img,$adminCategoryId:adminCategoryId){}
-
-
-}
-
+  mutation createUserQuery(
+    $title: String!
+    $contents: String!
+    $img: String!
+    $adminCategoryId: String!
+  ) {
+    createUserQuery(
+      title: $title
+      contents: $contents
+      img: $img
+      adminCategoryId: $adminCategoryId
+    ) {
+      title
+    }
+  }
 `

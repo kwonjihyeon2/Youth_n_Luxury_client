@@ -21,7 +21,7 @@ export default function WelcomeBoxUI(props) {
 
             <S.InfoValueBox>
               <S.InfoValueNumTxt>
-                {props.data?.fetchProductLike.length}
+                {props.data?.fetchProductLike.length || '0'}
               </S.InfoValueNumTxt>
               <S.InfoValueTxt>개</S.InfoValueTxt>
             </S.InfoValueBox>

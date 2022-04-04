@@ -1,24 +1,27 @@
 import * as S from './MyAskDetail.styles'
 
-export default function MyAskDetailUI() {
+export default function MyAskDetailUI(props) {
+  console.log(props.data)
   return (
     <S.WrapperResponse>
       <S.Wrapper>
         <S.Row>
           <S.Key>분류</S.Key>
-          <S.TopValue>배송문의</S.TopValue>
+          <S.TopValue>
+            {props.data?.fetchUserQuery?.adminCategory?.name}
+          </S.TopValue>
           <S.Key>등록일</S.Key>
           <S.CreatedAtValue>2022-03-26</S.CreatedAtValue>
         </S.Row>
         <S.Row>
           <S.Key>작성자</S.Key>
-          <S.Value>쑤잉</S.Value>
+          <S.Value>{props.data?.fetchUserQuery?.user?.name}</S.Value>
         </S.Row>
         <S.Row>
           <S.Key>제목</S.Key>
-          <S.Value>왜안와요 왜왜왜왜왜왜오애왜왱??? </S.Value>
+          <S.Value>{props.data?.fetchUserQuery?.title} </S.Value>
         </S.Row>
-        <S.ContentValue>왜 안오는거에요 왜왜왜왜ㅐㅇ??????</S.ContentValue>
+        <S.ContentValue>{props.data?.fetchUserQuery?.contents}</S.ContentValue>
 
         <S.BtnBox>
           <S.CancelBtn>목록</S.CancelBtn>
