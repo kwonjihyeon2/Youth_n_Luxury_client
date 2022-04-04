@@ -200,7 +200,7 @@ export default function UseditemDetailPageUI(props) {
                   <img src="/detail/rion.png" />
                 </S.SellerProfile>
                 <div>
-                  <div>{props.data?.fetchProduct.user.name}님</div>
+                  <div>{props.data?.fetchProduct.user?.name}님</div>
                   <span style={{ fontWeight: '300' }}>
                     판매 상품 {props.productData?.fetchSellerProduct.length}개
                   </span>
@@ -211,7 +211,7 @@ export default function UseditemDetailPageUI(props) {
                     name="read-only"
                     size="small"
                     defaultValue={Number(
-                      props.data?.fetchProduct.user.ratingAvg
+                      props.data?.fetchProduct.user?.ratingAvg
                     )}
                     readOnly
                   />
@@ -230,7 +230,7 @@ export default function UseditemDetailPageUI(props) {
         </S.ContentsBox>
         <S.SlickStyle>
           <S.RelativeTitle>
-            [ {props.data?.fetchProduct.user.name} ]님의 다른상품
+            [ {props.data?.fetchProduct.user?.name} ]님의 다른상품
           </S.RelativeTitle>
           <S.SliderContainer {...settings}>
             {props.productData?.fetchSellerProduct.map((el, index) => (
@@ -287,7 +287,7 @@ export default function UseditemDetailPageUI(props) {
           <div style={{ textAlign: 'right' }}>
             <S.EditBtn
               onClick={props.moveToPage(
-                `/market/${props.data?.fetchProduct.id}/edit`
+                `/market/${props.data?.fetchProduct.product_id}/edit`
               )}
             >
               수정

@@ -9,7 +9,6 @@ import {
   CREATE_LIKE,
   DELETE_PRODUCT,
   FETCH_LIKE,
-  FETCH_ORDER,
   FETCH_PRODUCT,
   RELATIVE_PRODUCT,
   SELLER_PRODUCT,
@@ -171,7 +170,7 @@ export default function UseditemDetailPage(props) {
     socket.emit('createChat', create)
     console.log(create)
     console.log('클릭함', socket)
-
+    // router.push('/market/chatting')
     // try {
     //   const result = await createChat({
     //     variables: { productId: String(data?.fetchProduct.id) },

@@ -3,7 +3,7 @@ import { gql } from '@apollo/client'
 export const FETCH_PRODUCT = gql`
   query fetchProduct($productId: String!) {
     fetchProduct(productId: $productId) {
-      productId
+      product_id
       name
       description
       price
@@ -79,7 +79,6 @@ export const FETCH_ORDER = gql`
     }
   }
 `
-
 export const CREATE_CHAT = gql`
   mutation createChat($productId: String!) {
     createChat(productId: $productId) {
