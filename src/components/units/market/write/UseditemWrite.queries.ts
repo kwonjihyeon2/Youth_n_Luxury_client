@@ -14,7 +14,7 @@ export const CREATE_PRODUCT = gql`
         name
       }
       user {
-        user_id
+        id
         nickname
         name
         email

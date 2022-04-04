@@ -14,7 +14,7 @@ export const FETCH_USER = gql`
 export const UPDATE_USER = gql`
   mutation updateUser($updateUserInfo: UpdateUserInfo!) {
     updateUser(updateUserInfo: $updateUserInfo) {
-      user_id
+      id
       name
       email
       phoneNum

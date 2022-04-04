@@ -31,7 +31,7 @@ export const FETCH_PRODUCT = gql`
 export const FETCH_USER = gql`
   query fetchUser {
     fetchUser {
-      user_id
+      id
       nickname
       name
       email
