@@ -14,13 +14,7 @@ export default function JoinUI(props) {
         >
           이메일 회원가입
         </S.EmailJoinBtn>
-        <S.OrBox>
-          <S.OrLine></S.OrLine>또는<S.OrLine></S.OrLine>
-        </S.OrBox>
-        <S.SocialBox>
-          <S.SocialImg></S.SocialImg>
-          <S.SocialImg></S.SocialImg>
-        </S.SocialBox>
+        <S.OrBox></S.OrBox>
       </S.WrapperBox>
     </S.Wrapper>
   )

@@ -53,15 +53,19 @@ export const UPDATE_PRODUCT = gql`
       like
       urls
       brand {
+        brand_id
         name
       }
       subCategory {
+        subCategory_id
         name
         mainCategory {
+          mainCategory_id
           name
         }
       }
       user {
+        user_id
         nickname
         name
         email

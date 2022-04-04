@@ -45,7 +45,7 @@ export default function MainUI(props) {
             </S.NewArrivalsTxtBox>
             <S.ProductBox>
               {props.NewArrival?.map((el) => (
-                <S.Product onClick={moveToPage(`market/${el.id}`)}>
+                <S.Product onClick={moveToPage(`market/${el.product_id}`)}>
                   <S.ProductImg />
                   <S.ProductTxt>{el.name}</S.ProductTxt>
                   <S.ProductTxt>{el.price}원</S.ProductTxt>

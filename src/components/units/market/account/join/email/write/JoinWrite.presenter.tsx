@@ -3,7 +3,7 @@ import * as S from './JoinWrite.styles'
 export default function JoinWriteUI(props) {
   console.log(props.data)
   return (
-    <>
+    <S.Position>
       <S.Wrapper>
         <S.JoinHeaderTxt>회원정보 입력</S.JoinHeaderTxt>
         <S.InputBox>
@@ -175,6 +175,6 @@ export default function JoinWriteUI(props) {
           <S.SubmitBtn onClick={props.onClickJoinBtn}>입력완료</S.SubmitBtn>
         )}
       </S.Wrapper>
-    </>
+    </S.Position>
   )
 }

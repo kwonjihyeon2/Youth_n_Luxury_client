@@ -3,7 +3,7 @@ import { gql } from '@apollo/client'
 export const FETCH_ADMIN_QUERYS = gql`
   query fetchAdminQuerys {
     fetchAdminQuerys {
-      id
+      admin_id
       contents
       userQuery {
         title
@@ -18,7 +18,7 @@ export const FETCH_ADMIN_QUERYS = gql`
 export const FETCH_USERS = gql`
   query fetchUsers {
     fetchUsers {
-      id
+      user_id
       nickname
       name
       email
@@ -26,27 +26,10 @@ export const FETCH_USERS = gql`
   }
 `
 
-export const FETCH_ORDERS = gql`
-  query fetchOrders {
-    fetchOrders {
-      id
-      createdAt
-      impUid
-      product {
-        price
-        name
-        user {
-          name
-        }
-      }
-    }
-  }
-`
-
 export const FETCH_IMPUID_WITH_PRODUCTID_USERID = gql`
   query fetchimpuidwithproductiduserid($productId: String!) {
     fetchimpuidwithproductiduserid(productId: $productId) {
-      id
+      transaction_id
       impUid
       status
     }
@@ -56,7 +39,7 @@ export const FETCH_IMPUID_WITH_PRODUCTID_USERID = gql`
 export const UPDATE_TRANSACTION = gql`
   mutation updatetransaction($impuid: String!, $statusCode: String!) {
     updatetransaction(impuid: $impuid, statusCode: $statusCode) {
-      id
+      transaction_id
       impUid
       status
     }
@@ -65,7 +48,7 @@ export const UPDATE_TRANSACTION = gql`
 export const FETCH_ALL_PRODUCT = gql`
   query fetchAllProduct {
     fetchAllProduct {
-      id
+      product_id
       name
       price
       urls

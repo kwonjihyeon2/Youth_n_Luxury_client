@@ -8,11 +8,14 @@ export const FETCH_PRODUCT = gql`
       description
       price
       user {
+        user_id
         name
       }
       subCategory {
+        subCategory_id
         name
         mainCategory {
+          mainCategory_id
           name
         }
       }
@@ -69,6 +72,13 @@ export const CREATE_LIKE = gql`
   }
 `
 
+export const FETCH_ORDER = gql`
+  query fetchTransactionAll {
+    fetchTransactionAll {
+      transaction_id
+    }
+  }
+`
 export const CREATE_CHAT = gql`
   mutation createChat($productId: String!) {
     createChat(productId: $productId) {

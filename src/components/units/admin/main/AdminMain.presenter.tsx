@@ -31,7 +31,7 @@ export default function AdminMainUI(props) {
             </S.Box1MenuWrapper>
             <S.Box1QuestionWrapper>
               {props.dataQuerys?.fetchAdminQuerys.map((el, index) => (
-                <S.Box1Data key={el.id}>
+                <S.Box1Data key={el.admin_id}>
                   <div>{index + 1}</div>
                   <div>2022-04-01</div>
                   <div>{el.contents}</div>
@@ -126,12 +126,12 @@ export default function AdminMainUI(props) {
               {props.dataProducts?.fetchAllProduct.map((el) => (
                 <S.Box4Data>
                   <div>{el.name}</div>
-                  <div>{el.user.name}</div>
+                  <div>{el.user?.name}</div>
                   <S.TempImg></S.TempImg>
                   <div>{el.price}</div>
                   <S.UseditemDeleteBtn
                     onClick={props.onClickDeleteProduct}
-                    id={el.id}
+                    id={el.product_id}
                   >
                     삭제하기
                   </S.UseditemDeleteBtn>
