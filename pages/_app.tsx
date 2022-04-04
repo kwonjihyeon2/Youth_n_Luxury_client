@@ -18,7 +18,12 @@ export const GlobalContext = createContext(null)
 function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState('')
   const [item, setItem] = useState([])
-  const value = { accessToken, setAccessToken, item, setItem }
+  const value = {
+    accessToken,
+    setAccessToken,
+    item,
+    setItem,
+  }
   useEffect(() => {
     getAccessToken().then((newAccessToken) => {
       setAccessToken(newAccessToken)
