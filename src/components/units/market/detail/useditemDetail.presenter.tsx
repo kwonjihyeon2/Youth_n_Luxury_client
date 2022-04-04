@@ -75,13 +75,11 @@ export default function UseditemDetailPageUI(props) {
     if (!props.data?.fetchProduct.urls) return
     // console.log(props.data?.fetchProduct.urls)
 
-    const urls = props.data?.fetchProduct.urls
-    const test = urls.split('"]["')
-    test[0] = test[0].replaceAll('["', '')
-    test[4] = test[4].replaceAll('"]', '')
+    let urls = props.data?.fetchProduct.urls
+    const result = urls.substring(1, urls.length - 1).split(',')
     // 0 번째 사진만쓴다. 대표이미지
 
-    setArr(test)
+    setArr(result)
   }, [props.data])
 
   return (

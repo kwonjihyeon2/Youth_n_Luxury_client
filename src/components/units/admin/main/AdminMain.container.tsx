@@ -6,6 +6,7 @@ import {
   DELETE_USER,
   FETCH_ADMIN_QUERYS,
   FETCH_ALL_PRODUCT,
+  FETCH_IMPUID_WITH_PRODUCTID_USERID,
   FETCH_ORDERS,
   FETCH_USERS,
   UPDATE_TRANSACTION,
@@ -18,34 +19,42 @@ export default function AdminMain() {
     useQuery(FETCH_ADMIN_QUERYS)
   const { data: dataUsers, refetch: refetchUsers } = useQuery(FETCH_USERS)
   const { data: dataOrders, refetch: refetchOrders } = useQuery(FETCH_ORDERS)
-  // const { data: dataProducts, refetch: refetchProducts } =
-  //   useQuery(FETCH_PRODUCTS)
+  const { data: dataImpuid, refetch: refetchImpuid } = useQuery(
+    FETCH_IMPUID_WITH_PRODUCTID_USERID,
+    { variables: { productId: '62c4e753-fe64-4c4a-b74f-75f517e306a8' } }
+  )
+  console.log('####')
+  // console.log(dataOrders.fetchOrders[2].id)
+  console.log('####')
   const { data: dataProducts, refetch: refetchProducts } =
     useQuery(FETCH_ALL_PRODUCT)
-
   const [deleteUser] = useMutation(DELETE_USER)
-  const [updateTransaction] = useMutation(UPDATE_TRANSACTION)
+  const [updatetransaction] = useMutation(UPDATE_TRANSACTION)
   const onClickMoveToQuery = () => {}
   const onClickLogout = () => {}
   const onClickDeleteProduct = () => {}
 
-  const onChangeStatus = async (event) => {
-    setStatus(event.target.value)
-    console.log(status)
+  console.log('@@@')
+  console.log(dataImpuid)
+  // "62c4e753-fe64-4c4a-b74f-75f517e306a8"
+  // dataOrders.fetchOrders[0].id
+  console.log('@@@')
+  const onClickStatus = async () => {
     try {
-      await updateTransaction({
+      await updatetransaction({
         variables: {
-          impuid: dataOrders?.fetchOrders[0].impUid,
+          impuid: dataImpuid?.fetchimpuidwithproductiduserid.impUid,
           statusCode: status,
         },
       })
+      console.log(dataImpuid.fetchimpuidwithproductiduserid.impUid)
     } catch (error) {
       alert(error.message)
     }
   }
-  console.log('--------------')
-  // console.log(dataOrders.fetchOrders[0].impUid)
-  console.log('--------------')
+  const onChangeStatus = (event) => {
+    setStatus(event.target.value)
+  }
 
   const onClickDeleteUser = async () => {
     try {
@@ -75,6 +84,7 @@ export default function AdminMain() {
       onClickDeleteProduct={onClickDeleteProduct}
       onClickDeleteUser={onClickDeleteUser}
       onChangeStatus={onChangeStatus}
+      onClickStatus={onClickStatus}
     />
   )
 }

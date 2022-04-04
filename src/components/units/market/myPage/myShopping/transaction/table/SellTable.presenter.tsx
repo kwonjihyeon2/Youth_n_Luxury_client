@@ -1,6 +1,6 @@
 import * as S from '../Transaction.styles'
 
-export default function SellTableUI() {
+export default function SellTableUI(props) {
   return (
     <>
       <S.ProductDetailTxt>판매 상품 정보</S.ProductDetailTxt>
@@ -12,46 +12,16 @@ export default function SellTableUI() {
         <S.StatusTableHeaderEl>주문처리상태</S.StatusTableHeaderEl>
         <S.SellerNameTableHeaderEl>구매자 닉네임</S.SellerNameTableHeaderEl>
       </S.TableHeaderBox>
-      <S.Row>
-        <S.RowDateBox>03/23</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 유광 그 카프스킨..</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-      </S.Row>
-      <S.Row>
-        <S.RowDateBox>03/26</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 레드카페에 들</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-      </S.Row>
-      <S.Row>
-        <S.RowDateBox>03/26</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 레드카페에 들</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-      </S.Row>
-      <S.Row>
-        <S.RowDateBox>03/26</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 레드카페에 들</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-      </S.Row>
-      <S.Row>
-        <S.RowDateBox>03/26</S.RowDateBox>
-        <S.RowImg></S.RowImg>
-        <S.RowNameBox>샤넬 레드카페에 들</S.RowNameBox>
-        <S.RowPriceBox>24,500,000원</S.RowPriceBox>
-        <S.RowStatusBox>완료</S.RowStatusBox>
-        <S.RowSellerNameBox>쑤잉</S.RowSellerNameBox>
-      </S.Row>
+      {props.dataSeller?.fetchSellerOrders.map((el) => (
+        <S.Row>
+          <S.RowDateBox>{el.createdAt.slice(0, 10)}</S.RowDateBox>
+          <S.RowImg></S.RowImg>
+          <S.RowNameBox>{el.product.name}</S.RowNameBox>
+          <S.RowPriceBox>{el.product.price}</S.RowPriceBox>
+          <S.RowStatusBox>{el.status}</S.RowStatusBox>
+          <S.RowSellerNameBox>{el.product.user.name}</S.RowSellerNameBox>
+        </S.Row>
+      ))}
     </>
   )
 }

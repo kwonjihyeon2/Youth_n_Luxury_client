@@ -16,7 +16,7 @@ export const WrapperAccount = styled.div`
   margin-right: 20px;
   flex-direction: row;
   margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 220px;
 `
 export const WrapperImages = styled.div`
   display: flex;
@@ -46,11 +46,26 @@ export const WrapperAccountInput = styled.div`
   border-radius: 20px;
   background-color: #fafafc;
   flex-wrap: wrap;
+  div {
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  input {
+    height: 30px;
+  }
 `
 
 export const AccountBtn = styled.button`
-  width: 150px;
-  height: 70px;
+  margin-left: 10px;
+  width: 100px;
+  height: 40px;
+  border: none;
+  background-color: #333333;
+  color: white;
+  :hover {
+    color: #7a36ff;
+  }
 `
 
 export const WrapperInput = styled.div`
@@ -255,6 +270,7 @@ export const SubmitBtn = styled.button`
   font-size: 30px;
   border: none;
   cursor: pointer;
+  margin-bottom: 150px;
   :hover {
     background-color: #393939;
     color: white;
