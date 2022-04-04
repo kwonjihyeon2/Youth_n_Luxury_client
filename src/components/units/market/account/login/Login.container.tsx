@@ -1,4 +1,4 @@
-import { useLazyQuery, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { useState, useContext } from 'react'
 import { GlobalContext } from '../../../../../../pages/_app'

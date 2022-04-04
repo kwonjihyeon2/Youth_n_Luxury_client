@@ -176,7 +176,7 @@ export default function UseditemDetailPageUI(props) {
             <S.ButtonFlexBox>
               <S.ButtonBlackStyle
                 onClick={props.moveToPage(
-                  `/market/${props.data?.fetchProduct.id}/payment`
+                  `/market/${props.data?.fetchProduct.product_id}/payment`
                 )}
               >
                 바로구매
@@ -234,8 +234,8 @@ export default function UseditemDetailPageUI(props) {
           </S.RelativeTitle>
           <S.SliderContainer {...settings}>
             {props.productData?.fetchSellerProduct.map((el, index) => (
-              <div key={el.id}>
-                <S.SliderBox key={el.id}>
+              <div key={el.product_id}>
+                <S.SliderBox key={el.product_id}>
                   {/* <div>{el.urls}</div> */}
                   <img
                     style={{ width: '100%', height: '100%' }}
@@ -257,7 +257,7 @@ export default function UseditemDetailPageUI(props) {
             {props.relativeData?.fetchProductRelateMainCategory.map(
               (el, index) => (
                 <div>
-                  <div key={el.id}>
+                  <div key={el.product_id}>
                     <S.SliderBox>
                       <img
                         style={{ width: '100%', height: '100%' }}

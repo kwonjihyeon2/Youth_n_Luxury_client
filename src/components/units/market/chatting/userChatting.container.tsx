@@ -1,6 +1,6 @@
 import UserChattingPageUI from './userChatting.presenter'
 import SocketIOClient from 'socket.io-client'
-import { gql, useLazyQuery, useMutation, useQuery } from '@apollo/client'
+import { gql, useMutation, useQuery } from '@apollo/client'
 import { FETCH_CHAT, JOIN_SELLER, UPDATE_CHAT } from './userChatting.queries'
 import { useEffect, useState } from 'react'
 import { FETCH_USER } from '../myPage/myInfo/editUser/EditUser.queries'

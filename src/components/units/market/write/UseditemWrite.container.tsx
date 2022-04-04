@@ -106,7 +106,7 @@ export default function UseditemWrite(props) {
           },
         },
       })
-      router.push(`/market/${result.data.createProduct.id}`)
+      router.push(`/market/${result.data.createProduct.product_id}`)
     } catch (error) {
       alert(error.message)
     }

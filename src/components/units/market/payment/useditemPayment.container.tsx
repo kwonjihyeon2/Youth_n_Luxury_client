@@ -123,7 +123,7 @@ export default function UseditemPaymentpage(props) {
               variables: {
                 impuid: rsp.imp_uid,
                 amount: Number(data?.fetchProduct.price),
-                productid: String(data?.fetchProduct.id),
+                productid: String(data?.fetchProduct.product_id),
               },
             })
             console.log(result)

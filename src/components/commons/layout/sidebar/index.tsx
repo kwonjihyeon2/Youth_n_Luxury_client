@@ -257,7 +257,7 @@ const FETCH_USER = gql`
 const JOIN_SELLER = gql`
   query joinSeller {
     joinSeller {
-      id
+      event_id
       roomId
     }
   }

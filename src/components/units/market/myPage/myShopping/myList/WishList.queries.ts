@@ -3,7 +3,7 @@ import { gql } from '@apollo/client'
 export const FETCH_PRODUCT_LIKE = gql`
   query fetchProductLike {
     fetchProductLike {
-      id
+      product_id
       name
       description
       price
