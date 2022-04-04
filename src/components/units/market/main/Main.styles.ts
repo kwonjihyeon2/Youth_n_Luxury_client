@@ -31,10 +31,7 @@ export const CarouselBox = styled.div`
 export const ResponsiveBox = styled.div`
   width: 100%;
   max-width: 1200px;
-  padding: 0 60px;
-  @media ${breakPoints.mobile} {
-    padding: 0;
-  }
+  padding: 0;
 `
 
 export const Carousel1 = styled.div`

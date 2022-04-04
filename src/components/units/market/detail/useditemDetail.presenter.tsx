@@ -76,9 +76,15 @@ export default function UseditemDetailPageUI(props) {
     // console.log(props.data?.fetchProduct.urls)
 
     let urls = props.data?.fetchProduct.urls
-    const result = urls.substring(1, urls.length - 1).split(',')
+    const result = urls
+      .substring(1, urls.length - 1)
+      .replace(/\"/gi, '')
+      .split('][')
     // 0 번째 사진만쓴다. 대표이미지
-
+    // console.log(result)
+    // let other = props.productData?.fetchSellerProduct.map((el) => el.urls)
+    // const otherPic = other.replace(/\"/gi, '').split('][')
+    // console.log(otherPic)
     setArr(result)
   }, [props.data])
 

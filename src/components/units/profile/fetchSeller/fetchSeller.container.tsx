@@ -20,8 +20,7 @@ export default function SellerInfo(props) {
               <S.BoldSpan>
                 {props.productData?.fetchSellerProduct.length}
               </S.BoldSpan>
-              개, 거래후기
-              <S.BoldSpan> 4</S.BoldSpan>개
+              개
             </div>
             <S.Content>
               <S.BoldSpan style={{ marginRight: '10px' }}>

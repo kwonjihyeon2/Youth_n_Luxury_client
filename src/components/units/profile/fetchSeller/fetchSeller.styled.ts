@@ -29,6 +29,7 @@ export const Wrapper = styled.div`
 `
 
 export const Productlist = styled.div`
+  width: 100%;
   @media ${breakPoints.mobile} {
     margin-top: 20px;
   }

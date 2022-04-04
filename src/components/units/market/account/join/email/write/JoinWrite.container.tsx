@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client'
 import { CREATE_USER, TOKEN_MAKER, TOKEN_VALIDATE } from './JoinWrite.queries'
 import { useRouter } from 'next/router'
 export default function JoinWrite(props) {
-  console.log(props.data)
+  // console.log(props.data)
   const router = useRouter()
   const [checkNum, setCheckNum] = useState(0)
   const [createUserInput, setCreateUserInput] = useState({
@@ -23,10 +23,14 @@ export default function JoinWrite(props) {
   const [tokenMaker] = useMutation(TOKEN_MAKER)
   const [tokenValidate] = useMutation(TOKEN_VALIDATE)
   const [isSend, setIsSend] = useState(false)
+  // 인증번호 전송했는지
   const [isNumCheck, setIsNumCheck] = useState(false)
+  // 번호인증완료
   const [createUser] = useMutation(CREATE_USER)
   const [isPwdCheck, setIsPwdCheck] = useState(false)
+  // 비밀번호 확인 이 다른거
   const [isPwdVal, setIsPwdVal] = useState(false)
+  // 비밀번호 형식이다름
   const onChangeInput = (key) => (event) => {
     setCreateUserInput({ ...createUserInput, [key]: event.target.value })
     console.log(event.target.value)
@@ -53,7 +57,6 @@ export default function JoinWrite(props) {
     console.log(createUserInput.password)
     console.log(isNumCheck)
     console.log(isPwdCheck)
-
     console.log(isPwdVal)
   }
   const onChangeCheckNum = (event) => {
@@ -70,6 +73,7 @@ export default function JoinWrite(props) {
       console.log('fail')
     }
   }
+
   const onClickUpdateUser = async () => {
     try {
       const {
@@ -101,12 +105,16 @@ export default function JoinWrite(props) {
       emailSecond: event.target.value,
     })
   }
+
+  //인증번호 시간 3분
+  const [timer, setTimer] = useState('03:00')
+
   const onClickAuthNumBtn = async () => {
+    setIsSend((prev) => !prev)
     console.log('실행은됨')
     console.log(createUserInput)
     try {
       console.log(createUserInput.phoneNum)
-
       const result = await tokenMaker({
         variables: {
           phoneNum:
@@ -115,15 +123,29 @@ export default function JoinWrite(props) {
             createUserInput.numberThird,
         },
       })
-
       console.log('토큰메이커 결과는')
       console.log(result)
-      setIsSend(true)
+
+      let time = 180
+
+      const TimeExpiration = setInterval(() => {
+        const minutes = String(Math.floor(time / 60)).padStart(2, '0')
+        const seconds = String(time % 60).padStart(2, '0')
+        const LiveTime = `${minutes}:${seconds}`
+
+        setTimer(LiveTime)
+        time = time - 1
+        if (time < 0) {
+          clearInterval(TimeExpiration)
+        }
+      }, 1000)
+
       alert('인증번호를 보냈습니다.')
     } catch (error) {
       console.log(error.message)
     }
   }
+
   const onChangeEmail = (order) => (event) => {
     if (order === 'emailFirst') {
       setCreateUserInput({
@@ -222,6 +244,7 @@ export default function JoinWrite(props) {
       data={props.data}
       updateUser={props.updateUser}
       onClickUpdateUser={onClickUpdateUser}
+      timer={timer}
     />
   )
 }
