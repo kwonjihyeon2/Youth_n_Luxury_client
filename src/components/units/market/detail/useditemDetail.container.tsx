@@ -9,7 +9,6 @@ import {
   CREATE_LIKE,
   DELETE_PRODUCT,
   FETCH_LIKE,
-  FETCH_ORDER,
   FETCH_PRODUCT,
   RELATIVE_PRODUCT,
   SELLER_PRODUCT,
@@ -40,7 +39,7 @@ export default function UseditemDetailPage(props) {
   })
 
   const { data: productData } = useQuery(SELLER_PRODUCT, {
-    variables: { userId: String(data?.fetchProduct.user.id) },
+    variables: { userId: String(data?.fetchProduct.user?.id) },
   })
 
   const [createLike] = useMutation(CREATE_LIKE)
@@ -171,7 +170,7 @@ export default function UseditemDetailPage(props) {
     socket.emit('createChat', create)
     console.log(create)
     console.log('클릭함', socket)
-
+    // router.push('/market/chatting')
     // try {
     //   const result = await createChat({
     //     variables: { productId: String(data?.fetchProduct.id) },

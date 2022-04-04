@@ -25,6 +25,7 @@ export default function UserChattingPageUI(props) {
             ))}
           </div>
           <ChatlogPage
+            fetchText={props.fetchText}
             user={props.user}
             onChangeText={props.onChangeText}
             chatInfo={props.chatInfo}

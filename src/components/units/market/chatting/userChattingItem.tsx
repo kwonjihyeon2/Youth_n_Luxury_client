@@ -19,7 +19,7 @@ export default function ChatlogPage(props) {
             <div className="align">
               <div>{props.user?.fetchUser.name}</div>
               <div className="TalkBalloon">
-                말풍선
+                {props.fetchText}
                 <div className="Triangle"></div>
               </div>
             </div>

@@ -3,19 +3,16 @@ import { gql } from '@apollo/client'
 export const FETCH_PRODUCT = gql`
   query fetchProduct($productId: String!) {
     fetchProduct(productId: $productId) {
-      id
+      product_id
       name
       description
       price
       user {
-        id
         name
       }
       subCategory {
-        id
         name
         mainCategory {
-          id
           name
         }
       }
@@ -31,7 +28,7 @@ export const FETCH_PRODUCT = gql`
 export const FETCH_LIKE = gql`
   query fetchProductLike {
     fetchProductLike {
-      id
+      product_id
     }
   }
 `
@@ -45,7 +42,7 @@ export const DELETE_PRODUCT = gql`
 export const RELATIVE_PRODUCT = gql`
   query fetchProductRelateMainCategory($name: String!) {
     fetchProductRelateMainCategory(name: $name) {
-      id
+      product_id
       name
       description
       price
@@ -56,7 +53,7 @@ export const RELATIVE_PRODUCT = gql`
 export const SELLER_PRODUCT = gql`
   query fetchSellerProduct($userId: String!) {
     fetchSellerProduct(userId: $userId) {
-      id
+      product_id
       urls
       name
       price
@@ -66,16 +63,8 @@ export const SELLER_PRODUCT = gql`
 export const CREATE_LIKE = gql`
   mutation createLike($productId: String!) {
     createLike(productId: $productId) {
-      id
+      productLike_id
       islike
-    }
-  }
-`
-
-export const FETCH_ORDER = gql`
-  query fetchBuyerOrders {
-    fetchBuyerOrders {
-      id
     }
   }
 `
@@ -83,7 +72,7 @@ export const FETCH_ORDER = gql`
 export const CREATE_CHAT = gql`
   mutation createChat($productId: String!) {
     createChat(productId: $productId) {
-      id
+      event_id
       roomId
       user {
         name

@@ -16,33 +16,39 @@ export default function UserChattingPage() {
   const [chatInfo, setChatInfo] = useState({})
   const { data } = useQuery(JOIN_SELLER)
 
+  //소캣 연결 증명
   socket.on('hello', (data) => {
     console.log(data, '소캣연결?', socket.id)
   })
 
+  //판매자 정보
   socket.on('sellerInfo', (data) => {
     console.log(data)
     //룸id인지 룸전체 정보인지 확인해야함
     // setRoomId(data)
   })
 
-  const [sendText, setSendText] = useState('')
-
-  const onChangeText = (e) => {
-    setSendText(e.target.value)
-    console.log(e.target.value)
-  }
+  //방목록 -> 대화내용 조회
   const onClickOpenRoom = (id) => async (e) => {
     setRoomId(id)
     const resultChatInfo = await refetch()
     setChatInfo(resultChatInfo?.data?.fetchChat)
 
-    console.log('소켓?' + socket)
+    console.log(resultChatInfo)
     await socket.on('roomInfo', (data) => {
       e.preventDefault()
       console.log(data, '방정보', socket)
       console.log('--------------------')
     })
+  }
+  console.log(chatInfo)
+
+  //대화 내용 전송
+  const [sendText, setSendText] = useState('')
+
+  const onChangeText = (e) => {
+    setSendText(e.target.value)
+    console.log(e.target.value)
   }
 
   const [updateChat] = useMutation(UPDATE_CHAT)
@@ -64,19 +70,25 @@ export default function UserChattingPage() {
           },
         ],
       })
-      console.log(update?.data + '->여긴 API 요청 결과')
-      await socket.emit('updateChat', (data) => {
-        console.log(data + '이건 텍스트 전송')
-      })
-      // console.log(data)
-      await socket.on('chat', (data) => {
-        console.log(data + '이건 받아옴')
-      })
+      console.log(update + '여긴 API 요청 결과')
+
+      const param = {
+        name: user?.fetchUser.name,
+        msg: sendText,
+      }
+      socket.emit('updateChat', param)
+      console.log('------------------ emit updateChat 보낸 값 조회')
+      console.log(param)
     } catch (error) {
-      console.log('채팅 진행' + error.message)
+      console.log('채팅 전송 오류' + error.message)
     }
   }
-
+  //보낸 메세지 기다리기
+  const [fetchText, setFetchText] = useState()
+  socket.on('chat', (data) => {
+    console.log(data + '이건 받아옴')
+    setFetchText(data)
+  })
   // useEffect(() => {
   //   socket.on('chat', (data) => {
   //     console.log(data)
@@ -87,6 +99,7 @@ export default function UserChattingPage() {
   return (
     <UserChattingPageUI
       user={user}
+      fetchText={fetchText}
       socket={socket}
       data={data}
       onClickOpenRoom={onClickOpenRoom}

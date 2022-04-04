@@ -176,7 +176,7 @@ export default function UseditemDetailPageUI(props) {
             <S.ButtonFlexBox>
               <S.ButtonBlackStyle
                 onClick={props.moveToPage(
-                  `/market/${props.data?.fetchProduct.id}/payment`
+                  `/market/${props.data?.fetchProduct.product_id}/payment`
                 )}
               >
                 바로구매
@@ -200,7 +200,7 @@ export default function UseditemDetailPageUI(props) {
                   <img src="/detail/rion.png" />
                 </S.SellerProfile>
                 <div>
-                  <div>{props.data?.fetchProduct.user.name}님</div>
+                  <div>{props.data?.fetchProduct.user?.name}님</div>
                   <span style={{ fontWeight: '300' }}>
                     판매 상품 {props.productData?.fetchSellerProduct.length}개
                   </span>
@@ -211,7 +211,7 @@ export default function UseditemDetailPageUI(props) {
                     name="read-only"
                     size="small"
                     defaultValue={Number(
-                      props.data?.fetchProduct.user.ratingAvg
+                      props.data?.fetchProduct.user?.ratingAvg
                     )}
                     readOnly
                   />
@@ -230,12 +230,12 @@ export default function UseditemDetailPageUI(props) {
         </S.ContentsBox>
         <S.SlickStyle>
           <S.RelativeTitle>
-            [ {props.data?.fetchProduct.user.name} ]님의 다른상품
+            [ {props.data?.fetchProduct.user?.name} ]님의 다른상품
           </S.RelativeTitle>
           <S.SliderContainer {...settings}>
             {props.productData?.fetchSellerProduct.map((el, index) => (
-              <div key={el.id}>
-                <S.SliderBox key={el.id}>
+              <div key={el.product_id}>
+                <S.SliderBox key={el.product_id}>
                   {/* <div>{el.urls}</div> */}
                   <img
                     style={{ width: '100%', height: '100%' }}
@@ -257,7 +257,7 @@ export default function UseditemDetailPageUI(props) {
             {props.relativeData?.fetchProductRelateMainCategory.map(
               (el, index) => (
                 <div>
-                  <div key={el.id}>
+                  <div key={el.product_id}>
                     <S.SliderBox>
                       <img
                         style={{ width: '100%', height: '100%' }}
@@ -287,7 +287,7 @@ export default function UseditemDetailPageUI(props) {
           <div style={{ textAlign: 'right' }}>
             <S.EditBtn
               onClick={props.moveToPage(
-                `/market/${props.data?.fetchProduct.id}/edit`
+                `/market/${props.data?.fetchProduct.product_id}/edit`
               )}
             >
               수정

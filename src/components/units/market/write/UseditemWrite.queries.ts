@@ -3,7 +3,7 @@ import { gql } from '@apollo/client'
 export const CREATE_PRODUCT = gql`
   mutation createProduct($createProductInput: CreateProductInput!) {
     createProduct(createProductInput: $createProductInput) {
-      id
+      product_id
       name
       description
       price
@@ -14,7 +14,7 @@ export const CREATE_PRODUCT = gql`
         name
       }
       user {
-        id
+        user_id
         nickname
         name
         email
@@ -45,7 +45,7 @@ export const UPDATE_PRODUCT = gql`
       productId: $productId
       updateProductInput: $updateProductInput
     ) {
-      id
+      product_id
       name
       description
       price
@@ -53,19 +53,15 @@ export const UPDATE_PRODUCT = gql`
       like
       urls
       brand {
-        id
         name
       }
       subCategory {
-        id
         name
         mainCategory {
-          id
           name
         }
       }
       user {
-        id
         nickname
         name
         email
