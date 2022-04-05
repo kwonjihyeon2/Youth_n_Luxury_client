@@ -17,7 +17,7 @@ export default function UseditemDetail(props) {
           content={
             'https://storage.googleapis.com/' +
             props.data?.urls
-              .substring(1, props.data?.urls.length - 1)
+              ?.substring(1, props.data?.urls.length - 1)
               .replace(/\"/gi, '')
               .split('][')[0]
           }
