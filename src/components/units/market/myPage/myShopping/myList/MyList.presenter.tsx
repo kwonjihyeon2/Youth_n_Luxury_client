@@ -1,6 +1,7 @@
 import * as S from './MyList.styles'
 
 export default function MyListUI(props) {
+  console.log(props.data)
   return (
     <>
       <S.Wrapper>
@@ -27,7 +28,15 @@ export default function MyListUI(props) {
           {!props.isWishList
             ? props.isSaw.map((el) => (
                 <S.Product>
-                  <S.ProductImg src={`${el.urls[0]}`}></S.ProductImg>
+                  <S.ProductImg
+                    src={
+                      'https://storage.googleapis.com/' +
+                      el?.urls
+                        .substring(1, el?.urls.length - 1)
+                        .replace(/\"/gi, '')
+                        .split('][')[0]
+                    }
+                  ></S.ProductImg>
                   <S.ProductRightContent>
                     <S.ProductTopCol>
                       <S.ProductTopRow>
@@ -48,7 +57,15 @@ export default function MyListUI(props) {
               ))
             : props.data?.fetchProductLike.map((el) => (
                 <S.Product>
-                  <S.ProductImg src={`${el.urls[0]}`}></S.ProductImg>
+                  <S.ProductImg
+                    src={
+                      'https://storage.googleapis.com/' +
+                      el?.urls
+                        .substring(1, el?.urls.length - 1)
+                        .replace(/\"/gi, '')
+                        .split('][')[0]
+                    }
+                  ></S.ProductImg>
                   <S.ProductRightContent>
                     <S.ProductTopCol>
                       <S.ProductTopRow>

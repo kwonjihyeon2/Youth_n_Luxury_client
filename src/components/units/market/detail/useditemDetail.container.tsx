@@ -51,10 +51,13 @@ export default function UseditemDetailPage(props) {
   const onClickHeart = async () => {
     setIsHeart((prev) => !prev)
     try {
+      console.log('@@@@@@@ 라이크를 눌렀어요')
       const toggle = await createLike({
         variables: { productId: String(router.query.boardId) },
         refetchQueries: [FETCH_PRODUCT],
       })
+      console.log('@@@@@@@ 라이크가 완료됐어요')
+
       console.log(toggle)
     } catch (error) {
       console.log(error.message)

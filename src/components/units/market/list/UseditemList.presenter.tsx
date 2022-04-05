@@ -5,30 +5,6 @@ import TabletItem from './ResposiveOnTabletItem'
 import * as S from './UseditemList.styles'
 
 export default function UseditemListUI(props) {
-  const [arr, setArr] = useState([])
-  // useEffect(() => {
-  //   // if (!props.data?.fetchAllProduct.urls) return
-  //   // console.log(props.data?.fetchAllProduct.urls)
-  //   for (let i = 0; i < 10; i++) {
-  //     setArr(props.data?.fetchAllProduct[i].urls)
-  //   }
-
-  //   console.log(props.data?.fetchAllProduct[0].urls)
-  //   console.log(props.data?.fetchAllProduct[1].urls)
-  //   console.log(props.data?.fetchAllProduct[2].urls)
-  //   console.log(props.data?.fetchAllProduct[3].urls)
-
-  //   // const test = urls.split('"]["')
-  //   // test[0] = test[0].replaceAll('["', '')
-  //   // test[4] = test[4].replaceAll('"]', '')
-
-  //   // setArr(test)
-  // }, [props.data])
-  console.log('----------------')
-  console.log(props.data?.fetchAllProduct.urls)
-  console.log('----------------')
-  console.log(arr)
-  console.log('@@@@@@@@@@@@ 프로덕트 바이서치 데이터')
   console.log(props.searchData?.fetchProductBySearch)
   return (
     <S.Position>
@@ -63,9 +39,22 @@ export default function UseditemListUI(props) {
                     id={el.product_id}
                     onClick={props.onClickProduct(el)}
                   >
-                    <img src={`https://storage.googleapis.com/${arr}`} />
+                    <img
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                      src={
+                        'https://storage.googleapis.com/' +
+                        el?.urls
+                          .substring(1, el?.urls.length - 1)
+                          .replace(/\"/gi, '')
+                          .split('][')[0]
+                      }
+                    />
                     <S.UseditemName>{el.name}</S.UseditemName>
-                    <S.UseditemPrice>{el.price}</S.UseditemPrice>
+                    <S.UseditemPrice>{el.price}원</S.UseditemPrice>
                   </S.WrapperUseditem>
                 ))
               ) : (
@@ -81,9 +70,18 @@ export default function UseditemListUI(props) {
                 id={el.product_id}
                 onClick={props.onClickProduct(el)}
               >
-                <img src={`https://storage.googleapis.com/${arr}`} />
+                <img
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  src={
+                    'https://storage.googleapis.com/' +
+                    el?.urls
+                      .substring(1, el?.urls.length - 1)
+                      .replace(/\"/gi, '')
+                      .split('][')[0]
+                  }
+                />
                 <S.UseditemName>{el.name}</S.UseditemName>
-                <S.UseditemPrice>{el.price}</S.UseditemPrice>
+                <S.UseditemPrice>{el.price}원</S.UseditemPrice>
               </S.WrapperUseditem>
             ))}
           </S.WrapperBottom>

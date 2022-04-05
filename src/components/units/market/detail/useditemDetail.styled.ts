@@ -362,18 +362,17 @@ export const IconBox = styled.div`
   position: relative;
 `
 export const RedCount = styled.span`
-  width: 10px;
-  height: 10px;
+  padding: 1px 3px;
   border-radius: 100%;
   background-color: #ce0909;
   color: #fff;
   line-height: 10px;
-  font-size: 8px;
+  font-size: 3px;
   font-weight: 600;
   text-align: center;
   position: absolute;
-  top: 2px;
-  right: -2px;
+  top: 3px;
+  right: -5px;
 `
 export const WrapperLiStyle = styled.li`
   padding: 5px 0;
@@ -384,6 +383,7 @@ export const WrapperLiStyle = styled.li`
 
 export const ContentsImg = styled.img`
   width: 500px;
+  margin: 30px 0;
   @media ${breakPoints.xsmobile} {
     width: 50%;
   }
@@ -439,7 +439,6 @@ export const SlickStyle = styled.div`
 export const SliderBox = styled.div`
   height: 200px;
   width: 100%;
-  background-color: #c4c4c4;
   @media ${breakPoints.tablet} {
     height: 150px;
   }

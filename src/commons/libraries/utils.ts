@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react'
+
 export const checkFileValidation = (files?: File) => {
   if (!files?.size) {
     alert('파일이 존재하지 않습니다.')
@@ -37,4 +39,8 @@ export const getDate2 = (el) => {
   const mm = temp.getMonth() + 1
   const dd = temp.getDate()
   return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`
+}
+
+export const handelError = (event: ChangeEvent<HTMLImageElement>) => {
+  event.target.src = '/detail/bag5.jpeg'
 }

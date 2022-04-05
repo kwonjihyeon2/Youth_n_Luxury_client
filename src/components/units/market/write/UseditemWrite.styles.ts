@@ -16,7 +16,7 @@ export const WrapperAccount = styled.div`
   margin-right: 20px;
   flex-direction: row;
   margin-bottom: 50px;
-  margin-top: 220px;
+  margin-top: 100px;
 `
 export const WrapperImages = styled.div`
   display: flex;

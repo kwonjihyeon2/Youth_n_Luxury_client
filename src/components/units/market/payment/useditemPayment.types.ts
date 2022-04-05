@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react'
 
 export interface IpropsType {
+  user: any
   data: any
   isOpenAdd: boolean
   onClickOpen: () => void

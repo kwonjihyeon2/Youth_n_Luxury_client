@@ -16,14 +16,14 @@ export default function MyAskWrite() {
     adminCategoryId: '',
   })
   const adminCategoryObj = {
-    환불문의: '253554a8-73db-492b-83ad-eca885d4c767',
-    상품정보문의: 'd0b696d0-5522-467f-b3b9-b6ce7d413e83',
-    취소문의: '23846fac-76b3-4fdc-99a3-2b7d947d5cf9',
-    반품문의: '70d288cd-f7e9-4e50-b930-433764e1b18a',
-    배송문의: '947c8eda-6380-40e4-b441-4bf8a3b38cbf',
-    회원정보문의: 'ce0e89c0-af77-4fa2-83f2-3412f12b261b',
-    주문결제문의: '1cfa8b49-4f0f-4370-ac3c-70d8b7df15cd',
-    기타문의: '8d18fe7e-43bc-42aa-b060-90890909e257',
+    환불문의: 'ac3c4c0f-0c1d-44cf-ab5c-2cadc1cc1d38',
+    상품정보문의: 'c00f9e27-b45b-4a4b-8cfe-830680ec7835',
+    취소문의: 'bfbcd309-e9c6-4a6b-a578-3d2993bb0ca8',
+    반품문의: '8e1e4bc3-c5c2-4243-aafd-620ba24fef34',
+    배송문의: 'a868d339-853c-43aa-a8d7-a304210a1c93',
+    회원정보문의: '7c09c380-e36e-4d91-bca3-15a72ea36e6c',
+    주문결제문의: '3ab8ccbe-66f5-4d45-a2db-6420de27d004',
+    기타문의: '44fdd0e3-33f5-402f-8986-70a5a5207ab0',
   }
   const onChangeInput = (inputType) => (event) => {
     if (!inputType) {

@@ -10,6 +10,14 @@ export default function WelcomeBox() {
   const [recentView, setRecentView] = useState([])
   const { data: userData } = useQuery(FETCH_USER)
 
+  useEffect(() => {
+    let temp = []
+    if (localStorage.getItem('recentView')) {
+      temp = [...JSON.parse(localStorage.getItem('recentView'))]
+    }
+    console.log(temp)
+    setRecentView(temp)
+  }, [])
   return (
     <WelcomeBoxUI recentView={recentView} data={data} userData={userData} />
   )

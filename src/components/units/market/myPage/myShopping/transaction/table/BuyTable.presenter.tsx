@@ -20,19 +20,31 @@ export default function BuyTableUI(props) {
         <S.SellerNameTableHeaderEl>판매자 닉네임</S.SellerNameTableHeaderEl>
         <S.ReviewTableHeaderEl>후기</S.ReviewTableHeaderEl>
       </S.TableHeaderBox>
-      {props.dataBuyer?.fetchBuyerOrders.map((el) => (
-        <S.Row>
-          <S.RowDateBox>{el.createdAt.slice(0, 10)}</S.RowDateBox>
-          <S.RowImg></S.RowImg>
-          <S.RowNameBox>{el.product.name}</S.RowNameBox>
-          <S.RowPriceBox>{el.product.price}</S.RowPriceBox>
-          <S.RowStatusBox>{el.status}</S.RowStatusBox>
-          <S.RowSellerNameBox>{el.product.user.name}</S.RowSellerNameBox>
-          <S.RowReviewBox>
-            <S.ReviewBtn onClick={onClickOpenReview}>작성하기</S.ReviewBtn>
-          </S.RowReviewBox>
-        </S.Row>
-      ))}
+
+      {props.dataBuyer?.fetchmybuyproduct
+        .filter((e) => e.product?.name !== undefined)
+        .map((el) => (
+          <S.Row>
+            <S.RowDateBox>{el.createdAt.slice(0, 10)}</S.RowDateBox>
+            <img
+              src={
+                'https://storage.googleapis.com/' +
+                el?.product?.urls
+                  .substring(1, el?.product.urls.length - 1)
+                  .replace(/\"/gi, '')
+                  .split('][')[0]
+              }
+            />
+            <S.RowNameBox>{el.product?.name}</S.RowNameBox>
+            <S.RowPriceBox>{el.product?.price}</S.RowPriceBox>
+            <S.RowStatusBox>{el.status}</S.RowStatusBox>
+            <S.RowSellerNameBox>{el.product?.user?.name}</S.RowSellerNameBox>
+            <S.RowReviewBox>
+              <S.ReviewBtn onClick={onClickOpenReview}>작성하기</S.ReviewBtn>
+            </S.RowReviewBox>
+          </S.Row>
+        ))}
+      {props.dataBuyer?.fetchmybuyproduct.map}
       {isReview && (
         <div>
           <CreateReviewPage

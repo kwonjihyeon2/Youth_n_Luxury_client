@@ -87,10 +87,18 @@ export default function AdminMainUI(props) {
               {props.dataTrans?.fetchTransactionAll.map((el) => (
                 <S.Box3Data>
                   <div>{el.createdAt.slice(0, 10)}</div>
-                  <S.TempImg></S.TempImg>
-                  <div>{el.product.name || '상품정보'}</div>
-                  <div>{el.product.price}</div>
-                  <div>{el.user.name}</div>
+                  <img
+                    src={
+                      'https://storage.googleapis.com/' +
+                      el?.product?.urls
+                        .substring(1, el?.product?.urls.length - 1)
+                        .replace(/\"/gi, '')
+                        .split('][')[0]
+                    }
+                  />
+                  <div>{el.product?.name || '상품정보'}</div>
+                  <div>{el.product?.price}</div>
+                  <div>{el.user?.name}</div>
                   <div>
                     <S.SelectStatus onChange={props.onChangeStatus}>
                       <option value="PAYMENT">결재완료</option>
@@ -128,7 +136,15 @@ export default function AdminMainUI(props) {
                 <S.Box4Data>
                   <div>{el.name}</div>
                   <div>{el.user?.name}</div>
-                  <S.TempImg></S.TempImg>
+                  <img
+                    src={
+                      'https://storage.googleapis.com/' +
+                      el?.urls
+                        .substring(1, el?.urls.length - 1)
+                        .replace(/\"/gi, '')
+                        .split('][')[0]
+                    }
+                  />
                   <div>{el.price}</div>
                   <S.UseditemDeleteBtn
                     onClick={props.onClickDeleteProduct(el.product_id)}

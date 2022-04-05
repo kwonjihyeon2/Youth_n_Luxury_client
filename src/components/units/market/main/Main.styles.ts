@@ -128,10 +128,9 @@ export const Product = styled.div`
     width: 48%;
   }
 `
-export const ProductImg = styled.div`
+export const ProductImg = styled.img`
   width: 100%;
   height: 374px;
-  background-color: gray;
   margin-bottom: 12px;
   @media ${breakPoints.mobile} {
     height: 200px;

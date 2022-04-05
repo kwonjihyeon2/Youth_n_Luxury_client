@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 1200px;
-  padding: 0 60px;
+  padding: 0 60px 100px 60px;
   width: 100%;
   min-height: 2000px;
 `
@@ -225,8 +225,6 @@ export const WrapperUseditem = styled.div`
   flex-direction: column;
   align-items: center;
   width: 30%;
-  height: 350px;
-  background-color: green;
   margin-top: 50px;
   cursor: pointer;
 `

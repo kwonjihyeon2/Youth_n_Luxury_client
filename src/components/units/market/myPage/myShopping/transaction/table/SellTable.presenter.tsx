@@ -12,10 +12,18 @@ export default function SellTableUI(props) {
         <S.StatusTableHeaderEl>주문처리상태</S.StatusTableHeaderEl>
         <S.SellerNameTableHeaderEl>구매자 닉네임</S.SellerNameTableHeaderEl>
       </S.TableHeaderBox>
-      {props.dataSeller?.fetchSellerOrders.map((el) => (
+      {props.dataSeller?.fetchmysellproduct.map((el) => (
         <S.Row>
           <S.RowDateBox>{el.createdAt.slice(0, 10)}</S.RowDateBox>
-          <S.RowImg></S.RowImg>
+          <img
+            src={
+              'https://storage.googleapis.com/' +
+              el?.product?.urls
+                .substring(1, el?.product.urls.length - 1)
+                .replace(/\"/gi, '')
+                .split('][')[0]
+            }
+          />
           <S.RowNameBox>{el.product.name}</S.RowNameBox>
           <S.RowPriceBox>{el.product.price}</S.RowPriceBox>
           <S.RowStatusBox>{el.status}</S.RowStatusBox>
