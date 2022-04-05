@@ -13,11 +13,12 @@ export default function Uploads01(props: IUploads01Props) {
   }
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files?.[0]
+    const files = event.target.files
+
     try {
       const result = await uploadFile({
         variables: {
-          files,
+          files: files,
         },
       })
       console.log(result.data?.uploadFile, typeof result.data?.uploadFile)
