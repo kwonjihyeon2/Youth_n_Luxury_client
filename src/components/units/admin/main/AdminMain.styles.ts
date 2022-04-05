@@ -309,6 +309,10 @@ export const Box3Data = styled.div`
     border: none;
     background-color: white;
   }
+  img {
+    width: 95px;
+    margin-left: 50px;
+  }
 `
 
 export const TempImg = styled.div`

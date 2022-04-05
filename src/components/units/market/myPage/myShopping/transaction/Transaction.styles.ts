@@ -176,7 +176,12 @@ export const Row = styled.div`
   border-left: 1px solid #333333;
   border-right: 1px solid #333333;
   display: flex;
+  align-items: center;
   height: 142px;
+  img {
+    width: 95px;
+    height: 80px;
+  }
 `
 export const RowImg = styled.div`
   height: 142px;

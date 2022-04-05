@@ -90,15 +90,15 @@ export default function AdminMainUI(props) {
                   <img
                     src={
                       'https://storage.googleapis.com/' +
-                      el?.product.urls
-                        .substring(1, el?.urls.length - 1)
+                      el?.product?.urls
+                        .substring(1, el?.product?.urls.length - 1)
                         .replace(/\"/gi, '')
                         .split('][')[0]
                     }
                   />
-                  <div>{el.product.name || '상품정보'}</div>
-                  <div>{el.product.price}</div>
-                  <div>{el.user.name}</div>
+                  <div>{el.product?.name || '상품정보'}</div>
+                  <div>{el.product?.price}</div>
+                  <div>{el.user?.name}</div>
                   <div>
                     <S.SelectStatus onChange={props.onChangeStatus}>
                       <option value="PAYMENT">결재완료</option>
