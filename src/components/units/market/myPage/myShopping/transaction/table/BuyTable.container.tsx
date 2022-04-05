@@ -1,10 +1,10 @@
 import BuyTableUI from './BuyTable.presenter'
 import { gql, useQuery } from '@apollo/client'
 
-const FETCH_BUYER_ORDERS = gql`
-  query fetchBuyerOrders {
-    fetchBuyerOrders {
-      id
+const FETCH_MY_BUY_PRODUCT = gql`
+  query fetchmybuyproduct {
+    fetchmybuyproduct {
+      product_id
       status
       createdAt
       product {
@@ -19,7 +19,7 @@ const FETCH_BUYER_ORDERS = gql`
 `
 
 export default function BuyTable() {
-  const { data: dataBuyer } = useQuery(FETCH_BUYER_ORDERS)
+  const { data: dataBuyer } = useQuery(FETCH_MY_BUY_PRODUCT)
 
   return <BuyTableUI dataBuyer={dataBuyer} />
 }
