@@ -26,11 +26,13 @@ export default function UseditemList() {
   const [searchData, setSearchData] = useState({})
   const onChangeSearchInput = (event) => {
     setSearchInput(event.target.value)
+    console.log(event.target.value)
   }
   const onClickSearchBtn = async () => {
     try {
       console.log('검색시작')
-      const result = await searchRefetch({ variables: { name: searchInput } })
+      console.log(searchInput)
+      const result = await searchRefetch({ name: searchInput })
       setIsSearched(true)
       setSearchData(result.data)
       console.log('검색결과는')
