@@ -4,12 +4,13 @@ import { gql, useQuery } from '@apollo/client'
 const FETCH_MY_SELL_PRODUCT = gql`
   query fetchmysellproduct {
     fetchmysellproduct {
-      product_id
+      transaction_id
       status
       createdAt
       product {
         price
         name
+        urls
         user {
           name
         }
