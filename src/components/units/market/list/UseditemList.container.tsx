@@ -29,9 +29,12 @@ export default function UseditemList() {
   }
   const onClickSearchBtn = async () => {
     try {
+      console.log('검색시작')
       const result = await searchRefetch({ variables: { name: searchInput } })
       setIsSearched(true)
       setSearchData(result.data)
+      console.log('검색결과는')
+      console.log(result.data)
     } catch (err) {
       console.log('검색에러는')
       console.log(err.message)
