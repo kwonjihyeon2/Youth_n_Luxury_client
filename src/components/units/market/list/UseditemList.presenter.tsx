@@ -54,7 +54,7 @@ export default function UseditemListUI(props) {
                       }
                     />
                     <S.UseditemName>{el.name}</S.UseditemName>
-                    <S.UseditemPrice>{el.price}</S.UseditemPrice>
+                    <S.UseditemPrice>{el.price}원</S.UseditemPrice>
                   </S.WrapperUseditem>
                 ))
               ) : (
@@ -81,7 +81,7 @@ export default function UseditemListUI(props) {
                   }
                 />
                 <S.UseditemName>{el.name}</S.UseditemName>
-                <S.UseditemPrice>{el.price}</S.UseditemPrice>
+                <S.UseditemPrice>{el.price}원</S.UseditemPrice>
               </S.WrapperUseditem>
             ))}
           </S.WrapperBottom>
