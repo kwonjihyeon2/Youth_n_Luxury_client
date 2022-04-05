@@ -302,6 +302,13 @@ export const Box3Data = styled.div`
     width: 105px;
     margin-left: 40px;
   }
+  button {
+    :hover {
+      color: #7a36ff;
+    }
+    border: none;
+    background-color: white;
+  }
 `
 
 export const TempImg = styled.div`

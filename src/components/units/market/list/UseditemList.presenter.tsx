@@ -27,6 +27,7 @@ export default function UseditemListUI(props) {
   console.log('----------------')
   console.log(props.data?.fetchAllProduct.urls)
   console.log('----------------')
+  console.log(arr)
 
   return (
     <S.Position>

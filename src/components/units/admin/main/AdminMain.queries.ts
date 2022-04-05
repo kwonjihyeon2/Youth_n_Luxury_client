@@ -1,15 +1,17 @@
 import { gql } from '@apollo/client'
 
-export const FETCH_ADMIN_QUERYS = gql`
-  query fetchAdminQuerys {
-    fetchAdminQuerys {
-      admin_id
+export const FIND_ALL_USER_QUERIES = gql`
+  query findAllUserQuries {
+    findAllUserQuries {
+      title
+      img
       contents
-      userQuery {
-        title
-        user {
-          name
-        }
+      adminQuery_id
+      adminCategory {
+        name
+      }
+      user {
+        name
       }
     }
   }
@@ -26,12 +28,31 @@ export const FETCH_USERS = gql`
   }
 `
 
-export const FETCH_IMPUID_WITH_PRODUCTID_USERID = gql`
-  query fetchimpuidwithproductiduserid($productId: String!) {
-    fetchimpuidwithproductiduserid(productId: $productId) {
+// export const FETCH_IMPUID_WITH_PRODUCTID_USERID = gql`
+//   query fetchimpuidwithproductiduserid($productId: String!) {
+//     fetchimpuidwithproductiduserid(productId: $productId) {
+//       transaction_id
+//       impUid
+//       status
+//     }
+//   }
+// `
+
+export const FETCH_TRANSACTION_ALL = gql`
+  query fetchTransactionAll {
+    fetchTransactionAll {
       transaction_id
       impUid
       status
+      createdAt
+      product {
+        urls
+        name
+        price
+      }
+      user {
+        name
+      }
     }
   }
 `

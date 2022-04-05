@@ -3,6 +3,7 @@ import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 
 export default function AdminMainUI(props) {
+  console.log(props.dataTrans?.fetchTransactionAll)
   return (
     <S.Position>
       <S.Wrapper>
@@ -30,13 +31,13 @@ export default function AdminMainUI(props) {
               <div>상태</div>
             </S.Box1MenuWrapper>
             <S.Box1QuestionWrapper>
-              {props.dataQuerys?.fetchAdminQuerys.map((el, index) => (
-                <S.Box1Data key={el.admin_id}>
+              {props.dataQueries?.findAllUserQuries.map((el, index) => (
+                <S.Box1Data onClick={props.onClickUserQuery(el.adminQuery_id)}>
                   <div>{index + 1}</div>
-                  <div>2022-04-01</div>
+                  <div>{el.adminCategory.name}</div>
                   <div>{el.contents}</div>
-                  <div>{el.userQuery.title}</div>
-                  <div>{el.userQuery.user.name}</div>
+                  <div>{el.title}</div>
+                  <div>{el.user.name}</div>
                   <S.QuestionCheck>미답변</S.QuestionCheck>
                 </S.Box1Data>
               ))}
@@ -83,13 +84,13 @@ export default function AdminMainUI(props) {
               <div>주문처리상태</div>
             </S.Box3MenuWrapper>
             <S.Box3UseditemWrapper>
-              {props.dataOrders?.fetchOrders.map((el) => (
+              {props.dataTrans?.fetchTransactionAll.map((el) => (
                 <S.Box3Data>
                   <div>{el.createdAt.slice(0, 10)}</div>
                   <S.TempImg></S.TempImg>
                   <div>{el.product.name || '상품정보'}</div>
                   <div>{el.product.price}</div>
-                  <div>{el.product.user.name}</div>
+                  <div>{el.user.name}</div>
                   <div>
                     <S.SelectStatus onChange={props.onChangeStatus}>
                       <option value="PAYMENT">결재완료</option>
@@ -98,7 +99,7 @@ export default function AdminMainUI(props) {
                       <option value="DELIVERED">배송완료</option>
                       <option value="CANCEL">취소</option>
                     </S.SelectStatus>
-                    <button onClick={props.onClickStatus}>V</button>
+                    <button onClick={props.onClickStatus(el.impUid)}>V</button>
                   </div>
                 </S.Box3Data>
               ))}
@@ -130,8 +131,7 @@ export default function AdminMainUI(props) {
                   <S.TempImg></S.TempImg>
                   <div>{el.price}</div>
                   <S.UseditemDeleteBtn
-                    onClick={props.onClickDeleteProduct}
-                    id={el.product_id}
+                    onClick={props.onClickDeleteProduct(el.product_id)}
                   >
                     삭제하기
                   </S.UseditemDeleteBtn>
