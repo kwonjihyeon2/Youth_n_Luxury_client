@@ -9,9 +9,11 @@ export default function MyListUI(props) {
             {props.isWishList ? `위시리스트` : `최근 본 상품`}
           </S.HeaderTxt>
           {props.isWishList ? (
-            <S.HeaderNum>{props.data?.fetchProductLike.length}</S.HeaderNum>
+            <S.HeaderNum>
+              {props.data?.fetchProductLike.length || '0'}
+            </S.HeaderNum>
           ) : (
-            <S.HeaderNum>{props.isSaw.length}</S.HeaderNum>
+            <S.HeaderNum>{props.isSaw.length || '0'}</S.HeaderNum>
           )}
         </S.HeaderTxtBox>
         <S.SelectBtnBox>
@@ -53,7 +55,7 @@ export default function MyListUI(props) {
                         <S.ProductCheckBox type="checkbox"></S.ProductCheckBox>
                         <S.ProductName>{el.name}</S.ProductName>
                       </S.ProductTopRow>
-                      <S.Price>{el.price + '원'}</S.Price>
+                      <S.Price>{el.price || +'원'}</S.Price>
                     </S.ProductTopCol>
                     <S.ProductBtnBox>
                       <S.TopBtnBox>

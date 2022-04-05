@@ -5,6 +5,7 @@ export const UPLOAD_FILE = gql`
     uploadFile(files: $files) {
 
       file_id
+      urls
     }
   }
 `
