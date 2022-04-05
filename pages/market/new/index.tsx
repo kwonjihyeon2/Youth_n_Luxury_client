@@ -1,5 +1,12 @@
-import UseditemWrite from "../../../src/components/units/market/write/UseditemWrite.container";
+import { useAuth } from '../../../src/components/commons/hooks/useAuth'
+import UseditemWrite from '../../../src/components/units/market/write/UseditemWrite.container'
 
 export default function UseditemNewPage() {
-  return <UseditemWrite isEdit={false} />;
+  const { isLoading } = useAuth()
+
+  if (isLoading) {
+    return <></>
+  } else {
+    return <UseditemWrite isEdit={false} />
+  }
 }
