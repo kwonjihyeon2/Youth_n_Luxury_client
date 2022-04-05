@@ -6,6 +6,7 @@ import { Rating } from '@mui/material'
 import { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import Slider from 'react-slick'
+import { handelError } from '../../../../commons/libraries/utils'
 
 export default function UseditemDetailPageUI(props) {
   const slider1 = useRef(null)
@@ -98,6 +99,7 @@ export default function UseditemDetailPageUI(props) {
               {arr.map((el, index) => (
                 <S.PagingSlick key={index}>
                   <img
+                    onError={handelError}
                     src={`https://storage.googleapis.com/${el}`}
                     alt="이미지"
                     style={{ width: '100%', height: '100%' }}
@@ -109,6 +111,7 @@ export default function UseditemDetailPageUI(props) {
               {arr.map((el, index) => (
                 <S.PagingSmallSlick key={index}>
                   <img
+                    onError={handelError}
                     src={`https://storage.googleapis.com/${el}`}
                     alt="이미지"
                     style={{ height: '100%' }}
@@ -244,6 +247,7 @@ export default function UseditemDetailPageUI(props) {
                 <S.SliderBox key={el.product_id}>
                   {/* <div>{el.urls}</div> */}
                   <img
+                    onError={handelError}
                     style={{ width: '100%', height: '100%' }}
                     src={`https://storage.googleapis.com/${arr[index]}`}
                   />
@@ -266,6 +270,7 @@ export default function UseditemDetailPageUI(props) {
                   <div key={el.product_id}>
                     <S.SliderBox>
                       <img
+                        onError={handelError}
                         style={{ width: '100%', height: '100%' }}
                         src={
                           'https://storage.googleapis.com/' +
@@ -286,6 +291,7 @@ export default function UseditemDetailPageUI(props) {
               <div>
                 <S.SliderBox>
                   <img
+                    onError={handelError}
                     style={{ width: '100%', height: '100%' }}
                     src={`https://storage.googleapis.com/${arr[0]}`}
                   />
