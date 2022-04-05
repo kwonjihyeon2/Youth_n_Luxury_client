@@ -24,6 +24,7 @@ export default function UseditemList() {
   )
   const [searchInput, setSearchInput] = useState('')
   const [searchData, setSearchData] = useState({})
+  console.log(searchInput)
   const onChangeSearchInput = (event) => {
     setSearchInput(event.target.value)
     console.log(event.target.value)
