@@ -12,7 +12,16 @@ export default function UseditemDetail(props) {
         <meta property="og:title" content={props.data.name} />
         <meta property="og:description" content={props.data.description} />
         <meta property="og:description" content={props.data.price + '원'} />
-        <meta property="og:image" content={props.data.image[0]} />
+        <meta
+          property="og:image"
+          content={
+            'https://storage.googleapis.com/' +
+            props.data?.urls
+              .substring(1, props.data?.urls.length - 1)
+              .replace(/\"/gi, '')
+              .split('][')[0]
+          }
+        />
       </Head>
       <UseditemDetailPage />
     </>
