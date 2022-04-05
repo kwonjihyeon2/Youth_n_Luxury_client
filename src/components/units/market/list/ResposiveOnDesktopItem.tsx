@@ -191,9 +191,7 @@ export default function DesktopItem(props) {
           <input
             className="SearchInput"
             type="text"
-            onChange={(event) => {
-              console.log(event.target.value)
-            }}
+            onChange={props.onChangeSearchInput}
           />
           <button onClick={props.onClickSearchBtn}>적용</button>
         </S.SelectBotBox2>

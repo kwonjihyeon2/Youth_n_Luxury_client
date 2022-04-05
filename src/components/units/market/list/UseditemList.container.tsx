@@ -27,6 +27,7 @@ export default function UseditemList() {
   console.log(searchInput)
   const onChangeSearchInput = (event) => {
     setSearchInput(event.target.value)
+    console.log('이벤트타겟점벨류는')
     console.log(event.target.value)
   }
   const onClickSearchBtn = async () => {
