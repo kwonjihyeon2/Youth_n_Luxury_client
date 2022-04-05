@@ -413,6 +413,10 @@ export const Box4Data = styled.div`
   button {
     margin-left: 70px;
   }
+  img {
+    width: 95px;
+    margin-left: 80px;
+  }
 `
 
 export const UseditemDeleteBtn = styled.button`
