@@ -1,6 +1,7 @@
 import * as S from './MyList.styles'
 
 export default function MyListUI(props) {
+  console.log(props.data)
   return (
     <>
       <S.Wrapper>
