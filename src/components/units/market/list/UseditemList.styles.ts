@@ -225,8 +225,6 @@ export const WrapperUseditem = styled.div`
   flex-direction: column;
   align-items: center;
   width: 30%;
-  height: 350px;
-  background-color: green;
   margin-top: 50px;
   cursor: pointer;
 `

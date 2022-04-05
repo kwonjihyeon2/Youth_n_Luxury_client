@@ -5,9 +5,9 @@ import * as S from './useditemPayment.styled'
 import { IpropsType } from './useditemPayment.types'
 
 export default function UseditemPaymentpageUI(props: IpropsType) {
-  const Num = props.data?.fetchProduct.user.phoneNum.slice(0, 3)
-  const Num2 = props.data?.fetchProduct.user.phoneNum.slice(3, 7)
-  const Num3 = props.data?.fetchProduct.user.phoneNum.slice(7, 11)
+  const Num = props.user?.fetchUser.phoneNum.slice(0, 3)
+  const Num2 = props.user?.fetchUser.phoneNum.slice(3, 7)
+  const Num3 = props.user?.fetchUser.phoneNum.slice(7, 11)
 
   return (
     <S.Wrapper>
@@ -36,7 +36,7 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             <S.DeliveryTextInput
               type="text"
               name="user"
-              value={props.data?.fetchProduct.user.name}
+              value={props.user?.fetchUser.name}
               readOnly
             />
             <S.DeliveryText>
@@ -63,7 +63,7 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
             </S.DeliveryText>
             <S.DeliveryTextInput
               type="email"
-              value={props.data?.fetchProduct.user.email}
+              value={props.user?.fetchUser.email}
             />
             <S.CommonTitle>배송지</S.CommonTitle>
 
@@ -85,7 +85,7 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                 </S.PostSelect>
                 <S.DeliveryTextInput
                   type="text"
-                  value={props.data?.fetchProduct.user.name}
+                  value={props.user?.fetchUser.name}
                 />
                 <S.CommonsButton onClick={props.onClickBasic}>
                   주문자 정보와 동일

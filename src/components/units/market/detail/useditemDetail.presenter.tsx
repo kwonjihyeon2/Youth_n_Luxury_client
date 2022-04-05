@@ -267,7 +267,13 @@ export default function UseditemDetailPageUI(props) {
                     <S.SliderBox>
                       <img
                         style={{ width: '100%', height: '100%' }}
-                        src={`https://storage.googleapis.com/${arr[index]}`}
+                        src={
+                          'https://storage.googleapis.com/' +
+                          el?.urls
+                            .substring(1, el?.urls.length - 1)
+                            .replace(/\"/gi, '')
+                            .split('][')[0]
+                        }
                       />
                     </S.SliderBox>
                     <p>{el.name}</p>
@@ -278,7 +284,12 @@ export default function UseditemDetailPageUI(props) {
             )}
             {props.relativeData?.fetchProductRelateMainCategory.length < 4 && (
               <div>
-                <S.SliderBox></S.SliderBox>
+                <S.SliderBox>
+                  <img
+                    style={{ width: '100%', height: '100%' }}
+                    src={`https://storage.googleapis.com/${arr[0]}`}
+                  />
+                </S.SliderBox>
                 <p>에르메스 버킷백</p>
                 <div>2000만원</div>
               </div>

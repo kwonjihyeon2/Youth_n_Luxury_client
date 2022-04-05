@@ -384,6 +384,7 @@ export const WrapperLiStyle = styled.li`
 
 export const ContentsImg = styled.img`
   width: 500px;
+  margin: 30px 0;
   @media ${breakPoints.xsmobile} {
     width: 50%;
   }
@@ -439,7 +440,6 @@ export const SlickStyle = styled.div`
 export const SliderBox = styled.div`
   height: 200px;
   width: 100%;
-  background-color: #c4c4c4;
   @media ${breakPoints.tablet} {
     height: 150px;
   }
