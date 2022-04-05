@@ -71,7 +71,7 @@ export default function UseditemList() {
       recentView.push({ ...el })
       localStorage.setItem('recentView', JSON.stringify(recentView))
     }
-    router.push(`/market/${event.target.id}`)
+    router.push(`/market/${el.product_id}`)
   }
   // const onClickSearch = () => {}
 
