@@ -46,7 +46,15 @@ export default function MainUI(props) {
             <S.ProductBox>
               {props.NewArrival?.map((el) => (
                 <S.Product onClick={moveToPage(`market/${el.product_id}`)}>
-                  <S.ProductImg />
+                  <S.ProductImg
+                    src={
+                      'https://storage.googleapis.com/' +
+                      el?.urls
+                        .substring(1, el?.urls.length - 1)
+                        .replace(/\"/gi, '')
+                        .split('][')[0]
+                    }
+                  />
                   <S.ProductTxt>{el.name}</S.ProductTxt>
                   <S.ProductTxt>{el.price}원</S.ProductTxt>
                 </S.Product>
@@ -64,7 +72,15 @@ export default function MainUI(props) {
                 .filter((el) => el.like > 0)
                 .map((el) => (
                   <S.Product>
-                    <S.ProductImg />
+                    <S.ProductImg
+                      src={
+                        'https://storage.googleapis.com/' +
+                        el?.urls
+                          .substring(1, el?.urls.length - 1)
+                          .replace(/\"/gi, '')
+                          .split('][')[0]
+                      }
+                    />
                     <S.ProductTxt>{el.name}</S.ProductTxt>
                     <S.ProductTxt>{el.price}</S.ProductTxt>
                   </S.Product>
