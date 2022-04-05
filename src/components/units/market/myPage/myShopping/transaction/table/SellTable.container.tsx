@@ -1,10 +1,10 @@
 import SellTableUI from './SellTable.presenter'
 import { gql, useQuery } from '@apollo/client'
 
-const FETCH_SELLER_ORDERS = gql`
-  query fetchSellerOrders {
-    fetchSellerOrders {
-      id
+const FETCH_MY_SELL_PRODUCT = gql`
+  query fetchmysellproduct {
+    fetchmysellproduct {
+      product_id
       status
       createdAt
       product {
@@ -18,6 +18,6 @@ const FETCH_SELLER_ORDERS = gql`
   }
 `
 export default function SellTable() {
-  const { data: dataSeller } = useQuery(FETCH_SELLER_ORDERS)
+  const { data: dataSeller } = useQuery(FETCH_MY_SELL_PRODUCT)
   return <SellTableUI dataSeller={dataSeller} />
 }
