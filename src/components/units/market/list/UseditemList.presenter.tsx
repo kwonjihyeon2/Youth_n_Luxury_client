@@ -28,7 +28,8 @@ export default function UseditemListUI(props) {
   console.log(props.data?.fetchAllProduct.urls)
   console.log('----------------')
   console.log(arr)
-
+  console.log('@@@@@@@@@@@@ 프로덕트 바이서치 데이터')
+  console.log(props.searchData?.fetchProductBySearch)
   return (
     <S.Position>
       <S.Wrapper>
@@ -41,6 +42,8 @@ export default function UseditemListUI(props) {
           brand={props.brand}
           isClickMain={props.isClickMain}
           isClickSub={props.isClickSub}
+          onClickSearchBtn={props.onClickSearchBtn}
+          onChangeSearchInput={props.onChangeSearchInput}
         />
         <TabletItem
           onClickMain={props.onClickMain}
@@ -50,19 +53,37 @@ export default function UseditemListUI(props) {
           sub={props.sub}
           brand={props.brand}
         />
-        <S.WrapperBottom>
-          {props.data?.fetchAllProduct.map((el) => (
-            <S.WrapperUseditem
-              key={el.product_id}
-              id={el.product_id}
-              onClick={props.onClickProduct(el)}
-            >
-              <img src={`https://storage.googleapis.com/${arr}`} />
-              <S.UseditemName>{el.name}</S.UseditemName>
-              <S.UseditemPrice>{el.price}</S.UseditemPrice>
-            </S.WrapperUseditem>
-          ))}
-        </S.WrapperBottom>
+        {props.isSearched ? (
+          <>
+            <S.WrapperBottom>
+              {props.searchData?.fetchProductBySearch.map((el) => (
+                <S.WrapperUseditem
+                  key={el.product_id}
+                  id={el.product_id}
+                  onClick={props.onClickProduct(el)}
+                >
+                  <img src={`https://storage.googleapis.com/${arr}`} />
+                  <S.UseditemName>{el.name}</S.UseditemName>
+                  <S.UseditemPrice>{el.price}</S.UseditemPrice>
+                </S.WrapperUseditem>
+              ))}
+            </S.WrapperBottom>
+          </>
+        ) : (
+          <S.WrapperBottom>
+            {props.data?.fetchAllProduct.map((el) => (
+              <S.WrapperUseditem
+                key={el.product_id}
+                id={el.product_id}
+                onClick={props.onClickProduct(el)}
+              >
+                <img src={`https://storage.googleapis.com/${arr}`} />
+                <S.UseditemName>{el.name}</S.UseditemName>
+                <S.UseditemPrice>{el.price}</S.UseditemPrice>
+              </S.WrapperUseditem>
+            ))}
+          </S.WrapperBottom>
+        )}
       </S.Wrapper>
     </S.Position>
   )

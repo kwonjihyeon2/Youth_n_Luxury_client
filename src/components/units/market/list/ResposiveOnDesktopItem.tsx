@@ -186,8 +186,12 @@ export default function DesktopItem(props) {
         <S.SelectBotBox1>상세</S.SelectBotBox1>
         <S.SelectBotBox2>
           <div>검색</div>
-          <input className="SearchInput" type="text" />
-          <button>적용</button>
+          <input
+            className="SearchInput"
+            type="text"
+            onChange={props.onChangeSearchInput}
+          />
+          <button onClick={props.onClickSearchBtn}>적용</button>
         </S.SelectBotBox2>
       </S.WrapperSelectBot>
     </S.WrapperTabletSelect>
