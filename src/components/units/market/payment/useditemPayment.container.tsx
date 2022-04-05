@@ -24,7 +24,7 @@ export default function UseditemPaymentpage(props) {
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: { productId: String(router.query.boardId) },
   })
-
+  const { data: user } = useQuery(FETCH_USER)
   //Daumpostcode 관련,
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [Address, setAddress] = useState('')
@@ -152,6 +152,7 @@ export default function UseditemPaymentpage(props) {
         ></script>
       </Head>
       <UseditemPaymentpageUI
+        user={user}
         data={data}
         isOpenAdd={isOpenAdd}
         onClickOpen={onClickOpen}
