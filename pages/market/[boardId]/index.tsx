@@ -31,7 +31,7 @@ export const getServerSideProps = async (context) => {
       data: {
         name: result?.fetchProduct.name,
         description: result?.fetchProduct.description,
-        image: result?.fetchProduct.urls[0],
+        image: result?.fetchProduct.urls,
         price: result?.fetchProduct.price,
       },
     },

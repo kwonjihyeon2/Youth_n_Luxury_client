@@ -57,6 +57,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 100px;
+  margin-top: 100px;
 `
 
 export const FindTxtBox = styled.div`
@@ -69,6 +71,10 @@ export const FindTxt = styled.div`
   color: #00000080;
   font-size: 14px;
   font-weight: 600;
+  cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
 `
 
 export const EmailJoinBtn = styled.div`
@@ -81,6 +87,10 @@ export const EmailJoinBtn = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
+  cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
 `
 export const OrBox = styled.div`
   width: 358px;

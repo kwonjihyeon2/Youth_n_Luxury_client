@@ -11,14 +11,14 @@ export default function UseditemWriteUI(props) {
       <S.Wrapper>
         <S.WrapperAccount>
           <S.WrapperImgTitle>
-            <S.TitleName>0.통장인증</S.TitleName>
+            <S.TitleName>통장인증</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperAccountInput>
-            <div>계좌번호입력</div>
+            <div>계좌번호입력:</div>
             <input onChange={props.onChangeAccountNum} type="text" />
-            <div>은행입력</div>
+            <div>은행입력:</div>
             <input onChange={props.onChangeBank} type="text" />
-            <div>이름</div>
+            <div>이름:</div>
             <input type="text" />
             <S.AccountBtn onClick={props.onClickAccountConfirm}>
               계좌인증하기
@@ -27,7 +27,7 @@ export default function UseditemWriteUI(props) {
         </S.WrapperAccount>
         <S.WrapperImages>
           <S.WrapperImgTitle>
-            <S.TitleName>1.상품이미지등록</S.TitleName>
+            <S.TitleName>상품이미지등록</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperInput>
             <Uploads01 fileUrl={props.urls} setUrls={props.setUrls} />
@@ -52,19 +52,20 @@ export default function UseditemWriteUI(props) {
         </S.WrapperContents>
         <S.WrapperTitle>
           <S.WrapperImgTitle>
-            <S.TitleName>2.제목</S.TitleName>
+            <S.TitleName>제목</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperTitleInput>
             <S.TitleInput
               type="text"
               placeholder="상품 제목을 입력해주세요."
               onChange={props.onChangeName}
+              defaultValue={props.data?.fetchProduct.name}
             />
           </S.WrapperTitleInput>
         </S.WrapperTitle>
         <S.WrapperCategory>
           <S.WrapperImgTitle>
-            <S.TitleName>3.카테고리</S.TitleName>
+            <S.TitleName>카테고리</S.TitleName>
           </S.WrapperImgTitle>
           <S.CategoryList>
             <S.CategoryMain onChange={props.onChangeMainCategory}>
@@ -134,7 +135,7 @@ export default function UseditemWriteUI(props) {
         </S.WrapperCategory>
         <S.WrapperBrand>
           <S.WrapperImgTitle>
-            <S.TitleName>4.브랜드</S.TitleName>
+            <S.TitleName>브랜드</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperBrandList>
             <S.BrandPosition>
@@ -191,12 +192,13 @@ export default function UseditemWriteUI(props) {
         </S.WrapperBrand>
         <S.WrapperPrice>
           <S.WrapperImgTitle>
-            <S.TitleName>5.가격</S.TitleName>
+            <S.TitleName>가격</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperPriceInput>
             <S.PriceInput
               type="text"
               placeholder="숫자만 입력해주세요."
+              defaultValue={props.data?.fetchProduct.price}
               onChange={props.onChangePrice}
             ></S.PriceInput>
             <div style={{ fontSize: '20px' }}>원</div>
@@ -204,19 +206,22 @@ export default function UseditemWriteUI(props) {
         </S.WrapperPrice>
         <S.WrapperExplains>
           <S.WrapperImgTitle>
-            <S.TitleName>6.설명</S.TitleName>
+            <S.TitleName>설명</S.TitleName>
           </S.WrapperImgTitle>
           <S.WrapperTextarea>
             <S.ExplainsInput
               maxLength={500}
               placeholder="상품 설명을 입력해주세요."
               onChange={props.onChangeDescription}
+              defaultValue={props.data?.fetchProduct.description}
             />
             <S.ExplainsCounts>{props.description.length}/500</S.ExplainsCounts>
           </S.WrapperTextarea>
         </S.WrapperExplains>
         <S.WrapperButton>
-          <S.SubmitBtn onClick={props.onClickSubmit}>등록하기</S.SubmitBtn>
+          <S.SubmitBtn onClick={props.onClickSubmit}>
+            {props.isEdit === true ? '수정하기' : '등록하기'}
+          </S.SubmitBtn>
         </S.WrapperButton>
       </S.Wrapper>
     </S.Position>

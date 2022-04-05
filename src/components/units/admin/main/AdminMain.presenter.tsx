@@ -3,6 +3,7 @@ import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 
 export default function AdminMainUI(props) {
+  console.log(props.dataTrans?.fetchTransactionAll)
   return (
     <S.Position>
       <S.Wrapper>
@@ -24,19 +25,20 @@ export default function AdminMainUI(props) {
             <S.Box1MenuWrapper>
               <div>번호</div>
               <div>날짜</div>
-              <div>분류</div>
               <div>제목</div>
               <div>질문내용</div>
+              <div>유저명</div>
               <div>상태</div>
             </S.Box1MenuWrapper>
             <S.Box1QuestionWrapper>
-              {props.dataQuerys?.fetchAdminQuerys.map((el, index) => (
-                <S.Box1Data key={el.id}>
-                  <div>{index}</div>
+              {props.dataQueries?.findAllUserQuries.map((el, index) => (
+                <S.Box1Data onClick={props.onClickUserQuery(el.adminQuery_id)}>
+                  <div>{index + 1}</div>
+                  <div>{el.adminCategory.name}</div>
                   <div>{el.contents}</div>
-                  <div>{el.userQuery.title}</div>
-                  <div>{el.userQuery.user.name}</div>
-                  <S.QuestionCheck>ㄴㄴ</S.QuestionCheck>
+                  <div>{el.title}</div>
+                  <div>{el.user.name}</div>
+                  <S.QuestionCheck>미답변</S.QuestionCheck>
                 </S.Box1Data>
               ))}
             </S.Box1QuestionWrapper>
@@ -45,7 +47,7 @@ export default function AdminMainUI(props) {
             </S.PaginationWrapper> */}
           </S.MidBox1>
           <S.UserTitleWrapper>
-            <S.UserImg src="images/admin/UserIcon.png" />
+            <S.UserImg src="/images/admin/UserIcon.png" />
             유저 검색하기
           </S.UserTitleWrapper>
           <S.MidBox2>
@@ -55,10 +57,7 @@ export default function AdminMainUI(props) {
             <S.UserWrapper>
               {props.dataUsers?.fetchUsers.map((el) => (
                 <S.UserList>
-                  <S.UsersImg
-                    key={el}
-                    src={`https://storage.googleapis.com/${el.image}`}
-                  />
+                  <S.UsersImg />
                   <S.UserName>{el.name || 'id'}</S.UserName>
                   <S.UserEmail>{el.email || 'email@email.com'}</S.UserEmail>
                   <S.UserDeleteBtn onClick={props.onClickDeleteUser}>
@@ -85,13 +84,13 @@ export default function AdminMainUI(props) {
               <div>주문처리상태</div>
             </S.Box3MenuWrapper>
             <S.Box3UseditemWrapper>
-              {props.dataOrders?.fetchOrders.map((el) => (
+              {props.dataTrans?.fetchTransactionAll.map((el) => (
                 <S.Box3Data>
                   <div>{el.createdAt.slice(0, 10)}</div>
                   <S.TempImg></S.TempImg>
                   <div>{el.product.name || '상품정보'}</div>
                   <div>{el.product.price}</div>
-                  <div>{el.product.user.name}</div>
+                  <div>{el.user.name}</div>
                   <div>
                     <S.SelectStatus onChange={props.onChangeStatus}>
                       <option value="PAYMENT">결재완료</option>
@@ -100,6 +99,7 @@ export default function AdminMainUI(props) {
                       <option value="DELIVERED">배송완료</option>
                       <option value="CANCEL">취소</option>
                     </S.SelectStatus>
+                    <button onClick={props.onClickStatus(el.impUid)}>V</button>
                   </div>
                 </S.Box3Data>
               ))}
@@ -127,12 +127,11 @@ export default function AdminMainUI(props) {
               {props.dataProducts?.fetchAllProduct.map((el) => (
                 <S.Box4Data>
                   <div>{el.name}</div>
-                  <div>{el.user.name}</div>
+                  <div>{el.user?.name}</div>
                   <S.TempImg></S.TempImg>
                   <div>{el.price}</div>
                   <S.UseditemDeleteBtn
-                    onClick={props.onClickDeleteProduct}
-                    id={el.id}
+                    onClick={props.onClickDeleteProduct(el.product_id)}
                   >
                     삭제하기
                   </S.UseditemDeleteBtn>

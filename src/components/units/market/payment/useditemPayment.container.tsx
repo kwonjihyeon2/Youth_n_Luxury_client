@@ -121,9 +121,9 @@ export default function UseditemPaymentpage(props) {
           try {
             const result = await createOrder({
               variables: {
-                impUid: rsp.imp_uid,
-                productId: String(router.query.boardId),
-                status: 'PAYMENT',
+                impuid: rsp.imp_uid,
+                amount: Number(data?.fetchProduct.price),
+                productid: String(data?.fetchProduct.product_id),
               },
             })
             console.log(result)

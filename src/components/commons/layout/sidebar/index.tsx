@@ -257,7 +257,7 @@ const FETCH_USER = gql`
 const JOIN_SELLER = gql`
   query joinSeller {
     joinSeller {
-      id
+      event_id
       roomId
     }
   }
@@ -279,11 +279,11 @@ export default function LayoutSidebar() {
   const onClickUserInfo = () => {
     router.push(`/mypage/myInfo/editUser`)
   }
-  
+
   const { data: join } = useQuery(JOIN_SELLER)
   const onClickQuery = () => {
     console.log(join)
-    router.push(`market/chatting`)
+    router.push(`/market/chatting`)
   }
 
   const onClickCreateProduct = () => {
@@ -344,8 +344,11 @@ export default function LayoutSidebar() {
               <IconText onClick={onClickUserInfo}>나의정보</IconText>
             </WrapperIcon2>
             <WrapperIcon3>
-              <Icon3Img onClick={onClickChat} src="/images/sidebar/alert.png" />
-              <IconText onClick={onClickChat}>1:1채팅</IconText>
+              <Icon3Img
+                onClick={onClickQuery}
+                src="/images/sidebar/alert.png"
+              />
+              <IconText onClick={onClickQuery}>1:1채팅</IconText>
             </WrapperIcon3>
             <WrapperIcon4>
               <Icon4Img

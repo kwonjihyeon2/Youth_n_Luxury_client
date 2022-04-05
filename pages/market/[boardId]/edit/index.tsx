@@ -6,20 +6,18 @@ import { gql } from '@apollo/client'
 const FETCH_PRODUCT = gql`
   query fetchProduct($productId: String!) {
     fetchProduct(productId: $productId) {
-      id
+      product_id
       name
       description
       price
       urls
       brand {
-        id
+        brand_id
         name
       }
       subCategory {
-        id
         name
         mainCategory {
-          id
           name
         }
       }

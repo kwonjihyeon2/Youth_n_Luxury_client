@@ -3,12 +3,11 @@ import { gql } from '@apollo/client'
 export const FETCH_CHAT = gql`
   query fetchChat($roomId: String!) {
     fetchChat(roomId: $roomId) {
-      id
+      event_id
       roomId
       chatLog
       user {
         name
-        profilePic
       }
       product {
         name
@@ -23,28 +22,7 @@ export const FETCH_CHAT = gql`
 export const UPDATE_CHAT = gql`
   mutation updateChat($roomId: String!, $updateChat: String!) {
     updateChat(roomId: $roomId, updateChat: $updateChat) {
-      id
-      roomId
-      chatLog
-      user {
-        name
-        profilePic
-      }
-      product {
-        name
-        profilePic
-        user {
-          name
-        }
-      }
-    }
-  }
-`
-
-export const JOIN_SELLER = gql`
-  query joinSeller {
-    joinSeller {
-      id
+      event_id
       roomId
       chatLog
       user {
@@ -56,6 +34,25 @@ export const JOIN_SELLER = gql`
         user {
           name
           profilePic
+        }
+      }
+    }
+  }
+`
+
+export const JOIN_SELLER = gql`
+  query joinSeller {
+    joinSeller {
+      event_id
+      roomId
+      chatLog
+      user {
+        name
+      }
+      product {
+        name
+        user {
+          name
         }
       }
     }

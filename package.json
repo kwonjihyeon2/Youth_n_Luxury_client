@@ -17,6 +17,7 @@
     "@mui/material": "^5.5.2",
     "@types/react-slick": "^0.23.8",
     "antd": "^4.19.3",
+    "apollo-client": "^2.6.10",
     "apollo-upload-client": "^17.0.0",
     "axios": "^0.26.1",
     "bootstrap": "^5.1.3",

@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { CREATE_PRODUCT, UPDATE_PRODUCT } from './UseditemWrite.queries'
@@ -106,7 +106,7 @@ export default function UseditemWrite(props) {
           },
         },
       })
-      router.push(`/market/${result.data.createProduct.id}`)
+      router.push(`/market/${result.data.createProduct.product_id}`)
     } catch (error) {
       alert(error.message)
     }

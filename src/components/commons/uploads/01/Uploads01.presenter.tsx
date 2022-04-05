@@ -7,6 +7,7 @@ export default function Uploads01UI(props: IUploads01UIProps) {
   useEffect(() => {
     if (!props.fileUrl) return
     const temp = JSON.parse(props.fileUrl)
+    console.log(JSON.parse(props.fileUrl))
     setTest(temp)
   }, [props.fileUrl])
   return (

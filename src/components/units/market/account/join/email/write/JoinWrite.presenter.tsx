@@ -1,9 +1,8 @@
 import * as S from './JoinWrite.styles'
 
 export default function JoinWriteUI(props) {
-  console.log(props.data)
   return (
-    <>
+    <S.ResponsiveBox>
       <S.Wrapper>
         <S.JoinHeaderTxt>회원정보 입력</S.JoinHeaderTxt>
         <S.InputBox>
@@ -53,22 +52,28 @@ export default function JoinWriteUI(props) {
           </S.Row>
           <S.Row>
             <S.VarTxt>비밀번호</S.VarTxt>
-            <S.ValueBox>
+            <S.OtherValue>
               <S.PasswordInput
                 onChange={props.onChangeInput('password')}
                 type="password"
               ></S.PasswordInput>
-            </S.ValueBox>
+              <S.ValiText isPwdVal={props.isPwdVal}>
+                최소 6자, 최소 하나 이상의 영문과 숫자를 입력하세요.
+              </S.ValiText>
+            </S.OtherValue>
           </S.Row>
 
           <S.Row>
             <S.VarTxt>비밀번호 확인</S.VarTxt>
-            <S.ValueBox>
+            <S.OtherValue>
               <S.PasswordInput
                 type="password"
                 onChange={props.onChangeInput('passwordCheck')}
               ></S.PasswordInput>
-            </S.ValueBox>
+              <S.ValiText isPwdCheck={props.isPwdCheck}>
+                비밀번호가 일치하지 않습니다.
+              </S.ValiText>
+            </S.OtherValue>
           </S.Row>
 
           <S.Row>
@@ -92,7 +97,6 @@ export default function JoinWriteUI(props) {
               <S.PasswordInput
                 onChange={props.onChangeInput('nickname')}
               ></S.PasswordInput>
-              <S.NickNameTxt>{`(공백 없는 영문/숫자 포함 6~20자)`}</S.NickNameTxt>
             </S.ValueBox>
           </S.Row>
 
@@ -120,6 +124,9 @@ export default function JoinWriteUI(props) {
                     style={{ marginLeft: '3px' }}
                   ></S.NumInput>
                   <S.SendAuthNumBtn>인증번호 보내기</S.SendAuthNumBtn>
+                  <S.ValiText isNumCheck={props.isNumCheck}>
+                    {props.timer}
+                  </S.ValiText>
                 </S.ValueBox>
                 <S.ValueBox>
                   <S.CheckNumInput
@@ -162,19 +169,35 @@ export default function JoinWriteUI(props) {
                   maxLength={4}
                   style={{ marginLeft: '3px' }}
                 ></S.NumInput>
-                <S.SendAuthNumBtn onClick={props.onClickAuthNumBtn}>
+                <S.SendAuthNumBtn
+                  onClick={props.onClickAuthNumBtn}
+                  disabled={props.isSend}
+                >
                   인증번호 보내기
                 </S.SendAuthNumBtn>
+                {/* <S.ValiText>{props.timer}</S.ValiText> */}
               </S.ValueBox>
             </S.Row>
           )}
         </S.InputBox>
         {props.isEdit ? (
-          <S.SubmitBtn onClick={props.onClickUpdateUser}>수정완료</S.SubmitBtn>
+          <S.SubmitBtn
+            onClick={props.onClickUpdateUser}
+            disabled={!props.isNumCheck}
+            isNumCheck={props.isNumCheck}
+          >
+            수정완료
+          </S.SubmitBtn>
         ) : (
-          <S.SubmitBtn onClick={props.onClickJoinBtn}>입력완료</S.SubmitBtn>
+          <S.SubmitBtn
+            onClick={props.onClickJoinBtn}
+            disabled={!props.isNumCheck}
+            isNumCheck={props.isNumCheck}
+          >
+            입력완료
+          </S.SubmitBtn>
         )}
       </S.Wrapper>
-    </>
+    </S.ResponsiveBox>
   )
 }

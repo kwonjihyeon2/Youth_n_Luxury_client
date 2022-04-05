@@ -5,9 +5,9 @@ export default function SideBarUI(props) {
     <>
       <S.Wrapper>
         <S.MyPagePath>
+          {/* <S.PathImg></S.PathImg>
           <S.PathImg></S.PathImg>
-          <S.PathImg></S.PathImg>
-          <S.PathTxt>마이페이지</S.PathTxt>
+          <S.PathTxt>마이페이지</S.PathTxt> */}
         </S.MyPagePath>
 
         <S.MyShoppingHeaderTxt>MY SHOPPING</S.MyShoppingHeaderTxt>

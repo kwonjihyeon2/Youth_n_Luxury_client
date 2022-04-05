@@ -8,8 +8,7 @@ export const Position = styled.div`
   padding: 0 60px;
 `
 export const LogoImg = styled.img`
-  margin-left: 225px;
-  :hover {
+  &:hover {
     cursor: pointer;
   }
 `

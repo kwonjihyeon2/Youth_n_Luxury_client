@@ -27,6 +27,7 @@ export default function UseditemListUI(props) {
   console.log('----------------')
   console.log(props.data?.fetchAllProduct.urls)
   console.log('----------------')
+  console.log(arr)
 
   return (
     <S.Position>
@@ -52,8 +53,8 @@ export default function UseditemListUI(props) {
         <S.WrapperBottom>
           {props.data?.fetchAllProduct.map((el) => (
             <S.WrapperUseditem
-              key={el.id}
-              id={el.id}
+              key={el.product_id}
+              id={el.product_id}
               onClick={props.onClickProduct(el)}
             >
               <img src={`https://storage.googleapis.com/${arr}`} />

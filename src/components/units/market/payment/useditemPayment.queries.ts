@@ -3,7 +3,7 @@ import { gql } from '@apollo/client'
 export const FETCH_PRODUCT = gql`
   query fetchProduct($productId: String!) {
     fetchProduct(productId: $productId) {
-      id
+      product_id
       name
       description
       price
@@ -41,17 +41,17 @@ export const FETCH_USER = gql`
 `
 
 export const CREATE_ORDER = gql`
-  mutation createOrder(
-    $impUid: String!
-    $productId: String!
-    $status: String!
+  mutation createtransaction(
+    $impuid: String!
+    $amount: Float!
+    $productid: String!
   ) {
-    createOrder(impUid: $impUid, productId: $productId, status: $status) {
-      id
+    createtransaction(impuid: $impuid, amount: $amount, productid: $productid) {
+      transaction_id
       impUid
       status
       product {
-        id
+        product_id
         name
         price
       }
@@ -62,7 +62,7 @@ export const CREATE_ORDER = gql`
 export const CREATE_ADDRESS = gql`
   mutation createUserAddr($createUserAddrInput: CreateUserAddrInput!) {
     createUserAddr(createUserAddrInput: $createUserAddrInput) {
-      id
+      userAddr_id
       address
       addressDetail
       zipCode
@@ -79,7 +79,7 @@ export const CREATE_ADDRESS = gql`
 export const FETCH_ADDRESS = gql`
   query fetchUserAddr {
     fetchUserAddr {
-      id
+      userAddr_id
       address
       addressDetail
       zipCode
@@ -94,7 +94,7 @@ export const FETCH_ADDRESS = gql`
 export const FETCH_ADDRS = gql`
   query fetchUserAddrs {
     fetchUserAddrs {
-      id
+      userAddr_id
       address
       addressDetail
       zipCode

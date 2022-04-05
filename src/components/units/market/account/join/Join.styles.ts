@@ -44,6 +44,9 @@ export const EmailJoinBtn = styled.button`
   margin-bottom: 16px;
   border: none;
   cursor: pointer;
+  :hover {
+    color: #7a36ff;
+  }
 `
 export const OrBox = styled.div`
   width: 358px;

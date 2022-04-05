@@ -277,7 +277,7 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
               {props.listAddr?.fetchUserAddrs.length <= 2 &&
                 props.listAddr?.fetchUserAddrs.map((el, index) => (
                   <S.submitAddress
-                    key={el.id}
+                    key={el.userAddr_id}
                     // onClick={props.onClickFetch(el.id)}
                   >
                     <div>배송지 {index + 1}</div>

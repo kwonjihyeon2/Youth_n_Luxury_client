@@ -262,7 +262,7 @@ export const ButtonBlackStyle = styled.button`
   background-color: black !important;
   color: #fff;
   &:hover {
-    background-color: #7a36ff !important;
+    color: #7a36ff !important;
   }
 `
 
@@ -586,6 +586,6 @@ export const EditBtn = styled.button`
   background-color: #000;
   color: white;
   &:hover {
-    background-color: #7a36ff;
+    color: #7a36ff;
   }
 `

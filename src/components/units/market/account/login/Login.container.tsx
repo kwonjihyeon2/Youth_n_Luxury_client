@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useState, useContext } from 'react'
 import { GlobalContext } from '../../../../../../pages/_app'
 import LoginUI from './Login.presenter'
-import { LOGIN } from './Login.queries'
+import { FETCH_USER, LOGIN } from './Login.queries'
 
 export default function Login() {
   const [loginInput, setLoginInput] = useState({
@@ -18,20 +18,14 @@ export default function Login() {
     setLoginInput({ ...loginInput, [type]: event.target.value })
   }
   const onClickLoginBtn = async () => {
-    console.log('눌러는짐')
     try {
       const result = await login({ variables: { ...loginInput } })
       // console.log(result.data.login)
       // setAccessToken(result.data.login)
       const accessToken = result.data?.login
       console.log(accessToken)
-      if (setAccessToken) {
-        setAccessToken(accessToken || '') //로그인토큰 저장
-      }
-      console.log('로그인성공')
-      console.log(result)
+      setAccessToken(accessToken)
       router.push('/')
-      // router.push('/admin')
     } catch (err) {
       console.log(err.message)
     }

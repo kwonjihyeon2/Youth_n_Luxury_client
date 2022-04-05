@@ -1,15 +1,17 @@
 import { gql } from '@apollo/client'
 
-export const FETCH_ADMIN_QUERYS = gql`
-  query fetchAdminQuerys {
-    fetchAdminQuerys {
-      id
+export const FIND_ALL_USER_QUERIES = gql`
+  query findAllUserQuries {
+    findAllUserQuries {
+      title
+      img
       contents
-      userQuery {
-        title
-        user {
-          name
-        }
+      adminQuery_id
+      adminCategory {
+        name
+      }
+      user {
+        name
       }
     }
   }
@@ -26,27 +28,39 @@ export const FETCH_USERS = gql`
   }
 `
 
-export const FETCH_ORDERS = gql`
-  query fetchOrders {
-    fetchOrders {
-      id
-      createdAt
+// export const FETCH_IMPUID_WITH_PRODUCTID_USERID = gql`
+//   query fetchimpuidwithproductiduserid($productId: String!) {
+//     fetchimpuidwithproductiduserid(productId: $productId) {
+//       transaction_id
+//       impUid
+//       status
+//     }
+//   }
+// `
+
+export const FETCH_TRANSACTION_ALL = gql`
+  query fetchTransactionAll {
+    fetchTransactionAll {
+      transaction_id
       impUid
+      status
+      createdAt
       product {
-        price
+        urls
         name
-        user {
-          name
-        }
+        price
+      }
+      user {
+        name
       }
     }
   }
 `
 
 export const UPDATE_TRANSACTION = gql`
-  mutation updateTransaction($impuid: String!, $statusCode: String!) {
-    updateTransaction(impuid: $impuid, statusCode: $statusCode) {
-      id
+  mutation updatetransaction($impuid: String!, $statusCode: String!) {
+    updatetransaction(impuid: $impuid, statusCode: $statusCode) {
+      transaction_id
       impUid
       status
     }
@@ -55,7 +69,7 @@ export const UPDATE_TRANSACTION = gql`
 export const FETCH_ALL_PRODUCT = gql`
   query fetchAllProduct {
     fetchAllProduct {
-      id
+      product_id
       name
       price
       urls

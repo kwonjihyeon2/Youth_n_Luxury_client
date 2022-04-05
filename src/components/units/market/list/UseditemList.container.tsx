@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import UseditemListUI from './UseditemList.presenter'
-import { useQuery, useLazyQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { FETCH_ALL_PRODUCT, FETCH_PRODUCTS } from './UseditemList.queries'
 
@@ -34,7 +34,7 @@ export default function UseditemList() {
     // const temp = baskets.filter((basketEl) => basketEl._id === el._id);
 
     recentView.forEach((recentViewEl, i) => {
-      if (recentViewEl.id === el.id) {
+      if (recentViewEl.product_id === el.id) {
         isExist = true
         return false
       }
