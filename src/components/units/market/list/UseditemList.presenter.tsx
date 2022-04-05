@@ -56,17 +56,21 @@ export default function UseditemListUI(props) {
         {props.isSearched ? (
           <>
             <S.WrapperBottom>
-              {props.searchData?.fetchProductBySearch.map((el) => (
-                <S.WrapperUseditem
-                  key={el.product_id}
-                  id={el.product_id}
-                  onClick={props.onClickProduct(el)}
-                >
-                  <img src={`https://storage.googleapis.com/${arr}`} />
-                  <S.UseditemName>{el.name}</S.UseditemName>
-                  <S.UseditemPrice>{el.price}</S.UseditemPrice>
-                </S.WrapperUseditem>
-              ))}
+              {props.searchData?.fetchProductBySearch ? (
+                props.searchData?.fetchProductBySearch.map((el) => (
+                  <S.WrapperUseditem
+                    key={el.product_id}
+                    id={el.product_id}
+                    onClick={props.onClickProduct(el)}
+                  >
+                    <img src={`https://storage.googleapis.com/${arr}`} />
+                    <S.UseditemName>{el.name}</S.UseditemName>
+                    <S.UseditemPrice>{el.price}</S.UseditemPrice>
+                  </S.WrapperUseditem>
+                ))
+              ) : (
+                <></>
+              )}
             </S.WrapperBottom>
           </>
         ) : (

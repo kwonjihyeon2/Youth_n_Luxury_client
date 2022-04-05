@@ -2,7 +2,7 @@ import { ChangeEvent, RefObject } from 'react'
 
 export interface IUploads04Props {
   index: number
-  fileUrl: string
+  fileUrl4: string
   defaultFileUrl?: string
   onChangeUrls?: any
   onChangeFileUrls?: any
@@ -11,7 +11,7 @@ export interface IUploads04Props {
 
 export interface IUploads04UIProps {
   fileRef: RefObject<HTMLInputElement>
-  fileUrl: string
+  fileUrl4: string
   defaultFileUrl?: string
   onClickUpload: () => void
   onChangeFile: (event: ChangeEvent<HTMLInputElement>) => void
