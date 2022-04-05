@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react'
 import UseditemListUI from './UseditemList.presenter'
 import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { FETCH_ALL_PRODUCT, FETCH_PRODUCTS } from './UseditemList.queries'
+import {
+  FETCH_ALL_PRODUCT,
+  FETCH_PRODUCTS,
+  FETCH_PRODUCT_BY_SEARCH,
+} from './UseditemList.queries'
 
 import _ from 'lodash'
 
@@ -12,10 +16,27 @@ export default function UseditemList() {
   const [brand, setBrand] = useState('')
   const [isClickMain, setIsClickMain] = useState(false)
   const [isClickSub, setIsClickSub] = useState(false)
-
+  const [isSearched, setIsSearched] = useState(false)
   const router = useRouter()
   const { data, refetch } = useQuery(FETCH_ALL_PRODUCT)
-
+  const { data: search, refetch: searchRefetch } = useQuery(
+    FETCH_PRODUCT_BY_SEARCH
+  )
+  const [searchInput, setSearchInput] = useState('')
+  const [searchData, setSearchData] = useState({})
+  const onChangeSearchInput = (event) => {
+    setSearchInput(event.target.value)
+  }
+  const onClickSearchBtn = async () => {
+    try {
+      const result = await searchRefetch({ variables: { name: searchInput } })
+      setIsSearched(true)
+      setSearchData(result.data)
+    } catch (err) {
+      console.log('검색에러는')
+      console.log(err.message)
+    }
+  }
   const onClickMain = (event) => {
     setMain(event.target.id)
     setIsClickMain((prev) => !prev)
@@ -60,7 +81,10 @@ export default function UseditemList() {
       onClickProduct={onClickMoveProductDetail}
       isClickMain={isClickMain}
       isClickSub={isClickSub}
-      // onClickSearch={onClickSearch}
+      onClickSearchBtn={onClickSearchBtn}
+      searchData={searchData}
+      isSearched={isSearched}
+      onChangeSearchInput={onChangeSearchInput}
     />
   )
 }

@@ -19,3 +19,20 @@ export const FETCH_ALL_PRODUCT = gql`
     }
   }
 `
+export const FETCH_PRODUCT_BY_SEARCH = gql`
+  query fetchProductBySearch($name: String!) {
+    fetchProductBySearch(name: $name) {
+      name
+      product_id
+      description
+      price
+      view
+      like
+      urls
+      brand {
+        brand_id
+        name
+      }
+    }
+  }
+`

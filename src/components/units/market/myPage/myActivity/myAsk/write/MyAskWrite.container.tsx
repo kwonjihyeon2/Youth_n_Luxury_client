@@ -6,6 +6,7 @@ import MyAskWriteUI from './MyAskWrite.presenter'
 import { CREATE_USER_QUERY } from './MyAskWrite.Queries'
 
 export default function MyAskWrite() {
+  const router = useRouter()
   const { data } = useQuery(FETCH_USER)
   const [createUserQuery] = useMutation(CREATE_USER_QUERY)
   const [input, setInput] = useState({
@@ -40,6 +41,7 @@ export default function MyAskWrite() {
       const result = await createUserQuery({ variables: { ...input } })
       console.log(input)
       console.log(result)
+      router.push('/mypage/myActivity/myAsk/')
     } catch (error) {
       console.log(error.message)
     }
