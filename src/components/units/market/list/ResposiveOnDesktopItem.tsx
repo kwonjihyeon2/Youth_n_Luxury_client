@@ -1,6 +1,8 @@
 import * as S from './UseditemList.styles'
 
 export default function DesktopItem(props) {
+  console.log('이스서치드')
+  console.log(props.isSearched)
   return (
     <S.WrapperTabletSelect>
       <S.WrapperSelectTop>
