@@ -4,7 +4,6 @@ import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import {
   FETCH_ALL_PRODUCT,
-  FETCH_PRODUCTS,
   FETCH_PRODUCT_BY_SEARCH,
 } from './UseditemList.queries'
 
