@@ -19,7 +19,6 @@ import { FETCH_USER } from '../payment/useditemPayment.queries'
 declare const window: typeof globalThis & {
   Kakao: any
 }
-const socket = SocketIOClient('https://mybackend.project5-sos.shop')
 export default function UseditemDetailPage(props) {
   const { moveToPage } = useMoveToPage()
   const router = useRouter()
@@ -171,10 +170,6 @@ export default function UseditemDetailPage(props) {
       currentUser: rest,
     }
 
-    e.preventDefault()
-    socket.emit('createChat', create)
-    console.log(create)
-    console.log('클릭함', socket)
     // router.push('/market/chatting')
     // try {
     //   const result = await createChat({
@@ -190,9 +185,6 @@ export default function UseditemDetailPage(props) {
     //   console.log('구매자가 채팅 요청했는데 실패 :' + error.message)
     // }
   }
-  socket.on('roomInfo', (data) => {
-    console.log(data)
-  })
 
   return (
     <UseditemDetailPageUI
@@ -211,7 +203,6 @@ export default function UseditemDetailPage(props) {
       isShare={isShare}
       onClickBasketBtn={onClickBasketBtn}
       isKeep={isKeep}
-      onClickMakeRoom={onClickMakeRoom}
       onClickMoveToDetail={onClickMoveToDetail}
     />
   )
