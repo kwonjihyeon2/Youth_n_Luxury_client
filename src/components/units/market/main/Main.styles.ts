@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { breakPoints } from '../../../commons/utils/media'
+
 export const Position = styled.div`
   display: flex;
   width: 100%;
@@ -32,6 +33,7 @@ export const ResponsiveBox = styled.div`
   width: 100%;
   max-width: 1200px;
   padding: 0;
+  padding-bottom: 100px;
 `
 
 export const Carousel1 = styled.div`
@@ -90,7 +92,7 @@ export const NewArrivalsTxtBox = styled.div`
   height: 56px;
   margin: 80px 0 32px 8px;
   align-items: center;
-  @media ${breakPoints.mobile} {
+  @media (max-width: 767px) {
     margin: 20px 0;
     flex-direction: column;
     height: auto;
@@ -106,7 +108,7 @@ export const NewArrivalsSubTxt = styled.div`
   color: #999999;
   font-size: 15px;
   margin-left: 15px;
-  @media ${breakPoints.mobile} {
+  @media (max-width: 767px) {
     margin-left: 0px;
     margin-top: 5px;
   }
@@ -117,6 +119,7 @@ export const ProductBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding-bottom: 60px;
 `
 export const Product = styled.div`
   width: 30%;
@@ -124,7 +127,7 @@ export const Product = styled.div`
   flex-direction: column;
   margin-bottom: 48px;
   align-items: center;
-  @media ${breakPoints.mobile} {
+  @media (max-width: 767px) {
     width: 48%;
   }
 `
@@ -132,7 +135,7 @@ export const ProductImg = styled.img`
   width: 100%;
   height: 374px;
   margin-bottom: 12px;
-  @media ${breakPoints.mobile} {
+  @media (max-width: 767px) {
     height: 200px;
   }
 `
@@ -141,7 +144,7 @@ export const ProductTxt = styled.div`
   font-weight: 400;
   font-size: 18px;
   margin-top: 8px;
-  @media ${breakPoints.mobile} {
+  @media (max-width: 767px) {
     font-size: 14px;
     margin-top: 5px;
   }
@@ -152,14 +155,4 @@ export const LoadBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
-export const LoadMoreBtn = styled.button`
-  width: 196px;
-  height: 33px;
-  border: 1px solid #393939;
-  font-size: 12px;
-  font-weight: 400;
-  background-color: white;
-  margin-top: 40px;
-  margin-bottom: 334px;
 `

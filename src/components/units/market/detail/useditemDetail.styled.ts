@@ -7,6 +7,7 @@ import { BsSuitHeartFill } from 'react-icons/bs'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { keyframes } from '@emotion/react'
 import { breakPoints } from '../../../commons/utils/media'
+import { propsChange, propsIsOpen, propsIsShare } from './useditemDetail.types'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -73,11 +74,6 @@ export const MyRightBox = styled.div`
   justify-content: flex-end;
   padding: 10px 0;
 `
-
-interface propsIsShare {
-  isShare: boolean
-}
-
 export const KakaoButton = styled.div`
   /* display: flex; */
   display: ${(props: propsIsShare) => (props.isShare ? 'flex' : 'none')};
@@ -274,18 +270,10 @@ export const PhoneIconSpan = styled.span`
   margin-left: 5px;
 `
 
-interface propsIsHeart {
-  isHeart: boolean
-}
-
-interface propsKeep {
-  isKeep: boolean
-}
-
 export const HeartIconSpan = styled.span`
   width: 19px;
   height: 16px;
-  background: ${(props: propsKeep) =>
+  background: ${(props: propsChange) =>
       props.isKeep ? "url('/detail/redHeart.png')" : "url('/detail/Like.png')"}
     center;
   background-size: cover;
@@ -305,7 +293,7 @@ export const ButtonRightStyle = styled.button`
   &:hover {
     span {
       /* background: url('/detail/BlackLike.png') center; */
-      background: ${(props: propsIsHeart) =>
+      background: ${(props: propsChange) =>
           !props.isHeart
             ? "url('/detail/redHeart.png')"
             : "url('/detail/BlackLike.png')"}
@@ -463,7 +451,7 @@ export const SellerBox = styled.div`
     }
   }
   font-weight: 500;
-  @media ${breakPoints.tablet}, ${breakPoints.mobile}, ${breakPoints.xsmobile} {
+  @media (max-width: 991px) {
     justify-content: center;
   }
 `
@@ -484,11 +472,6 @@ export const SellerProduct = styled.div`
   color: white;
   height: 80px;
 `
-
-interface propsIsOpen {
-  isOpen: boolean
-}
-
 export const WrapperSellerInfo = styled.div`
   display: ${(props: propsIsOpen) => (props.isOpen ? 'block' : 'none')};
   position: fixed;
@@ -508,7 +491,7 @@ const boxOpen = keyframes`
 `
 
 export const HeartBox = styled.div`
-  display: ${(props: propsIsHeart) => (props.isHeart ? 'block' : 'none')};
+  display: ${(props: propsChange) => (props.isHeart ? 'block' : 'none')};
   opacity: 0;
   position: fixed;
   top: 45%;
@@ -559,32 +542,4 @@ export const SellerRate = styled.div`
 
 export const ButtonBox = styled.div`
   text-align: center;
-  button {
-    cursor: pointer;
-  }
-`
-export const ListButton = styled.button`
-  width: 200px;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #000;
-`
-export const CancelBtn = styled.button`
-  width: 100px;
-  padding: 10px 0;
-  margin: 25px 0;
-  border: 1px solid #000;
-  background-color: #fff;
-`
-export const EditBtn = styled.button`
-  width: 100px;
-  padding: 10px 0;
-  margin: 25px 0;
-  margin-right: 10px;
-  border: 1px solid #000;
-  background-color: #000;
-  color: white;
-  &:hover {
-    color: #7a36ff;
-  }
 `
