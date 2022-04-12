@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import * as S from './Main.styles'
 import { useMoveToPage } from '../../../commons/hooks/useMoveToPage'
+import ProductLargeButton from '../../../commons/button/detailLarge'
 
 export default function MainUI(props) {
   const { moveToPage } = useMoveToPage()
@@ -86,7 +87,9 @@ export default function MainUI(props) {
                   </S.Product>
                 ))}
             </S.ProductBox>
-            <S.LoadBtn></S.LoadBtn>
+            <S.LoadBtn>
+              <ProductLargeButton name="더보기" />
+            </S.LoadBtn>
           </S.ResponsiveBox>
         </S.Wrapper>
       </S.Position>
