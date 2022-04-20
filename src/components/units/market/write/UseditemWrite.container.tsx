@@ -43,17 +43,16 @@ export default function UseditemWrite(props) {
     const result = await axios.post(
       `https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/inquiry/real_name`,
       {
-        bank_code_std: '004',
-        account_num: '71790201314675',
+        bank_code_std: `${process.env.NEXT_PUBLIC_BANK}`,
+        account_num: `${process.env.NEXT_PUBLIC_ACCOUNT}`,
         account_holder_info_type: '',
-        account_holder_info: '000426',
+        account_holder_info: `${process.env.NEXT_PUBLIC_HOLDER_INFO}`,
         tran_dtime: time,
-        bank_tran_id: `M202200592U${randomNum}`,
+        bank_tran_id: `${process.env.NEXT_PUBLIC_BANK_ID}${randomNum}`,
       },
       {
         headers: {
-          Authorization:
-            'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMjAwNTkyIiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjU2NDI5ODY2LCJqdGkiOiJjNjFmZjMyYi0yNTQyLTQ5MWItOGUzYS02ZGY1YTE1ZjE5Y2UifQ.A1t724j6vIGPLO7I_TPvEZTev_ds4DSxFjfaThe7uXc',
+          Authorization: `${process.env.NEXT_PUBLIC_TOKEN}`,
         },
       }
     )
@@ -66,7 +65,7 @@ export default function UseditemWrite(props) {
   const onChangeBank = (event) => {
     setBank(event.target.value)
     if (bank == '국민') {
-      setBank('004')
+      setBank(`${process.env.NEXT_PUBLIC_BANK}`)
     }
   }
 

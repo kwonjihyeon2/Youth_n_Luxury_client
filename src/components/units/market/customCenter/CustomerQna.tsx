@@ -13,9 +13,9 @@ const WrapperContent = styled.div`
 
 export default function NoticeItem(props) {
   const contentArr = [
-    { index: 0, content: '환불안되용~' },
-    { index: 1, content: '이건 질문이지' },
-    { index: 2, content: '텍스트 해볼까요' },
+    { index: 0, content: '환불은 중고거래 특성상 불가능합니다' },
+    { index: 1, content: '질문을 정확히 입력하세요' },
+    { index: 2, content: '테스트중입니다.' },
   ]
 
   return (

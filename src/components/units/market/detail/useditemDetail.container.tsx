@@ -120,7 +120,7 @@ export default function UseditemDetailPage(props) {
       // 중복 initialization 방지
       if (!kakao.isInitialized()) {
         // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
-        kakao.init('a6737013adeb3b6bc159d974a287f791')
+        kakao.init(`${process.env.NEXT_PUBLIC_KAKAO_KEI}`)
       }
 
       kakao.Link.createDefaultButton({
