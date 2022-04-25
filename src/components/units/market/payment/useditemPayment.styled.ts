@@ -126,10 +126,6 @@ interface IPropStyle {
   isOpenAdd: boolean
 }
 
-interface IPropModal {
-  isModalAdd: boolean
-}
-
 export const ChangeSelect = styled.div`
   width: 200px;
   padding: 10px;
@@ -187,16 +183,6 @@ export const DeliveryLongInput = styled.input`
   border-radius: 5px;
   margin-bottom: 5px;
   width: 100%;
-`
-
-export const CommonsButton = styled.button`
-  padding: 5px 10px;
-  border: 1px solid #c4c4c4;
-  border-radius: 5px;
-  background-color: #fff;
-  font-weight: 700;
-  margin-left: 5px;
-  cursor: pointer;
 `
 export const DeliveryTextselect = styled.select`
   width: 100%;
@@ -306,17 +292,4 @@ export const MoreAddress = styled.div`
   padding: 10px;
   margin: 20px 10px;
   border: 1px solid #000;
-`
-export const ListButton = styled.button`
-  padding: 5px 15px;
-  background-color: #fff;
-  border: 1px solid #000;
-  cursor: pointer;
-`
-export const SubmitButton = styled.button`
-  padding: 5px 15px;
-  background-color: #000;
-  color: #fff;
-  border: 1px solid #fff;
-  cursor: pointer;
 `

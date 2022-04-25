@@ -3,6 +3,7 @@ import { Modal } from 'antd'
 import 'antd/dist/antd.css'
 import * as S from './useditemPayment.styled'
 import { IpropsType } from './useditemPayment.types'
+import PaymentSmallButton from '../../../commons/button/paymentSmall'
 
 export default function UseditemPaymentpageUI(props: IpropsType) {
   const Num = props.user?.fetchUser.phoneNum.slice(0, 3)
@@ -87,9 +88,10 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                   type="text"
                   value={props.user?.fetchUser.name}
                 />
-                <S.CommonsButton onClick={props.onClickBasic}>
-                  주문자 정보와 동일
-                </S.CommonsButton>
+                <PaymentSmallButton
+                  onClick={props.onClickBasic}
+                  name="주문자 정보와 동일"
+                />
               </div>
               <S.DeliveryTextSmallInput
                 type="tel"
@@ -261,9 +263,10 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                   value={props.zonecode}
                   readOnly
                 />
-                <S.CommonsButton onClick={props.onTogglePostModal}>
-                  우편번호 검색
-                </S.CommonsButton>
+                <PaymentSmallButton
+                  name="우편번호 검색"
+                  onClick={props.onTogglePostModal}
+                />
                 <S.DeliveryLongInput
                   type="text"
                   value={props.Address}
@@ -301,10 +304,12 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                 ))}
             </S.ModalCenter>
             <S.WrapperContentBox style={{ padding: '0 10px' }}>
-              <S.ListButton onClick={props.onClickEvent}>선택</S.ListButton>
-              <S.SubmitButton onClick={props.onClickSubmit}>
-                등록
-              </S.SubmitButton>
+              <PaymentSmallButton name="선택" onClick={props.onClickEvent} />
+              <PaymentSmallButton
+                style={{ backgroundColor: '#000', color: '#fff' }}
+                name="등록"
+                onClick={props.onClickSubmit}
+              />
             </S.WrapperContentBox>
             <S.MoreAddress>+ 배송지 추가</S.MoreAddress>
           </S.ModalBox>
