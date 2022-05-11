@@ -7,8 +7,11 @@ import { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import Slider from 'react-slick'
 import { handelError } from '../../../../commons/libraries/utils'
+import ProductSmallButton from '../../../commons/button/detailSmall'
+import { IpropsDetail } from './useditemDetail.types'
+import ProductLargeButton from '../../../commons/button/detailLarge'
 
-export default function UseditemDetailPageUI(props) {
+export default function UseditemDetailPageUI(props: IpropsDetail) {
   const slider1 = useRef(null)
   const slider2 = useRef(null)
 
@@ -81,11 +84,7 @@ export default function UseditemDetailPageUI(props) {
       .substring(1, urls.length - 1)
       .replace(/\"/gi, '')
       .split('][')
-    // 0 번째 사진만쓴다. 대표이미지
-    // console.log(result)
-    // let other = props.productData?.fetchSellerProduct.map((el) => el.urls)
-    // const otherPic = other.replace(/\"/gi, '').split('][')
-    // console.log(otherPic)
+
     setArr(result)
   }, [props.data])
 
@@ -190,7 +189,7 @@ export default function UseditemDetailPageUI(props) {
               >
                 바로구매
               </S.ButtonBlackStyle>
-              <S.ButtonStyle onClick={props.onClickMakeRoom}>
+              <S.ButtonStyle>
                 문의하기
                 <S.PhoneIconSpan></S.PhoneIconSpan>
               </S.ButtonStyle>
@@ -304,18 +303,25 @@ export default function UseditemDetailPageUI(props) {
         </S.SlickStyle>
 
         <S.ButtonBox>
-          <S.ListButton onClick={props.moveToPage('/market/list')}>
-            목록으로
-          </S.ListButton>
+          <ProductLargeButton
+            name="목록으로"
+            onClick={props.moveToPage('/market/list')}
+          />
           <div style={{ textAlign: 'right' }}>
-            <S.EditBtn
+            <ProductSmallButton
+              name="수정"
               onClick={props.moveToPage(
                 `/market/${props.data?.fetchProduct.product_id}/edit`
               )}
-            >
-              수정
-            </S.EditBtn>
-            <S.CancelBtn onClick={props.onClickDelete}>삭제</S.CancelBtn>
+            />
+            <ProductSmallButton
+              name="삭제"
+              style={{
+                backgroundColor: '#fff',
+                color: '#000',
+              }}
+              onClick={props.onClickDelete}
+            />
           </div>
         </S.ButtonBox>
       </S.WrapperBody>

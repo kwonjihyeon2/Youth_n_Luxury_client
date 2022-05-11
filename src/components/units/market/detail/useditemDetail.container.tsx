@@ -32,9 +32,6 @@ export default function UseditemDetailPage(props) {
   const onClickShare = () => {
     setIsShare((prev) => !prev)
   }
-  const onClickMoveToDetail = (id) => () => {
-    router.push('/mypage/myActivity/myAsk/' + id)
-  }
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: { productId: String(router.query.boardId) },
   })
@@ -50,12 +47,10 @@ export default function UseditemDetailPage(props) {
   const onClickHeart = async () => {
     setIsHeart((prev) => !prev)
     try {
-      console.log('@@@@@@@ 라이크를 눌렀어요')
       const toggle = await createLike({
         variables: { productId: String(router.query.boardId) },
         refetchQueries: [FETCH_PRODUCT],
       })
-      console.log('@@@@@@@ 라이크가 완료됐어요')
 
       console.log(toggle)
     } catch (error) {
@@ -120,7 +115,7 @@ export default function UseditemDetailPage(props) {
       // 중복 initialization 방지
       if (!kakao.isInitialized()) {
         // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
-        kakao.init('a6737013adeb3b6bc159d974a287f791')
+        kakao.init(`${process.env.NEXT_PUBLIC_KAKAO_KEI}`)
       }
 
       kakao.Link.createDefaultButton({
@@ -156,41 +151,40 @@ export default function UseditemDetailPage(props) {
   })
 
   //상품문의에서 채팅 요청API
-  const [createChat] = useMutation(CREATE_CHAT)
-  const { refetch } = useQuery(FETCH_USER)
+  // const [createChat] = useMutation(CREATE_CHAT)
+  // const { refetch } = useQuery(FETCH_USER)
 
-  const onClickMakeRoom = async (e) => {
-    const userResult = await refetch()
+  // const onClickMakeRoom = async (e) => {
+  //   const userResult = await refetch()
 
-    const User = userResult.data?.fetchUser
-    const { __typename, ...rest } = User
+  //   const User = userResult.data?.fetchUser
+  //   const { __typename, ...rest } = User
 
-    const create = {
-      productId: String(data?.fetchProduct.product_id),
-      currentUser: rest,
-    }
+  //   const create = {
+  //     productId: String(data?.fetchProduct.product_id),
+  //     currentUser: rest,
+  //   }
 
-    // router.push('/market/chatting')
-    // try {
-    //   const result = await createChat({
-    //     variables: { productId: String(data?.fetchProduct.id) },
-    //   })
-    //   console.log('구매자가 채팅 요청 성공 :' + JSON.stringify(result))
-    //   socket.on('return_roomId', (result) => {
-    //     socket.emit('joinSeller', result)
-    //   })
-    //   console.log(socket)
-    //   router.push('/market/chatting')
-    // } catch (error) {
-    //   console.log('구매자가 채팅 요청했는데 실패 :' + error.message)
-    // }
-  }
+  //   router.push('/market/chatting')
+  //   try {
+  //     const result = await createChat({
+  //       variables: { productId: String(data?.fetchProduct.id) },
+  //     })
+  //     console.log('구매자가 채팅 요청 성공 :' + JSON.stringify(result))
+  //     socket.on('return_roomId', (result) => {
+  //       socket.emit('joinSeller', result)
+  //     })
+  //     console.log(socket)
+  //     router.push('/market/chatting')
+  //   } catch (error) {
+  //     console.log('구매자가 채팅 요청했는데 실패 :' + error.message)
+  //   }
+  // }
 
   return (
     <UseditemDetailPageUI
       productData={productData}
       relativeData={relativeData}
-      isSold={props.isSold}
       data={data}
       isHeart={isHeart}
       isOpen={isOpen}
@@ -203,7 +197,6 @@ export default function UseditemDetailPage(props) {
       isShare={isShare}
       onClickBasketBtn={onClickBasketBtn}
       isKeep={isKeep}
-      onClickMoveToDetail={onClickMoveToDetail}
     />
   )
 }
