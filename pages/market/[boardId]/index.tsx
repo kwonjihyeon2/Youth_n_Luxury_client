@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import UseditemDetailPage from '../../../src/components/units/market/detail/useditemDetail.container'
 import { request } from 'graphql-request'
 import { FETCH_PRODUCT } from '../../../src/components/units/market/detail/useditemDetail.query'
-// const [isSold, setIsSold] = useState(false)
 import Head from 'next/head'
 
 export default function UseditemDetail(props) {

@@ -1,5 +1,6 @@
 import * as S from './Login.styles'
-export default function LoginUI(props) {
+import { ILoginUIProps } from './Login.types'
+export default function LoginUI(props: ILoginUIProps) {
   return (
     <S.ResponsiveBox>
       <S.Wrapper>

@@ -7,17 +7,18 @@ import {
   FETCH_ADDRESS,
   FETCH_ADDRS,
   FETCH_USER,
-  // UPDATE_ADDRESS,
   FETCH_PRODUCT,
 } from './useditemPayment.queries'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { IAddress } from './useditemPayment.types'
 
+// 아임포트 Doxc 페이지 안열려서 타입지정 안됨
 declare const window: typeof globalThis & {
   IMP: any
 }
 
-export default function UseditemPaymentpage(props) {
+export default function UseditemPaymentpage() {
   const router = useRouter()
 
   //물건 조회 -> 유저 조회까지 가능
@@ -35,8 +36,7 @@ export default function UseditemPaymentpage(props) {
     setIsModalVisible((prev) => !prev)
   }
 
-  const onCompleteAddress = (data: any) => {
-    console.log(data)
+  const onCompleteAddress = (data: IAddress) => {
     setAddress(data.address)
     setZonecode(data.zonecode)
     setAddressDetail(data.addressDetail)
@@ -46,11 +46,6 @@ export default function UseditemPaymentpage(props) {
   const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
     setAddressDetail(event.target.value)
   }
-  // const onClickSetPost = () => {
-  //   setAddress(data.address)
-  //   setZonecode(data.zonecode)
-  //   setAddressDetail(data.addressDetail)
-  // }
 
   //배송지 관련 true, false css
   const [isOpenAdd, setIsOpenAdd] = useState(false)

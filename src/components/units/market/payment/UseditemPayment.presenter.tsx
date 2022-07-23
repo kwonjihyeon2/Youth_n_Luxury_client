@@ -2,10 +2,15 @@ import DaumPostcode from 'react-daum-postcode'
 import { Modal } from 'antd'
 import 'antd/dist/antd.css'
 import * as S from './useditemPayment.styled'
-import { IpropsType } from './useditemPayment.types'
+import {
+  IFetchUserAddrData,
+  IUseditemPaymentpageUIProps,
+} from './useditemPayment.types'
 import PaymentSmallButton from '../../../commons/button/paymentSmall'
 
-export default function UseditemPaymentpageUI(props: IpropsType) {
+export default function UseditemPaymentpageUI(
+  props: IUseditemPaymentpageUIProps
+) {
   const Num = props.user?.fetchUser.phoneNum.slice(0, 3)
   const Num2 = props.user?.fetchUser.phoneNum.slice(3, 7)
   const Num3 = props.user?.fetchUser.phoneNum.slice(7, 11)
@@ -278,30 +283,29 @@ export default function UseditemPaymentpageUI(props: IpropsType) {
                 />
               </S.submitAddress>
               {props.listAddr?.fetchUserAddrs.length <= 2 &&
-                props.listAddr?.fetchUserAddrs.map((el, index) => (
-                  <S.submitAddress
-                    key={el.userAddr_id}
-                    // onClick={props.onClickFetch(el.id)}
-                  >
-                    <div>배송지 {index + 1}</div>
-                    <S.DeliveryTextSmallInput
-                      type="tel"
-                      placeholder="07250"
-                      value={el.zipCode}
-                      readOnly
-                    />
-                    <S.DeliveryLongInput
-                      type="text"
-                      value={el.address}
-                      readOnly
-                    />
-                    <S.DeliveryLongInput
-                      type="text"
-                      readOnly
-                      value={el.addressDetail}
-                    />
-                  </S.submitAddress>
-                ))}
+                props.listAddr?.fetchUserAddrs.map(
+                  (el: IFetchUserAddrData, index: number) => (
+                    <S.submitAddress key={el.userAddr_id}>
+                      <div>배송지 {index + 1}</div>
+                      <S.DeliveryTextSmallInput
+                        type="tel"
+                        placeholder="07250"
+                        value={el.zipCode}
+                        readOnly
+                      />
+                      <S.DeliveryLongInput
+                        type="text"
+                        value={el.address}
+                        readOnly
+                      />
+                      <S.DeliveryLongInput
+                        type="text"
+                        readOnly
+                        value={el.addressDetail}
+                      />
+                    </S.submitAddress>
+                  )
+                )}
             </S.ModalCenter>
             <S.WrapperContentBox style={{ padding: '0 10px' }}>
               <PaymentSmallButton name="선택" onClick={props.onClickEvent} />

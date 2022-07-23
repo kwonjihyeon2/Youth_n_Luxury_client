@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
-import { breakPoints } from '../../../commons/utils/media'
 import DesktopItem from './ResposiveOnDesktopItem'
 import TabletItem from './ResposiveOnTabletItem'
 import * as S from './UseditemList.styles'
+import {
+  IFetchProductBySearch,
+  IUseditemListUIProps,
+} from './UseditemList.types'
 
-export default function UseditemListUI(props) {
-  console.log(props.searchData?.fetchProductBySearch)
+export default function UseditemListUI(props: IUseditemListUIProps) {
   return (
     <S.Position>
       <S.Wrapper>
@@ -33,30 +34,32 @@ export default function UseditemListUI(props) {
           <>
             <S.WrapperBottom>
               {props.searchData?.fetchProductBySearch ? (
-                props.searchData?.fetchProductBySearch.map((el) => (
-                  <S.WrapperUseditem
-                    key={el.product_id}
-                    id={el.product_id}
-                    onClick={props.onClickProduct(el)}
-                  >
-                    <img
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                      }}
-                      src={
-                        'https://storage.googleapis.com/' +
-                        el?.urls
-                          .substring(1, el?.urls.length - 1)
-                          .replace(/\"/gi, '')
-                          .split('][')[0]
-                      }
-                    />
-                    <S.UseditemName>{el.name}</S.UseditemName>
-                    <S.UseditemPrice>{el.price}원</S.UseditemPrice>
-                  </S.WrapperUseditem>
-                ))
+                props.searchData?.fetchProductBySearch.map(
+                  (el: IFetchProductBySearch) => (
+                    <S.WrapperUseditem
+                      key={el.product_id}
+                      id={el.product_id}
+                      onClick={props.onClickProduct(el)}
+                    >
+                      <img
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                        }}
+                        src={
+                          'https://storage.googleapis.com/' +
+                          el?.urls
+                            .substring(1, el?.urls.length - 1)
+                            .replace(/\"/gi, '')
+                            .split('][')[0]
+                        }
+                      />
+                      <S.UseditemName>{el.name}</S.UseditemName>
+                      <S.UseditemPrice>{el.price}원</S.UseditemPrice>
+                    </S.WrapperUseditem>
+                  )
+                )
               ) : (
                 <></>
               )}

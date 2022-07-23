@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { ChangeEvent, MouseEvent, useState } from 'react'
 import UseditemListUI from './UseditemList.presenter'
 import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
@@ -8,6 +8,7 @@ import {
 } from './UseditemList.queries'
 
 import _ from 'lodash'
+import { IOnClickMoveProductDetail, IRecentView } from './UseditemList.types'
 
 export default function UseditemList() {
   const [main, setMain] = useState('')
@@ -24,43 +25,38 @@ export default function UseditemList() {
   const [searchInput, setSearchInput] = useState('')
   const [searchData, setSearchData] = useState({})
   console.log(searchInput)
-  const onChangeSearchInput = (event) => {
+  const onChangeSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value)
-    console.log('이벤트타겟점벨류는')
-    console.log(event.target.value)
   }
   const onClickSearchBtn = async () => {
     try {
-      console.log('검색시작')
       console.log(searchInput)
       const result = await searchRefetch({ name: searchInput })
       setIsSearched(true)
       setSearchData(result.data)
-      console.log('검색결과는')
+
       console.log(result.data)
     } catch (err) {
-      console.log('검색에러는')
       console.log(err.message)
     }
   }
-  const onClickMain = (event) => {
-    setMain(event.target.id)
+  const onClickMain = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target instanceof HTMLDivElement) setMain(event.target.id)
     setIsClickMain((prev) => !prev)
   }
-  const onClickSub = (event) => {
-    setSub(event.target.id)
+  const onClickSub = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target instanceof HTMLDivElement) setSub(event.target.id)
     setIsClickSub((prev) => !prev)
   }
-  const onClickBrand = (event) => {
-    setBrand(event.target.value)
+  const onClickBrand = (event: MouseEvent<HTMLSelectElement>) => {
+    if (event.target instanceof HTMLSelectElement) setBrand(event.target.value)
   }
 
-  const onClickMoveProductDetail = (el) => (event) => {
+  const onClickMoveProductDetail = (el: IOnClickMoveProductDetail) => () => {
     let isExist = false
-    const recentView = JSON.parse(localStorage.getItem('recentView') || '[]') // [{_id: 1, writer: 영희}, {_id: 2, writer: 훈이}, {_id: 3, writer: 철수}]
-    // const temp = baskets.filter((basketEl) => basketEl._id === el._id);
+    const recentView = JSON.parse(localStorage.getItem('recentView') || '[]')
 
-    recentView.forEach((recentViewEl, i) => {
+    recentView.forEach((recentViewEl: IRecentView) => {
       if (recentViewEl.product_id === el.id) {
         isExist = true
         return false
@@ -72,7 +68,6 @@ export default function UseditemList() {
     }
     router.push(`/market/${el.product_id}`)
   }
-  // const onClickSearch = () => {}
 
   return (
     <UseditemListUI
