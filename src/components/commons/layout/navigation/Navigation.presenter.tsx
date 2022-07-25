@@ -1,6 +1,7 @@
 import * as S from './Navigation.styles'
+import { INavigationUIProps } from './Navigation.types'
 
-export default function NavigationUI(props) {
+export default function NavigationUI(props: INavigationUIProps) {
   return (
     <S.Position>
       <S.Wrapper>

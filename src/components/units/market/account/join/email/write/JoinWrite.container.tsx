@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { ChangeEvent, MouseEvent, useState } from 'react'
 import JoinWriteUI from './JoinWrite.presenter'
 import { useMutation } from '@apollo/client'
 import { CREATE_USER, TOKEN_MAKER, TOKEN_VALIDATE } from './JoinWrite.queries'
 import { useRouter } from 'next/router'
-export default function JoinWrite(props) {
-  // console.log(props.data)
+import {
+  ICreateUserInputData,
+  IJoinWriteProps,
+  IUpdateUser,
+} from './JoinWrite.types'
+export default function JoinWrite(props: IJoinWriteProps) {
   const router = useRouter()
   const [checkNum, setCheckNum] = useState(0)
-  const [createUserInput, setCreateUserInput] = useState({
+  const [createUserInput, setCreateUserInput] = useState<ICreateUserInputData>({
     email: '',
     password: '',
     nickname: '',
@@ -31,36 +35,37 @@ export default function JoinWrite(props) {
   // 비밀번호 확인 이 다른거
   const [isPwdVal, setIsPwdVal] = useState(false)
   // 비밀번호 형식이다름
-  const onChangeInput = (key) => (event) => {
-    setCreateUserInput({ ...createUserInput, [key]: event.target.value })
-    console.log(event.target.value)
+  const onChangeInput =
+    (key: string) => (event: ChangeEvent<HTMLInputElement>) => {
+      setCreateUserInput({ ...createUserInput, [key]: event.target.value })
+      console.log(event.target.value)
 
-    // 비밀번호 확인 체크
-    if (key === 'passwordCheck') {
-      if (event.target.value === createUserInput.password) {
-        setIsPwdCheck(true)
-      } else {
-        if (isPwdCheck) setIsPwdCheck(false)
+      // 비밀번호 확인 체크
+      if (key === 'passwordCheck') {
+        if (event.target.value === createUserInput.password) {
+          setIsPwdCheck(true)
+        } else {
+          if (isPwdCheck) setIsPwdCheck(false)
+        }
       }
-    }
 
-    // 비밀번호 형식체크
-    if (key === 'password') {
-      const passwordRules = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/
+      // 비밀번호 형식체크
+      if (key === 'password') {
+        const passwordRules = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/
 
-      https: if (passwordRules.test(event.target.value)) {
-        setIsPwdVal(true)
-      } else {
-        if (isPwdVal) setIsPwdVal(false)
+        if (passwordRules.test(event.target.value)) {
+          setIsPwdVal(true)
+        } else {
+          if (isPwdVal) setIsPwdVal(false)
+        }
       }
+      console.log(createUserInput.password)
+      console.log(isNumCheck)
+      console.log(isPwdCheck)
+      console.log(isPwdVal)
     }
-    console.log(createUserInput.password)
-    console.log(isNumCheck)
-    console.log(isPwdCheck)
-    console.log(isPwdVal)
-  }
-  const onChangeCheckNum = (event) => {
-    setCheckNum(event.target.value)
+  const onChangeCheckNum = (event: ChangeEvent<HTMLInputElement>) => {
+    setCheckNum(Number(event.target.value))
   }
   const onClickCheckNum = async () => {
     const result = await tokenValidate({
@@ -98,12 +103,13 @@ export default function JoinWrite(props) {
       console.log(err.message)
     }
   }
-  const selectBoxChange = (event) => {
-    setCreateUserInput({
-      ...createUserInput,
-      email: createUserInput.emailFirst + '@' + event.target.value,
-      emailSecond: event.target.value,
-    })
+  const selectBoxChange = (event: MouseEvent<HTMLSelectElement>) => {
+    if (event.target instanceof HTMLSelectElement)
+      setCreateUserInput({
+        ...createUserInput,
+        email: createUserInput.emailFirst + '@' + event.target.value,
+        emailSecond: event.target.value,
+      })
   }
 
   //인증번호 시간 3분
@@ -146,57 +152,59 @@ export default function JoinWrite(props) {
     }
   }
 
-  const onChangeEmail = (order) => (event) => {
-    if (order === 'emailFirst') {
-      setCreateUserInput({
-        ...createUserInput,
-        email: event.target.value + '@' + createUserInput.emailSecond,
-        emailFirst: event.target.value,
-      })
-    } else {
-      setCreateUserInput({
-        ...createUserInput,
-        email: createUserInput.emailFirst + '@' + event.target.value,
-        emailSecond: event.target.value,
-      })
+  const onChangeEmail =
+    (order: string) => (event: ChangeEvent<HTMLInputElement>) => {
+      if (order === 'emailFirst') {
+        setCreateUserInput({
+          ...createUserInput,
+          email: event.target.value + '@' + createUserInput.emailSecond,
+          emailFirst: event.target.value,
+        })
+      } else {
+        setCreateUserInput({
+          ...createUserInput,
+          email: createUserInput.emailFirst + '@' + event.target.value,
+          emailSecond: event.target.value,
+        })
+      }
     }
-  }
 
-  const onChangeNumber = (order) => (event) => {
-    const regex = /^[0-9\b -]{0,13}$/
+  const onChangeNumber =
+    (order: string) => (event: ChangeEvent<HTMLInputElement>) => {
+      const regex = /^[0-9\b -]{0,13}$/
 
-    if (!regex.test(event.target.value)) {
-      return
+      if (!regex.test(event.target.value)) {
+        return
+      }
+      if (order === 'numberFirst') {
+        setCreateUserInput({
+          ...createUserInput,
+          phoneNum:
+            event.target.value +
+            createUserInput.numberSecond +
+            createUserInput.numberThird,
+          numberFirst: event.target.value,
+        })
+      } else if (order === 'numberSecond') {
+        setCreateUserInput({
+          ...createUserInput,
+          phoneNum:
+            createUserInput.numberFirst +
+            event.target.value +
+            createUserInput.numberThird,
+          numberSecond: event.target.value,
+        })
+      } else {
+        setCreateUserInput({
+          ...createUserInput,
+          phoneNum:
+            createUserInput.numberFirst +
+            createUserInput.numberSecond +
+            event.target.value,
+          numberThird: event.target.value,
+        })
+      }
     }
-    if (order === 'numberFirst') {
-      setCreateUserInput({
-        ...createUserInput,
-        phoneNum:
-          event.target.value +
-          createUserInput.numberSecond +
-          createUserInput.numberThird,
-        numberFirst: event.target.value,
-      })
-    } else if (order === 'numberSecond') {
-      setCreateUserInput({
-        ...createUserInput,
-        phoneNum:
-          createUserInput.numberFirst +
-          event.target.value +
-          createUserInput.numberThird,
-        numberSecond: event.target.value,
-      })
-    } else {
-      setCreateUserInput({
-        ...createUserInput,
-        phoneNum:
-          createUserInput.numberFirst +
-          createUserInput.numberSecond +
-          event.target.value,
-        numberThird: event.target.value,
-      })
-    }
-  }
 
   const onClickJoinBtn = async () => {
     if (createUserInput.password !== createUserInput.passwordCheck) {
@@ -242,7 +250,6 @@ export default function JoinWrite(props) {
       isPwdVal={isPwdVal}
       isEdit={props.isEdit}
       data={props.data}
-      updateUser={props.updateUser}
       onClickUpdateUser={onClickUpdateUser}
       timer={timer}
     />

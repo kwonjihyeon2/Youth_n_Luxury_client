@@ -4,8 +4,9 @@ import Uploads03 from '../../../commons/uploads/03/Uploads03.container'
 import Uploads04 from '../../../commons/uploads/04/Uploads04.container'
 import Uploads05 from '../../../commons/uploads/05/Uploads05.container'
 import * as S from './UseditemWrite.styles'
+import { IUseditemWriteUIProps } from './UseditemWrite.types'
 
-export default function UseditemWriteUI(props) {
+export default function UseditemWriteUI(props: IUseditemWriteUIProps) {
   return (
     <S.Position>
       <S.Wrapper>
@@ -68,7 +69,7 @@ export default function UseditemWriteUI(props) {
             <S.TitleName>카테고리</S.TitleName>
           </S.WrapperImgTitle>
           <S.CategoryList>
-            <S.CategoryMain onChange={props.onChangeMainCategory}>
+            <S.CategoryMain onClick={props.onChangeMainCategory}>
               <option value="">선택하세요</option>
               <option value="Top">상의</option>
               <option value="Bottom">하의</option>
@@ -77,7 +78,7 @@ export default function UseditemWriteUI(props) {
               <option value="Acc">악세사리</option>
             </S.CategoryMain>
             {props.selectMain === 'Top' ? (
-              <S.CategorySub onChange={props.onChangeSubCategoryId}>
+              <S.CategorySub onClick={props.onChangeSubCategoryId}>
                 <option value="">선택하세요</option>
                 <option value="Hoodie">후드티</option>
                 <option value="T-shirt">티셔츠</option>
@@ -88,7 +89,7 @@ export default function UseditemWriteUI(props) {
               ''
             )}
             {props.selectMain === 'Bottom' ? (
-              <S.CategorySub onChange={props.onChangeSubCategoryId}>
+              <S.CategorySub onClick={props.onChangeSubCategoryId}>
                 <option value="">-선택하세요-</option>
                 <option value="BlueJeans">청바지</option>
                 <option value="CottonPants">면바지</option>
@@ -99,7 +100,7 @@ export default function UseditemWriteUI(props) {
               ''
             )}
             {props.selectMain === 'Shoes' ? (
-              <S.CategorySub onChange={props.onChangeSubCategoryId}>
+              <S.CategorySub onClick={props.onChangeSubCategoryId}>
                 <option value="">-선택하세요-</option>
                 <option value="HighHeels">하이힐</option>
                 <option value="Shoes">구두</option>
@@ -110,7 +111,7 @@ export default function UseditemWriteUI(props) {
               ''
             )}
             {props.selectMain === 'Bag' ? (
-              <S.CategorySub onChange={props.onChangeSubCategoryId}>
+              <S.CategorySub onClick={props.onChangeSubCategoryId}>
                 <option value="">-선택하세요-</option>
                 <option value="CrossBag">크로스백</option>
                 <option value="Backpack">백팩</option>
@@ -121,7 +122,7 @@ export default function UseditemWriteUI(props) {
               ''
             )}
             {props.selectMain === 'Acc' ? (
-              <S.CategorySub onChange={props.onChangeSubCategoryId}>
+              <S.CategorySub onClick={props.onChangeSubCategoryId}>
                 <option value="">-선택하세요-</option>
                 <option value="Ring">반지</option>
                 <option value="Necklace">목걸이</option>
@@ -198,7 +199,7 @@ export default function UseditemWriteUI(props) {
             <S.PriceInput
               type="text"
               placeholder="숫자만 입력해주세요."
-              defaultValue={props.data?.fetchProduct.price}
+              defaultValue={props.data?.fetchProduct?.price}
               onChange={props.onChangePrice}
             ></S.PriceInput>
             <div style={{ fontSize: '20px' }}>원</div>
@@ -213,7 +214,7 @@ export default function UseditemWriteUI(props) {
               maxLength={500}
               placeholder="상품 설명을 입력해주세요."
               onChange={props.onChangeDescription}
-              defaultValue={props.data?.fetchProduct.description}
+              defaultValue={props.data?.fetchProduct?.description}
             />
             <S.ExplainsCounts>{props.description.length}/500</S.ExplainsCounts>
           </S.WrapperTextarea>

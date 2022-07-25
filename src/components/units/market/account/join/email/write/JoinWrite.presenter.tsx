@@ -1,6 +1,7 @@
 import * as S from './JoinWrite.styles'
+import { IJoinWriteUIProps } from './JoinWrite.types'
 
-export default function JoinWriteUI(props) {
+export default function JoinWriteUI(props: IJoinWriteUIProps) {
   return (
     <S.ResponsiveBox>
       <S.Wrapper>
@@ -37,7 +38,7 @@ export default function JoinWriteUI(props) {
                 </>
               )}
 
-              <S.EmailDropdown onChange={props.selectBoxChange}>
+              <S.EmailDropdown onClick={props.selectBoxChange}>
                 <option value="">직접입력</option>
                 <option value="naver.com">naver.com</option>
 
@@ -175,7 +176,6 @@ export default function JoinWriteUI(props) {
                 >
                   인증번호 보내기
                 </S.SendAuthNumBtn>
-                {/* <S.ValiText>{props.timer}</S.ValiText> */}
               </S.ValueBox>
             </S.Row>
           )}

@@ -1,11 +1,12 @@
 import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { useRef, useState } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 import CreateReviewPageUI from './createReview.presenter'
 import { CREATE_REVIEW, FETCH_PRODUCT } from './createReview.query'
+import { ICreateReviewPageProps } from './createReview.types'
 
-export default function CreateReviewPage(props) {
-  const fileRef = useRef(null)
+export default function CreateReviewPage(props: ICreateReviewPageProps) {
+  const fileRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
 
   const onClickRef = () => {
@@ -33,8 +34,7 @@ export default function CreateReviewPage(props) {
       if (reviewContent && reviewContent && url) {
         const result = await createReview({
           variables: {
-            // productId: String(router.query.productId),
-            productId: '2b5d1b27-0a5b-44dc-9c2e-219914617b21',
+            productId: String(router.query.productId),
             content: reviewContent,
             ratings: reviewRate,
             img: url,
@@ -48,7 +48,7 @@ export default function CreateReviewPage(props) {
     }
   }
 
-  const onChangeContent = (e) => {
+  const onChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setReviewContent(e.target.value)
   }
 
