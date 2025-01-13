@@ -1,8 +1,9 @@
 import { ChangeEvent } from 'react'
 import SearchbarsListUI from './SearchbarsList.presenter'
 import _ from 'lodash'
+import { ISearchbarsListProps } from './SearchbarsList.types'
 
-export default function SearchbarsList(props) {
+export default function SearchbarsList(props: ISearchbarsListProps) {
   const getDebounce = _.debounce((data) => {
     props.refetch({ search: data })
     props.onChangeKeyword(data)

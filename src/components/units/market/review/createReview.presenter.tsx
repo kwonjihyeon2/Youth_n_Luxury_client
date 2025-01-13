@@ -1,6 +1,7 @@
 import * as S from './createReview.styled'
+import { ICreateReviewPageUIProps } from './createReview.types'
 
-export default function CreateReviewPageUI(props) {
+export default function CreateReviewPageUI(props: ICreateReviewPageUIProps) {
   return (
     <S.WrapperMain>
       <S.Wrapper>
@@ -38,11 +39,6 @@ export default function CreateReviewPageUI(props) {
                   리뷰작성 <S.NoticeText>필수 입력 항목입니다.</S.NoticeText>
                 </S.TableLeft>
                 <div>
-                  {/* <S.TableInput
-                  style={{ width: '100%' }}
-                  type="text"
-                  placeholder="제목을 입력해주세요"
-                /> */}
                   <S.ContentText
                     onChange={props.onChangeContent}
                     cols={30}

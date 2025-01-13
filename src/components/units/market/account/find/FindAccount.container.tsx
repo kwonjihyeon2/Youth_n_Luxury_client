@@ -1,5 +1,8 @@
+import { useState } from 'react'
 import FindAccountUI from './FindAccount.presenter'
 
 export default function FindAccount() {
-  return <FindAccountUI />
+  const [isSend, setIsSend] = useState(false)
+
+  return <FindAccountUI setIsSend={setIsSend} isSend={isSend} />
 }

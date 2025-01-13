@@ -1,12 +1,12 @@
-import { ChangeEvent, RefObject } from 'react'
+import { ChangeEvent, Dispatch, RefObject, SetStateAction } from 'react'
 
 export interface IUploads03Props {
-  index: number
+  index?: number
   fileUrl3: string
   defaultFileUrl?: string
+  setUrls3: Dispatch<SetStateAction<string>>
   onChangeUrls?: any
   onChangeFileUrls?: any
-  setUrls3: any
 }
 
 export interface IUploads03UIProps {

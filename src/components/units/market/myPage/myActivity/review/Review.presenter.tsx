@@ -1,5 +1,4 @@
 import * as S from './Review.styles'
-import { Rate } from 'antd'
 import 'antd/dist/antd.css'
 export default function ReviewUI(props) {
   return (

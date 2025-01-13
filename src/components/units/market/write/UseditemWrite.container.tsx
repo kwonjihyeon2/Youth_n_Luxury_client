@@ -1,6 +1,6 @@
-import { useMutation, useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, MouseEvent, useRef, useState } from 'react'
 import { CREATE_PRODUCT, UPDATE_PRODUCT } from './UseditemWrite.queries'
 import UseditemWriteUI from './UseditemWrite.presenter'
 import {
@@ -8,21 +8,19 @@ import {
   getDate,
 } from '../../../../commons/libraries/utils'
 import axios from 'axios'
+import { IUseditemWriteProps } from './UseditemWrite.types'
 
-export default function UseditemWrite(props) {
+export default function UseditemWrite(props: IUseditemWriteProps) {
   const router = useRouter()
-  // const axios = require('axios')
   const fileRef = useRef<HTMLInputElement>(null)
   const [createProduct] = useMutation(CREATE_PRODUCT)
   const [updateProduct] = useMutation(UPDATE_PRODUCT)
-
   const [isOpen, setIsOpen] = useState(false)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
   const [accountNum, setAccountNum] = useState('')
   const [bank, setBank] = useState('')
-  // const [urls, setUrls] = useState(['', '', '', '', '', '', '', '', '', ''])
   const [urls, setUrls] = useState('')
   const [urls2, setUrls2] = useState('')
   const [urls3, setUrls3] = useState('')
@@ -32,15 +30,15 @@ export default function UseditemWrite(props) {
   const [subCategory, setSubCategory] = useState('')
   const [selectMain, setSelectMain] = useState('')
 
+  // 금융결제원 OPEN-API 실거래 계좌 확인 인증
   const onClickAccountConfirm = async () => {
     const temp = String(Math.random())
     const temp2 = temp.slice(10)
     const randomNum = Number(temp2) > 99999999 ? temp2 : '0' + temp2
     const date = new Date()
     const time = getDate(date)
-    console.log(time)
-    console.log(randomNum, typeof randomNum)
-    const result = await axios.post(
+
+    await axios.post(
       `https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/inquiry/real_name`,
       {
         bank_code_std: `${process.env.NEXT_PUBLIC_BANK}`,
@@ -56,36 +54,37 @@ export default function UseditemWrite(props) {
         },
       }
     )
-    console.log(result)
     alert('인증성공!')
   }
-  const onChangeAccountNum = (event) => {
+  const onChangeAccountNum = (event: ChangeEvent<HTMLInputElement>) => {
     setAccountNum(event.target.value)
   }
-  const onChangeBank = (event) => {
+  const onChangeBank = (event: ChangeEvent<HTMLInputElement>) => {
     setBank(event.target.value)
     if (bank == '국민') {
       setBank(`${process.env.NEXT_PUBLIC_BANK}`)
     }
   }
 
-  const onChangeName = (event) => {
+  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)
   }
-  const onChangeDescription = (event) => {
+  const onChangeDescription = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(event.target.value)
   }
-  const onChangePrice = (event) => {
+  const onChangePrice = (event: ChangeEvent<HTMLInputElement>) => {
     setPrice(event.target.value)
   }
-  const onChangeBrandId = (event) => {
-    setBrand(event.target.value)
+  const onChangeBrandId = (event: MouseEvent<HTMLInputElement>) => {
+    if (event.target instanceof HTMLInputElement) setBrand(event.target.value)
   }
-  const onChangeSubCategoryId = (event) => {
-    setSubCategory(event.target.value)
+  const onChangeSubCategoryId = (event: MouseEvent<HTMLSelectElement>) => {
+    if (event.target instanceof HTMLSelectElement)
+      setSubCategory(event.target.value)
   }
-  const onChangeMainCategory = (event) => {
-    setSelectMain(event.target.value)
+  const onChangeMainCategory = (event: MouseEvent<HTMLSelectElement>) => {
+    if (event.target instanceof HTMLSelectElement)
+      setSelectMain(event.target.value)
   }
 
   const onClickImage = () => {
@@ -128,7 +127,6 @@ export default function UseditemWrite(props) {
     } catch (error) {
       alert(error.message)
     }
-    console.log(bank)
   }
   return (
     <UseditemWriteUI
@@ -140,7 +138,6 @@ export default function UseditemWrite(props) {
       onClickSubmit={onClickSubmit}
       onClickUpdate={onClickUpdate}
       isEdit={props.isEdit}
-      data={props.data}
       isOpen={isOpen}
       description={description}
       selectMain={selectMain}
@@ -162,6 +159,7 @@ export default function UseditemWrite(props) {
       bank={bank}
       onChangeAccountNum={onChangeAccountNum}
       onChangeBank={onChangeBank}
+      data={props.data}
     />
   )
 }

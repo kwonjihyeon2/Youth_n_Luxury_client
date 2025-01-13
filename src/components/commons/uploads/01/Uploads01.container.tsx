@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client'
-import { ChangeEvent, MouseEvent, useRef } from 'react'
+import { ChangeEvent, useRef } from 'react'
 import Uploads01UI from './Uploads01.presenter'
 import { IUploads01Props } from './Uploads01.types'
 import { UPLOAD_FILE } from './Uploads01.queries'

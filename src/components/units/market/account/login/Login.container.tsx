@@ -1,9 +1,9 @@
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { useState, useContext } from 'react'
+import { useState, useContext, ChangeEvent } from 'react'
 import { GlobalContext } from '../../../../../../pages/_app'
 import LoginUI from './Login.presenter'
-import { FETCH_USER, LOGIN } from './Login.queries'
+import { LOGIN } from './Login.queries'
 
 export default function Login() {
   const [loginInput, setLoginInput] = useState({
@@ -14,14 +14,13 @@ export default function Login() {
   const router = useRouter()
   const [login] = useMutation(LOGIN)
 
-  const onChangeLoginInput = (type) => (event) => {
-    setLoginInput({ ...loginInput, [type]: event.target.value })
-  }
+  const onChangeLoginInput =
+    (type: string) => (event: ChangeEvent<HTMLInputElement>) => {
+      setLoginInput({ ...loginInput, [type]: event.target.value })
+    }
   const onClickLoginBtn = async () => {
     try {
       const result = await login({ variables: { ...loginInput } })
-      // console.log(result.data.login)
-      // setAccessToken(result.data.login)
       const accessToken = result.data?.login
       console.log(accessToken)
       setAccessToken(accessToken)

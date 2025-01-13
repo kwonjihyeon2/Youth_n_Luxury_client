@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import AdminMainUI from './AdminMain.presenter'
 import {
   DELETE_PRODUCT,
@@ -17,23 +17,14 @@ export default function AdminMain() {
   const [status, setStatus] = useState('')
   const { data: dataQueries } = useQuery(FIND_ALL_USER_QUERIES)
   const { data: dataUsers, refetch: refetchUsers } = useQuery(FETCH_USERS)
-  // const { data: dataOrders, refetch: refetchOrders } = useQuery(FETCH_ORDERS)
-  const { data: dataTrans, refetch: refetchTrans } = useQuery(
-    FETCH_TRANSACTION_ALL
-  )
-  // const { data: dataImpuid, refetch: refetchImpuid } = useQuery(
-  //   FETCH_IMPUID_WITH_PRODUCTID_USERID,
-  //   { variables: { productId: '62c4e753-fe64-4c4a-b74f-75f517e306a8' } }
-  // )
-
+  const { data: dataTrans } = useQuery(FETCH_TRANSACTION_ALL)
   const { data: dataProducts, refetch: refetchProducts } =
     useQuery(FETCH_ALL_PRODUCT)
   const [deleteUser] = useMutation(DELETE_USER)
   const [updatetransaction] = useMutation(UPDATE_TRANSACTION)
   const [deleteProduct] = useMutation(DELETE_PRODUCT)
-  const onClickMoveToQuery = () => {}
   const onClickLogout = () => {}
-  const onClickDeleteProduct = (id) => async () => {
+  const onClickDeleteProduct = (id: string) => async () => {
     try {
       await deleteProduct({
         variables: { productId: id },
@@ -49,7 +40,7 @@ export default function AdminMain() {
     }
   }
 
-  const onClickStatus = (uid) => async () => {
+  const onClickStatus = (uid: string) => async () => {
     try {
       await updatetransaction({
         variables: {
@@ -62,7 +53,7 @@ export default function AdminMain() {
     }
     alert('변경 완료!')
   }
-  const onChangeStatus = (event) => {
+  const onChangeStatus = (event: ChangeEvent<HTMLSelectElement>) => {
     setStatus(event.target.value)
   }
 
@@ -80,7 +71,7 @@ export default function AdminMain() {
       alert(error.message)
     }
   }
-  const onClickUserQuery = (id) => () => {
+  const onClickUserQuery = (id: MouseEventHandler<HTMLDivElement>) => () => {
     router.push(`/mypage/myActivity/myAsk/${id}`)
   }
   return (
